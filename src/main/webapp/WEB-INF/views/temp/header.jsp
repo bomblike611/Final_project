@@ -6,10 +6,10 @@
 	<link href="/busk/resources/css/header.css" rel="stylesheet">
 	<script type="text/javascript">
 		$(function(){
-			$(".sub_nav").mouseover(function() {
+			$("#main_nav").mouseover(function() {
 				$("#sub_nav").animate({height: '150px'});
 			});
-			$(".sub_nav").mouseleave(function() {
+			$("#main_nav").mouseleave(function() {
 				$("#sub_nav").animate({height: '0px'});
 			});
 		});
