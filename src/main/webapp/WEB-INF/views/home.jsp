@@ -6,5 +6,9 @@
 </head>
 <body>
 	<%@include file="./temp/header.jsp" %>
+	
+	
+	<a href="member/memberAgree">Join</a>
+	
 </body>
 </html>
