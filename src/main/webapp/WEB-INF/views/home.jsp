@@ -9,10 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body>
 
-	<%@include file="./temp/header.jsp" %>
-
-<section id="main">
-<a href="./location/locationWrite">Location_write</a>
-</section>
+	<section id="main">
+		<a href="./location/locationWrite">Location_write</a>
+	</section>
 </body>
 </html>

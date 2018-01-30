@@ -9,7 +9,8 @@ header{
 	position:fixed;
 }
 #main {
-	margin-top: 80px;
+	height: 1000px;
+	padding-top: 80px;
 }
 #main_nav {
 	width: 30%;
