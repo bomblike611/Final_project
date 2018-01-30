@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LocationController {
 	
 	@RequestMapping(value="locationWrite",method=RequestMethod.GET)
-	public void LocationWrite() throws Exception{	
+	public String locationWrite() throws Exception{	
 		
+		return "location/locationWrite";
 	}
 	
 }
