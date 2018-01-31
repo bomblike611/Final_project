@@ -4,13 +4,24 @@
 	width: 70%;
 	margin-left: 15%;
 	margin-right: 15%;
-	background-color: #F6F5F1;
+}
+
+#loc_list{
+	width: 100%;
+	margin-top:5%;
+	margin-right:3%;
+	margin-left:3%;
+	height: 90%;
+	float: right;
+	list-style: none;
+	float: left;
 }
 
 #loc{
+	float: left;
 	background-color: white;
-	width: 20%;
-	height: 40%;
+	width:100%;
+	height: 30%;
 	margin-top:5%;
 	margin-left: 3%;
 	text-align: center;
@@ -37,4 +48,56 @@ select{
 
 #search>input{
 	height: 40%;
+	border: 1px #F6F5F1 solid;
 }
+
+#searchw{
+	cursor: pointer;
+}
+
+.list_item{
+	background-color:white;
+	width: 44%;
+	height: 60%;
+	margin-left:3%;
+	margin-bottom:3%;
+	list-style: none;
+	float: left;
+	border: 2px #F6F5F1 solid;
+	text-align: center;
+	
+}
+.list_item> img{
+	width: 500px;
+	height: 350px;
+	margin: 5%;
+	overflow: hidden;
+}
+
+.list_item> h3{
+	font-size: 18px;
+}
+.list_item> p{
+	font-size: 13px;
+	color: #C2BCB9;
+}
+
+.link{
+	height: 40px;
+	line-height: 40px;
+	width: 50%;
+	margin: 10px auto;
+	border: 1px #F6F5F1 solid;
+	color: #A54040;
+	font-weight: bold;
+	-webkit-transition: background-color 2s; /* Safari */
+    transition: background-color 2s;
+}
+
+
+.link:hover{
+	background-color: #A54040;
+	color: white;
+	
+}
+

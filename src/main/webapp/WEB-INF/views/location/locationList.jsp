@@ -20,10 +20,20 @@
 			<select>
 				<option>장소명</option>
 				<option>주소</option>
-			</select> <input type="text" name="search">
-			<button>Search</button>
+			</select> <input type="text" name="search" placeholder="검색어를 입력해주세요">
+			<img id="searchw" src="../resources/upload/search.png" style="width:20px;height: 20px;">
 			</div>
 			</form>
+		</div>
+		<div id="loc_list">
+		<ul>
+			<li class="list_item"><img src="../resources/upload/location/busk1.jpg"><h3>버스킹 장소</h3><p>주소</p><div class="link">Link</div></li>
+			<li class="list_item"><img src="../resources/upload/location/busk2.jpg"><h3>버스킹 장소</h3><p>주소</p><div class="link">Link</div></li>
+			<li class="list_item"><img src="../resources/upload/location/busk3.jpg"><h3>버스킹 장소</h3><p>주소</p><div class="link">Link</div></li>
+			<li class="list_item"><img src="../resources/upload/location/busk4.jpg"><h3>버스킹 장소</h3><p>주소</p><div class="link">Link</div></li>
+			<li class="list_item"><img src="../resources/upload/location/busk5.jpg"><h3>버스킹 장소</h3><p>주소</p><div class="link">Link</div></li>
+			
+		</ul>
 		</div>
 	</section>
 </body>
