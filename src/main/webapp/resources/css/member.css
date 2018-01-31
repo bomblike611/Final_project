@@ -34,6 +34,7 @@
     padding : 0;
     float: left;
     text-align:  center;
+
 }
 
 .stepGuide li p {
@@ -181,11 +182,23 @@
 }
 
 
+.sp{
+	font-size: 12px;
+	font-weight: 700;
+	color: red;
+	line-height: 16px;
+}
 
+.singer{
+	display: none;
+}
 
-
-
-
+.join_td{
+	width: 15%;
+	border-right: 1px solid #ddd;
+	background-color: #f6f6f6;
+	vertical-align: middle;
+}
 
 
 
