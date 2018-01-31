@@ -3,12 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
-	<link href="/busk/resources/css/header.css" rel="stylesheet">
-	<script type="text/javascript">
-		$(function(){
-			
-		});
-	</script>
+	<link href="/busk/resources/css/common/header.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 	<header>
 		<section class="dropdown dropbtn" id="main_nav">
@@ -20,9 +16,15 @@
 				<li class="sub_nav"><a href="#">Event</a></li>
 			</ul>
 			<div class="dropdown-content" id="sub_nav">
-				<a href="#">Link 1</a>
-  	  			<a href="#">Link 2</a>
-    			<a href="#">Link 3</a>
+				<table>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+					</tr>
+				</table>
 			</div>
 		</section>
 		<div id="main_session">

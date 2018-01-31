@@ -17,7 +17,7 @@
 <body>
 
 
-<%@include file="./temp/header.jsp" %>
+<%@include file="/WEB-INF/views/temp/header.jsp" %>
 
 	<section id="main">
 		<a href="./location/locationWrite">Location_write</a>
@@ -26,5 +26,6 @@
 
 <a href="./calender/month">month</a>
 <a href="./calender/memo">memo</a>
+<a href="./donation/buskerList">busker</a>
 </body>
 </html>
