@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-#join_agree{
+.join_agree{
 	margin-left: 15%;
 	margin-right: 15%;
 	border: 1px solid red;
@@ -92,15 +92,22 @@
     display: flow-root;
 }
 
-.terms_wrapper {
+/* .terms_wrapper {
     position: relative;
     font-family: 'Noto Sans KR', sans-serif;
     color: #1e1e1f;
     margin-bottom: 10px;
+} */
+
+
+
+.siteTerms{
+	width: 45%;
+	float: left;
 }
 
 .siteTerms textarea {
-    width: 40%;
+	width : 95%;
     height: 297px;
     background: #fafafa;
     font-size: 15px;
@@ -112,9 +119,15 @@
     border: 1px solid #d2d2d2;
     resize: none;
 }
+
+.personalTerms{
+	width: 45%;
+	float: right;
+}
+
 
 .personalTerms textarea {
-    width: 40%;
+    width: 95%;
     height: 297px;
     background: #fafafa;
     font-size: 15px;
@@ -129,11 +142,38 @@
 
 
 
+.btnBox {
+    margin-top: 50%;
+    list-style: none;
+    margin-left: 30%;
+}
 
+.btnBox .nextBtn {
+    width: 170px;
+    height: 41px;
+    background: #000;
+    color: #fafafa;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    margin: 0 13px 200px 0;
+    cursor: pointer;
+}
 
-
-
-
+.btnBox .cancelBtn {
+    width: 170px;
+    height: 41px;
+    background: #fcfcfc;
+    color: #000;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    cursor: pointer;
+}
 
 
 

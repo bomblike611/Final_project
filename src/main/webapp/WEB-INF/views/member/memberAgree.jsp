@@ -5,33 +5,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="/busk/resources/css/member.css" " rel="stylesheet">
 </head>
+<script type="text/javascript">
+	$(function() {
+		$(".cancelBtn").click(function(){
+			window.location='../';
+		});
+	});
+</script>
 <body>
 
 	<%@include file="../temp/header.jsp"%>
 
-	<div id="join_agree">
+	<div class="join_agree" id="main">
 		<h2 class="tit_bk_left pt30">JOIN</h2>
 		<div class="join_wrapper">
 			<ul class="stepGuide">
-				<li class="stepGuide_on"><p id="a">1</p> <span id="a2">약관동의</span></li>
+				<li class="stepGuide_on"><p id="a">1</p> <span id="a2">약관동의2</span></li>
 				<li class="stepGuide_off"><p>2</p> <span style="color: gray;">회원정보
 						입력</span></li>
-				<li><p>3</p> <span style="color: gray;">회원가입 완료2</span></li>
+				<li><p>3</p> <span style="color: gray;">회원가입 완료</span></li>
 			</ul>
 		</div>
-<!-- 이용약관 시작 -->
+		<!-- 이용약관 시작 -->
 		<div class="checkALL">
 			<input name="checkALL" id="checkALL" onclick="javascript:agree_all()"
 				type="checkbox"> <label for="checkALL">Varoh 이용약관과
 				개인정보 수집 및 이용에 모두 동의합니다.</label>
 		</div>
-		<div class="terms_wrapper">
+	<!-- 	<div class="terms_wrapper"> -->
 			<div class="siteTerms">
-				<dl>
+				<dl class="varoh">
 					<dt>Varoh 이용약관</dt>
-					<dd>
+					<dd class="varoh">
 						<textarea readonly="">(주)비에취어쿠스텔 회원약관은 다음과 같은 내용을 담고 있습니다.
 제 1 장 총 칙
 
@@ -174,9 +182,9 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 
 
 			<div class="personalTerms">
-				<dl>
+				<dl class="varoh">
 					<dt>개인정보 수집 및 이용안내</dt>
-					<dd>
+					<dd class="varoh">
 						<textarea readonly="">(주)비에취어쿠스텔(이하 ‘회사’)는 회원님들의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
 회사는 개인정보취급방침을 통하여 회원님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
 회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
@@ -295,8 +303,12 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 				</div>
 			</div>
 			<!--personalTerms end -->
-		</div>
-
+		<!-- </div> -->
+		<ul class="btnBox">
+				<button class="nextBtn" onclick="javascript:agree()" type="submit"
+					value="다음 단계로 이동">다음 단계로 이동</button>
+				<button class="cancelBtn" type="submit" value="취소">취소</button>
+		</ul>
 
 	</div>
 
