@@ -20,15 +20,23 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@RequestMapping(value="memberAgree", method=RequestMethod.GET )
-	public void memberJoin(){}
+	public void memberAgree(){}
 	
 	
 	@RequestMapping(value="memberAgree", method=RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception{
+	public String memberAgree(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception{
 		
 		return "redirect:../";
 	}
 	
+	@RequestMapping(value="memberJoin", method=RequestMethod.GET )
+	public void memberJoin(){}
 	
+	
+	@RequestMapping(value="memberJoin", method=RequestMethod.POST)
+	public String memberJoin(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception{
+		
+		return "redirect:../";
+	}
 	
 }

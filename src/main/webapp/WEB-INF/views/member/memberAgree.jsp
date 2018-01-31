@@ -10,8 +10,30 @@
 </head>
 <script type="text/javascript">
 	$(function() {
-		$(".cancelBtn").click(function(){
-			window.location='../';
+		$(".cancelBtn").click(function() {
+			window.location = '../';
+		});
+		$("#checkALL").click(function() {
+			var check = $(this).prop("checked");
+			if (check) {
+				$("#siteAgreement").prop("checked", true);
+				$("#personalAgreement").prop("checked", true);
+			} else {
+				$("#siteAgreement").prop("checked", false);
+				$("#personalAgreement").prop("checked", false);
+			}
+		});
+		$(".siteAgreement").click(function() {
+			var check1 = $("#siteAgreement").prop("checked");
+			var check2 = $("#personalAgreement").prop("checked");
+			var check = $(this).prop("checked");
+			if (!check) {
+				$("#checkALL").prop("checked", false);
+			}
+			if (check1 && check2) {
+				$("#checkALL").prop("checked", true);
+			}
+
 		});
 	});
 </script>
@@ -23,7 +45,7 @@
 		<h2 class="tit_bk_left pt30">JOIN</h2>
 		<div class="join_wrapper">
 			<ul class="stepGuide">
-				<li class="stepGuide_on"><p id="a">1</p> <span id="a2">약관동의2</span></li>
+				<li class="stepGuide_on"><p id="a">1</p> <span id="a2">약관동의</span></li>
 				<li class="stepGuide_off"><p>2</p> <span style="color: gray;">회원정보
 						입력</span></li>
 				<li><p>3</p> <span style="color: gray;">회원가입 완료</span></li>
@@ -31,8 +53,8 @@
 		</div>
 		<!-- 이용약관 시작 -->
 		<div class="checkALL">
-			<input name="checkALL" id="checkALL" onclick="javascript:agree_all()"
-				type="checkbox"> <label for="checkALL">Varoh 이용약관과
+			<input name="checkALL" id="checkALL"
+				type="checkbox" > <label for="checkALL">Varoh 이용약관과
 				개인정보 수집 및 이용에 모두 동의합니다.</label>
 		</div>
 	<!-- 	<div class="terms_wrapper"> -->
@@ -174,7 +196,7 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 				</dl>
 
 				<div class="siteAgree">
-					<input name="siteAgreement" id="siteAgreement" type="checkbox">
+					<input name="siteAgreement" id="siteAgreement" type="checkbox" class="siteAgreement">
 					<label for="siteAgreement">Varoh의 사용약관에 동의합니다.</label>
 				</div>
 			</div>
@@ -298,7 +320,7 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 
 				<div class="personalAgree">
 					<input name="personalAgreement" id="personalAgreement"
-						type="checkbox"> <label for="personalAgreement">Varoh의
+						type="checkbox" class="siteAgreement"> <label for="personalAgreement">Varoh의
 						개인정보의 수집, 이용에 관한 사항에 동의합니다.</label>
 				</div>
 			</div>
