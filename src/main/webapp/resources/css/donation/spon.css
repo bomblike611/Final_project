@@ -22,17 +22,25 @@
 #loading {
 	width: 100%;
 	height: 10px;
-	background-color: blue;
+	background-color: gray;
 }
 #progress p {
 	font-size: 14px;
 	text-align: center;
 }
-li{
+li {
 	list-style: none;
 	float: left;
-	margin-left: 25%;
+	margin-left: 6%;
+}
+.money {
+	width: 100%;
+	height: 50px;
+	border: 2px gray solid;
+	margin-top: 10px;
 }
 #myprogress {
-	background-image: url("");
+	width: 33%;
+	height: 100%;
+	background-color: black;
 }
