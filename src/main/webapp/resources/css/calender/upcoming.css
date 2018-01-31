@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+#upcomingH{
+	background-color: #494750;
+}
+#imgbox{
+	width: 70%;
+	height: 500px;
+	margin: auto;
+	position:relative;
+	background-color: red;
+	z-index: -999px;
+}
+#hh{
+	width: 33%;
+	height: 500px;
+	position: absolute;
+	display:block;
+	background-color: black; opacity: .3;
+	z-index: 500px;
+}
+h1{
+	padding: 2%;
+	font-size: 300%;
+	font-weight: bolder;
+	color: white;
+	position: absolute;
+	z-index: 999px;
+}
+.yo{
+	width: 10%;
+	color: white;
+	font-size: 500%;
+	font-weight: bolder;
+	letter-spacing: -1;
+	line-height: 80%;
+	position: absolute;
+	margin-top: 250px;
+	margin-left: 2%;
+}
+#ga{
+	color: white;
+	font-size: 200%;
+	letter-spacing: 1px;
+	line-height: 80%;
+	position: absolute;
+	margin-top: 400px;
+	margin-left: 2%;
+}
+#graybox{
+	width: 70%;
+	height: 30px;
+	background-color: #28272C;
+	margin: auto;
+	position:relative;
+	z-index: -999px;
+	
+}
+#si{
+	width:50%;
+	color: white;
+	position: absolute;
+}
+#si img{
+	margin-top: 1%;
+	margin-left: 1%;
+}
+#yob{
+	width: 70%;
+	height: 150px;
+
+	margin: auto;
+	position:relative;
+	z-index: -999px;
+}
+#feb{
+	width: 15%;
+	width:150px;
+	margin-top: 50px;
+	color: black;
+	position:relative;
+	border-right: 3px solid black;
+}
+#yobup{
+	width: 55%;
+	height: 75px;
+	float: laft;
+	position: absolute;
+}
+
+

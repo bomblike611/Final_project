@@ -16,7 +16,7 @@
 				<li class="sub_nav"><a href="#">Community</a></li>
 				<li class="sub_nav"><a href="#">Busker</a></li>
 				<li class="sub_nav"><a href="#">Busking</a></li>
-				<li class="sub_nav"><a href="#">Calendar</a></li>
+				<li class="sub_nav"><a href="./calender/upcoming">Calendar</a></li>
 				<li class="sub_nav"><a href="#">Event</a></li>
 			</ul>
 			<div class="dropdown-content">
