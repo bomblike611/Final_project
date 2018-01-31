@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
 <head>
 	<link href="/busk/resources/css/header.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			
+			$("select").click(function() {
+				  var open = $(this).data("isopen");
+				  if(open) {
+				    window.location.href = $(this).val()
+				  }
+				  //set isopen to opposite so next time when use clicked select box
+				  //it wont trigger this event
+				  $(this).data("isopen", !open);
+				});
 		});
 	</script>
 </head>
@@ -28,8 +37,8 @@
 		<div id="main_session">
 			<select>
 				<c:if test="${empty member}">
-					<option>LOG IN</option>
-					<option>JOIN</option>
+					<option value="/busk/member/memberAgree">LOG IN</option>
+					<option value="/busk/member/memberJoin">JOIN</option>
 				</c:if>
 				<c:if test="${not empty member}">
 					<option>MY PAGE</option>
