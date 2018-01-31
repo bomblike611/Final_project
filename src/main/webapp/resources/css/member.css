@@ -1,0 +1,205 @@
+@CHARSET "UTF-8";
+
+.join_agree{
+	margin-left: 15%;
+	margin-right: 15%;
+	border: 1px solid red;
+	height: 1500px;
+	padding: 80px 0;
+}
+
+.tit_bk_left {
+    font-size: 40px;
+    text-align: left;
+    color: #1e1e1f;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+.pt30 {
+    padding-top: 30px;
+}
+
+.join_wrapper {
+    
+}
+
+.stepGuide {
+	width: 100%;
+    border-top: 1px solid #0b0205;
+    border-bottom: 1px solid #e6e5e6;
+    height: 106px;
+    margin: 35px 0 74px 0;
+    list-style: none;
+    padding : 0;
+    float: left;
+    text-align:  center;
+}
+
+.stepGuide li p {
+    font-family: oswald;
+    font-size: 36px;
+    color: #cdcdcd;
+    margin-top: 30px;
+}
+#a{
+	color: black;
+	font-weight: 900;
+}
+
+#a2{
+	font-weight: 800;
+}
+
+.stepGuide li {
+    width: 109px;
+    height: 106px;
+    display: inline-block;
+    letter-spacing: -.5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    padding: 0 50px;
+}
+
+.stepGuide .stepGuide_on {
+    color: #1e1e1f;
+    background: url(../images/rightB_icon.png) no-repeat right center;
+}
+
+.stepGuide .stepGuide_off {
+    color: gray;
+    background: url(../images/rightB_icon2.png) no-repeat right center;
+}
+
+.stepGuide .stepGuide_on span {
+    display: inline-block;
+    width: 109px;
+    padding-bottom: 5px;
+    border-bottom: solid 3px #1e1e1f;
+}
+
+.checkALL {
+    border: 1px solid #d2d2d2;
+    height: 56px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    letter-spacing: -.3px;
+    text-align: center;
+    line-height: 56px;
+    margin-bottom: 39px;
+    background: #fefefe;
+    display: flow-root;
+}
+
+/* .terms_wrapper {
+    position: relative;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #1e1e1f;
+    margin-bottom: 10px;
+} */
+
+
+
+.siteTerms{
+	width: 45%;
+	float: left;
+}
+
+.siteTerms textarea {
+	width : 95%;
+    height: 297px;
+    background: #fafafa;
+    font-size: 15px;
+    letter-spacing: -.5px;
+    padding: 25px 0 0 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #1e1e1f;
+    margin: 10px 0 17px 0;
+    border: 1px solid #d2d2d2;
+    resize: none;
+}
+
+.personalTerms{
+	width: 45%;
+	float: right;
+}
+
+
+.personalTerms textarea {
+    width: 95%;
+    height: 297px;
+    background: #fafafa;
+    font-size: 15px;
+    letter-spacing: -.5px;
+    padding: 25px 0 0 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #1e1e1f;
+    margin: 10px 0 17px 0;
+    border: 1px solid #d2d2d2;
+    resize: none;
+}
+
+
+
+.btnBox {
+    margin-top: 50%;
+    list-style: none;
+    margin-left: 30%;
+}
+
+.btnBox .nextBtn {
+    width: 170px;
+    height: 41px;
+    background: #000;
+    color: #fafafa;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    margin: 0 13px 200px 0;
+    cursor: pointer;
+}
+
+.btnBox .cancelBtn {
+    width: 170px;
+    height: 41px;
+    background: #fcfcfc;
+    color: #000;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    cursor: pointer;
+}
+
+
+.btnBox button{
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

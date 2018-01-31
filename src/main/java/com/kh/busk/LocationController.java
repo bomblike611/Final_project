@@ -12,4 +12,8 @@ public class LocationController {
 	public void locationWrite() throws Exception{	
 	}
 	
+	@RequestMapping(value="locationList")
+	public void locationList() throws Exception{
+		
+	}
 }
