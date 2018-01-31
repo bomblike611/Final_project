@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+#main{
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	background-color: #F6F5F1;
+}
+
+#loc{
+	background-color: white;
+	width: 20%;
+	height: 40%;
+	margin-top:5%;
+	margin-left: 3%;
+	text-align: center;
+	color:#582D32;
+	border: 1px #C2BCB9 solid;
+}
+
+#loc>h2{
+	font-size: 30px;
+	text-shadow: -.08em .08em #C2BCB9;
+}
+
+#search{
+	border: 1px #C2BCB9 solid;
+	width: 90%;
+	height: 60px;
+	margin: 5%;
+}
+
+select{
+	width: 95%;
+	margin: 2% 2.5%;
+}
+
+#search>input{
+	height: 40%;
+}
