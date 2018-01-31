@@ -23,8 +23,5 @@
 		<a href="./location/locationWrite">Location_write</a>
 	</section>
 
-
-<a href="./calender/month">month</a>
-<a href="./calender/memo">memo</a>
 </body>
 </html>

@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/calender/**")
 public class CalController {
 	
+	@RequestMapping(value="upcoming")
+	public void upcoming(){
+		
+	}
+	
 	@RequestMapping(value="month")
 	public void month(){
 		
