@@ -6,17 +6,12 @@
 	<link href="/busk/resources/css/header.css" rel="stylesheet">
 	<script type="text/javascript">
 		$(function(){
-			$(".sub_nav").mouseover(function() {
-				$("#sub_nav").animate({height: '150px'});
-			});
-			$(".sub_nav").mouseleave(function() {
-				$("#sub_nav").animate({height: '0px'});
-			});
+			
 		});
 	</script>
 </head>
 	<header>
-		<section id="main_nav">
+		<section class="dropdown dropbtn" id="main_nav">
 			<ul>
 				<li class="sub_nav"><a href="#">Community</a></li>
 				<li class="sub_nav"><a href="#">Busker</a></li>
@@ -24,6 +19,11 @@
 				<li class="sub_nav"><a href="#">Calendar</a></li>
 				<li class="sub_nav"><a href="#">Event</a></li>
 			</ul>
+			<div class="dropdown-content" id="sub_nav">
+				<a href="#">Link 1</a>
+  	  			<a href="#">Link 2</a>
+    			<a href="#">Link 3</a>
+			</div>
 		</section>
 		<div id="main_session">
 			<select>
@@ -36,8 +36,5 @@
 					<option>LOG OUT</option>
 				</c:if>
 			</select>
-		</div>
-		<div id="sub_nav">
-			
 		</div>
 	</header>
