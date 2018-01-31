@@ -26,5 +26,7 @@
 
 <a href="./calender/month">month</a>
 <a href="./calender/memo">memo</a>
+<a href="./recommend/communityList">리스트</a>
+
 </body>
 </html>
