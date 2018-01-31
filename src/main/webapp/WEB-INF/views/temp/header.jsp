@@ -19,8 +19,10 @@
 				<li class="sub_nav"><a href="#">Calendar</a></li>
 				<li class="sub_nav"><a href="#">Event</a></li>
 			</ul>
-			<div class="dropdown-content">
-						
+			<div class="dropdown-content" id="sub_nav">
+				<a href="#">Link 1</a>
+  	  			<a href="#">Link 2</a>
+    			<a href="#">Link 3</a>
 			</div>
 		</section>
 		<div id="main_session">
