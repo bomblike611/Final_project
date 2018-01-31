@@ -22,12 +22,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.kh.busk" />
-<<<<<<< HEAD
 	<context:component-scan base-package="com.kh.member" />
-=======
 	<context:component-scan base-package="com.kh.cal" />
 	
->>>>>>> master
 	
 	
 </beans:beans>

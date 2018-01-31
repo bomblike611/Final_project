@@ -15,13 +15,6 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
-<<<<<<< HEAD
-	<%@include file="./temp/header.jsp" %>
-	
-	
-	<a href="member/memberAgree">Join</a>
-	
-=======
 
 
 <%@include file="./temp/header.jsp" %>
@@ -33,6 +26,5 @@
 
 <a href="./calender/month">month</a>
 <a href="./calender/memo">memo</a>
->>>>>>> master
 </body>
 </html>
