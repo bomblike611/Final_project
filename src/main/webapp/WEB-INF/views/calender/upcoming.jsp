@@ -23,7 +23,7 @@
 		<%@ include file="./calHeader.jsp"%>
 				<!--================================ 일정리스트 시작 ================================-->
 				<div class="imgbox">
-					<img alt="" src="../resources/calender_img/upcoming3.jpg" style="width: 100%" height="500px">
+					<img alt="" src="../resources/calender_img/4.jpg" style="width: 100%" height="100%">
 					
 					<div id="hh"></div>
 						<div id="hd">Upcoming Busk</div>
@@ -42,47 +42,47 @@
 				</div>
 				
 				<div class="imgbox" id="graybox">
-					<div class="si" id="si1">
+					<div class="si">
 						<ul>
 							<li>
 							<img alt="" src="../resources/calender_img/clock.png">
-							<span id="ti">시간: ${month.busk_date}</span>
+							<span>시간: ${month.busk_date}</span>
 							</li>
 							<li>
 							<img alt="" src="../resources/calender_img/location.png">
 							<span>위치: ${month.busk_date}</span>
 							</li>
-						</ul>
-						
+						</ul>				
 					</div>
-
 				</div>
 				
-				<div class="imgbox"  id="yob">
+				<div class="imgbox"  id="yoilbox">
 					<div class="yo" id="feb">
 						<p>25 FEB
 						${month.busk_date}
 						</p>
 					</div>
-				
-				
-				<div id="yobup">
-						<img alt="" src="../resources/calender_img/clock.png">
-						<span> 가수명:
-						${month.busk_date}</span>
-				</div>
-				
-				<%-- <div id="yobdown">
-					<div id="si1">
-					<img alt="" src="../resources/calender_img/clock.png">
-					<span>시간:
-					${month.busk_date}</span>
-					<img alt="" src="../resources/calender_img/location.png">
-					<span>위치:
-					${month.busk_date}</span>
+					<div class="si" id="yobup">
+						<ul>
+							<li>
+							심각한 개구리 ${month.busk_date}
+							</li>
+						</ul>
+					</div>
+					<div class="si" id="si1">
+						<ul>
+							<li>
+							<img alt="" src="../resources/calender_img/clock.png">
+							<span>시간: ${month.busk_date}</span>
+							</li>
+							<li>
+							<img alt="" src="../resources/calender_img/location.png">
+							<span>위치: ${month.busk_date}</span>
+							</li>
+						</ul>				
 					</div>
 				</div>
-				</div> --%>
+
 				<!-- 일정리스트 끝 -->
 
 			<!-- ================================ 연습장 ================================ -->

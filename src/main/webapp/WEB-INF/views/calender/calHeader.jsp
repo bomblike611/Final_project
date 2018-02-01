@@ -9,10 +9,10 @@
 <body>
 	<div id="choice">
 		<ul>
-			<li class="chobox" id="upcomingH"><a href="./upcoming">TODAY</a></li>
-			<li class="chobox" id="yearH"><a href="#">YEAR</a></li>
-			<li class="chobox" id="monthH"><a href="./month">MONTH</a></li>
 			<li class="chobox" id="weekH"><a href="#">WEEK</a></li>
+			<li class="chobox" id="monthH"><a href="./month">MONTH</a></li>
+			<li class="chobox" id="yearH"><a href="#">YEAR</a></li>
+			<li class="chobox" id="upcomingH"><a href="./upcoming">TODAY</a></li>
 		</ul>
 	</div>
 </body>
