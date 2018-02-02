@@ -62,6 +62,8 @@
 							<span></span>
 							<div>후원하기</div>
 							<div>참가신청</div>
+							<div>수정</div>
+							<div>삭제</div>
 						</div>
 					</div>
 				</div>
