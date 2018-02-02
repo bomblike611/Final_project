@@ -11,14 +11,54 @@
 
 #container {
     padding-top: 100px;
-    background: #fbfbfb;
     overflow: hidden;
     padding-bottom: 150px;
+    height: 1350px;
     }
 
-
-#container {
-    padding-top: 100px;
-    background: #f6f5f1;
+.my_wrap{
+	width: 70%;
+	height: 924px;
+	margin: 0 auto;
+	border-top: 2px black solid;
+	
 }
+#notice{
+	border-collapse:collapse;
+	border-spacing:0;
+	width: 100%;
+	height: 617px;
+	text-align: center;
+	 
+}
+th{
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	height: 56px;
+	
+}
+
+.title{
+	text-align: left;
+}
+
+#sortation{
+	width: 5%;
+}
+#sortation1{
+	width: 5%;
+} 
+
+#sortation2{
+	width: 20%;
+}
+
+#sortation3{
+	width: 5%;
+}
+
+#sortation4{
+	width: 3%;
+}
+
 
