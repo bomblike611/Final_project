@@ -32,15 +32,27 @@
 
 #buskcontents{
 	margin-top: 3%;
-	padding-top: 10%;
-	border-top: gray 3px solid;
+	padding-top: 5%;
+	border-top: #9b9b9b 2px solid;
 	height: 60%;
 }
 
-#buskcontents>img{
+#buskcontents>#img{
 	width: 27%;
 	height: 90%;
 	float: left;
+}
+#img>img{
+	width: 100%;
+	height: 100%;
+}
+
+#img>p{
+	border-radius: 50%;
+	border: 3px solid white;
+	background-color: #A54040;
+	height: 50px;
+	width: 50px;
 }
 
 
@@ -53,8 +65,9 @@
 
 #singerProfile th{
 	text-align: left;
-	width: 42%;
+	width: 50%;
 	padding-right: 3%;
+	margin-right: 10%;
 }
 
 #sulmyung{
@@ -65,6 +78,12 @@
 	margin: 2% 3%;
 	height: 40%;
 }
-#sulmyung>p{
-	line-height: 40%;
+#nayong>p{
+	font-size: 14px;
+	color: #9b9b9b;
+}
+
+#nayong{
+	margin: 10% 0;
+	
 }

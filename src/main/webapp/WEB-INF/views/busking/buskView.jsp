@@ -17,7 +17,10 @@
 					<p>팀 이름 들어갈 자리</p>
 				</div>
 				<div id="buskcontents">
-					<img src="../resources/upload/location/busk1.jpg">
+					<div id="img">
+					<p><span>예정</span></p>
+						<img src="../resources/upload/location/busk1.jpg">
+					</div>
 					<div id="singerProfile">
 						<table>
 							<tr>
@@ -51,8 +54,11 @@
 						</table>
 					</div>
 					<div id="sulmyung">
-						<p>위의 참여자수는 가수들이 어느정도 참여자가 올 것인지 측정하기 위해<br> 쓰여진 것이므로 실제 참여자수와 다를 수 있습니다.<br>
-						후원을 원하시는 경우 밑의 후원버튼을 클릭시 후원창으로 연결됩니다.</p>
+						<div id="nayong">
+							<p>위의 참여자수는 가수들이 어느정도 참여자가 올 것인지 측정하기 위해</p>
+							<p>쓰여진 것이므로 실제 참여자수와 다를 수 있습니다.</p>
+							<p>후원을 원하시는 경우 밑의 후원버튼을 클릭시 후원창으로 연결됩니다.</p>
+						</div>
 					</div>
 				</div>
 			</div>
