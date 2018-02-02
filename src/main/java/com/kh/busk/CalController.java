@@ -1,4 +1,4 @@
-package com.kh.cal;
+package com.kh.busk;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

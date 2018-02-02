@@ -22,12 +22,13 @@
 	<section id="main">
 		<%@ include file="./calHeader.jsp"%>
 				<!--================================ 일정리스트 시작 ================================-->
-				<div id="imgbox">
-					<div id="hh">
-					</div>
-						<h1>Upcoming Busk</h1><span><a href="./calender/memo">memo</a></span>
+				<div class="imgbox">
+					<img alt="" src="../resources/calender_img/upcoming3.jpg" style="width: 100%" height="500px">
+					
+					<div id="hh"></div>
+						<div id="hd">Upcoming Busk</div>
 						
-					<div class="yo">
+		 			<div class="yo">
 					<p>25 FEB
 					${month.busk_date}
 					</p>
@@ -37,12 +38,42 @@
 					<p>심각한 개구리
 					${month.busk_date}
 					</p>
-					</div>
-				
+					</div>	
 				</div>
 				
-				<div id="graybox">
-					<div id="si">
+				<div class="imgbox" id="graybox">
+					<div class="si" id="si1">
+						<ul>
+							<li>
+							<img alt="" src="../resources/calender_img/clock.png">
+							<span id="ti">시간: ${month.busk_date}</span>
+							</li>
+							<li>
+							<img alt="" src="../resources/calender_img/location.png">
+							<span>위치: ${month.busk_date}</span>
+							</li>
+						</ul>
+						
+					</div>
+
+				</div>
+				
+				<div class="imgbox"  id="yob">
+					<div class="yo" id="feb">
+						<p>25 FEB
+						${month.busk_date}
+						</p>
+					</div>
+				
+				
+				<div id="yobup">
+						<img alt="" src="../resources/calender_img/clock.png">
+						<span> 가수명:
+						${month.busk_date}</span>
+				</div>
+				
+				<%-- <div id="yobdown">
+					<div id="si1">
 					<img alt="" src="../resources/calender_img/clock.png">
 					<span>시간:
 					${month.busk_date}</span>
@@ -51,28 +82,7 @@
 					${month.busk_date}</span>
 					</div>
 				</div>
-				
-				<div id="yob">
-					<div class="yo" id="feb">
-						<p>25 FEB
-						${month.busk_date}
-						</p>
-					</div>
-					<div id="yobup">
-						<img alt="" src="../resources/calender_img/clock.png">
-						<span>시간:
-						${month.busk_date}</span>
-					</div>
-				</div>
-				
-				
-				<div id="yobdown">
-					<div id="si2">
-					<img alt="" src="../resources/calender_img/location.png">
-					<span>위치:
-					${month.busk_date}</span>
-					</div>
-				</div>
+				</div> --%>
 				<!-- 일정리스트 끝 -->
 
 			<!-- ================================ 연습장 ================================ -->
