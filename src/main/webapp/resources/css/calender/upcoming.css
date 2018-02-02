@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+#upcomingH{
+	background-color: #494750;
+}
+.imgbox{
+	width: 70%;
+	height: 500px;
+	margin: auto;
+	position: relative;
+	z-index: -999px;
+}
+#hh{
+	width: 33%;
+	height: 500px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: black; opacity: .4;
+	z-index: -500px;
+}
+#hd{
+	padding: 2%;
+	font-size: 300%;
+	font-weight: bolder;
+	color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+.yo{
+	width: 10%;
+	color: white;
+	font-size: 600%;
+	font-weight: bolder;
+	line-height: 80%;
+	padding-top: 220px;
+	padding-left: 2%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#ga{
+	color: white;
+	font-size: 200%;
+	letter-spacing: 1px;
+	line-height: 80%;
+	padding-top: 390px;
+	padding-left: 2%;
+	position: absolute;
+	top: 0;
+	left: 0;
+/*========================== 사진박스↑ =========================*/
+}
+#graybox{
+	height: 30px;
+	background-color: #28272C;
+}
+
+.si{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.si img{
+	margin-top: 2%;
+	margin-left: 1%;
+}
+.si li{
+	width: 30%;
+	color: white;
+	float: left;
+	list-style-type: none;
+	margin-right: 20%;
+}
+/*========================== 그레이박스↑ =========================*/
+
+#yob{
+	height: 150px;
+	background-color: #8080c0;
+}
+#feb{
+	width: 15%;
+	width:150px;
+	margin-top: 50px;
+	color: black;
+	position:relative;
+	display: block;
+	border-right: 3px solid black;
+}
+#yobup{
+	width: 55%;
+	height: 75px;
+	margin: auto;
+	position: absolute;
+}
+
+

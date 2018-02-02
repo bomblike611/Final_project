@@ -21,5 +21,25 @@ $(function(){
 </head>
 <body>
 <h1>memo</h1>
+	<!--================================ 일정조회 시작 ================================-->
+				<div id="sc">
+					<div id="area">
+						<select name="kind">
+							<option value="seoul">Seoul</option>
+							<option value="gg">Gyeonggi</option>
+							<option value="incheon">Incheon</option>
+						</select>
+					</div>
+					<div id="date">
+						<input type="date" id="fromDate"> ~ <input type="date" id="toDate">
+					</div>
+					<div id="place">
+						<input type="text" name="search" placeholder="busking place">
+					</div>
+					<div>
+						<input type="submit" id="btn" value="Search">
+					</div>
+				</div>
+		<!--================================ 일정조회 끝 ================================-->
 </body>
 </html>

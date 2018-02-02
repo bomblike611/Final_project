@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+
+#container{
+	padding-top: 160px;
+	width: 55%;
+	margin: 0 auto;
+	height: 100%;
+}
+
+#singerView{
+	margin-bottom: 10%;
+	height: 700px;
+}
+
+#busktitle{
+	height: 20%;
+	width: 100%;
+	margin-top: 3%;
+}
+
+#busktitle>h3{
+	font-size: 40px;
+	text-align: center;
+}
+
+#busktitle>p{
+	font-size: 17px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+
+#buskcontents{
+	margin-top: 3%;
+	padding-top: 5%;
+	border-top: #9b9b9b 2px solid;
+	height: 60%;
+}
+
+#buskcontents>#img{
+	width: 27%;
+	height: 90%;
+	float: left;
+}
+#img>img{
+	width: 100%;
+	height: 100%;
+}
+
+#img>p{
+	border-radius: 50%;
+	border: 3px solid white;
+	background-color: #A54040;
+	height: 50px;
+	width: 50px;
+}
+
+
+#singerProfile{
+	width: 60%;
+	margin: 2% 3%;
+	float: right;
+	height: 40%;
+}
+
+#singerProfile th{
+	text-align: left;
+	width: 50%;
+	padding-right: 3%;
+	margin-right: 10%;
+}
+
+#sulmyung{
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	float: right;
+	width: 60%;
+	margin: 2% 3%;
+	height: 40%;
+}
+#nayong>p{
+	font-size: 14px;
+	color: #9b9b9b;
+}
+
+#nayong{
+	margin: 10% 0;
+	
+}
