@@ -12,4 +12,9 @@ public class BuskController {
 		
 	}
 	
+	@RequestMapping(value="buskWrite")
+	public void buskWrite() throws Exception{
+		
+	}
+	
 }
