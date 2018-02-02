@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>임시 리스트</title>
 
-
 </head>
 
 <body>
