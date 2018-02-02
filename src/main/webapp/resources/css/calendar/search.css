@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+#searchH {
+	background-color: #494750;
+}
+
+#sc{
+	width: 70%;
+	margin: auto;
+}
+#scin{
+	margin-top: 5%;
+	margin-left: 18%;
+	margin-right: 18%;
+	border: 5px solid pink;
+}
+
+.area{
+	width: 150px;
+	height: 30px;
+	margin: auto;
+}

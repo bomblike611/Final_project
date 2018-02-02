@@ -4,18 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/calender/upcoming.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$('#fromDate').on('change', function() {
-			$('#toDate').prop('min', $(this).val());
-		});
-		$('#toDate').on('change', function() {
-			$('#fromDate').prop('max', $(this).val());
-		});
-	});
-</script>
+<link href="../resources/css/calendar/upcoming.css" rel="stylesheet">
+
 </head>
 <body>
 	<%@ include file="../temp/header.jsp"%>
@@ -23,7 +13,7 @@
 		<%@ include file="./calHeader.jsp"%>
 				<!--================================ 일정리스트 시작 ================================-->
 				<div class="imgbox">
-					<img alt="" src="../resources/calender_img/4.jpg" style="width: 100%" height="100%">
+					<img alt="" src="../resources/calendar_img/4.jpg" style="width: 100%" height="100%">
 					
 					<div id="hh"></div>
 						<div id="hd">Upcoming Busk</div>
@@ -45,11 +35,11 @@
 					<div class="si">
 						<ul>
 							<li>
-							<img alt="" src="../resources/calender_img/clock.png">
+							<img alt="" src="../resources/calendar_img/clock.png">
 							<span>시간: ${month.busk_date}</span>
 							</li>
 							<li>
-							<img alt="" src="../resources/calender_img/location.png">
+							<img alt="" src="../resources/calendar_img/location.png">
 							<span>위치: ${month.busk_date}</span>
 							</li>
 						</ul>				
@@ -72,11 +62,11 @@
 					<div class="si" id="si1">
 						<ul>
 							<li>
-							<img alt="" src="../resources/calender_img/clock.png">
+							<img alt="" src="../resources/calendar_img/clock.png">
 							<span>시간: ${month.busk_date}</span>
 							</li>
 							<li>
-							<img alt="" src="../resources/calender_img/location.png">
+							<img alt="" src="../resources/calendar_img/location.png">
 							<span>위치: ${month.busk_date}</span>
 							</li>
 						</ul>				
