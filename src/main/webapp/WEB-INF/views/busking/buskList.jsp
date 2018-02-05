@@ -20,6 +20,10 @@
 <body>
 	<%@include file="../temp/header.jsp"%>
 	<section id="main">
+		<div id="loc">
+			<h2>Busking List</h2>
+			<p>기간에 따라 공연을 골라보실 수 있습니다. 마우스 클릭시 공연 상세페이지로 이동합니다.</p>
+		</div>
 		<form action="./buskList" method="post">
 			<div id="searchForm">
 				<select>
