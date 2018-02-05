@@ -16,4 +16,10 @@ public class LocationController {
 	public void locationList() throws Exception{
 		
 	}
+	
+	@RequestMapping(value="locationUpdate")
+	public void locationUpdate() throws Exception{
+		
+	}
+	
 }
