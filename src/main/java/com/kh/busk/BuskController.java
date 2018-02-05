@@ -17,4 +17,14 @@ public class BuskController {
 		
 	}
 	
+	@RequestMapping(value="buskUpdate")
+	public void buskUpdate() throws Exception{
+		
+	}
+	
+	@RequestMapping(value="buskList")
+	public void buskList() throws Exception{
+		
+	}
+	
 }
