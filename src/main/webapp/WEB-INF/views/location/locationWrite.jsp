@@ -65,8 +65,8 @@ $(function(){
 								<td><textarea></textarea></td>
 							</tr>
 						</table>
-						<button class="btn btn--stripe">Location Write</button>
 					</form>
+						<button class="btn btn--stripe" >Location Write</button>
 				</div>
 			</div>
 		</div>
