@@ -23,6 +23,8 @@
 	
 	<context:component-scan base-package="com.kh.busk" />
 	<context:component-scan base-package="com.kh.member" />
+	<context:component-scan base-package="com.kh.singer" />
+	<context:component-scan base-package="com.kh.file" />
 	<context:component-scan base-package="com.kh.cal" />
 	
 	

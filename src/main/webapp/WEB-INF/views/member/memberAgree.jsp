@@ -13,6 +13,11 @@
 		$(".cancelBtn").click(function() {
 			window.location = '../';
 		});
+		
+		$(".nextBtn").click(function() {
+			window.location = '/busk/member/memberJoin';
+		});
+		
 		$("#checkALL").click(function() {
 			var check = $(this).prop("checked");
 			if (check) {
@@ -327,8 +332,7 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 			<!--personalTerms end -->
 		<!-- </div> -->
 		<ul class="btnBox">
-				<button class="nextBtn" onclick="javascript:agree()" type="submit"
-					value="다음 단계로 이동">다음 단계로 이동</button>
+				<button class="nextBtn" type="submit"value="다음 단계로 이동">다음 단계로 이동</button>
 				<button class="cancelBtn" type="submit" value="취소">취소</button>
 		</ul>
 
