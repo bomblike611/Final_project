@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>## 노래왕 버스킹 -(upcoming)입니다</title>
 <link href="../resources/css/calendar/upcoming.css" rel="stylesheet">
 
 </head>
@@ -35,11 +35,11 @@
 					<div class="si">
 						<ul>
 							<li>
-							<img alt="" src="../resources/calendar_img/clock.png">
-							<span>시간: ${month.busk_date}</span>
+							<img src="../resources/calendar_img/clock.png">
+							시간: ${month.busk_date}
 							</li>
 							<li>
-							<img alt="" src="../resources/calendar_img/location.png">
+							<img src="../resources/calendar_img/location.png">
 							<span>위치: ${month.busk_date}</span>
 							</li>
 						</ul>				
@@ -47,12 +47,12 @@
 				</div>
 				
 				<div class="imgbox"  id="yoilbox">
-					<div class="yo" id="feb">
-						<p>25 FEB
+					<div id="feb">
+						<p>26 FEB
 						${month.busk_date}
 						</p>
 					</div>
-					<div class="si" id="yobup">
+					<div id="yobup">
 						<ul>
 							<li>
 							심각한 개구리 ${month.busk_date}
@@ -62,11 +62,37 @@
 					<div class="si" id="si1">
 						<ul>
 							<li>
-							<img alt="" src="../resources/calendar_img/clock.png">
+							<img src="../resources/calendar_img/clock.png">
 							<span>시간: ${month.busk_date}</span>
 							</li>
 							<li>
-							<img alt="" src="../resources/calendar_img/location.png">
+							<img src="../resources/calendar_img/location.png">
+							<span>위치: ${month.busk_date}</span>
+							</li>
+						</ul>				
+					</div>
+				</div>
+								<div class="imgbox"  id="yoilbox">
+					<div id="feb">
+						<p>26 FEB
+						${month.busk_date}
+						</p>
+					</div>
+					<div id="yobup">
+						<ul>
+							<li>
+							심각한 개구리 ${month.busk_date}
+							</li>
+						</ul>
+					</div>
+					<div class="si" id="si1">
+						<ul>
+							<li>
+							<img src="../resources/calendar_img/clock.png">
+							<span>시간: ${month.busk_date}</span>
+							</li>
+							<li>
+							<img src="../resources/calendar_img/location.png">
 							<span>위치: ${month.busk_date}</span>
 							</li>
 						</ul>				

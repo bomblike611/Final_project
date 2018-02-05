@@ -17,6 +17,11 @@ public class CalController {
 		
 	}
 	
+	@RequestMapping(value="year")
+	public void year(){
+		
+	}
+	
 	@RequestMapping(value="search")
 	public void search(){
 		
