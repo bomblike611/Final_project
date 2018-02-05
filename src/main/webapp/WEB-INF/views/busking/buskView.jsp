@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../resources/css/busk/buskView.css" rel="stylesheet">
-<title>Insert title here</title>
+<title>## 노래왕 버스킹 -Busking View페이지입니다</title>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>

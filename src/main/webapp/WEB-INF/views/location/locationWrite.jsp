@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../resources/css/location/write.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>## 노래왕 버스킹 -Location Write페이지입니다</title>
 <script type="text/javascript">
 $(function(){
 	var count=0;
@@ -40,8 +40,7 @@ $(function(){
 		<div id="writepage">
 			<div id="loc_logo">
 				<img src="../resources/upload/acoustic-guitar.png" style="width:100px;height: 100px;">
-				<h2>Location</h2>
-				<h3>register</h3>
+				<h2>Location register</h2>
 				<p>버스킹 할 수 있는 장소를 입력해주세요. 사진은 최대 4개까지 등록이 가능합니다.</p>
 			</div>
 			<div id="WriteForm">

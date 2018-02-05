@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+#loc{
+	width: 100%;
+	margin-top: 3%;
+}
+
+#loc>h2{
+	text-align: center;
+	font-size: 35px;
+	text-shadow: -.08em .08em #C2BCB9;
+	color:#582D32;
+	margin-bottom: 0;
+}
+
+#loc>p{
+	text-align: center;
+	font-size: 12px;
+	color: #C2BCB9;
+	margin-bottom: 3%;
+}
+
+table{
+	margin: 0 auto;
+	width: 55%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border-top: 1px solid #582D32;
+}
+
+th{
+	font-weight: normal;
+	width: 15%;
+	font-size: 14px;
+}
+
+tr{
+	height: 55px;
+	border-bottom: #EAE7E7 solid 1px;
+}
+
+td>input,select{
+	width: 80%;
+	height: 45px;
+	border: none;
+}

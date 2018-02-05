@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>## 노래왕 버스킹 -Busking List페이지입니다</title>
 </head>
 <body>
 <section id="main">
+
 </section>
 </body>
 </html>
