@@ -8,6 +8,7 @@
 	margin-bottom: 5px;
 	margin-top: 0px;
 	text-shadow: -.08em .08em #C2BCB9;
+	font-size: 40px;
 }
 
 #loc_logo{
@@ -22,12 +23,6 @@
 
 #loc_logo{
 	color:#582D32;
-}
-#loc_logo> h2{
-	font-size: 90px;
-}
-#loc_logo>h3{
-	font-size: 50px;
 }
 
 #WriteForm{
