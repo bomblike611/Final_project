@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../resources/css/recommend/commnuityList.css" rel="stylesheet"> <!-- css불러오는 주소 -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>임시 리스트</title>
@@ -15,41 +18,48 @@
 
 	<!--CONTAINER -->
 	
-<div id="container">
+<div id="container" >
+	<h1 class="title_top">고객센터</h1>
 	<div class="my_wrap">
-		<table id="notice">
-		<thead>
+		<table class="table_list">
+			<colgroup>
+				<col width="20%">
+				<col width="20%">
+				<col width="20%">
+				<col width="20%">
+				<col width="20%">
+			</colgroup>
+		<tbody>
 			<tr>
-				<th id="sortation">번호</th>
-				<th id="sortation1">구분</th>
-				<th id="sortation2">제목</th>
-				<th id="sortation3">등록일</th>
-				<th id="sortation4">조회수</th>
+				<th>번호</th>
+				<th>구분</th>
+				<th>제목</th>
+				<th>등록일</th>
+				<th>조회수</th>
 			</tr>
-		</thead>
-			
-			
-			
-			
+		
+			<tr>
+				<td class="title"></td>
+				<td></td>
+				
+			</tr>
+		</tbody>
 		</table>
 	
 	</div>
 	
 	<div class="L_pager">
 		<ul class="paging">
-<li><img src="/paging_first.gif"> &nbsp;&nbsp; </li> 
-<li><img src="/paging_prev.gif"> &nbsp;&nbsp; </li> 
-<li>&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=2';">&nbsp;&nbsp;2&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=3';">&nbsp;&nbsp;3&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=4';">&nbsp;&nbsp;4&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=5';">&nbsp;&nbsp;5&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=6';">&nbsp;&nbsp;6&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=7';">&nbsp;&nbsp;7&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=8';">&nbsp;&nbsp;8&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=9';">&nbsp;&nbsp;9&nbsp;&nbsp;</li>
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=2';"> &nbsp;&nbsp; <img src="/kr/img/common/paging_next.gif"> </li> 
-<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=94';"> &nbsp;&nbsp; <img src="/kr/img/common/paging_last.gif"> </li> 
+            <li><img src="../resources/images/hj_images/paging_first.gif"></li> 
+            <li><img src="../resources/images/hj_images/paging_prev.gif"></li> 
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+
+<li><img src="../resources/images/hj_images/paging_next.gif"></li> 
+<li><img src="../resources/images/hj_images/paging_last.gif"></li> 
 </ul>
 	</div>
 
