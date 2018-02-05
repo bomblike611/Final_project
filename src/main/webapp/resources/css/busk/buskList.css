@@ -174,3 +174,21 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 	color: #C2BCB9;
 	margin-top: 1%;
 }
+
+#top{
+	position: fixed;
+	float: right;
+	bottom:60px; right:90px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color:#582D32;
+}
+#top>img{
+	width: 50px;
+	height: 50px;
+}
+
+#top:hover{
+	color:#C2BCB9;
+}
