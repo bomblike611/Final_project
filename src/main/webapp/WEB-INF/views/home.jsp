@@ -23,5 +23,8 @@
 		<a href="./location/locationWrite">Location_write</a>
 	</section>
 
+
+<a href="./recommend/communityList">리스트</a>
+
 </body>
 </html>
