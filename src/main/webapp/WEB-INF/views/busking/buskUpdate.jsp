@@ -74,6 +74,10 @@
 						<td><input type="text" value="0"></td>
 					</tr>
 					<tr>
+						<th><span style="color: red;">*</span>공연포스터</th>
+						<td><input type="file" name="file"></td>
+					</tr>
+					<tr>
 						<th colspan="2"><span style="color: red;">*</span>소개</th>
 					</tr>
 					<tr>
