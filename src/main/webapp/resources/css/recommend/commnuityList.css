@@ -61,4 +61,8 @@ th{
 	width: 3%;
 }
 
-
+.paging {
+    padding: 30px 0;
+    font-size: 0;
+    text-align: center;
+}

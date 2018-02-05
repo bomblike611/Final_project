@@ -17,7 +17,7 @@
 	
 <div id="container">
 	<div class="my_wrap">
-		<table id="notice" border="1">
+		<table id="notice">
 		<thead>
 			<tr>
 				<th id="sortation">번호</th>
@@ -28,13 +28,7 @@
 			</tr>
 		</thead>
 			
-			<tr>
-				<td>번호</td>
-				<td>구분</td>
-				<td>제목</td>
-				<td>등록일</td>
-				<td>조회수</td>
-			</tr>
+			
 			
 			
 		</table>
@@ -43,19 +37,20 @@
 	
 	<div class="L_pager">
 		<ul class="paging">
-			<li img=""></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	
-	
+<li><img src="/paging_first.gif"> &nbsp;&nbsp; </li> 
+<li><img src="/paging_prev.gif"> &nbsp;&nbsp; </li> 
+<li>&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=2';">&nbsp;&nbsp;2&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=3';">&nbsp;&nbsp;3&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=4';">&nbsp;&nbsp;4&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=5';">&nbsp;&nbsp;5&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=6';">&nbsp;&nbsp;6&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=7';">&nbsp;&nbsp;7&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=8';">&nbsp;&nbsp;8&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=9';">&nbsp;&nbsp;9&nbsp;&nbsp;</li>
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=2';"> &nbsp;&nbsp; <img src="/kr/img/common/paging_next.gif"> </li> 
+<li onclick="location.href='counsel.asp?sPageType=r&amp;m=&amp;txtPageR=94';"> &nbsp;&nbsp; <img src="/kr/img/common/paging_last.gif"> </li> 
+</ul>
 	</div>
 
 </div>
