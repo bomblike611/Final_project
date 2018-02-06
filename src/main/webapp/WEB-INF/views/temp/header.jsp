@@ -26,7 +26,7 @@
 				<li class="sub_nav"><a href="#">Busker</a></li>
 				<li class="sub_nav"><a href="/busk/busking/buskList">Busking</a></li>
 				<li class="sub_nav"><a href="/busk/calender/upcoming">Calendar</a></li>
-				<li class="sub_nav"><a href="#">Event</a></li>
+				<li class="sub_nav"><a href="/busk/event/pointRotate">Event</a></li>
 			</ul>
 			<div class="dropdown-content" id="sub_nav">
 				<a href="#">Link 1</a>

@@ -14,7 +14,7 @@ canvas{
 </style>
 <link href="../resources/css/event/rotate.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>## 노래왕 버스킹 -Event페이지입니다</title>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
