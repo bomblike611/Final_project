@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+#result_id,#result_id2,#result_id3{
+	display: none;
+}
+#image{
+  margin:50px 50px;z-index:10;
+}
+#n_id{position:absolute;left:286px;top:100px;z-index:20;}

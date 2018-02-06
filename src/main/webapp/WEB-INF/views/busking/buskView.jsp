@@ -24,23 +24,23 @@
 					<div id="singerProfile">
 						<table>
 							<tr>
-								<th><span style="color: red;">*</span> title</th>
+								<th><span style="color: red;">*</span> TITLE</th>
 								<td>머름</td>
 							</tr>
 							<tr>
-								<th><span style="color: red;">*</span> singer</th>
+								<th><span style="color: red;">*</span> SINGER</th>
 								<td>카딘</td>
 							</tr>
 							<tr>
-								<th><span style="color: red;">*</span> location</th>
+								<th><span style="color: red;">*</span> AREA</th>
 								<td>경기도 시흥시 어딘가</td>
 							</tr>
 							<tr>
-								<th><span style="color: red;">*</span> time</th>
+								<th><span style="color: red;">*</span> TIME</th>
 								<td>6시</td>
 							</tr>
 							<tr>
-								<th><span style="color: red;">*</span> genre</th>
+								<th><span style="color: red;">*</span> GENRE</th>
 								<td>모던 록</td>
 							</tr>
 							<tr>
@@ -48,7 +48,7 @@
 								<td>www.github.com</td>
 							</tr>
 							<tr>
-								<th><span style="color: red;">*</span> participant</th>
+								<th><span style="color: red;">*</span> PARTICIPANT</th>
 								<td>3/20</td>
 							</tr>
 						</table>
