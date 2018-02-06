@@ -31,7 +31,8 @@
 					<option>지난공연</option>
 					<option>현재공연</option>
 					<option>예정공연</option>
-				</select> <input id="search" name="search" type="text"
+				</select>
+				<input id="search" name="search" type="text"
 					placeholder="What're we looking for ?"> <input
 					id="search_submit" value="Rechercher" type="submit">
 			</div>
@@ -49,7 +50,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -63,7 +64,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -77,7 +78,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -91,7 +92,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -105,7 +106,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -119,7 +120,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -133,7 +134,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -147,7 +148,7 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 			<figure class="snip1200">
 				<img
@@ -161,10 +162,14 @@
 						</h2>
 					</div>
 				</figcaption>
-				<a href="#"></a>
+				<a href="./buskView"></a>
 			</figure>
 		</div>
+		<div id="paging">
+		<div id="write">Write</div>
+		</div>
 	</section>
-	<a href="./buskList" id="top"><img src="../resources/upload/acoustic-guitar.png"><br>Top</a>
+	<a href="./buskList" id="top"><img
+		src="../resources/upload/acoustic-guitar.png"><br>Top</a>
 </body>
 </html>
