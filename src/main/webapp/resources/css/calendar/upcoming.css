@@ -78,39 +78,53 @@
 /*========================== 그레이박스↑ =========================*/
 
 #yoilbox{
-	height: 160px;
+	height: 80px;
 	margin-top: 50px;
 }
 #feb{
-	width: 15%;
 	font-size: 300%;
+	font-weight: bold;
+	letter-spacing: -1px;
 	color: black;
-	font-weight: bolder;
-	padding-left: 2%;
-	line-height: 80%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding-top: 0;
+	text-align: center;
+	border-right: 2px solid black;
+
 }
 #yobup{
-	width: 98%;
-	margin-left: 2%;
-	height: 30px;
+	width: 87.8%;
+	height: 39px;
+	font-weight: bold;
 	border-bottom: 2px solid black;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 #yobup li{
 	list-style-type: none;
 	margin-top: 10px;
+	margin-left: 2%;
 	margin-bottom: 5px;
 	color: black;
 }
 
 #si1{
-	width: 98%;
-	height: 30px;
-	background-color: #eae7e7;
-	margin-top: 80px;
+	width: 87.9%;
+	height: 39px;
+	background-color: #c2bcb9;
+	position: absolute;
+	right: 0;
+	top: 41px;
+	left: 10.1%;
 }
 #si1 li{
 	color: black;
+	margin-top: 5px;
+	margin-left: 2%;
 }
 
 

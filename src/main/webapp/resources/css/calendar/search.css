@@ -7,19 +7,23 @@
 * {
   box-sizing: border-box;
 }
-
+/* 
 html,
 body {
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #fff;
+} */
+#sec{
+	width: 70%;
+	margin: auto;
 }
-
 .row {
-  max-width: 70%;
+  max-width: 100%;
   margin: 0 auto;
-  background: ;
+  background: white;
+  background-color: #eae7e7;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -29,9 +33,9 @@ body {
   content: "";
   display: block;
   top: 0;
-  left: -5000px;
+/*   left: -5000px;
   height: 100%;
-  width: 15000px;
+  width: 15000px; */
   z-index: -1;
   background: inherit;
 }
@@ -53,7 +57,7 @@ body {
 .row span {
   position: relative;
   display: inline-block;
-  margin: 30px 10px;
+  /* margin: 30px 10px; */
 }
 
 .balloon {
@@ -63,7 +67,7 @@ body {
   font-family: "Open Sans", sans;
   font-weight: 400;
   color: #582d32;
-  background: #efefef;
+  background: #c2bcb9;
   border: 0;
   border-radius: 3px;
   outline: 0;
@@ -71,7 +75,7 @@ body {
   transition: all .3s ease-in-out;
 }
 .balloon::-webkit-input-placeholder {
-  color: #efefef;
+  color: #c2bcb9;
   text-indent: 0;
   font-weight: 300;
 }
@@ -109,11 +113,11 @@ body {
 .balloon:active {
   color: #eae7e7;
   text-indent: 0;
-  background: #c2bcb9;
+  background: #7a716d;
 }
 .balloon:focus::-webkit-input-placeholder,
 .balloon:active::-webkit-input-placeholder {
-  color: #aaa;
+  color: #eae7e7;
 }
 .balloon:focus + label,
 .balloon:active + label {
@@ -131,6 +135,7 @@ body {
   font-family: "Open Sans", sans;
   font-weight:bold; 
   color: #a54040;
+  background-color: #c2bcb9;
   border: 0;
   border-radius: 3px;
   outline: 0;
@@ -143,6 +148,7 @@ body {
 	margin: auto;
 	background-color: #c2bcb9;
 	color: #28272c;
+	font-weight:100;
 	text-align: left;
   	padding: 5px 10px 5px 10px;
   	font-family: "Open Sans", sans;
@@ -150,21 +156,27 @@ body {
   	margin-bottom: 30px;
 }
 #singerle{
-	width: 10%;
+	width: 8%;
 	height: 500px;
 	float: left;
 	color: black;
-	font-weight: bolder;
-	line-height: -15px;
+	font-size: 200%;
+	font-weight: bold;
+	letter-spacing: -1px;
+	text-align: center;
+	line-height: 80%;
 	border-right: 2px solid black;
-	background-color: yellow;
+
 }
+
 #singerri1{
 	width: 90%;
 	height: 50px;
 	float: left;
-	background-color: ;
 	color: black;
+	font-size: 100%;
+	font-weight: bold;
+	letter-spacing: 5px;
 	text-align: left;
   	padding: 12px 10px 5px 20px;
   	border-bottom: 2px solid black;
@@ -173,15 +185,49 @@ body {
 	width: 90%;
 	height: 450px;
 	float: left;
-	background-color: blue;
+	background-color: #eae7e7;
 	color: black;
 	z-index: 2;
 }
 #singerri3{
-	width: 90%;
-	height:400px;
+	width: 95%;
+	height:390px;
 	color: black;
 	background-color: white;
 	margin: auto;
-	margin-top: 80px;
+	margin-top: 35px;
+
 }
+#singerri4{
+	width: 30%;
+	height: 100%;
+	border-right: 1px solid black;
+	float: left;
+}
+#singerri4 p{
+	margin-left: 5%;
+	margin-top: 10%;
+}
+#pic{
+	width:50%;
+	height: 100px;
+	background-color: yellow;
+	margin-left: 5%;
+	
+}
+#do{
+	width: 100px;
+	height: 26px;
+	margin-top: 5%;
+	margin-left: 5%;
+	color: #f6f5f1;
+  	background: #a54040;
+  	border: 0;
+  	border-radius: 3px;
+ 	outline: 0;
+ 	cursor: pointer;
+}
+#do:hover{
+	background-color: #582d32;
+}
+

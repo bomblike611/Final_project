@@ -47,7 +47,7 @@
 				</div>
 				
 				<div class="imgbox"  id="yoilbox">
-					<div id="feb">
+					<div class="yo" id="feb">
 						<p>26 FEB
 						${month.busk_date}
 						</p>
@@ -72,33 +72,6 @@
 						</ul>				
 					</div>
 				</div>
-								<div class="imgbox"  id="yoilbox">
-					<div id="feb">
-						<p>26 FEB
-						${month.busk_date}
-						</p>
-					</div>
-					<div id="yobup">
-						<ul>
-							<li>
-							심각한 개구리 ${month.busk_date}
-							</li>
-						</ul>
-					</div>
-					<div class="si" id="si1">
-						<ul>
-							<li>
-							<img src="../resources/calendar_img/clock.png">
-							<span>시간: ${month.busk_date}</span>
-							</li>
-							<li>
-							<img src="../resources/calendar_img/location.png">
-							<span>위치: ${month.busk_date}</span>
-							</li>
-						</ul>				
-					</div>
-				</div>
-
 				<!-- 일정리스트 끝 -->
 
 			<!-- ================================ 연습장 ================================ -->
