@@ -22,7 +22,7 @@ canvas{
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../resources/js/JQueryRotate.js"></script>
 	<script type="text/javascript" src="../resources/js/firework.js"></script>
-	<section id="main">
+	<section id="main" style="height: 100%;">
 		<div id="loc_logo">
 				<img src="../resources/upload/acoustic-guitar.png"
 					style="width: 100px; height: 100px;">

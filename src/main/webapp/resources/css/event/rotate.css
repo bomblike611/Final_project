@@ -1,19 +1,24 @@
 @CHARSET "UTF-8";
 
+/* body{
+	background-color: #C2BCB9;
+} */
+
+
 #result_id, #result_id2, #result_id3 {
 	display: none;
 }
 
 #image {
 	z-index: 10;
-	width: 40%;
-	margin: 50px 30%;
+	width: 30%;
+	margin: 50px 34.9%;
 }
 
 #n_id {
 	position: absolute;
 	margin: 19.5% 49%;
-	top: 100px;
+	top:0px;
 	z-index: 20;
 }
 
@@ -34,7 +39,6 @@ canvas {
 }
 
 #loc_logo {
-	padding-top: 5%;
 	text-align: center;
 	padding-bottom: 50px;
 }
