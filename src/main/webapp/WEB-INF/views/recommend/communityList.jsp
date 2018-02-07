@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,48 +26,25 @@
 		<div id="container">
 			<h1 class="title_top">공지사항</h1>
 			<div class="my_wrap">
-
-				<!--  <ul class="tabNavi tab5">
-		<li class="active"><a href="../resources/front/customer/getNoticeList.do"><span class="doc_i"></span>공지사항</a></li>
-		<li class="review"><a href="../resources/front/customer/getNoticeList.do"><span class="doc_i"></span>후기자료실</a></li>
-		<li class="review"><a href="../resources/front/customer/getNoticeList.do"><span class="doc_i"></span>가수추천</a></li>
-	</ul> -->
-
-				<div class="full_column">
-					<form name="searchFrm" id="searchFrm" method="post"
-						action="/front/customer/getNoticeList.do">
-						<input type="hidden" name="currentPage" id="currentPage" value="1">
-						<input type="hidden" name="seq" id="seq"> <input
-							type="hidden" name="site" id="site" value="">
-						<div class="floatright">
-							<label> <select name="schField" id="schField"
-								style="width: 110px; display: none;"
-								onchange="this.form.keyword.focus()" class="selectBox">
-									<option value="TITLE">제목</option>
-									<option value="CONTENT">내용</option>
-							</select><a class="selectBox selectBox-dropdown" title="" tabindex="NaN"
-								style="width: 110px; display: inline-block;"><span
-									class="selectBox-label" style="width: 70px;">제목</span> <span
-									class="selectBox-arrow"></span></a>
-							</label> <label> <input type="text" name="schKeyword"
-								id="schKeyword" maxlength="30" size="30" value=""
-								onfocus="this.select()">
-							</label> <label> <input type="submit" class="button dark small"
-								name="button" value="검색">
-							</label>
-						</div>
-						<div class="clearfix"></div>
+				<div class="searchFrm">
+				
+					<form name="frm" action="./noticeList">
+						<select id="sel" name="kind">
+							<option value="title">번호</option>
+							<option value="writer">제목</option>
+						</select> 
+							<input type="text" name="search">
+							<input id="btn" type="submit" value="검색">
 					</form>
 				</div>
 
-
-				<table class="table_list" border="1">
+				<table class="table_list">
 					<colgroup>
-						<col width="20%">
-						<col width="20%">
-						<col width="auto">
-						<col width="20%">
-						<col width="20%">
+						<col width="8%" />
+						<col width="10%" />
+						<col width="auto" />
+						<col width="20%" />
+						<col width="10%" />
 					</colgroup>
 					<tbody>
 						<tr>
@@ -76,136 +54,35 @@
 							<th>등록일</th>
 							<th>조회수</th>
 						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-						<tr>
-							<td class="title"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						
-							
-						
+				
+							<tr>
+								<td>dd</td>
+								<td>dd</td>
+								<td>dd${dto.title}</td>
+								<td>dd</td>
+								<td>dd</td>
+							</tr>
+					
+
 					</tbody>
 				</table>
-				<div class="seperater"></div>
-
-				<!-- paging area STD -->
-
-				<div class="pageNavi">
-					<!-- First -->
-					<a href="javascript:;" class="latelypostslink"
-						onclick="frontPageSubmit(1);">&lt;&lt;</a>
-
-					<!-- Prev 10 -->
-
-					<a href="javascript:;" onclick="frontPageSubmit(1);">&lt;</a>
-
-
-
-					<!-- Numbering -->
-                        <span class="current">1</span> 
-						<a href="javascript:;" onclick="frontPageSubmit(2);">2</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(3);">3</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(4);">4</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(5);">5</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(6);">6</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(7);">7</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(8);">8</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(9);">9</a> 
-						<a href="javascript:;" onclick="frontPageSubmit(10);">10</a>
-
-
-
-					<!-- Next 10 -->
-
-					<a href="javascript:;" class="firstpostslink"
-						onclick="frontPageSubmit(10);">&gt;</a>
-
-
-
-					<!-- Last -->
-					<a href="javascript:;" class="nextpostslink"
-						onclick="frontPageSubmit(10);">&gt;&gt;</a>
-				</div>
-			<!-- paging area END -->
-			<div class="seperater"></div>	
+				
+				<div>
+		<c:if test="${page.curBlock > 1}">
+			<span class="page" title="${page.startNum-1}">[이전]</span>
+		</c:if>
+		<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+			<span class="page" title="${i}">${i}</span>
+		</c:forEach>
+		<c:if test="${page.curBlock < page.totalBlock}">
+			<span class="page" title="${page.lastNum+1}">[다음]</span>
+		</c:if>
+	</div>
+	<div>
+		<a href="./${board}write">write</a>
+	</div>
+				
 			</div>
-
-			
 
 		</div>
 		<!--//CONTAINER -->
