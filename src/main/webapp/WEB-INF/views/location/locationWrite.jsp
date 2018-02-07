@@ -39,8 +39,35 @@
 		window.open("./locationMap", "장소검색하기", "top=100,status=no, left=200,width=1500, height=800, toolbar=no, menubar=no, location=no, scrollbars=no, resizable=no");
 	});
 
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+	
 	});
 </script>
+
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -54,21 +81,21 @@
 			</div>
 			<div id="WriteForm">
 				<div id="realForm">
-					<form action="locationWrite" method="post">
+					<form action="locationWrite" method="post" name="frm">
 						<table id="formdata">
 							<tr>
 								<td><span style="color: red;">*</span>장소명</td>
-								<td><input type="text" id="input" name="loc_name"
+								<td><input type="text" class="oo" name="loc_name"
 									placeholder="장소를 입력해주세요"></td>
 							</tr>
 							<tr>
 								<td><span style="color: red;">*</span>주소</td>
-								<td><input type="text" id="input" name="addr"
-									placeholder="주소가 입력됩니다" readonly="readonly"><div id="search">검색</div>
-								</td>
+								<td><input type="text" class="oo" id="area" name="area"
+									placeholder="검색버튼을 눌러주세요" readonly="readonly" title="">
+								<div id="search">검색</div>
+									<div id="map" style="width: 100%; height: 500px;"></div></td>
 							</tr>
-							<tr>
-							</tr>
+
 							<tr>
 								<td><span style="color: red;">*</span>사진
 									<p id="add">ADD</p>
@@ -88,5 +115,81 @@
 			</div>
 		</div>
 	</section>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae88eb2c4820eb8b91b58f0cfc8ea570&libraries=services"></script>
+	<script>
+$(function(){
+	var addr="";
+	var name="";
+	$("#area").focus(function(){
+		addr= $("#area").val();
+		name= $("#area").attr("title");
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+
+	// 지도를 생성합니다    
+	var map = new daum.maps.Map(mapContainer, mapOption); 
+
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new daum.maps.services.Geocoder();
+
+	// 주소로 좌표를 검색합니다
+	if(addr==""){
+		geocoder.addressSearch("서울 서초구 서초동 산 130-6", function(result, status) {
+
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === daum.maps.services.Status.OK) {
+
+		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new daum.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new daum.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">예술의 전당</div>'
+		        });
+		        infowindow.open(map, marker);
+
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    } 
+		});    
+	}else{
+	geocoder.addressSearch(addr, function(result, status) {
+
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === daum.maps.services.Status.OK) {
+
+	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new daum.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new daum.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
+	        });
+	        infowindow.open(map, marker);
+
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	});    
+	}
+	});
+
+
+});    
+</script>
 </body>
 </html>

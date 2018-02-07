@@ -126,7 +126,7 @@ window.onload=function(){
 		var el = document.createElement('li'),
 		itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
 		'<div class="info">' +
-		'   <h5>' + places.place_name + '</h5>';
+		'   <h5><a href="#" id="area">' + places.place_name + '</a></h5>';
 		
 		if (places.road_address_name) {
 			itemStr += '    <span>' + places.road_address_name + '</span>' +
@@ -219,4 +219,5 @@ window.onload=function(){
 			el.removeChild (el.lastChild);
 		}
 	}
+	
 }
