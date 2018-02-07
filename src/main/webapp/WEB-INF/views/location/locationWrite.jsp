@@ -11,18 +11,14 @@
 <script type="text/javascript">
 	$(function() {
 		var count = 0;
-		$("#add")
-				.click(
-						function() {
-							if (count < 3) {
-								count++;
-								$("#picture")
-										.append(
-												'<p class="p" id="'+count+'"><input type="file" name="file"></p>');
-							} else {
-								alert("사진은 4개까지 등록 가능합니다.");
-							}
-						});
+		$("#add").click(function() {
+				if (count < 3) {
+				count++;
+				$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file"></p>');
+				} else {
+					alert("사진은 4개까지 등록 가능합니다.");
+				}
+		});
 		$("#remove").click(function() {
 			if (count > 0) {
 				$(".p").each(function() {
@@ -35,15 +31,15 @@
 				alert("사진 1개는 반드시 등록해야합니다.");
 			}
 		});
-	$("#search").click(function(){
+/* 	$("#search").click(function(){
 		window.open("./locationMap", "장소검색하기", "top=100,status=no, left=200,width=1500, height=800, toolbar=no, menubar=no, location=no, scrollbars=no, resizable=no");
-	});
+	}); */
 
 	// Get the modal
 	var modal = document.getElementById('myModal');
 
 	// Get the button that opens the modal
-	var btn = document.getElementById("myBtn");
+	var btn = document.getElementById("search");
 
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
@@ -78,6 +74,15 @@
 					style="width: 100px; height: 100px;">
 				<h2>Location register</h2>
 				<p>버스킹 할 수 있는 장소를 입력해주세요. 사진은 최대 4개까지 등록이 가능합니다.</p>
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>Some text in the Modal..</p>
+					</div>
+
+				</div>
 			</div>
 			<div id="WriteForm">
 				<div id="realForm">
@@ -92,7 +97,7 @@
 								<td><span style="color: red;">*</span>주소</td>
 								<td><input type="text" class="oo" id="area" name="area"
 									placeholder="검색버튼을 눌러주세요" readonly="readonly" title="">
-								<div id="search">검색</div>
+									<div id="search">검색</div>
 									<div id="map" style="width: 100%; height: 500px;"></div></td>
 							</tr>
 
