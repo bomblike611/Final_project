@@ -35,19 +35,15 @@
 				alert("사진 1개는 반드시 등록해야합니다.");
 			}
 		});
-
-		$("#search").click(function() {
-			$("#frm").submit();
-		});
+	$("#search").click(function(){
+		window.open("./locationMap", "장소검색하기", "top=100,status=no, left=200,width=1500, height=800, toolbar=no, menubar=no, location=no, scrollbars=no, resizable=no");
+	});
 
 	});
 </script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae88eb2c4820eb8b91b58f0cfc8ea570&libraries=services"></script>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
-	<script src="../resources/css/location/map.js"></script>
 	<section id="main">
 		<div id="writepage">
 			<div id="loc_logo">
@@ -68,8 +64,8 @@
 							<tr>
 								<td><span style="color: red;">*</span>주소</td>
 								<td><input type="text" id="input" name="addr"
-									placeholder="주소가 입력됩니다"></td>
-									<td rowspan="2"><div class="map_wrap"></div></td>
+									placeholder="주소가 입력됩니다" readonly="readonly"><div id="search">검색</div>
+								</td>
 							</tr>
 							<tr>
 							</tr>
@@ -88,25 +84,6 @@
 						</table>
 						<button class="btn btn--stripe">Location Write</button>
 					</form>
-					<div class="map_wrap">
-						<div id="map"
-							style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-
-						<div id="menu_wrap" class="bg_white">
-							<div class="option">
-								<div>
-									<form onsubmit="searchPlaces(); return false;" id="frm">
-										키워드 : <input type="text" value="키" placeholder="키워드를 입력해주세요"
-											id="keyword" size="15"> <input type="button"
-											value="search" id="search">
-									</form>
-								</div>
-							</div>
-							<hr>
-							<ul id="placesList"></ul>
-							<div id="pagination"></div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

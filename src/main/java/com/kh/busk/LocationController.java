@@ -21,5 +21,9 @@ public class LocationController {
 	public void locationUpdate() throws Exception{
 		
 	}
+	@RequestMapping(value="locationMap")
+	public void locationMap() throws Exception{
+		
+	}
 	
 }
