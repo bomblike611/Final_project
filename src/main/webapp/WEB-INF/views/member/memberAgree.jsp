@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>## 노래왕 버스킹 -(회원가입 약관동의)입니다</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="/busk/resources/css/member.css" " rel="stylesheet">
 </head>
@@ -13,6 +13,11 @@
 		$(".cancelBtn").click(function() {
 			window.location = '../';
 		});
+		
+		$(".nextBtn").click(function() {
+			window.location = '/busk/member/memberJoin';
+		});
+		
 		$("#checkALL").click(function() {
 			var check = $(this).prop("checked");
 			if (check) {
@@ -327,9 +332,8 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 			<!--personalTerms end -->
 		<!-- </div> -->
 		<ul class="btnBox">
-				<button class="nextBtn" onclick="javascript:agree()" type="submit"
-					value="다음 단계로 이동">다음 단계로 이동</button>
-				<button class="cancelBtn" type="submit" value="취소">취소</button>
+				<button class="nextBtn" type="submit"value="다음 단계로 이동">다음 단계로 이동</button>
+				<button class="cancelBtn" type="submit">취소</button>
 		</ul>
 
 	</div>

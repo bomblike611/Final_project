@@ -3,7 +3,6 @@
 .join_agree{
 	margin-left: 15%;
 	margin-right: 15%;
-	border: 1px solid red;
 	height: 1500px;
 	padding: 80px 0;
 }
@@ -34,6 +33,7 @@
     padding : 0;
     float: left;
     text-align:  center;
+
 }
 
 .stepGuide li p {
@@ -66,6 +66,19 @@
     color: #1e1e1f;
     background: url(../images/rightB_icon.png) no-repeat right center;
 }
+
+
+.stepGuide .stepGuide_on2 {
+    color: #1e1e1f;
+}
+
+.stepGuide .stepGuide_on2 span {
+    display: inline-block;
+    width: 109px;
+    padding-bottom: 5px;
+    border-bottom: solid 3px #1e1e1f;
+}
+
 
 .stepGuide .stepGuide_off {
     color: gray;
@@ -145,7 +158,7 @@
 .btnBox {
     margin-top: 50%;
     list-style: none;
-    margin-left: 30%;
+    margin-left: 35%;
 }
 
 .btnBox .nextBtn {
@@ -181,11 +194,312 @@
 }
 
 
+.sp{
+	font-size: 12px;
+	font-weight: 700;
+	color: red;
+	line-height: 16px;
+}
+
+.singer{
+	display: none;
+	height: 50px;;
+	border-bottom: 1px #ddd solid;	
+}
+
+.join_td{
+	width: 15%;
+	background-color: #f6f6f6;
+	vertical-align: middle;
+}
+
+.join_tr{
+	height: 50px;;
+	border-bottom: 1px #ddd solid;
+}
+
+.joinForm{
+	height: 1000px;
+}
+
+.btnBox2 {
+    margin-top: 5%;
+    list-style: none;
+    margin-left: 35%;
+}
+
+.btnBox2 .nextBtn {
+    width: 170px;
+    height: 41px;
+    background: #000;
+    color: #fafafa;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    margin: 0 13px 200px 0;
+    cursor: pointer;
+}
+
+.btnBox2 .cancelBtn {
+    width: 170px;
+    height: 41px;
+    background: #fcfcfc;
+    color: #000;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    cursor: pointer;
+}
+
+.btnBox2 button{
+	margin: 0 auto;
+}
+
+.Join_input{
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 30px;
+    margin-left: 3%;
+    width: 20%;
+}
+
+.join_OK{
+	margin-left: 15%;
+	margin-right: 15%;
+	height: 600px;
+	padding: 80px 0;
+}
+
+
+.Join_Thank{
+	 background: url(../images/thank.png) no-repeat center;
+	 background-size : 250px;
+	 margin-top: 200px;
+	 height: 200px;
+}
+
+.login_member {
+    float: left;
+    width: 440px;
+    height: 205px;
+    margin: 40px 0 0 140px;
+    padding-top: 30px;
+    padding-right: 95px;
+    border-right: 1px solid #c7c7c7;
+    position: relative;
+    margin-top: -100px;
+}
+
+.top_wrap {
+    width: 100%;
+    position: relative;
+}
+
+
+
+.top_wrap h5 {
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 16px;
+    color: 1e1e1f;
+}
+
+.login_member h5 {
+    position: absolute;
+    top: -10px;
+}
+
+
+
+.top_wrap input {
+    width: 66%;
+    height: 40px;
+    border: 1px solid #c7c7c7;
+    padding-left: 10px;
+    margin: 5px 0;
+    margin-left: 5px;
+    margin-top: 30px;
+}
+
+.login_member .login_Btn {
+    width: 120px;
+    height: 97px;
+    background: #fcfcfc;
+    border: 2px solid #1e1e1f;
+    margin: 0;
+    float: right;
+    position: absolute;
+    left: 310px;
+    top: 60px;
+    cursor: pointer;
+}
+
+.loginGuide {
+	width: 100%;
+    border-top: 1px solid #0b0205;
+    height: 106px;
+    margin: 35px 0 74px 0;
+    list-style: none;
+    padding : 0;
+    float: left;
+    text-align:  center;
+
+}
+
+fieldset{
+	border: none;
+}
+
+.ck{
+    width: 12px;
+    height: 12px;
+    top: 165px;
+    left: 0px;
+}
+
+.login_info{
+	list-style: none;
+	display: flex;
+}
+
+.id_search{
+	margin-top: 24px;
+    margin-left: 15%;
+}
+
+.JoinBtn {
+    width: 170px;
+    height: 41px;
+    background: #000;
+    color: #fafafa;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    margin: 0 13px 200px 0;
+    cursor: pointer;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+.login_joinGuide{
+    width: 40%;
+    float: right;
+    margin-top: -35px;
+} 
+
+#poto:hover {
+    transform: scale(1. 2);
+    -webkit-transform: scale(4.99);
+}
 
 
 
 
+.modal-header, h4, .close {
+    background-color: white;
+    color: #0b0205 !important;
+    text-align: center;
+    font-size: 30px;
+    border: 0px;
+    font-weight: normal;
+}
 
+.modal-header, .modal-body {
+    padding: 20px 50px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 15%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 90%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cancelBtnOK {
+    width: 108px;
+    height: 30px;
+    background: #000;
+    color: #fafafa;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 14px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    border: 2px solid #1e1e1f;
+    margin: 0 13px 200px 0;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.modal-dialog2 {
+    height: 53%;
+}
+
+.filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+
+.filebox input[type="file"]  {  
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+.filebox {
+	display:inline-block; 
+	margin-right: 10px;
+}
 
 
 

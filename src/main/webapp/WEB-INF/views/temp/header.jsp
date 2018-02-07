@@ -37,12 +37,12 @@
 		<div id="main_session">
 			<select>
 				<c:if test="${empty member}">
-					<option value="/busk/member/memberAgree">LOG IN</option>
-					<option value="/busk/member/memberJoin">JOIN</option>
+					<option value="/busk/member/memberLogin">LOG IN</option>
+					<option value="/busk/member/memberAgree">JOIN</option>
 				</c:if>
 				<c:if test="${not empty member}">
-					<option>MY PAGE</option>
-					<option>LOG OUT</option>
+					<option value="/busk/member/memberMyPage?id=${member.id}">MY PAGE</option>
+					<option value="/busk/member/memberLogOut">LOG OUT</option>
 				</c:if>
 			</select>
 		</div>
