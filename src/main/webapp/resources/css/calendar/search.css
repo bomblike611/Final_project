@@ -117,7 +117,7 @@ body {
 }
 .balloon:focus::-webkit-input-placeholder,
 .balloon:active::-webkit-input-placeholder {
-  color: #eae7e7;
+  color: #a09996;
 }
 .balloon:focus + label,
 .balloon:active + label {
