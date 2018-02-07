@@ -14,8 +14,36 @@ public class MemberDTO {
 	private int point;
 	private String fname;
 	private String oname;
+	private String teamName;
+	private String position;
+	private String sns;
+	private String state;
 	
 	
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public String getSns() {
+		return sns;
+	}
+	public void setSns(String sns) {
+		this.sns = sns;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public String getFname() {
 		return fname;
 	}

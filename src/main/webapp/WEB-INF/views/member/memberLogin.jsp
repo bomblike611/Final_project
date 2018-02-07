@@ -4,10 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>## 노래왕 버스킹 -(로그인)입니다</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="/busk/resources/css/member.css" rel="stylesheet">
+<script type="text/javascript">
+$(function() {
+		$(".JoinBtn").click(function() {
+			window.location = '/busk/member/memberAgree';
+		});
+});
+
+</script>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -31,7 +39,7 @@
 								style="height: 12px; width: 12px;">&emsp;아이디 저장</li>
 								<li class="id_search"><a href="#">아이디/비밀번호 찾기</a></li>
 							</ul>
-							<button class="login_Btn" type="button" value="LOGIN">
+							<button class="login_Btn" type="submit" value="LOGIN">
 								<span>LOGIN</span>
 							</button>
 						</fieldset>

@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.singer.SingerDTO;
 
 @Repository
 public class MemberDAO {
@@ -18,9 +17,35 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}
 	
-	public int singerJoin(SingerDTO singerDTO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"singerJoin", singerDTO);
+	
+	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
 	}
+
+	
+	public int memberUpdate(MemberDTO memberDTO) throws Exception{
+		System.out.println(memberDTO.getFname());
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
+	}
+	
+	public int memberDelete(MemberDTO memberDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
