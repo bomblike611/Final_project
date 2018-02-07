@@ -36,10 +36,10 @@
 			}
 		});
 
-		$("#search").click(function(){
-			
+		$("#search").click(function() {
+			$("#frm").submit();
 		});
-		
+
 	});
 </script>
 <script type="text/javascript"
@@ -69,27 +69,9 @@
 								<td><span style="color: red;">*</span>주소</td>
 								<td><input type="text" id="input" name="addr"
 									placeholder="주소가 입력됩니다"></td>
+									<td rowspan="2"><div class="map_wrap"></div></td>
 							</tr>
 							<tr>
-								<td colspan="2"><div class="map_wrap">
-										<div id="map"
-											style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-
-										<div id="menu_wrap" class="bg_white">
-											<div class="option">
-												<div>
-													<form onsubmit="searchPlaces(); return false;" name="frm">
-														키워드 : <input type="text" placeholder="키워드를 입력해주세요" id="keyword"
-															size="15">
-														<input type="button" value="search" id="search">
-													</form>
-												</div>
-											</div>
-											<hr>
-											<ul id="placesList"></ul>
-											<div id="pagination"></div>
-										</div>
-									</div></td>
 							</tr>
 							<tr>
 								<td><span style="color: red;">*</span>사진
@@ -104,8 +86,27 @@
 								<td><textarea></textarea></td>
 							</tr>
 						</table>
+						<button class="btn btn--stripe">Location Write</button>
 					</form>
-					<button class="btn btn--stripe">Location Write</button>
+					<div class="map_wrap">
+						<div id="map"
+							style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+
+						<div id="menu_wrap" class="bg_white">
+							<div class="option">
+								<div>
+									<form onsubmit="searchPlaces(); return false;" id="frm">
+										키워드 : <input type="text" value="키" placeholder="키워드를 입력해주세요"
+											id="keyword" size="15"> <input type="button"
+											value="search" id="search">
+									</form>
+								</div>
+							</div>
+							<hr>
+							<ul id="placesList"></ul>
+							<div id="pagination"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
