@@ -66,7 +66,7 @@
 			</div>
 			<div id="WriteForm">
 				<div id="realForm">
-					<form action="locationWrite" method="post" name="frm">
+					<form action="locationWrite" method="post" name="frm" enctype="multipart/form-data">
 						<table id="formdata">
 							<tr>
 								<td><span style="color: red;">*</span>장소명</td>
@@ -98,7 +98,7 @@
 							</tr>
 							<tr>
 								<td>설명</td>
-								<td><textarea></textarea></td>
+								<td><textarea name="memo"></textarea></td>
 							</tr>
 						</table>
 					</form>

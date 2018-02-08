@@ -7,7 +7,7 @@
   	
   		
   		<insert id="insert" parameterType="FileDTO">
-  			insert into files values(#{id}, #{teamname},#{num},#{fname}, #{oname})
+  			insert into files values(#{loc_name}, #{teamname},#{num},#{fname}, #{oname})
   		</insert>
   		
   		

@@ -9,7 +9,16 @@
   </insert>
   
   <update id="update" parameterType="LocationDTO">
-  	update location set 
+  	update location set memo=#{memo},entry=#{entry} where num=#{num}
   </update>
+  
+  <delete id="delete" parameterType="LocationDTO">
+  delete location where num=#{num}
+  </delete>
+  
+  
+  <select id="selectList" resultType="LocationDTO">
+  
+  </select>
   
   </mapper>

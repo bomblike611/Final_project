@@ -18,9 +18,9 @@
 			<form action="./locationList" method="post">
 			<div id="search">
 			<div id="search2">
-			<select>
-				<option>장소명</option>
-				<option>주소</option>
+			<select name="area">
+				<option value="location">장소명</option>
+				<option value="addr">주소</option>
 			</select> <input type="text" name="search" placeholder="검색어를 입력해주세요">
 			<img id="searchw" src="../resources/upload/search.png" style="width:20px;height: 20px;">
 			</div>
