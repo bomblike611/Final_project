@@ -19,7 +19,7 @@ public class LocationService {
 	@Inject
 	private LocationDAO locationDAO;
 	@Inject
-	private FileSaver fileSaver;
+	private FileDAO fileDAO;
 	
 	public int locationInsert(LocationDTO locationDTO,HttpSession session,MultipartFile [] file) throws Exception{
 		String filepath=session.getServletContext().getRealPath("resources/upload");
@@ -27,13 +27,15 @@ public class LocationService {
 		if(!f.exists()){
 			f.mkdir();
 		}
+		FileSaver fileSaver=new FileSaver();
 		for(MultipartFile files : file){
 			String fname=fileSaver.saver(files, filepath);
 			FileDTO fileDTO=new FileDTO();
 			fileDTO.setFname(fname);
 			fileDTO.setOname(files.getOriginalFilename());
 			fileDTO.setLoc_name(locationDTO.getLoc_name());
-			FileDAO fileDAO=new FileDAO();
+			fileDTO.setNum(1);
+			fileDTO.setTeamName("null222");
 			fileDAO.insert(fileDTO);
 		}
 		

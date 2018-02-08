@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$("select").click(function() {
+			$("#select").click(function() {
 				  var open = $(this).data("isopen");
 				  if(open) {
 				    window.location.href = $(this).val()
@@ -35,7 +35,7 @@
 			</div>
 		</section>
 		<div id="main_session">
-			<select>
+			<select id="select">
 				<c:if test="${empty member}">
 					<option value="/busk/member/memberLogin">LOG IN</option>
 					<option value="/busk/member/memberAgree">JOIN</option>

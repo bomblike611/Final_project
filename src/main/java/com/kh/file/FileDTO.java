@@ -3,7 +3,7 @@ package com.kh.file;
 public class FileDTO {
 	
 	private String loc_name;
-	private String teamName;
+	private String teamname;
 	private int num;
 	private String fname;
 	private String oname;
@@ -16,10 +16,10 @@ public class FileDTO {
 		this.loc_name = loc_name;
 	}
 	public String getTeamName() {
-		return teamName;
+		return teamname;
 	}
 	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+		this.teamname = teamName;
 	}
 	public int getNum() {
 		return num;

@@ -17,11 +17,18 @@ import com.kh.location.LocationService;
 public class LocationController {
 	
 	@Inject
-	private LocationService LocationService;
+	private LocationService locationService;
 	
 	@RequestMapping(value="locationWrite",method=RequestMethod.GET)
-	public String locationWrite(LocationDTO locationDTO,MultipartFile [] file,HttpSession session) throws Exception{	
-		return "locationList";
+	public void locationWrite() throws Exception{	
+	}
+	
+	@RequestMapping(value="locationWrite",method=RequestMethod.POST)
+	public String locationWrite(LocationDTO locationDTO,MultipartFile [] file,HttpSession session) throws Exception{
+		System.out.println(file.length);
+		int result=locationService.locationInsert(locationDTO, session, file);
+		System.out.println(result);
+		return "redirect:./locationList";
 	}
 	
 	@RequestMapping(value="locationList")

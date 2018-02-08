@@ -1,5 +1,7 @@
 package com.kh.location;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class LocationDTO {
 
 	private int num;
