@@ -14,7 +14,7 @@
 		$("#add").click(function() {
 				if (count < 3) {
 				count++;
-				$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file"></p>');
+				$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file" class="oo"></p>');
 				} else {
 					alert("사진은 4개까지 등록 가능합니다.");
 				}
@@ -31,11 +31,24 @@
 				alert("사진 1개는 반드시 등록해야합니다.");
 			}
 		});
-$("#search").click(function(){
+	$("#search").click(function(){
 		window.open("./locationMap", "장소검색하기", "top=100,status=no, left=200,width=1500, height=800, toolbar=no, menubar=no, location=no, scrollbars=no, resizable=no");
 	});
 
-
+	$("#btn").click(function(){
+		var check=true;
+		$(".oo").each(function(){
+			if($(this).val()==""){
+				check=false;
+			}
+		});
+		if(check){
+			document.frm.submit();
+		}else{
+			alert("모든 항목을 채워주세요.");
+		}
+	});
+	
 	
 	});
 </script>
@@ -64,19 +77,23 @@ $("#search").click(function(){
 								<td><span style="color: red;">*</span>주소</td>
 								<td><input type="text" class="oo" id="area" name="area"
 									placeholder="검색버튼을 눌러주세요" readonly="readonly" title="">
-									<div id="search">검색</div>
-									</td>
+									<div id="search">검색</div></td>
 							</tr>
-								<tr>
-								<td colspan="2"><div id="map" style="width: 100%; height: 500px;"></div></td>
-								</tr>
-								
+							<tr>
+								<td colspan="2"><div id="map"
+										style="width: 100%; height: 500px;"></div></td>
+							</tr>
+							<tr>
+								<td><span style="color: red;">*</span>최대인원</td>
+								<td><input type="number" class="oo" name="entry"
+									placeholder="인원수를 입력해주세요"></td>
+							</tr>
 							<tr>
 								<td><span style="color: red;">*</span>사진
 									<p id="add">ADD</p>
 									<p id="remove">REMOVE</p></td>
 								<td id="picture"><p class="p">
-										<input type="file" name="file">
+										<input type="file" name="file" class="oo">
 									</p></td>
 							</tr>
 							<tr>
@@ -84,8 +101,8 @@ $("#search").click(function(){
 								<td><textarea></textarea></td>
 							</tr>
 						</table>
-						<button class="btn btn--stripe">Location Write</button>
 					</form>
+						<button class="btn btn--stripe" id="btn">Location Write</button>
 				</div>
 			</div>
 		</div>
