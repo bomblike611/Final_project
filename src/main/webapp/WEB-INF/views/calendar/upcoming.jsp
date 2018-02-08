@@ -5,7 +5,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -(upcoming)입니다</title>
 <link href="../resources/css/calendar/upcoming.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
 
+	$("#show").click(function(){
+		$("#yoilbox").slideDown("slow");
+	});
+});
+
+</script>
 </head>
 <body>
 	<%@ include file="../temp/header.jsp"%>
@@ -72,6 +81,7 @@
 						</ul>				
 					</div>
 				</div>
+					<button id="show">더보기</button>
 				<!-- 일정리스트 끝 -->
 
 			<!-- ================================ 연습장 ================================ -->

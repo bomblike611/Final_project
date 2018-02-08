@@ -1,4 +1,8 @@
 @CHARSET "UTF-8";
+#yoilbox{
+	display: none;
+}
+
 #upcomingH{
 	background-color: #494750;
 }
@@ -115,7 +119,7 @@
 #si1{
 	width: 87.9%;
 	height: 39px;
-	background-color: #c2bcb9;
+	background-color: #eae7e7;
 	position: absolute;
 	right: 0;
 	top: 41px;
@@ -126,7 +130,18 @@
 	margin-top: 5px;
 	margin-left: 2%;
 }
-
-
+/* ================== 가려지는곳↑ ========================== */
+#show{
+	width: 70%;
+	height: 30px;
+	margin: auto;
+	margin-top: 20px;
+	background-color: #582d32;
+	outline-color: #582d32;
+	border-color: #582d32;
+	position: absolute;
+	left: 15%;
+	color: #f6f5f1;
+}
 
 
