@@ -98,7 +98,7 @@
 							</tr>
 							<tr>
 								<td>설명</td>
-								<td><textarea></textarea></td>
+								<td><textarea name="memo"></textarea></td>
 							</tr>
 						</table>
 					</form>
