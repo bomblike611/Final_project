@@ -1,4 +1,8 @@
 @CHARSET "UTF-8";
+#yoilbox{
+	display: none;
+}
+
 #upcomingH{
 	background-color: #494750;
 }
@@ -10,18 +14,19 @@
 	z-index: -999px;
 }
 #hh{
-	width: 33%;
+	width: 37%;
 	height: 500px;
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: black; opacity: .4;
+	background-color: black; opacity: .8;
 	z-index: -500px;
 }
 #hd{
 	padding: 2%;
-	font-size: 300%;
+	font-size: 350%;
 	font-weight: bolder;
+	letter-spacing: -2px;
 	color: white;
 	position: absolute;
 	top: 0;
@@ -62,38 +67,81 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	margin-left: 2%;
 }
 .si img{
-	margin-top: 2%;
+	margin-top: 1%;
 	margin-left: 1%;
 }
 .si li{
-	width: 30%;
+	width: 35%;
 	color: white;
 	float: left;
 	list-style-type: none;
-	margin-right: 20%;
 }
 /*========================== 그레이박스↑ =========================*/
 
-#yob{
-	height: 150px;
-	background-color: #8080c0;
+#yoilbox{
+	height: 80px;
+	margin-top: 50px;
 }
 #feb{
-	width: 15%;
-	width:150px;
-	margin-top: 50px;
+	font-size: 300%;
+	font-weight: bold;
+	letter-spacing: -1px;
 	color: black;
-	position:relative;
-	display: block;
-	border-right: 3px solid black;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding-top: 0;
+	text-align: center;
+	border-right: 2px solid black;
+
 }
 #yobup{
-	width: 55%;
-	height: 75px;
-	margin: auto;
+	width: 87.8%;
+	height: 39px;
+	font-weight: bold;
+	border-bottom: 2px solid black;
 	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#yobup li{
+	list-style-type: none;
+	margin-top: 10px;
+	margin-left: 2%;
+	margin-bottom: 5px;
+	color: black;
+}
+
+#si1{
+	width: 87.9%;
+	height: 39px;
+	background-color: #eae7e7;
+	position: absolute;
+	right: 0;
+	top: 41px;
+	left: 10.1%;
+}
+#si1 li{
+	color: black;
+	margin-top: 5px;
+	margin-left: 2%;
+}
+/* ================== 가려지는곳↑ ========================== */
+#show{
+	width: 70%;
+	height: 30px;
+	margin: auto;
+	margin-top: 20px;
+	background-color: #582d32;
+	outline-color: #582d32;
+	border-color: #582d32;
+	position: absolute;
+	left: 15%;
+	color: #f6f5f1;
 }
 
 

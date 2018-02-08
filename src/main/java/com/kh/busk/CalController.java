@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/calender/**")
+@RequestMapping(value="/calendar/**")
 public class CalController {
 	
 	@RequestMapping(value="upcoming")
@@ -17,8 +17,13 @@ public class CalController {
 		
 	}
 	
-	@RequestMapping(value="memo")
-	public void memo(){
+	@RequestMapping(value="year")
+	public void year(){
+		
+	}
+	
+	@RequestMapping(value="search")
+	public void search(){
 		
 	}
 
