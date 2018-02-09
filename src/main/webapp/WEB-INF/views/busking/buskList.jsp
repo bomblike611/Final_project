@@ -15,6 +15,12 @@
 		$(".hover").mouseleave(function() {
 			$(this).removeClass("hover");
 		});
+		
+		$("#write").click(function(){
+			location.href="./buskWrite";
+			
+		});
+		
 	});
 </script>
 <body>

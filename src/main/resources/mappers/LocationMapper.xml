@@ -16,9 +16,12 @@
   delete location where num=#{num}
   </delete>
   
+  <select id="totalCount">
+  select nvl(count(num),0) from location
+  </select>
   
   <select id="selectList" resultType="LocationDTO">
-  
+  select * from (select rownum R,L.* from (select * from location order by num desc where ) L)
   </select>
   
   </mapper>

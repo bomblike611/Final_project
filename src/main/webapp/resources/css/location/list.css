@@ -9,8 +9,17 @@ body{
 	width: 8%;
 	height: 30px;
 	background-color: #582D32;
+	border: 1px #C2BCB9 solid;
 	line-height: 30px;
 	color: white;
+	transition:background-color 1s,color 0.5s;
+	cursor: pointer;
+}
+
+#adminWrite:hover{
+	background-color: white;
+	color:#582D32;
+	border: 1px #C2BCB9 solid;
 }
 
 #listmain{
