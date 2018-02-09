@@ -70,9 +70,8 @@ public class MemberController {
 	public ModelAndView memberLogin(MemberDTO memberDTO,  HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.memberLogin(memberDTO);
-		String addr = memberDTO.getAddr();
-		String addar [] = addr.split(",");
 		if (memberDTO != null) {
+			String addar [] = memberDTO.getAddr().split(",");
 			mv.addObject("message", "LogIn Success");
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("addar", addar);

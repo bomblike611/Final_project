@@ -38,6 +38,7 @@ public class MemberService {
 
 	public int memberUpdate(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception{
 		if(file != null){
+			System.out.println("gdgd");
 			String filePath = session.getServletContext().getRealPath("resources/upload");
 			File f = new File(filePath);
 			if(!f.exists()){

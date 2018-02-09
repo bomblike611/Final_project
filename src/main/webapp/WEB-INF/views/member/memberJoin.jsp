@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -(회원가입)입니다</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -132,7 +132,7 @@
 				var reader = new FileReader();
 
 				reader.onload = function(e) {
-					$('#poto').attr('src', e.target.result);
+					$('.poto').attr('src', e.target.result);
 				}
 
 				reader.readAsDataURL(input.files[0]);
@@ -238,16 +238,21 @@
 				<!-- 생년월일 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>생년월일</td>
-					<td><input type="date" class="Join_input" id="birth"
-						name="birth"></td>
+					<td><input type="date" class="Join_input" id="birth" name="birth">
+					</td>
 				</tr>
 
 				<!-- 프로필사진 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>프로필 사진</td>
-					<td>&emsp;&emsp;&nbsp;<img id="poto"
-						src="../resources/upload/${member.fname}"
-						style="width: 100px; height: 100px;">
+					<td>
+					
+						<c:if test="${member.fname eq null}" >
+						&emsp;&emsp;&nbsp;<img src="../resources/images/노답.jpg" class="poto" id="poto" style="width: 100px; height: 100px;">
+						</c:if>
+						<c:if test="${member.fname ne null} ">
+						&emsp;&emsp;&nbsp;<img id="poto" class="poto" src="../resources/upload/${member.fname}" style="width: 100px; height: 100px;">
+						</c:if>
 						
 						<div class="filebox">
 						<label for="profile">업로드</label> 

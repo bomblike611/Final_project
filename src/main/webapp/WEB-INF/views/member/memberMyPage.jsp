@@ -10,13 +10,51 @@
 <link href="/busk/resources/css/member.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
+		
+		$("label").click(function() {
+			$("#fu").html("<input type='file' id='profile' name='file'>");
+		});
+		
+		$("#pw2").keyup(function() {
+			if ($("#pw").val() == $("#pw2").val()) {
+				$("#pwcheck").text("비밀번호가 일치합니다.");
+				$("#pwcheck").css("color", "green");
+			}else{
+				$("#pwcheck").text("비밀번호가 일치하지 않습니다");
+				$("#pwcheck").css("color", "red");
+			}
+		});		
+		
+		$("#cpw").keyup(function() {
+			if ($("#cpw").val().length > 7) {
+				$("#cpwcheck").text("사용가능한 비밀번호 입니다");
+				$("#cpwcheck").css("color", "green");
+			} else {
+				$("#cpwcheck").text("비밀번호는 8자리 이상이여야 합니다");
+				$("#cpwcheck").css("color", "red");
+			}
+		});
+		
+		$("#cpw2").keyup(function() {
+			if ($("#cpw").val() == $("#cpw2").val()) {
+				$("#cpwcheck2").text("비밀번호가 일치합니다.");
+				$("#cpwcheck2").css("color", "green");
+			}else{
+				$("#cpwcheck2").text("비밀번호가 일치하지 않습니다.");
+				$("#cpwcheck2").css("color", "red");
+			}
+		});
+		
+		
 		var job = "${member.job}";
 		if(job=="singer"){
 			$(".singer").show();
 		}
-		$("#profile").on('change', function(){
+		$(".filebox").on('change',"#profile", function(){
+			
 			readURL(this);
 		});
+		
 		 function readURL(input) {
 	            if (input.files && input.files[0]) {
 	            var reader = new FileReader();
@@ -95,6 +133,11 @@
 			}
 				
 		});
+	  	
+	  	$("#btnn").click(function() {
+			alert("${member.fname}");
+			alert($("#profile").val());
+		});
 
 	});
 
@@ -123,17 +166,28 @@
 					<td class="join_td">
 					<span class="sp">* </span>기존 비밀번호 
 					</td>
-					<td><input type="password" class="Join_input" value="${member.pw}" id="pw" ><span id="pwcheck"></span></td>
+					<td>
+					<input type="hidden" value="${member.pw}" id="pw">
+					<input type="password" class="Join_input" id="pw2" ><span id="pwcheck"></span>
+					</td>
 				</tr>
 				
-			<!-- 비밀번호 확인 테이블 -->
+			<!-- 변경비밀번호 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td">
-					<span class="sp">* </span>변경 비밀번호 확인 
+					<span class="sp">* </span>변경 비밀번호
 					</td>
-					<td><input type="password" class="Join_input" placeholder="      Enter Re PW" id="pw2" name="pw"><span id="pwcheck2"></span></td>
+					<td><input type="password" class="Join_input" placeholder="      Enter Re PW" id="cpw" name="pw"><span id="cpwcheck"></span></td>
 				</tr>
 				
+				<!-- 변경비밀번호  확인 테이블 -->
+				<tr class="join_tr">
+					<td class="join_td">
+					<span class="sp">* </span>변경 비밀번호 확인
+					</td>
+					<td><input type="password" class="Join_input" placeholder="      Enter Re PW" id="cpw2"><span id="cpwcheck2"></span></td>
+				</tr>
+					
 			<!-- 이름 테이블 -->	
 				<tr class="join_tr">
 					<td class="join_td">
@@ -191,7 +245,13 @@
 					<td class="join_td">
 					<span class="sp">* </span>프로필 사진 
 					</td>
-					<td>&emsp;&emsp;&nbsp;<img id="poto" src="../resources/upload/${member.fname}" style="width: 100px; height: 100px;"><input type="file" style="vertical-align: bottom;" class="Join_input" id="profile" name="file" value="${member.fname}">
+					<td>&emsp;&emsp;&nbsp;<img id="poto" src="../resources/upload/${member.fname}" style="width: 100px; height: 100px;">
+					<div class="filebox">
+						<label for="profile">업로드</label> 
+						<div id="fu">
+						<input type="hidden" value="${member.oname}">
+						</div>
+						</div>
 					</td>
 				</tr>
 			<!-- 직업 테이블 -->	
