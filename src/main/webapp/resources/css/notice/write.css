@@ -6,24 +6,11 @@
 		padding: 0;
 }
 
-#container-area{
-	padding-top: 100px;
+
+#write {
+	padding-top: 110px;
     overflow: hidden;
     padding-bottom: 150px;
     height: 1350px;
 	text-align: center;
-    }
-    
-#content-area .fr {
-    float: right;
 }
-
-#main-area {
-    width: 773px;
-}
-
-#busk_main {
-	height: 1058px;
-	width: 773px;
-}
-

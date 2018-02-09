@@ -79,7 +79,7 @@
 		</c:if>
 	</div>
 	<div id="button">
-			<a href="./${board}write">글쓰기</a>
+			<a href="/noticewrite${board}write">글쓰기</a>
 	</div>
 				
 			</div>

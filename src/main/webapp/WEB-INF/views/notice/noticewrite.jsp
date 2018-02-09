@@ -15,18 +15,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="../temp/header.jsp"%>
 
- <%@include file="../temp/header.jsp"%>
-	
-	
-	<div id="content-area">
-		<div id="main-area" class="fr">
-			<input id="getopen" type="hidden" value="1">
-			<input id="searchiewtype" type="hidden" value="title">
-			 <iframe name="busk_main" id="busk_main" title="버킷 메인"></iframe>
-		</div>
-	
+	<!--CONTAINER WRITE-->
+	<div>
+		<h2 id="write">WRITE</h2>
+		
 	</div>
+	
+	
+	
 	
 </body>
 </html>
