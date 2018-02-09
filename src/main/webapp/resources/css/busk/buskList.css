@@ -206,6 +206,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 
 
 #write{
+	cursor: pointer;
 	border: 1px #C2BCB9 solid;
 	text-align: center;
 	height: 40px;

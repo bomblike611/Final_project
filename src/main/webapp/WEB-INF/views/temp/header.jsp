@@ -32,6 +32,7 @@
 				<a href="#">Link 1</a>
   	  			<a href="#">Link 2</a>
     			<a href="#">Link 3</a>
+    			<a href="/busk/location/locationList">Location</a>
 			</div>
 		</section>
 		<div id="main_session">
