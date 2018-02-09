@@ -34,8 +34,8 @@ public class LocationService {
 			fileDTO.setFname(fname);
 			fileDTO.setOname(files.getOriginalFilename());
 			fileDTO.setLoc_name(locationDTO.getLoc_name());
-			fileDTO.setNum(1);
-			fileDTO.setTeamName("null222");
+			fileDTO.setNum(0);
+			fileDTO.setTeamName("null");
 			fileDAO.insert(fileDTO);
 		}
 		
@@ -51,6 +51,8 @@ public class LocationService {
 	}
 	
 	public List<LocationDTO> locationList() throws Exception{
+		int totalCount=locationDAO.locationTotalCount();
+		=locationDAO.locationList();
 		return null;
 	}
 	

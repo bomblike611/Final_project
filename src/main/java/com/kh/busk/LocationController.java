@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.location.LocationDTO;
 import com.kh.location.LocationService;
+import com.kh.util.ListData;
 
 @Controller
 @RequestMapping(value="/location/**")
@@ -32,7 +33,7 @@ public class LocationController {
 	}
 	
 	@RequestMapping(value="locationList")
-	public void locationList() throws Exception{
+	public void locationList(ListData listData) throws Exception{
 		
 	}
 	
