@@ -19,15 +19,20 @@ public class MemberService {
 
 	public int memberJoin(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception {
 		String filePath = session.getServletContext().getRealPath("resources/upload");
-		System.out.println(filePath);
+		System.out.println(file);
 		File f = new File(filePath);
 		if (!f.exists()) {
 			f.mkdirs();
 		}
-		FileSaver fs = new FileSaver();
-		String name = fs.saver(file, filePath);
-		memberDTO.setFname(name);
-		memberDTO.setOname(file.getOriginalFilename());
+		if (!file.getOriginalFilename().equals("")) {
+			FileSaver fs = new FileSaver();
+			String name = fs.saver(file, filePath);
+			memberDTO.setFname(name);
+			memberDTO.setOname(file.getOriginalFilename());
+		}else{
+			memberDTO.setFname("노답.jpg");
+			memberDTO.setOname("노답.jpg");
+		}
 		int result = memberDAO.memberJoin(memberDTO);
 		return result;
 	}
@@ -38,7 +43,6 @@ public class MemberService {
 
 	public int memberUpdate(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception{
 		if(file != null){
-			System.out.println("gdgd");
 			String filePath = session.getServletContext().getRealPath("resources/upload");
 			File f = new File(filePath);
 			if(!f.exists()){
@@ -64,7 +68,9 @@ public class MemberService {
 	}
 	
 	
-	
+	public MemberDTO memberIdCheck(String id) throws Exception{
+		return memberDAO.memberIdCheck(id);
+	}
 	
 	
 	

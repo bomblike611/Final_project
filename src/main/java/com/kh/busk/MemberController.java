@@ -48,6 +48,7 @@ public class MemberController {
 	public ModelAndView memberJoin(MemberDTO memberDTO,  MultipartFile file, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result=memberService.memberJoin(memberDTO, file, session);
+		System.out.println("File : "+file);
 		if (result > 0) {
 			mv.addObject("message", "회원가입 완료");
 			mv.addObject("path", "./memberJoinOK");
@@ -128,7 +129,18 @@ public class MemberController {
 		return mv;
 	}
 	
-	
+	@RequestMapping(value="memberIdCheck", method=RequestMethod.GET)
+	public ModelAndView memberIdCheck(String id) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = memberService.memberIdCheck(id);
+		if (memberDTO == null) {
+			mv.addObject("result", "사용가능한 ID 입니다");
+		}else{
+			mv.addObject("result", "중복된 아이디입니다.");
+		}
+		mv.setViewName("common/memberResult");
+		return mv;
+	}
 	
 	
 	

@@ -13,7 +13,7 @@
 		
 		$("label").click(function() {
 			$("#fu").html("<input type='file' id='profile' name='file'>");
-		});
+		});	
 		
 		$("#pw2").keyup(function() {
 			if ($("#pw").val() == $("#pw2").val()) {

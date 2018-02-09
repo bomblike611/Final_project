@@ -11,6 +11,26 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
+		$("#id").keyup(function() {
+			var id = $(this).val();
+			$.ajax({
+				url : "./memberIdCheck",
+				type : "GET",
+				data : {
+					id : id
+				},
+				success : function(data) {
+					if($.trim(data)  ==  "사용가능한 ID 입니다"){
+						$("#result").css('color', 'green');
+					}else{
+						$("#result").css('color', 'red');
+					}
+					$("#result").html(data);
+				}
+			});
+		});
+		
 		var check = false;
 		$(".job").click(function() {
 			var job = $(this).val();
@@ -248,7 +268,7 @@
 					<td>
 					
 						<c:if test="${member.fname eq null}" >
-						&emsp;&emsp;&nbsp;<img src="../resources/images/노답.jpg" class="poto" id="poto" style="width: 100px; height: 100px;">
+						&emsp;&emsp;&nbsp;<img src="../resources/images/노답.jpg"  class="poto" id="poto" style="width: 100px; height: 100px;">
 						</c:if>
 						<c:if test="${member.fname ne null} ">
 						&emsp;&emsp;&nbsp;<img id="poto" class="poto" src="../resources/upload/${member.fname}" style="width: 100px; height: 100px;">
