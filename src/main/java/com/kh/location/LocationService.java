@@ -52,7 +52,7 @@ public class LocationService {
 	
 	public List<LocationDTO> locationList() throws Exception{
 		int totalCount=locationDAO.locationTotalCount();
-		=locationDAO.locationList();
+		List<LocationDTO> ar=locationDAO.locationList(null);
 		return null;
 	}
 	

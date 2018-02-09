@@ -29,22 +29,11 @@
 				<li class="sub_nav"><a href="/busk/event/pointRotate">Event</a></li>
 			</ul>
 			<div class="dropdown-content" id="sub_nav">
-<<<<<<< HEAD
-				<table>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-					</tr>
-				</table>
-=======
+
 				<a href="#">Link 1</a>
   	  			<a href="#">Link 2</a>
     			<a href="#">Link 3</a>
     			<a href="/busk/location/locationList">Location</a>
->>>>>>> yj_locationWrite
 			</div>
 		</section>
 		<div id="main_session">
