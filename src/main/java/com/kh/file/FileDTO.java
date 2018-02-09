@@ -2,22 +2,24 @@ package com.kh.file;
 
 public class FileDTO {
 	
-	private String id;
-	private String teamName;
+	private String loc_name;
+	private String teamname;
 	private int num;
 	private String fname;
 	private String oname;
-	public String getId() {
-		return id;
+	
+	
+	public String getLoc_name() {
+		return loc_name;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setLoc_name(String loc_name) {
+		this.loc_name = loc_name;
 	}
 	public String getTeamName() {
-		return teamName;
+		return teamname;
 	}
 	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+		this.teamname = teamName;
 	}
 	public int getNum() {
 		return num;

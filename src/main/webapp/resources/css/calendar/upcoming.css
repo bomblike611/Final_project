@@ -1,0 +1,147 @@
+@CHARSET "UTF-8";
+#yoilbox{
+	display: none;
+}
+
+#upcomingH{
+	background-color: #494750;
+}
+.imgbox{
+	width: 70%;
+	height: 500px;
+	margin: auto;
+	position: relative;
+	z-index: -999px;
+}
+#hh{
+	width: 37%;
+	height: 500px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: black; opacity: .8;
+	z-index: -500px;
+}
+#hd{
+	padding: 2%;
+	font-size: 350%;
+	font-weight: bolder;
+	letter-spacing: -2px;
+	color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+.yo{
+	width: 10%;
+	color: white;
+	font-size: 600%;
+	font-weight: bolder;
+	line-height: 80%;
+	padding-top: 220px;
+	padding-left: 2%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#ga{
+	color: white;
+	font-size: 200%;
+	letter-spacing: 1px;
+	line-height: 80%;
+	padding-top: 390px;
+	padding-left: 2%;
+	position: absolute;
+	top: 0;
+	left: 0;
+/*========================== 사진박스↑ =========================*/
+}
+#graybox{
+	height: 30px;
+	background-color: #28272C;
+}
+
+.si{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 2%;
+}
+.si img{
+	margin-top: 1%;
+	margin-left: 1%;
+}
+.si li{
+	width: 35%;
+	color: white;
+	float: left;
+	list-style-type: none;
+}
+/*========================== 그레이박스↑ =========================*/
+
+#yoilbox{
+	height: 80px;
+	margin-top: 50px;
+}
+#feb{
+	font-size: 300%;
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: black;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding-top: 0;
+	text-align: center;
+	border-right: 2px solid black;
+
+}
+#yobup{
+	width: 87.8%;
+	height: 39px;
+	font-weight: bold;
+	border-bottom: 2px solid black;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#yobup li{
+	list-style-type: none;
+	margin-top: 10px;
+	margin-left: 2%;
+	margin-bottom: 5px;
+	color: black;
+}
+
+#si1{
+	width: 87.9%;
+	height: 39px;
+	background-color: #eae7e7;
+	position: absolute;
+	right: 0;
+	top: 41px;
+	left: 10.1%;
+}
+#si1 li{
+	color: black;
+	margin-top: 5px;
+	margin-left: 2%;
+}
+/* ================== 가려지는곳↑ ========================== */
+#show{
+	width: 70%;
+	height: 30px;
+	margin: auto;
+	margin-top: 20px;
+	background-color: #582d32;
+	outline-color: #582d32;
+	border-color: #582d32;
+	position: absolute;
+	left: 15%;
+	color: #f6f5f1;
+}
+
+

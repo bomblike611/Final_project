@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+#choice{
+	width: 70%;
+	display: inline-block;
+	margin: auto;
+	margin-left: 15%;
+	text-align: center;
+}
+#choice ul{
+	margin-top: 3%;
+	margin-bottom: 0.5%;
+
+}
+#choice li{
+	list-style-type: none; padding: 0;
+	margin: 0.5%;
+	float: right;
+}
+
+#choice a{
+	text-decoration: none;
+	color: #C2BCB9;
+}
+
+#choice a:hover{
+	text-decoration: none;
+	color: #F6F5F1;
+}
+

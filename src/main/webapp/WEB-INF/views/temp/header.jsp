@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$("select").click(function() {
+			$("#select").click(function() {
 				  var open = $(this).data("isopen");
 				  if(open) {
 				    window.location.href = $(this).val()
@@ -24,9 +24,9 @@
 			<ul>
 				<li class="sub_nav"><a href="#">Community</a></li>
 				<li class="sub_nav"><a href="#">Busker</a></li>
-				<li class="sub_nav"><a href="#">Busking</a></li>
-				<li class="sub_nav"><a href="#">Calendar</a></li>
-				<li class="sub_nav"><a href="#">Event</a></li>
+				<li class="sub_nav"><a href="/busk/busking/buskList">Busking</a></li>
+				<li class="sub_nav"><a href="/busk/calendar/upcoming">Calendar</a></li>
+				<li class="sub_nav"><a href="/busk/event/pointRotate">Event</a></li>
 			</ul>
 			<div class="dropdown-content" id="sub_nav">
 				<a href="#">Link 1</a>
@@ -35,7 +35,7 @@
 			</div>
 		</section>
 		<div id="main_session">
-			<select>
+			<select id="select">
 				<c:if test="${empty member}">
 					<option value="/busk/member/memberLogin">LOG IN</option>
 					<option value="/busk/member/memberAgree">JOIN</option>

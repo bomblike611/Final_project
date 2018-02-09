@@ -7,5 +7,6 @@
 	<typeAliases>
 		<typeAlias type="com.kh.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.kh.file.FileDTO" alias="FileDTO"/>
+		<typeAlias type="com.kh.location.LocationDTO" alias="LocationDTO"/>
 	</typeAliases>
   </configuration>

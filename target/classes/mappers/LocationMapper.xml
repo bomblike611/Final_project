@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="LocationMapper">
+  <insert id="insert" parameterType="LocationDTO">
+  	insert into location values (loc_seq.nextval,#{loc_name},#{area},#{memo},#{entry})
+  </insert>
+  
+  <update id="update" parameterType="LocationDTO">
+  	update location set memo=#{memo},entry=#{entry} where num=#{num}
+  </update>
+  
+  <delete id="delete" parameterType="LocationDTO">
+  delete location where num=#{num}
+  </delete>
+  
+  
+  <select id="selectList" resultType="LocationDTO">
+  
+  </select>
+  
+  </mapper>
