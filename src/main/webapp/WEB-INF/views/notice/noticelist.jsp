@@ -13,6 +13,23 @@
 <link href="../resources/css/notice/notice.css"
 	rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+	$(function() {
+		var message='${message}';
+		if(message != ''){
+			alert(message);
+		}
+				
+		$(".page").click(function() {
+			var cur=$(this).attr("title");
+			document.frm.curPage.value=cur;
+			document.frm.search.value='${page.search}';
+			document.frm.kind.value='${page.kind}';
+			document.frm.submit();
+		});
+	});
+</script>
 <title>리스트</title>
 
 </head>
@@ -79,7 +96,7 @@
 		</c:if>
 	</div>
 	<div id="button">
-			<a href="/noticewrite${board}write">글쓰기</a>
+			<a href="./noticewrite">글쓰기</a>
 	</div>
 				
 			</div>
