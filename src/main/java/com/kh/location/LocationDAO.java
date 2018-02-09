@@ -33,7 +33,7 @@ public class LocationDAO {
 		return sqlSession.selectList(NAMESPACE+"selectList");
 	}
 	
-	public int locationTotalCount() throws Exception{
+	public int locationTotalCount(ListData listData) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"totalCount");
 	}
 

@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
 import com.kh.util.FileSaver;
+import com.kh.util.ListData;
 
 @Service
 public class LocationService {
@@ -50,9 +51,9 @@ public class LocationService {
 		return 0;
 	}
 	
-	public List<LocationDTO> locationList() throws Exception{
-		int totalCount=locationDAO.locationTotalCount();
-		List<LocationDTO> ar=locationDAO.locationList(null);
+	public List<LocationDTO> locationList(ListData listData) throws Exception{
+		int totalCount=locationDAO.locationTotalCount(listData);
+		List<LocationDTO> ar=locationDAO.locationList(listData);
 		return null;
 	}
 	
