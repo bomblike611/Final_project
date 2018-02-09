@@ -1,4 +1,4 @@
-package com.hj.recommend;
+package com.kh.recommend;
 
 public class RecommendDAO {
 
