@@ -21,7 +21,13 @@
   </select>
   
   <select id="selectList" resultType="LocationDTO" parameterType="ListData">
-  select * from (select rownum R,L.* from (select * from location order by num desc where ) L)
+  select * from (select rownum R,L.* from (select * from location order by num desc where 
+  <if test="kind == 'loc_name'">
+  </if>
+  <if test="kind == 'area'">
+  
+  </if>
+  ) L)
   </select>
   
   </mapper>
