@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.member.MemberDTO;
 import com.kh.member.MemberService;
+import com.kh.spon.SingerDTO;
 
 @Controller
 @RequestMapping(value="/member/**")

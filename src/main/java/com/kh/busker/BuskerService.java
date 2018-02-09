@@ -1,4 +1,4 @@
-package com.kh.donation;
+package com.kh.busker;
 
 import java.util.List;
 
@@ -6,14 +6,15 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.spon.SingerDTO;
 @Service
-public class DonationService {
+public class BuskerService {
 
 	@Inject
-	private DonationDAO donationDAO;
+	private BuskerDAO buskerDAO;
 	
 	public List<SingerDTO> buskerList(){
-		return donationDAO.buskerList();
+		return buskerDAO.buskerList();
 	}
 	
 }

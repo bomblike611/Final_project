@@ -24,7 +24,9 @@
 	<context:component-scan base-package="com.kh.busk" />
 	<context:component-scan base-package="com.kh.member" />
 	<context:component-scan base-package="com.kh.cal" />
-	<context:component-scan base-package="com.kh.donation" />
+	<context:component-scan base-package="com.kh.spon" />
+	<context:component-scan base-package="com.kh.busker" />
+	
 
 	
 </beans:beans>

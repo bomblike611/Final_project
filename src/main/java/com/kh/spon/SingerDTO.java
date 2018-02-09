@@ -1,4 +1,4 @@
-package com.kh.donation;
+package com.kh.spon;
 
 public class SingerDTO {
 	

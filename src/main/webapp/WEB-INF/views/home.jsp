@@ -26,6 +26,7 @@
 
 <a href="./calender/month">month</a>
 <a href="./calender/memo">memo</a>
-<a href="./donation/buskerList">busker</a>
+<a href="./busker/buskerList">busker</a>
+<a href="./ranking/rankingView">ranking</a>
 </body>
 </html>

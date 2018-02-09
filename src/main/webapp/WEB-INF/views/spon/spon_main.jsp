@@ -22,13 +22,13 @@
 			kind = "정기후원";
 			$("#regular").css({"background":"#000","color":"white"});
 			$("#temporary").css({"background":"white","color":"#000"});
-			$("#amount").html("<div class='money' title='30000'>3만원</div><div class='money' title='20000'>2만원</div><div class='money' title='10000'>1만원</div><div class='money' title=''>기타 금액<input type='number' id='etc'><span>원</span></div>");
+			$("#amount").html("<div class='money' title='30000'>3만원</div><div class='money' title='20000'>2만원</div><div class='money' title='10000'>1만원</div><div class='money' title=''>기타 금액<input type='number' class='member_info' id='etc'><span>원</span></div>");
 		});
 		$("#temporary").click(function(){
 			kind = "일시후원";
 			$("#regular").css({"background":"#fafafa","color":"#000"});
 			$("#temporary").css({"background":"#000","color":"#fafafa"});
-			$("#amount").html("<div class='money' title='50000'>5만원</div><div class='money' title='30000'>3만원</div><div class='money' title='20000'>2만원</div><div class='money' title=''>기타 금액<input type='number' id='etc'><span>원</span></div>");
+			$("#amount").html("<div class='money' title='50000'>5만원</div><div class='money' title='30000'>3만원</div><div class='money' title='20000'>2만원</div><div class='money' title=''>기타 금액<input type='number' class='member_info' id='etc'><span>원</span></div>");
 		}); 
 		$("#amount").on("click",".money",function(){
 			money=$(this).attr("title");
@@ -38,7 +38,7 @@
 		$("#spon_main").on("click","#next",function(){
 			if(!myprogress){
 				if((kind=="정기후원" && money>=5000)||(kind=="일시후원" && money>=10000)){
-				$.post("./spon_main",{kind:kind, money:money},function(data){
+				$.post("./spon",{kind:kind, money:money},function(data){
 					$("#spon_main").html(data);
 				});
 				$("#myprogress").css("width", "70%");
@@ -148,7 +148,7 @@
 							<div class="money" title="30000">3만원</div>
 							<div class="money" title="20000">2만원</div>
 							<div class="money" title="10000">1만원</div>
-							<div class="money" title="">기타 금액<input type="number" id="etc"><span>원</span></div>
+							<div class="money" title="">기타 금액<input type="number" class="member_info" id="etc"><span>원</span></div>
 						</div>
 						<button class="nextBtn" id="next">다음 -></button>
 					</div>
