@@ -46,7 +46,7 @@ body {
   padding: 40px 30px;
 }
 .row:nth-child(2), .row:nth-child(8), .row:nth-child(10) {
-  background: #134A46;
+  background: #eae7e7;
 }
 .row:nth-child(3), .row:nth-child(7) {
   background: #377D6A;
@@ -232,5 +232,9 @@ body {
 }
 #do:hover{
 	background-color: #582d32;
+}
+#page{
+	width: 50%;
+	margin: auto;
 }
 

@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.util.ListData;
 import com.kh.busking.BuskingDTO;
+import com.kh.location.LocationDTO;
+import com.kh.location.LocationService;
 
 @Controller
 @RequestMapping(value="/calendar/**")
@@ -29,8 +32,10 @@ public class CalController {
 	}
 	
 	@RequestMapping(value="search")
-	public void search() throws Exception{
-		
+	public ModelAndView search(ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("page", listData);
+		return mv;
 	}
 
 }

@@ -19,10 +19,9 @@
 		$('.page').click(function(){
 			var cur=$(this).attr("title");
 			document.frm.curPage.value=cur;
-			document.frm.sing.value='${page.sing}';
-			document.frm.fromDate.value='${page.fromDate}';
-			document.frm.toDate.value='${page.toDate}';
-			document.frm.place.value='${page.place}';
+			document.frm.sing.value='${page.search}';
+			document.frm.place.value='${page.kind}';
+			documnet.frm.submit();
 		});
 		
 	});
@@ -36,24 +35,15 @@
 <!--================================ 서치부분 ================================-->
 		<div id="sec">
 					<form id="frm" name="frm" action="search" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="curPage" value="1">
 				<div class="row">
-						<span> 
-							<input name="sing" class="balloon" id="sing" type="text" placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label>
-						</span>
-						<span>
-							<input name="fromDate" class="balloon" id="fromDate" type="date" /><label for="Fromdate">From date</label>
-						</span>
+					<input type="hidden" name="curPage" value="1">
+						<span><input name="search" class="balloon" id="sing" type="text" placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label></span>
+						<span><input name="fromDate" class="balloon" id="fromDate" type="date" /><label for="Fromdate">From date</label></span>
 						~
-						<span>
-							<input name="toDate" class="balloon" id="toDate" type="date" value="2018-02-28"/><label for="toDate">To date</label>
-						</span>
-						<span> 
-							<input name="place" class="balloon" id="place" type="text" placeholder="Seoul, Hongdae, CGV..." /><label for="place">Place</label>
-						</span>
+						<span><input name="toDate" class="balloon" id="toDate" type="date" value="2018-02-28"/><label for="toDate">To date</label></span>
+						<span><input name="kind" class="balloon" id="place" type="text" placeholder="Seoul, Hongdae, CGV..." /><label for="place">Place</label></span>
 				
-							<input type="submit" id="btn" value="Search" style="cursor: pointer;">
-						
+						<input type="submit" id="btn" value="Search" style="cursor: pointer;">
 				</div>
 				
 <!--================================ 보여지는 폼 ================================-->
@@ -83,11 +73,11 @@
 
 		</div>
 <!--================================ 페이징처리 ================================-->
-		<div>
+		<div id="page">
 			<c:if test="${page.curBlock > 1}">
 				<span class="page" title="${page.startNum-1}">《</span>
 			</c:if>
-			<c:forEach begin="${page.startNum}" end="${page.lastNum}"var="i">
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<span class="page" title="${i}">${i}</span>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock }">
