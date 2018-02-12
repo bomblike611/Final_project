@@ -6,11 +6,9 @@
 		padding: 0;
 }
 
-
-#write {
-	padding-top: 110px;
-    overflow: hidden;
-    padding-bottom: 150px;
-    height: 1350px;
-	text-align: center;
+#ex{
+	display: none;
+} 
+.remove{
+	cursor: pointer;
 }
