@@ -6,7 +6,7 @@
   
   <mapper namespace="noticeMapper">
   	<insert id="insert" parameterType="NoticeDTO">
-  		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, sysdate)
+  		insert into notice values(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate)
   	</insert>
   	
   </mapper>

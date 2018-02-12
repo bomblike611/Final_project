@@ -6,13 +6,9 @@
 		padding: 0;
 }
 
-
-#write-conainer {
-	padding-top: 110px;
-    overflow: hidden;
-    padding-bottom: 150px;
-    height: 1350px;
-	text-align: center;
-	background-color: #A8A8A8;
+#ex{
+	display: none;
+} 
+.remove{
+	cursor: pointer;
 }
-
