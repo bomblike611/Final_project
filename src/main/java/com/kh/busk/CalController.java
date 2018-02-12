@@ -32,10 +32,8 @@ public class CalController {
 	}
 	
 	@RequestMapping(value="search")
-	public ModelAndView search(ListData listData) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("page", listData);
-		return mv;
+	public void search(ListData listData) throws Exception{
+		
 	}
 
 }
