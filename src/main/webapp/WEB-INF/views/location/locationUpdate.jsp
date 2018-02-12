@@ -46,7 +46,7 @@ $(function(){
 			</div>
 			<div id="WriteForm">
 				<div id="realForm">
-					<form action="locationUpdate" method="post">
+					<form action="locationUpdate" method="post" enctype="multipart/form-data">
 						<table id="formdata">
 							<tr>
 								<td><span style="color:red;">*</span>장소명</td>

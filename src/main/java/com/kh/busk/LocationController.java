@@ -1,9 +1,12 @@
 package com.kh.busk;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,19 +29,28 @@ public class LocationController {
 	
 	@RequestMapping(value="locationWrite",method=RequestMethod.POST)
 	public String locationWrite(LocationDTO locationDTO,MultipartFile [] file,HttpSession session) throws Exception{
-		System.out.println(file.length);
 		int result=locationService.locationInsert(locationDTO, session, file);
-		System.out.println(result);
 		return "redirect:./locationList";
 	}
 	
 	@RequestMapping(value="locationList")
-	public void locationList(ListData listData) throws Exception{
-		
+	public ModelAndView locationList(ListData listData) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		listData.setPerPage(6);
+		mv=locationService.locationList(listData,mv);
+		mv.setViewName("location/locationList");
+		return mv;
 	}
 	
-	@RequestMapping(value="locationUpdate")
-	public void locationUpdate() throws Exception{
+	@RequestMapping(value="locationUpdate",method=RequestMethod.GET)
+	public void locationUpdate(int num,Model model) throws Exception{
+		LocationDTO locationDTO=locationService.locationView(num);
+		model.addAttribute("view", locationDTO);
+	}
+	
+	
+	@RequestMapping(value="locationUpdate",method=RequestMethod.POST)
+	public void locationUpdate(LocationDTO locationDTO,HttpSession session,MultipartFile [] file) throws Exception{
 		
 	}
 	@RequestMapping(value="locationMap")

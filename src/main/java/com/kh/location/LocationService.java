@@ -8,11 +8,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
 import com.kh.util.FileSaver;
 import com.kh.util.ListData;
+import com.kh.util.PageMaker;
 
 @Service
 public class LocationService {
@@ -51,10 +53,19 @@ public class LocationService {
 		return 0;
 	}
 	
-	public List<LocationDTO> locationList(ListData listData) throws Exception{
+	public ModelAndView locationList(ListData listData,ModelAndView mv) throws Exception{
 		int totalCount=locationDAO.locationTotalCount(listData);
+		PageMaker pageMaker=new PageMaker();
+		pageMaker.pageMaker(totalCount, listData);
+		List<FileDTO> fileAr=fileDAO.selectList();
 		List<LocationDTO> ar=locationDAO.locationList(listData);
-		return null;
+		mv.addObject("page", listData);
+		mv.addObject("loc_list", ar);
+		mv.addObject("files", fileAr);
+		return mv;
+	}
+	public LocationDTO locationView(int num) throws Exception{
+		return locationDAO.locationView(num);
 	}
 	
 }

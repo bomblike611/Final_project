@@ -102,8 +102,8 @@ select{
 	
 }
 .list_item> img{
-	width: 500px;
-	height: 350px;
+	width: 90%;
+	height: 80%;
 	margin: 5%;
 	overflow: hidden;
 }
