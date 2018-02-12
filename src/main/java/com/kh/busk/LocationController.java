@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.file.FileDAO;
+import com.kh.file.FileDTO;
 import com.kh.location.LocationDTO;
 import com.kh.location.LocationService;
 import com.kh.util.ListData;
@@ -22,6 +24,8 @@ public class LocationController {
 	
 	@Inject
 	private LocationService locationService;
+	@Inject
+	private FileDAO fileDAO;
 	
 	@RequestMapping(value="locationWrite",method=RequestMethod.GET)
 	public void locationWrite() throws Exception{	
@@ -55,6 +59,27 @@ public class LocationController {
 	}
 	@RequestMapping(value="locationMap")
 	public void locationMap() throws Exception{
+		
+	}
+	@RequestMapping(value="locationView")
+	public void locationView(int num,Model model) throws Exception{
+		LocationDTO locationDTO=locationService.locationView(num);
+		List<FileDTO> ar=fileDAO.selectList();
+		model.addAttribute("view", locationDTO);
+		model.addAttribute("files", ar);
+	}
+	
+	@RequestMapping(value="locationDelete")
+	public void locationDelete(LocationDTO locationDTO,HttpSession session) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		
+		int result=locationService.locationDelete(locationDTO, session);
+		String message="fail";
+		if(result>0){
+			mv.
+		}else{
+			
+		}
 		
 	}
 	

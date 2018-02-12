@@ -19,6 +19,7 @@ public class FileDAO {
 	public int insert(FileDTO fileDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"insert", fileDTO);
 	}
+	
 	public List<FileDTO> selectList() throws Exception{
 		return sqlSession.selectList(NAMESPACE+"selectList");
 	}

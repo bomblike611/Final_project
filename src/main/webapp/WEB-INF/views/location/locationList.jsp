@@ -10,6 +10,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+		function locationView(num){
+			location.href="locationView?num="+num;
+		}
 	$(function() {
 		$("#adminWrite").click(function() {
 			location.href = "./locationWrite";
@@ -22,6 +25,7 @@
 			document.frm.kind.value='${page.kind}';
 			document.frm.submit();
 		});
+		
 		
 	});
 </script>
@@ -60,7 +64,7 @@
 							</c:forEach>
 							<h3>${l.loc_name}</h3>
 							<p>${l.area}</p>
-							<div class="link">Link</div></li>
+							<div class="link" onclick="locationView(${l.num})">Link</div></li>
 					</c:forEach>
 				</ul>
 			</div>

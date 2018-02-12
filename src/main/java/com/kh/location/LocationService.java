@@ -18,12 +18,12 @@ import com.kh.util.PageMaker;
 
 @Service
 public class LocationService {
-	
+
 	@Inject
 	private LocationDAO locationDAO;
 	@Inject
 	private FileDAO fileDAO;
-	
+
 	public int locationInsert(LocationDTO locationDTO,HttpSession session,MultipartFile [] file) throws Exception{
 		String filepath=session.getServletContext().getRealPath("resources/upload");
 		File f=new File(filepath);
@@ -41,18 +41,33 @@ public class LocationService {
 			fileDTO.setTeamName("null");
 			fileDAO.insert(fileDTO);
 		}
-		
+
 		return locationDAO.locationInsert(locationDTO);
 	}
-	
+
 	public int locationUpdate(LocationDTO locationDTO,HttpSession session,MultipartFile [] file) throws Exception{
+		FileSaver fileSaver = new FileSaver();
+		String filepath = session.getServletContext().getRealPath("resources/upload");
+		File f = new File(filepath);
+		if(!f.exists()){
+			f.mkdir();
+		}
+		
 		return 0;
 	}
-	
-	public int locationDelete(LocationDTO locationDTO) throws Exception{
+
+	public int locationDelete(LocationDTO locationDTO,HttpSession session) throws Exception{
+		List<FileDTO> ar=fileDAO.selectList();
+		String filepath = session.getServletContext().getRealPath("resources/upload");
+		FileSaver fileSaver=new FileSaver();
+		for(FileDTO fileDTO: ar){
+			if(fileDTO.getLoc_name().equals(locationDTO.getLoc_name())){
+				fileSaver.fileDelete(filepath, fileDTO.getFname());			
+			}
+		}
 		return 0;
 	}
-	
+
 	public ModelAndView locationList(ListData listData,ModelAndView mv) throws Exception{
 		int totalCount=locationDAO.locationTotalCount(listData);
 		PageMaker pageMaker=new PageMaker();
@@ -65,7 +80,8 @@ public class LocationService {
 		return mv;
 	}
 	public LocationDTO locationView(int num) throws Exception{
+
 		return locationDAO.locationView(num);
 	}
-	
+
 }
