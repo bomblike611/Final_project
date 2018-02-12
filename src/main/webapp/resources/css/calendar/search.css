@@ -2,6 +2,9 @@
 #searchH {
 	background-color: #494750;
 }
+.page{
+	cursor: pointer;
+}
 /* dld */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
 * {

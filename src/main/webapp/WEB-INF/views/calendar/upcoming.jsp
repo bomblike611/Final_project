@@ -10,7 +10,7 @@
 $(function(){
 
 	$("#show").click(function(){
-		$("#yoilbox").slideDown("slow");
+		$("#yoilbox2").slideDown("slow");
 	});
 });
 
@@ -20,7 +20,7 @@ $(function(){
 	<%@ include file="../temp/header.jsp"%>
 	<section id="main">
 		<%@ include file="./calHeader.jsp"%>
-				<!--================================ 일정리스트 시작 ================================-->
+<!--================================ 사진 부분 ================================-->
 				<div class="imgbox">
 					<img alt="" src="../resources/images/calendar_img/4.jpg" style="width: 100%" height="100%">
 					
@@ -28,18 +28,18 @@ $(function(){
 						<div id="hd">Upcoming Busk</div>
 						
 		 			<div class="yo">
-					<p>25 FEB
-					${month.busk_date}
-					</p>
+						<p>25 FEB
+						${month.busk_date}
+						</p>
 					</div>
 					
 					<div id="ga">
-					<p>심각한 개구리
-					${month.busk_date}
-					</p>
+						<p>심각한 개구리
+						${month.busk_date}
+						</p>
 					</div>	
 				</div>
-				
+<!-- ================================ 그레이박스 부분 ================================ -->				
 				<div class="imgbox" id="graybox">
 					<div class="si">
 						<ul>
@@ -54,14 +54,14 @@ $(function(){
 						</ul>				
 					</div>
 				</div>
-				
+<!-- ================================ 보이는 부분 ================================ -->			
 				<div class="imgbox"  id="yoilbox">
 					<div class="yo" id="feb">
 						<p>26 FEB
 						${month.busk_date}
 						</p>
 					</div>
-					<div id="yobup">
+					<div class="yobup">
 						<ul>
 							<li>
 							심각한 개구리 ${month.busk_date}
@@ -81,10 +81,35 @@ $(function(){
 						</ul>				
 					</div>
 				</div>
+<!-- ================================ 가려지는 부분 ================================ -->
+				<div class="imgbox"  id="yoilbox2">
+					<div class="yo" id="feb2">
+						<p>03 MAR
+						${month.busk_date}
+						</p>
+					</div>
+					<div class="yobup">
+						<ul>
+							<li>
+							심각한 개구리 ${month.busk_date}
+							</li>
+						</ul>
+					</div>
+					<div class="si" id="si2">
+						<ul>
+							<li>
+							<img src="../resources/images/calendar_img/clock.png">
+							<span>시간: ${month.busk_date}</span>
+							</li>
+							<li>
+							<img src="../resources/images/calendar_img/location.png">
+							<span>위치: ${month.busk_date}</span>
+							</li>
+						</ul>				
+					</div>
+				</div>
+<!-- ================================ 더보기 ================================ -->
 					<button id="show">더보기</button>
-				<!-- 일정리스트 끝 -->
-
-			<!-- ================================ 연습장 ================================ -->
 
 	</section>
 </body>
