@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#yoilbox{
+#yoilbox2{
 	display: none;
 }
 
@@ -81,11 +81,12 @@
 }
 /*========================== 그레이박스↑ =========================*/
 
-#yoilbox{
+#yoilbox, #yoilbox2{
 	height: 80px;
 	margin-top: 50px;
 }
-#feb{
+
+#feb, #feb2{
 	font-size: 300%;
 	font-weight: bold;
 	letter-spacing: -1px;
@@ -98,7 +99,7 @@
 	border-right: 2px solid black;
 
 }
-#yobup{
+.yobup{
 	width: 87.8%;
 	height: 39px;
 	font-weight: bold;
@@ -108,7 +109,7 @@
 	top: 0;
 }
 
-#yobup li{
+.yobup li{
 	list-style-type: none;
 	margin-top: 10px;
 	margin-left: 2%;
@@ -116,7 +117,7 @@
 	color: black;
 }
 
-#si1{
+#si1, #si2{
 	width: 87.9%;
 	height: 39px;
 	background-color: #eae7e7;
@@ -125,7 +126,8 @@
 	top: 41px;
 	left: 10.1%;
 }
-#si1 li{
+
+#si1 li, #si2 li{
 	color: black;
 	margin-top: 5px;
 	margin-left: 2%;
@@ -136,12 +138,13 @@
 	height: 30px;
 	margin: auto;
 	margin-top: 20px;
-	background-color: #582d32;
-	outline-color: #582d32;
-	border-color: #582d32;
+	background-color: #c2bcb9;
+	outline-color: #c2bcb9;
+	border-color: #c2bcb9;
 	position: absolute;
 	left: 15%;
-	color: #f6f5f1;
+	color: #28272c;
+	font-weight: bold;
 }
 
 
