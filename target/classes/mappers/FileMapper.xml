@@ -10,8 +10,28 @@
   			insert into files values(#{loc_name}, #{teamname},#{num},#{fname}, #{oname})
   		</insert>
   		
+  		<select id="selectList" resultType="FileDTO">
+  			select * from files
+  		</select>
   		
   		
+  		<delete id="delete" parameterType="FileDTO">
+  		delete files 
+  		<choose>
+  		<when test="fname!=null">
+  		where fname=#{fname}
+  		</when>
+  		<when test="loc_name != 'null'">
+  		where loc_name=#{loc_name}
+  		</when>
+  		<when test="teamname != 'null'">
+  		where teamname=#{teamname}
+  		</when>
+  		<when test="num != 0">
+  		where num=#{num}
+  		</when>
+  		</choose>
+  		</delete>
   		
   		
   	</mapper>

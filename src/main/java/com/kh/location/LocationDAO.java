@@ -30,11 +30,14 @@ public class LocationDAO {
 	}
 	
 	public List<LocationDTO> locationList(ListData listData) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"selectList");
+		return sqlSession.selectList(NAMESPACE+"selectList",listData);
 	}
 	
-	public int locationTotalCount() throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"totalCount");
+	public int locationTotalCount(ListData listData) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"totalCount",listData);
+	}
+	public LocationDTO locationView(LocationDTO locationDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"locationView", locationDTO);
 	}
 
 }

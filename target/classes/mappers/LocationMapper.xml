@@ -16,12 +16,29 @@
   delete location where num=#{num}
   </delete>
   
-  <select id="totalCount">
+  <select id="totalCount" resultType="int" parameterType="ListData">
   select nvl(count(num),0) from location
+  <if test="kind == 'loc_name'">
+  where loc_name LIKE '%'||#{search}||'%'
+  </if>
+  <if test="kind == 'area'">
+  where area LIKE '%'||#{search}||'%'
+  </if>
   </select>
   
-  <select id="selectList" resultType="LocationDTO">
-  select * from (select rownum R,L.* from (select * from location order by num desc where ) L)
+  <select id="selectList" resultType="LocationDTO" parameterType="ListData">
+  select * from (select rownum R,L.* from (select * from location 
+  <if test="kind == 'loc_name'">
+  where loc_name LIKE '%'||#{search}||'%'
+  </if>
+  <if test="kind == 'area'">
+  where area LIKE '%'||#{search}||'%'
+  </if>
+  order by num desc ) L) where R between #{startRow} and #{lastRow}
+  </select>
+  
+  <select id="locationView" resultType="LocationDTO" parameterType="LocationDTO">
+  select * from location where num=#{num}
   </select>
   
   </mapper>

@@ -4,6 +4,18 @@ body{
 	background-color: #8C8C8C;
 }
 
+#pagination{
+color: white;
+font-weight: bold;
+text-align: center;
+width: 30%;
+height: 30px;
+margin: 0 auto;
+}
+#pagination > span{
+	margin-bottom: 50px;
+}
+
 #adminWrite{
 	margin: 5px auto;
 	width: 8%;
@@ -102,8 +114,8 @@ select{
 	
 }
 .list_item> img{
-	width: 500px;
-	height: 350px;
+	width: 90%;
+	height: 80%;
 	margin: 5%;
 	overflow: hidden;
 }
