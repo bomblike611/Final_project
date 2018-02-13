@@ -2,23 +2,31 @@ package com.kh.busk;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.iu.util.ListData;
-import com.kh.busking.BuskingDTO;
-import com.kh.location.LocationDTO;
-import com.kh.location.LocationService;
+import com.kh.cal.CalDTO;
+import com.kh.cal.CalService;
+import com.kh.util.ListData;
 
 @Controller
 @RequestMapping(value="/calendar/**")
 public class CalController {
 	
-	@RequestMapping(value="upcoming")
-	public void upcoming() throws Exception{
-		/*ModelAndView mv = new ModelAndView();
-		List<BuskingDTO> ar = */
+	@Inject
+	private CalService calservice;
+	
+	@RequestMapping(value="search")
+	public ModelAndView search(ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<CalDTO> ar = calservice.selectList(listData);
+		mv.addObject("list", ar);
+		mv.addObject("page", listData);
+		mv.setViewName("calendar/search");
+		return mv;
 	}
 	
 	@RequestMapping(value="month")
@@ -31,9 +39,14 @@ public class CalController {
 		
 	}
 	
-	@RequestMapping(value="search")
-	public void search(ListData listData) throws Exception{
-		
+	@RequestMapping(value="upcoming")
+	public ModelAndView upcoming(ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<CalDTO> ar = calservice.selectList(listData);
+		mv.addObject("list", ar);
+		mv.addObject("page", listData);
+		mv.setViewName("calendar/upcoming");
+		return mv;
 	}
 
 }

@@ -34,7 +34,7 @@
 
 <!--================================ 서치부분 ================================-->
 		<div id="sec">
-					<form id="frm" name="frm" action="" method="POST" enctype="multipart/form-data">
+					<form id="frm" name="frm" action="search">
 				<div class="row">
 					<input type="hidden" name="curPage" value="1">
 						<span><input name="search" class="balloon" id="sing" type="text" placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label></span>
@@ -47,17 +47,17 @@
 				</div>
 				
 <!--================================ 보여지는 폼 ================================-->
-			<%-- 	<c:forEach items="${list}" var="dto"> --%>
-					<div id="singer">ACOUSTIC ${dto.position}</div>
-					<div id="singerle">17 OCT ${dto.reg_date}</div>
-					<div id="singerri1">Serious Frog ${dto.teamname}</div>
+			 <c:forEach items="${list}" var="dto">
+					<div id="singer">${dto.contents}</div>
+					<div id="singerle">${dto.busk_date}</div>
+					<div id="singerri1">${dto.teamname}</div>
 					<div id="singerri2">
 						<div id="singerri3">
 							<div id="singerri4">
 								<div id="pic">
 									<p>사진</p>
 								</div>
-									<p>SOMEWHERE IN NY</p>
+									<p>${dto.location}</p>
 									<p>from 27/02/18 to 27/02/18</p>
 									<p>19:00 to 21:00</p>
 									<p>Somewhere 128, New York</p>
@@ -68,7 +68,7 @@
 								
 						</div>
 					</div>
-				<%-- </c:forEach> --%>
+				 </c:forEach>
 					</form>
 
 		</div>
@@ -91,148 +91,41 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44dc488bb7ee1b14cd2765f0530ea05b&libraries=services"></script>
 	<script>
 $(function(){
-	var addr="";
-	var name="";
-	$("#main").ready(function(){
-		$("#main").click(function(){
-		addr= $("#area").val();
-		name= $("#area").attr("title");
-		
-		
-	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-	var options = { //지도를 생성할 때 필요한 기본 옵션
-		center: new daum.maps.LatLng(37.545875, 127.107935), //지도의 중심좌표.
-		level: 5 //지도의 레벨(확대, 축소 정도)
-	};
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new daum.maps.LatLng(37.545875, 127.107935), // 지도의 중심좌표
+        level: 4, // 지도의 확대 레벨
+        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+    }; 
 
-	var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+// 지도를 생성한다 
+var map = new daum.maps.Map(mapContainer, mapOption); 
 
-	
-	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-	var zoomControl = new daum.maps.ZoomControl();
-	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+// 지도 타입 변경 컨트롤을 생성한다
+var mapTypeControl = new daum.maps.MapTypeControl();
 
-	
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new daum.maps.services.Geocoder();
+// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);	
 
-	// 주소로 좌표를 검색합니다
-	if(addr==""){
-		geocoder.addressSearch("서울특별시 광진구 구천면로 20 광진구공연장", function(result, status) {
+// 지도에 확대 축소 컨트롤을 생성한다
+var zoomControl = new daum.maps.ZoomControl();
 
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === daum.maps.services.Status.OK) {
+// 지도의 우측에 확대 축소 컨트롤을 추가한다
+map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
-		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:100px;text-align:center;padding:3px 0;">yes24라이브홀</div>'
-		        });
-		        infowindow.open(map, marker);
-
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-		    } 
-		});    
-	}else{
-	geocoder.addressSearch(addr, function(result, status) {
-
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === daum.maps.services.Status.OK) {
-
-	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new daum.maps.Marker({
-	            map: map,
-	            position: coords
-	        });
-
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:100px;text-align:center;padding:3px 0;">'+name+'</div>'
-	        });
-	        infowindow.open(map, marker);
-
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords);
-	    } 
-	});    
-	}
-		});
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center: new daum.maps.LatLng(37.545875, 127.107935), //지도의 중심좌표.
-			level: 5 //지도의 레벨(확대, 축소 정도)
-		};
-
-		var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-	
-	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-	var zoomControl = new daum.maps.ZoomControl();
-	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new daum.maps.services.Geocoder();
-
-	// 주소로 좌표를 검색합니다
-	if(name==""){
-		geocoder.addressSearch("서울특별시 광진구 구천면로 20 광진구공연장", function(result, status) {
-
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === daum.maps.services.Status.OK) {
-
-		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:180px;text-align:center;padding:4px 0;">yes24라이브홀</div>'
-		        });
-		        infowindow.open(map, marker);
-
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-		    } 
-		});    
-	}else{
-	geocoder.addressSearch(addr, function(result, status) {
-
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === daum.maps.services.Status.OK) {
-
-	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new daum.maps.Marker({
-	            map: map,
-	            position: coords
-	        });
-
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:180px;text-align:center;padding:4px 0;">'+name+'</div>'
-	        });
-	        infowindow.open(map, marker);
-
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords);
-	    } 
-	});    
-	}
-	});
+// 커스텀 오버레이를 생성하고 지도에 표시한다
+var customOverlay = new daum.maps.CustomOverlay({
+	map: map,
+	content: '<div style="padding:0 5px;background:#fff;">yes24라이브홀</div>', 
+	position: new daum.maps.LatLng(37.545875, 127.107935), // 커스텀 오버레이를 표시할 좌표
+	xAnchor: 0.5, // 컨텐츠의 x 위치
+	yAnchor: 0 // 컨텐츠의 y 위치
+});
+// 지도에 마커를 생성하고 표시한다
+var marker = new daum.maps.Marker({
+    position: new daum.maps.LatLng(37.545875, 127.107935), // 마커의 좌표
+    map: map // 마커를 표시할 지도 객체
+});
 
 
 });    
