@@ -12,6 +12,6 @@
 		<typeAlias type="com.kh.spon.SingerDTO" alias="SingerDTO"/>
 		<typeAlias type="com.kh.spon.SponDTO" alias="SponDTO"/>
 		<typeAlias type="com.kh.notice.NoticeDTO" alias="NoticeDTO"/>
-
+		
 	</typeAliases>
   </configuration>

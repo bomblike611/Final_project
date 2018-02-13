@@ -4,38 +4,38 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.annotations.Update;
 import org.springframework.aop.ThrowsAdvice;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 
 import com.kh.notice.NoticeDTO;
-import com.kh.notice.NoticeSerivce;
+import com.kh.notice.NoticeService;
 import com.kh.util.ListData;
 
 @Controller
 @RequestMapping(value="/notice/**")
 public class NoticeController {
-	
 	@Inject
-	private NoticeSerivce noticeService;
+	private NoticeService noticeService;
 	
 @RequestMapping(value="noticelist")
-	public void noticelist(ListData listData) throws Exception{
+	public ModelAndView noticelist(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<NoticeDTO> ar = noticeService.selectList(listData);
 		
 		mv.addObject("list", ar);
 		mv.addObject("page", listData);
-		mv.addObject("notice", "notice");
 		mv.setViewName("notice/noticeList");
 		return mv;
 	}
 @RequestMapping(value="noticewrite", method=RequestMethod.GET)
-	public void noticewrite() {
+	public String insert() throws Exception{
 		
 	}
 
@@ -48,5 +48,9 @@ public void noticewrite(NoticeDTO noticeDTO) {
 		e.printStackTrace();
 	}
 }
-
 }
+
+	
+
+
+

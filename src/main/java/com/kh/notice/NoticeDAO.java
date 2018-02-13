@@ -20,8 +20,20 @@ public class NoticeDAO{
 		this.sqlSession=sqlSession;
 	}
 	
+	public int totalCount(ListData listData) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
+	}
+	
 	public List<NoticeDTO> selectList(ListData listData) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"selectList", listData);
+	}
+	
+	public int update(NoticeDTO noticeDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"update",noticeDTO);
+	}
+	
+	public int delete(int num) throws Exception {
+		return sqlSession.insert(NAMESPACE+"delete",num);
 	}
 	
     public int noticeWrite(NoticeDTO noticeDTO) throws Exception {
