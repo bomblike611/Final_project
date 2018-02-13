@@ -24,8 +24,11 @@ public class MemberDAO {
 
 	
 	public int memberUpdate(MemberDTO memberDTO) throws Exception{
-		System.out.println(memberDTO.getFname());
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
+	}
+	
+	public int APIUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"APIUpdate", memberDTO);
 	}
 	
 	public int memberDelete(MemberDTO memberDTO) throws Exception{

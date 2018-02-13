@@ -59,6 +59,10 @@ public class MemberService {
 		return memberDAO.memberUpdate(memberDTO);
 	}
 	
+	public int APIUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.APIUpdate(memberDTO);
+	}
+	
 	
 	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception{
 		String filePath = session.getServletContext().getRealPath("resources/upload");

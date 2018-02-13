@@ -48,7 +48,6 @@ public class MemberController {
 	public ModelAndView memberJoin(MemberDTO memberDTO,  MultipartFile file, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result=memberService.memberJoin(memberDTO, file, session);
-		System.out.println("File : "+file);
 		if (result > 0) {
 			mv.addObject("message", "회원가입 완료");
 			mv.addObject("path", "./memberJoinOK");
@@ -61,6 +60,8 @@ public class MemberController {
 		
 		return mv;
 	}
+	
+	
 	
 	
 	@RequestMapping(value="memberLogin", method=RequestMethod.GET )
@@ -113,6 +114,35 @@ public class MemberController {
 		return mv;
 	}
 	
+	
+	@RequestMapping(value="APIUpdate", method=RequestMethod.GET)
+	public ModelAndView APIUpdate(MemberDTO memberDTO,  HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberDTO.setPw("FaceBook");
+		int result = 0;
+		MemberDTO memberDTO2 = memberService.memberLogin(memberDTO);  //memberDTO : id, name, pw   memberDTO2 : MemberDTO or null
+		if (memberDTO2 == null) {
+			result = memberService.APIUpdate(memberDTO);   // memberDTO : id, name, pw   memberDTO2 : null
+			if (result > 0) {
+				session.setAttribute("member", memberDTO);  // memberDTO : id, name, pw
+				mv.addObject("message", "Login Success");  //
+				mv.addObject("path", "./memberAPIUpdate");
+			}else{
+				mv.addObject("message", "Login Fail");
+			}
+		}else{ 												//로그인 됨
+			session.setAttribute("member", memberDTO);      
+			mv.addObject("message", "Login Success");
+			mv.addObject("path", "../");
+		}
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value="memberDelete", method=RequestMethod.POST)
 	public ModelAndView memberDelete(HttpSession session, RedirectAttributes rd) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -143,7 +173,10 @@ public class MemberController {
 	}
 	
 	
-	
+	@RequestMapping(value="memberIDSearch", method=RequestMethod.GET)
+	public void memberIDSearch() throws Exception{
+		
+	}
 	
 	
 	

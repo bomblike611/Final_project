@@ -507,8 +507,26 @@ fieldset{
 }
 
 
+.step{
+	width: 100%;
+    border-top: 1px solid #0b0205;
+    border-bottom: 1px solid #e6e5e6;
+    height: 106px;
+    margin: 35px 0 74px 0;
+    list-style: none;
+    padding : 0;
+    float: left;
+    margin-bottom: auto;
+}
 
-
+#Search{
+	font-size: 17px;
+    text-align: left;
+    text-shadow: -0.08em 0.08em #C2BCB9;
+    color: #582D32;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
 
 
 

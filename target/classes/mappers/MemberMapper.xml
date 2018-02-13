@@ -8,6 +8,10 @@
   		insert into 
   		member values(#{id}, #{pw}, #{name}, #{age}, #{email}, #{phone}, #{addr}, #{birth}, #{job}, 0, #{fname}, #{oname}, #{position}, #{sns}, 0, #{teamName})
   	</insert>
+  	
+  	<insert id="APIUpdate" parameterType="MemberDTO">
+  		insert into member (id, pw, name) values (#{id}, #{pw}, #{name})
+  	</insert>
 
   
   	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
@@ -18,6 +22,7 @@
  	<update id="memberUpdate" parameterType="MemberDTO">
  		update member set pw=#{pw}, name=#{name}, age=#{age}, email=#{email}, phone=#{phone}, addr=#{addr}, birth=#{birth}, job=#{job}, point=#{point}, fname=#{fname}, oname=#{oname}, position=#{position}, sns=#{sns}, state=null, teamname=#{teamName} where id=#{id}
  	</update>
+ 	
  	
  	<delete id="memberDelete" parameterType="MemberDTO">
  		delete member where id=#{id}
