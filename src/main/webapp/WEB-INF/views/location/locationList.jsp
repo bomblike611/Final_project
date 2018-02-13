@@ -40,7 +40,7 @@
 				<h2>Location List</h2>
 				<p>대여 가능한 장소를 찾아보세요.</p>
 				<form action="./locationList" method="post" name="frm">
-					<input type="hidden" value="" name="curPage">
+					<input type="hidden" value="1" name="curPage">
 					<div id="search">
 						<div id="search2">
 							<select name="kind">
@@ -64,12 +64,12 @@
 							</c:forEach>
 							<h3>${l.loc_name}</h3>
 							<p>${l.area}</p>
-							<div class="link" onclick="locationView(${l.num})">Link</div></li>
+							<div class="link" onclick="locationView(${l.num})">자세히 보기</div></li>
 					</c:forEach>
 				</ul>
 			</div>
 		</div>
-		<div>
+		<div id="pagination">
 			<c:if test="${page.curBlock > 1}">
 				<span class="page" title="${page.startNum-1}">[이전]</span>
 			</c:if>

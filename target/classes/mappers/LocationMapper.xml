@@ -37,7 +37,7 @@
   order by num desc ) L) where R between #{startRow} and #{lastRow}
   </select>
   
-  <select id="locationView" resultType="LocationDTO" parameterType="int">
+  <select id="locationView" resultType="LocationDTO" parameterType="LocationDTO">
   select * from location where num=#{num}
   </select>
   

@@ -16,6 +16,7 @@ import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
 import com.kh.location.LocationDTO;
 import com.kh.location.LocationService;
+import com.kh.util.FileSaver;
 import com.kh.util.ListData;
 
 @Controller
@@ -47,40 +48,68 @@ public class LocationController {
 	}
 	
 	@RequestMapping(value="locationUpdate",method=RequestMethod.GET)
-	public void locationUpdate(int num,Model model) throws Exception{
-		LocationDTO locationDTO=locationService.locationView(num);
-		model.addAttribute("view", locationDTO);
+	public void locationUpdate(LocationDTO locationDTO,Model model) throws Exception{
+		LocationDTO locationDTO2=locationService.locationView(locationDTO);
+		List<FileDTO> ar=fileDAO.selectList();
+		model.addAttribute("view", locationDTO2);
+		model.addAttribute("files", ar);
 	}
 	
 	
 	@RequestMapping(value="locationUpdate",method=RequestMethod.POST)
-	public void locationUpdate(LocationDTO locationDTO,HttpSession session,MultipartFile [] file) throws Exception{
-		
+	public ModelAndView locationUpdate(LocationDTO locationDTO,HttpSession session,MultipartFile [] file) throws Exception{
+		int result=locationService.locationUpdate(locationDTO, session, file);
+		ModelAndView mv=new ModelAndView();
+		String s="Fail";
+		if(result>0){
+			s="Success";
+		}
+		mv.addObject("message", s);
+		mv.addObject("path", "./locationView?num="+locationDTO.getNum());
+		mv.setViewName("common/result");
+		return mv;
 	}
 	@RequestMapping(value="locationMap")
 	public void locationMap() throws Exception{
 		
 	}
 	@RequestMapping(value="locationView")
-	public void locationView(int num,Model model) throws Exception{
-		LocationDTO locationDTO=locationService.locationView(num);
+	public void locationView(LocationDTO locationDTO,Model model) throws Exception{
+		LocationDTO locationDTO2=locationService.locationView(locationDTO);
 		List<FileDTO> ar=fileDAO.selectList();
-		model.addAttribute("view", locationDTO);
+		model.addAttribute("view", locationDTO2);
 		model.addAttribute("files", ar);
 	}
 	
 	@RequestMapping(value="locationDelete")
-	public void locationDelete(LocationDTO locationDTO,HttpSession session) throws Exception{
+	public ModelAndView locationDelete(LocationDTO locationDTO,HttpSession session) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		
 		int result=locationService.locationDelete(locationDTO, session);
 		String message="fail";
 		if(result>0){
-			mv.
-		}else{
-			
+			message="success";
 		}
-		
+		mv.addObject("message", message);
+		mv.addObject("path", "./locationList");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@RequestMapping(value="fileDelete")
+	public ModelAndView fileDelete(FileDTO fileDTO,HttpSession session) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		FileSaver fileSaver=new FileSaver();
+		String filepath=session.getServletContext().getRealPath("resources/upload");
+		fileSaver.fileDelete(filepath, fileDTO.getFname());
+		int result=fileDAO.Delete(fileDTO);
+		String s="fail";
+		if(result>0){
+			s="Success";
+		}
+		mv.addObject("result", s);
+		mv.setViewName("common/fileResult");
+		return mv;
 	}
 	
 }

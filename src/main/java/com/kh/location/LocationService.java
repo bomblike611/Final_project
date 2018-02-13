@@ -52,8 +52,19 @@ public class LocationService {
 		if(!f.exists()){
 			f.mkdir();
 		}
+		for(MultipartFile files : file){
+			String fname=fileSaver.saver(files, filepath);
+			FileDTO fileDTO=new FileDTO();
+			fileDTO.setFname(fname);
+			fileDTO.setOname(files.getOriginalFilename());
+			fileDTO.setLoc_name(locationDTO.getLoc_name());
+			fileDTO.setNum(0);
+			fileDTO.setTeamName("null");
+			fileDAO.insert(fileDTO);
+		}
 		
-		return 0;
+		
+		return locationDAO.locationUpdate(locationDTO);
 	}
 
 	public int locationDelete(LocationDTO locationDTO,HttpSession session) throws Exception{
@@ -62,10 +73,11 @@ public class LocationService {
 		FileSaver fileSaver=new FileSaver();
 		for(FileDTO fileDTO: ar){
 			if(fileDTO.getLoc_name().equals(locationDTO.getLoc_name())){
-				fileSaver.fileDelete(filepath, fileDTO.getFname());			
+				fileSaver.fileDelete(filepath, fileDTO.getFname());
+				int t=fileDAO.Delete(fileDTO);
 			}
 		}
-		return 0;
+		return locationDAO.locationDelete(locationDTO);
 	}
 
 	public ModelAndView locationList(ListData listData,ModelAndView mv) throws Exception{
@@ -79,9 +91,9 @@ public class LocationService {
 		mv.addObject("files", fileAr);
 		return mv;
 	}
-	public LocationDTO locationView(int num) throws Exception{
-
-		return locationDAO.locationView(num);
+	public LocationDTO locationView(LocationDTO locationDTO) throws Exception{
+		
+		return locationDAO.locationView(locationDTO);
 	}
 
 }

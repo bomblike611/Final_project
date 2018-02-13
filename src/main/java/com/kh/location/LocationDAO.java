@@ -36,8 +36,8 @@ public class LocationDAO {
 	public int locationTotalCount(ListData listData) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"totalCount",listData);
 	}
-	public LocationDTO locationView(int num) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"locationView", num);
+	public LocationDTO locationView(LocationDTO locationDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"locationView", locationDTO);
 	}
 
 }

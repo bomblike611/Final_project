@@ -15,8 +15,8 @@
 	function loc_update(num){
 		location.href="locationUpdate?num="+num;
 	}
-	function loc_delete(num){
-		location.href="locationDelete?num="+num;
+	function loc_delete(num,loc_name){
+		location.href="locationDelete?num="+num+"&loc_name="+loc_name;
 	}
 	
 	$(function(){
@@ -69,9 +69,9 @@
 					style="width: 100px; height: 100px;">
 				<h2>${view.loc_name}</h2>
 				<p>${view.area}</p>
-				<c:if test="${member.id eq 'admin'}">
-				<div class="adminWrite" onclick="loc_update(${view.num})">Update</div><div class="adminWrite" onclick="loc_delete(${view.num})">Delete</div>
-				</c:if>
+				<%-- <c:if test="${member.id eq 'admin'}"> --%>
+				<div class="adminWrite" onclick="loc_update(${view.num})">Update</div><div class="adminWrite" onclick="loc_delete(${view.num},'${view.loc_name}')">Delete</div>
+				<%-- </c:if> --%>
 			</div>
 			<br>
 			<h4>- 장소 안내</h4>
