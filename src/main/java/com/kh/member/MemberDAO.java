@@ -39,7 +39,10 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", id);
 	}
 	
-	
+	//아이디 찾기
+	public String memberIdSearch(String email) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberIdSearch", email);
+	}
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.kh.member;
 
 import java.io.File;
+import java.io.PrintStream;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ public class MemberService {
 
 	@Inject
 	private MemberDAO memberDAO;
+	private PrintStream out;
 
 	public int memberJoin(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception {
 		String filePath = session.getServletContext().getRealPath("resources/upload");
@@ -77,7 +79,23 @@ public class MemberService {
 	}
 	
 	
-	
+	//ID 찾기
+	public String memberIdSearch(String email) throws Exception{
+		String id = memberDAO.memberIdSearch(email);
+		
+		if (id == null){
+			out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		}else{
+			
+			return id;
+		}
+		
+	}
 	
 	
 	

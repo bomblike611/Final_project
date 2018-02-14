@@ -4,8 +4,10 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -120,7 +122,10 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		memberDTO.setPw("FaceBook");
 		int result = 0;
-		MemberDTO memberDTO2 = memberService.memberLogin(memberDTO);  //memberDTO : id, name, pw   memberDTO2 : MemberDTO or null
+		System.out.println("memberDTO"+memberDTO);
+		MemberDTO memberDTO2 = memberService.memberLogin(memberDTO);
+		System.out.println(memberDTO2);
+		//memberDTO : id, name, pw   memberDTO2 : MemberDTO or null
 		if (memberDTO2 == null) {
 			result = memberService.APIUpdate(memberDTO);   // memberDTO : id, name, pw   memberDTO2 : null
 			if (result > 0) {
@@ -139,7 +144,27 @@ public class MemberController {
 		return mv;
 	}
 	
+	@RequestMapping(value="memberAPIUpdate", method=RequestMethod.GET)
+	public void memberAPIUpdate() throws Exception{}
 	
+	
+	
+	@RequestMapping(value="memberAPIUpdate", method=RequestMethod.POST)
+	public ModelAndView memberAPIUpdate(MemberDTO memberDTO,  MultipartFile file, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result=memberService.memberJoin(memberDTO, file, session);
+		if (result > 0) {
+			mv.addObject("message", "회원가입 완료");
+			mv.addObject("path", "./memberJoinOK");
+			mv.setViewName("common/result");
+		}else{
+			mv.addObject("message", "회원가입 실패");
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
+		}
+		
+		return mv;
+	}
 	
 	
 	
@@ -179,9 +204,15 @@ public class MemberController {
 	}
 	
 	
+	public String memberIdSearch() throws Exception{
+		return "../redirect";
+	}
 	
-	
-	
+	@RequestMapping(value="memberIdSearch", method=RequestMethod.POST)
+	public String memberIdSearch(@RequestParam("email") String email, Model md) throws Exception{
+		md.addAttribute("id", memberService.memberIdSearch(email));
+		return "memberIdSearch";
+	}
 	
 	
 	

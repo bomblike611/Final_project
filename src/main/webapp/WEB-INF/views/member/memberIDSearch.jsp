@@ -9,14 +9,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="/busk/resources/css/member.css" rel="stylesheet">
 <script type="text/javascript">
-	$("#enter1").click(function() {
-		if ($("#name").val(this.${member.name})) {
-			
-		}
-		
-		
-	});
-
 
 
 </script>
@@ -31,7 +23,7 @@
 			</ul>
 			<span id="Search">아이디 찾기 </span>
 		</div>
-
+		<form action="./memberIdSearch" method="post">
 		<table width="1330px" height="430px" align="center">
 			<tr>
 				<td>
@@ -65,12 +57,8 @@
 											<table width="380px" height="70px" align="center" border="0"
 												style="font-size: 16px;">
 												<tr>
-													<td>이름</td>
-													<td><input type="text" id="name"></td>
-												</tr>
-												<tr>
-													<td>휴대폰</td>
-													<td><input type="text" id="phone"></td>
+													<td>이메일</td>
+													<td><input type="email" id="email"></td>
 												</tr>
 												
 												<tr id="result">
@@ -98,6 +86,7 @@
 														onClick="cancle()"></td>
 												</tr>
 											</table>
+									</form>
 										</td>
 									</tr>
 
@@ -137,12 +126,10 @@
 												<tr>
 													<td><input type="button" id="enter2" value="  찾기  "
 														align="center"
-														style="cursor: pointer; background: white; color: black; border-color: black;"
-														onClick="id_search2()"></td>
+														style="cursor: pointer; background: white; color: black; border-color: black;"></td>
 													<td><input type="button" id="cancle2" value="  취소  "
 														align="center"
-														style="cursor: pointer; background: white; color: black; border-color: black"
-														onClick="cancle()"></td>
+														style="cursor: pointer; background: white; color: black; border-color: black"></td>
 												</tr>
 											</table> <br>
 										</td>

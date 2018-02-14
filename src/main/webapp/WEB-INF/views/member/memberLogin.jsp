@@ -21,6 +21,10 @@
 		$(".JoinBtn").click(function() {
 			window.location = '/busk/member/memberAgree';
 		});
+		$("#id_search").click(function() {
+			location.href="../member/memberIDSearch";
+		});
+		
 	});
 </script>
 </head>
@@ -45,7 +49,7 @@
 							<ul class="login_info">
 								<li><input class="ck" type="checkbox" value=""
 									style="height: 12px; width: 12px;">&emsp;아이디 저장</li>
-								<li class="id_search"><a href="./memberIDSearch">아이디/비밀번호 찾기</a></li>
+								<li><input type="button" id="id_search" value="아이디/비밀번호 찾기"></li>
 							</ul>
 							<button class="login_Btn" type="submit" value="LOGIN">
 								<span>LOGIN</span>

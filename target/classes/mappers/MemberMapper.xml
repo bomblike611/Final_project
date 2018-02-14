@@ -32,4 +32,22 @@
  		select id from member where id=#{id}
  	</select>
  	
+ 	<select id="memberIdSearch" parameterType="String" resultType="MemberDTO">
+		select id from member where email = #{email}
+ 	</select>
+ 	
   </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
