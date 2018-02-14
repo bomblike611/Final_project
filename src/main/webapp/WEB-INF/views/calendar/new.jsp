@@ -6,48 +6,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -(upcoming)입니다</title>
 <link href="../resources/css/calendar/upcoming.css" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(function(){
 
-
-/* 	$("#show").click(function(){
+	$("#show").click(function(){
 		$("#yoilbox2").slideDown("slow");
-		var a = document.getElementById("show");
-		a.innerHTML="<button>닫기</button>";
-	}); */
-
+	});
+		
   	/* 공연날짜 */
  	$(".nalja").each(function(){
  		var nal=$(this).attr("title");
- 		switch(nal){
- 		case 1:
- 			if(nal=01){
- 			"JAR";
- 			}
- 			break;
- 		case 2:
- 			if(nal=02){
- 	 			"feb";
- 	 			}
- 			break;
- 		case 03:
- 			nal = "MAR";
- 			break;
- 		case 04:
- 			nal = "APR";
- 			break;
- 		case 05:
- 			nal = "MAY";
- 			break;
- 		case 06:
- 			nal = "JUN";
- 			break;
- 		}
- 
- 		$(this).html(nal.substr(5,2)); 
+ 		$(this).html(nal.substr(5,5)); 
  	});
 	
 	/* 공연시간 */
@@ -70,7 +40,7 @@
  		$(this).html(nal.substring(5,10));
  	}); */
 	
-
+});
 
 </script>
 </head>
@@ -79,30 +49,23 @@
 	<section id="main">
 		<%@ include file="./calHeader.jsp"%>
 <!--================================ 사진 부분 ================================-->
-				<form id="frm" action="upcoming">
-<%-- 				<c:forEach items="${list}" var="dto">
-				<p class="nalja" title="${dto.busk_date}"></p>
-				<p>${dto.teamname}</p>
-				<p class="siin" title="${dto.busk_date}"></p>
-				${dto.location}
-				</c:forEach> --%>
-				
+				<form id="frm" name="frm" action="upcoming">
 				<div class="imgbox">
 					<img alt="" src="../resources/images/calendar_img/4.jpg" style="width: 100%" height="100%">
 					<div id="hh"></div>
 						<div id="hd">Upcoming Busk</div>
 						
-				<c:forEach items="${list}" var="dto" varStatus="status">	
-					<c:if test="${status.first}">
+				<c:forEach items="${list}" var="dto">	
 		 			<div class="yo">
 						<p class="nalja" title="${dto.busk_date}"></p>
 					</div>
+					
 					<div id="ga">
 						<p>
 						${dto.teamname}
 						</p>
 					</div>
-							<!-- ========== 그레이박스 부분 =========== -->				
+<!-- ================================ 그레이박스 부분 ================================ -->				
 				<div class="imgbox" id="graybox">
 					<div class="si">
 						<ul>
@@ -117,13 +80,11 @@
 						</ul>				
 					</div>
 				</div>
-				</c:if>
-				</c:forEach>
+					</c:forEach>	
 				</div>
-<!-- ================================ 보이는 부분 ================================ -->
-	
-<c:forEach  items="${list}" var="dto" begin="1" end="2">
+<!-- ================================ 보이는 부분 ================================ -->			
 				<div class="imgbox"  id="yoilbox">
+				<c:forEach items="${list}" var="dto" begin="2">	
 					<div class="yo" id="feb">
 						<p class="nalja" title="${dto.busk_date}"></p>
 					</div>
@@ -144,12 +105,10 @@
 							</li>
 						</ul>				
 					</div>
-					</div>
-</c:forEach>
-				
+					</c:forEach>
+				</div>
 <!-- ================================ 가려지는 부분 ================================ -->
-<c:forEach  items="${list}" var="dto" begin="3" end="5">
- 				<div class="imgbox collapse"  id="yoilbox2">
+				<div class="imgbox"  id="yoilbox2">
 					<div class="yo" id="feb2">
 						<p class="nalja" title="${dto.busk_date}"></p>
 					</div>
@@ -170,12 +129,12 @@
 							</li>
 						</ul>				
 					</div>
-				</div> 
-				</c:forEach>
+				</div>
+				
 				</form>
 <!-- ================================ 더보기 ================================ -->
-					<!-- <button id="show">더보기</button> -->
-				<a href="#yoilbox2" class="btn btn-info" data-toggle="collapse">Simple collapsible</a>
+					<button id="show">더보기</button>
+
 	</section>
 </body>
 </html>
