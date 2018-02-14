@@ -33,7 +33,7 @@ public class BuskingController {
 		ModelAndView mv=new ModelAndView();
 		int result=buskingService.insert(buskingDTO, session, file);
 		if(result>0){
-			mv.setViewName("./buskList");
+			mv.setViewName("redirect:../busking/buskList");
 		}else{
 			mv.addObject("message", "글쓰기 실패");
 			mv.addObject("path", "./buskList");

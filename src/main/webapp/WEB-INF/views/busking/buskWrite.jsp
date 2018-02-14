@@ -29,20 +29,17 @@
 			}
 		});
 		//전송버튼
-		$("#insertBoard").click(function() {
+		$("#btn").click(function() {
 			//id가 smarteditor인 textarea에 에디터에서 대입
 			obj.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
 			//폼 submit
-			$("#frm").submit();
+			document.frm.submit();
 		});
 
 		$("#check2").click(function() {
 			$("#privateInfo").slideToggle("slow");
-		});
+		}); 
 		
-		$("#btn").click(function(){
-			document.frm.submit();
-		});
 		
 
 		var fileTarget = $('.filebox .upload-hidden');
@@ -105,6 +102,7 @@
 			</div>
 			<form action="./buskWrite" name="frm" method="post"
 				enctype="multipart/form-data">
+				<input type="hidden" name="writer" value="테스트">
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>공연명</th>
@@ -116,7 +114,7 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연지역</th>
-						<td><select name="location"><option>가게</option></select></td>
+						<td><select name="location"><option value="가게">가게</option></select></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연일자</th>
@@ -124,7 +122,7 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>참가자수</th>
-						<td><input type="text" value="0"></td>
+						<td><input type="number" name="entry" value="0"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연포스터</th>

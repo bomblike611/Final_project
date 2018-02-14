@@ -38,6 +38,8 @@ public class BuskingService {
 			fileDTO.setFname(fname);
 			fileDTO.setOname(file.getOriginalFilename());
 			fileDTO.setNum(buskingDTO.getNum());
+			fileDTO.setLoc_name("null");
+			fileDTO.setTeamName("null");
 			fileDAO.insert(fileDTO);
 		}
 		return buskingDAO.insert(buskingDTO);
@@ -70,6 +72,8 @@ public class BuskingService {
 			fileDTO.setFname(fname);
 			fileDTO.setOname(file.getOriginalFilename());
 			fileDTO.setNum(buskingDTO.getNum());
+			fileDTO.setLoc_name("null");
+			fileDTO.setTeamName("null");
 			fileDAO.insert(fileDTO);
 		}
 		
