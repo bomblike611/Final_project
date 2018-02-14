@@ -1,11 +1,17 @@
 package com.kh.notice;
 
+import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.file.FileDAO;
+import com.kh.file.FileDTO;
+import com.kh.util.FileSaver;
 import com.kh.util.ListData;
 import com.kh.util.PageMaker;
 
@@ -13,7 +19,8 @@ import com.kh.util.PageMaker;
 public class NoticeService {
 
 	@Inject
-	private NoticeDAO noticeDAO; 
+	private NoticeDAO noticeDAO;
+	private FileDAO fileDAO; 
 	
 	public int noticeWrite(NoticeDTO noticeDTO) throws Exception{
 		
@@ -26,10 +33,38 @@ public class NoticeService {
 			pageMaker.pageMaker(totalCount, listData);
 			return noticeDAO.selectList(listData);
 		}
-
-		public int update(NoticeDTO noticeDTO) throws Exception {
-			return noticeDAO.update(noticeDTO);
+	
+	public NoticeDTO selectOne(int num) throws Exception {
+		return noticeDAO.selectOne(num);
+	}
+	
+	public int insert(NoticeDTO noticeDTO,MultipartFile [] file, HttpSession session) throws Exception{
+		
+		noticeDAO.noticeWrite(noticeDTO);
+		FileSaver fileSaver = new FileSaver();
+		String filepath = session.getServletContext().getRealPath("resources/upload");
+		System.out.println(filepath);
+		File f = new File(filepath);
+		if(!f.exists()){
+			f.mkdirs();
 		}
+List<String> names = fileSaver.saver(file, filepath);
+		
+		for(int i=0;i<names.size();i++){
+			FileDTO fileDTO = new FileDTO();
+			fileDTO.setFname(names.get(i));
+			fileDTO.setOname(file[i].getOriginalFilename());
+			fileDTO.setNum(noticeDTO.getNum());
+			fileDAO.insert(fileDTO);
+		}
+		
+		return 1;
+	}
+		
+	}
+	
+	
+		
 		
 		
 		 

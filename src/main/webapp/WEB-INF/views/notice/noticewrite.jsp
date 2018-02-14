@@ -3,14 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link href="../resources/css/notice/write.css"
-	rel="stylesheet">
+<link href="../resources/css/notice/write.css"rel="stylesheet">
 	 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	
 <script type="text/javascript">
@@ -50,7 +47,7 @@
 <body>
 <%@include file="../temp/header.jsp"%>
 	<section id="main">
-	<h1>${board}</h1>
+	<h1>테스트</h1>
 	<form action="./noticewrite" method="post">
 		<p>Title : <input type="text" name="title"></p>
 		<p>Writer : <input type="text" name="writer"></p>

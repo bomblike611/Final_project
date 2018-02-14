@@ -6,8 +6,6 @@
   
   <mapper namespace="noticeMapper">
   	
-  	
-  	
   	<insert id="insert" parameterType="NoticeDTO">
   		insert into notice values(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate)
   	</insert>
@@ -43,9 +41,16 @@
   			where R between #{startRow} and #{lastRow} <!-- Map의 key를 써줌 -->
   		</select>
   		
-  		<select id="selectOne" parameterType="int" resultMap="NoticeResult2">
+  		<select id="selectOne" parameterType="int">
   			select n.*, f.* from notice n, files f 
   			where n.num=#{num} and n.num=f.num(+)
   		</select>
+  	
+  		<update id="update" parameterType="NoticeDTO">
+  			update notice set title=#{title},contents=#{contents} where num=#{num}
+  		</update>
+  	<delete id="delete" parameterType="int">
+  			delete notice where num=#{num}
+  		</delete>
   	
   </mapper>

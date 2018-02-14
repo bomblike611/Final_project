@@ -28,6 +28,10 @@ public class NoticeDAO{
 		return sqlSession.selectList(NAMESPACE+"selectList", listData);
 	}
 	
+	public NoticeDTO selectOne(int num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"selectOne",num);
+	}
+	
 	public int update(NoticeDTO noticeDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"update",noticeDTO);
 	}
