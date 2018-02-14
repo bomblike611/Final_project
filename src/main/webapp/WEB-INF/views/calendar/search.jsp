@@ -16,14 +16,13 @@
 			$('#fromDate').prop('max', $(this).val());
 		});
 		
-		$('.page').click(function(){
+ 		$('.page').click(function(){
 			var cur=$(this).attr("title");
 			document.frm.curPage.value=cur;
-			document.frm.sing.value='${page.sing}';
-			document.frm.fromDate.value='${page.fromDate}';
-			document.frm.toDate.value='${page.toDate}';
-			document.frm.place.value='${page.place}';
-		});
+			document.frm.sing.value='${page.search}';
+			document.frm.place.value='${page.kind}';
+			documnet.frm.submit();
+		}); 
 		
 	});
 </script>
@@ -35,59 +34,50 @@
 
 <!--================================ 서치부분 ================================-->
 		<div id="sec">
-					<form id="frm" name="frm" action="search" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="curPage" value="1">
+					<form id="frm" name="frm" action="search">
 				<div class="row">
-						<span> 
-							<input name="sing" class="balloon" id="sing" type="text" placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label>
-						</span>
-						<span>
-							<input name="fromDate" class="balloon" id="fromDate" type="date" /><label for="Fromdate">From date</label>
-						</span>
+					<input type="hidden" name="curPage" value="1">
+						<span><input name="search" class="balloon" id="sing" type="text" placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label></span>
+						<span><input name="fromDate" class="balloon" id="fromDate" type="date" /><label for="Fromdate">From date</label></span>
 						~
-						<span>
-							<input name="toDate" class="balloon" id="toDate" type="date" value="2018-02-28"/><label for="toDate">To date</label>
-						</span>
-						<span> 
-							<input name="place" class="balloon" id="place" type="text" placeholder="Seoul, Hongdae, CGV..." /><label for="place">Place</label>
-						</span>
+						<span><input name="toDate" class="balloon" id="toDate" type="date" value="2018-02-28"/><label for="toDate">To date</label></span>
+						<span><input name="kind" class="balloon" id="place" type="text" placeholder="Seoul, Hongdae, CGV..." /><label for="place">Place</label></span>
 				
-							<input type="submit" id="btn" value="Search" style="cursor: pointer;">
-						
+						<input type="submit" id="btn" value="Search" style="cursor: pointer;">
 				</div>
 				
 <!--================================ 보여지는 폼 ================================-->
-				<c:forEach items="${list}" var="dto">
-					<div id="singer">ACOUSTIC ${dto.position}</div>
-					<div id="singerle">17 OCT ${dto.reg_date}</div>
-					<div id="singerri1">Serious Frog ${dto.teamname}</div>
+			 <c:forEach items="${list}" var="dto">
+					<div id="singer">${dto.contents}</div>
+					<div id="singerle">${dto.busk_date}</div>
+					<div id="singerri1">${dto.teamname}</div>
 					<div id="singerri2">
 						<div id="singerri3">
 							<div id="singerri4">
 								<div id="pic">
 									<p>사진</p>
 								</div>
-									<p>SOMEWHERE IN NY</p>
+									<p>${dto.location}</p>
 									<p>from 27/02/18 to 27/02/18</p>
 									<p>19:00 to 21:00</p>
 									<p>Somewhere 128, New York</p>
 							<input id="do" type="submit" value="후원하기">
 							</div>
-								<div id="singerri5">
-								지도
-								</div>
+							
+								<div id="map" style="width: 70%; height: 390px;"></div>
+								
 						</div>
 					</div>
-				</c:forEach>
+				 </c:forEach>
 					</form>
 
 		</div>
 <!--================================ 페이징처리 ================================-->
-		<div>
+ 		<div id="page">
 			<c:if test="${page.curBlock > 1}">
 				<span class="page" title="${page.startNum-1}">《</span>
 			</c:if>
-			<c:forEach begin="${page.startNum}" end="${page.lastNum}"var="i">
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<span class="page" title="${i}">${i}</span>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock }">
@@ -96,5 +86,49 @@
 		</div>
 	
 	</section>
+	
+		<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44dc488bb7ee1b14cd2765f0530ea05b&libraries=services"></script>
+	<script>
+$(function(){
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new daum.maps.LatLng(37.545875, 127.107935), // 지도의 중심좌표
+        level: 4, // 지도의 확대 레벨
+        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+    }; 
+
+// 지도를 생성한다 
+var map = new daum.maps.Map(mapContainer, mapOption); 
+
+// 지도 타입 변경 컨트롤을 생성한다
+var mapTypeControl = new daum.maps.MapTypeControl();
+
+// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);	
+
+// 지도에 확대 축소 컨트롤을 생성한다
+var zoomControl = new daum.maps.ZoomControl();
+
+// 지도의 우측에 확대 축소 컨트롤을 추가한다
+map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+// 커스텀 오버레이를 생성하고 지도에 표시한다
+var customOverlay = new daum.maps.CustomOverlay({
+	map: map,
+	content: '<div style="padding:0 5px;background:#fff;">yes24라이브홀</div>', 
+	position: new daum.maps.LatLng(37.545875, 127.107935), // 커스텀 오버레이를 표시할 좌표
+	xAnchor: 0.5, // 컨텐츠의 x 위치
+	yAnchor: 0 // 컨텐츠의 y 위치
+});
+// 지도에 마커를 생성하고 표시한다
+var marker = new daum.maps.Marker({
+    position: new daum.maps.LatLng(37.545875, 127.107935), // 마커의 좌표
+    map: map // 마커를 표시할 지도 객체
+});
+
+
+});    
+</script>
 </body>
 </html>

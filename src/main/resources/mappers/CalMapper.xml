@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+   <mapper namespace="CalMapper">
+  	
+  	<select id="selectList" parameterType="ListData" resultType="CalDTO">
+  		select * from (select rownum R, N.* from (select * from busking order by num desc) N) where R between #{startRow} and #{lastRow}
+  	</select>
+  	
+  	<select id="totalCount" parameterType="ListData" resultType="int">
+  		select nvl(count(num),0) from busking
+  	</select>
+  	
+  	<select id="selectOne" parameterType="int" resultType="CalDTO">
+  		select * from busking where num=#{num}
+  	</select>  	
+  </mapper>
