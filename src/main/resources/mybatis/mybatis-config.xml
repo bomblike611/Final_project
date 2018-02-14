@@ -6,7 +6,7 @@
   <configuration>
 	<typeAliases>
 		<typeAlias type="com.kh.member.MemberDTO" alias="MemberDTO"/>
-
+		<typeAlias type="com.kh.busking.BuskingDTO" alias="BuskingDTO"/>
 		<typeAlias type="com.kh.file.FileDTO" alias="FileDTO"/>
 		<typeAlias type="com.kh.location.LocationDTO" alias="LocationDTO"/>
 		<typeAlias type="com.kh.spon.SingerDTO" alias="SingerDTO"/>
