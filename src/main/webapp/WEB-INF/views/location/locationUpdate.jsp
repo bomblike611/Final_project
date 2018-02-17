@@ -54,6 +54,9 @@ $(function(){
 	$(".delete").click(function(){
 		if(confirm("삭제 후 복구는 불가능합니다. 정말로 삭제하시겠습니까?")){
 		var fname=$(this).attr("id");
+		$(this).prev().remove();
+		$(this).remove();
+		count--;
 		$.get("./fileDelete?fname="+fname,function(message){
 			alert(message.trim());
 		});
@@ -89,7 +92,7 @@ $(function(){
 							</tr>
 							<tr><td><span style="color:red;">*</span>사진<p id="add">ADD</p><p id="remove">REMOVE</p></td><td id="picture">
 							<c:forEach items="${files}" var="f">
-							<p class="p" id="${f.fname }"><img src="../resources/upload/${f.fname}" style="width: 70px; height: 50px">${f.oname}</p><span class="delete" id="${f.fname}">X</span>
+							<p class="p"><img src="../resources/upload/${f.fname}" style="width: 70px; height: 50px">${f.oname}</p><span class="delete ${f.fname}">X</span>
 							</c:forEach>
 							</td></tr>
 							<tr>

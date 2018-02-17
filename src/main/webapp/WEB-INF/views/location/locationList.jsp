@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -Location List페이지입니다 ##</title>
 <link href="../resources/css/location/list.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -30,6 +36,8 @@
 	});
 </script>
 </head>
+<script type="text/javascript"
+	src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 <body>
 	<%@include file="../temp/header.jsp"%>
 	<section id="main">
@@ -57,16 +65,47 @@
 			<div id="loc_list">
 				<ul>
 					<c:forEach items="${loc_list}" var="l">
-						<li class="list_item"><c:forEach items="${files}" var="f">
-								<c:if test="${f.loc_name eq l.loc_name}">
-									<img src="../resources/upload/${f.fname}">
-								</c:if>
+						<li class="list_item">
+								<div class="swiper-container">
+									<div class="swiper-wrapper">
+						<c:forEach items="${files}" var="f">
+										<c:if test="${f.loc_name eq l.loc_name}">
+											<img class="swiper-slide"
+												src="../resources/upload/${f.fname}">
+										</c:if>
 							</c:forEach>
+									</div>
+									<!-- Add Pagination -->
+									<div class="swiper-pagination"></div>
+									<!-- Add Arrows -->
+									<div class="swiper-button-next"></div>
+									<div class="swiper-button-prev"></div>
+								</div>
 							<h3>${l.loc_name}</h3>
 							<p>${l.area}</p>
 							<div class="link" onclick="locationView(${l.num})">자세히 보기</div></li>
 					</c:forEach>
 				</ul>
+				<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.js"></script>
+				<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script>
+
+				<script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
 			</div>
 		</div>
 		<div id="pagination">

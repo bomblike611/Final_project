@@ -33,9 +33,17 @@ public class LocationController {
 	}
 	
 	@RequestMapping(value="locationWrite",method=RequestMethod.POST)
-	public String locationWrite(LocationDTO locationDTO,MultipartFile [] file,HttpSession session) throws Exception{
+	public ModelAndView locationWrite(LocationDTO locationDTO,MultipartFile [] file,HttpSession session) throws Exception{
+		ModelAndView mv=new ModelAndView();
 		int result=locationService.locationInsert(locationDTO, session, file);
-		return "redirect:./locationList";
+		if(result>0){
+			mv.setViewName("redirect:./locationList");
+		}else{
+			mv.addObject("message", "글쓰기 실패");
+			mv.addObject("path", "./locationList");
+			mv.setViewName("common/result");
+		}
+		return mv;
 	}
 	
 	@RequestMapping(value="locationList")

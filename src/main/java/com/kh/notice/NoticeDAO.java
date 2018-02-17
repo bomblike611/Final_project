@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.kh.util.ListData;
+
 @Repository
 public class NoticeDAO{
 	

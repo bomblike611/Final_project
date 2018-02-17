@@ -18,13 +18,13 @@
   		<delete id="delete" parameterType="FileDTO">
   		delete files 
   		<choose>
-  		<when test="fname!=null">
+  		<when test="fname != null">
   		where fname=#{fname}
   		</when>
-  		<when test="loc_name != 'null'">
+  		<when test="loc_name != null">
   		where loc_name=#{loc_name}
   		</when>
-  		<when test="teamname != 'null'">
+  		<when test="teamname != null">
   		where teamname=#{teamname}
   		</when>
   		<when test="num != 0">
