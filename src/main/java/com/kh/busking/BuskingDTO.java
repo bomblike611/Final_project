@@ -14,6 +14,14 @@ public class BuskingDTO {
 	private String location;
 	private int entry;
 	private Date busk_date;
+	private int entry_member;
+	
+	public int getEntry_member() {
+		return entry_member;
+	}
+	public void setEntry_member(int entry_member) {
+		this.entry_member = entry_member;
+	}
 	public int getNum() {
 		return num;
 	}

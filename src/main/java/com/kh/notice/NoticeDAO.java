@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
-import com.iu.util.ListData;
 @Repository
 public class NoticeDAO{
 	

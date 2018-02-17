@@ -6,9 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.iu.util.ListData;
 import com.kh.notice.NoticeDTO;
 import com.kh.notice.NoticeSerivce;
+import com.kh.util.ListData;
 
 @Controller
 @RequestMapping(value="/notice/**")

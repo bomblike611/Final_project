@@ -38,7 +38,13 @@
   </select>
   
   <select id="locationView" resultType="LocationDTO" parameterType="LocationDTO">
-  select * from location where num=#{num}
+  select * from location
+  <if test="num == null">
+  	where loc_name=#{loc_name}
+  </if>
+  <if test="num != null">
+   where num=#{num}  
+  </if>
   </select>
   
   </mapper>

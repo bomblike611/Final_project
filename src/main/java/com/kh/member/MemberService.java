@@ -62,6 +62,10 @@ public class MemberService {
 		return memberDAO.memberDelete(memberDTO);
 	}
 	
+	public MemberDTO memberView(String id)throws Exception{
+		return memberDAO.memberView(id);
+	}
+	
 	
 	
 	

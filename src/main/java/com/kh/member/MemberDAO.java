@@ -31,7 +31,9 @@ public class MemberDAO {
 	public int memberDelete(MemberDTO memberDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
 	}
-	
+	public MemberDTO memberView(String id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberView", id);
+	}
 	
 	
 	

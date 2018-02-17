@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
-import com.kh.location.LocationDTO;
 import com.kh.util.FileSaver;
 import com.kh.util.ListData;
 import com.kh.util.PageMaker;
@@ -31,6 +30,7 @@ public class BuskingService {
 		if(!f.exists()){
 			f.mkdir();
 		}
+		int result=buskingDAO.insert(buskingDTO);
 		FileSaver fileSaver=new FileSaver();
 		for(MultipartFile file : files){
 			String fname=fileSaver.saver(file, filepath);
@@ -42,7 +42,7 @@ public class BuskingService {
 			fileDTO.setTeamName("null");
 			fileDAO.insert(fileDTO);
 		}
-		return buskingDAO.insert(buskingDTO);
+		return result;
 	}
 	public ModelAndView selectList(ListData listData,ModelAndView mv) throws Exception{
 		int totalCount=buskingDAO.getTotalCount(listData);
