@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
-/* #yoilbox2{
+ #yoilbox2{
 	display: none;
-} */
+}
 
 #upcomingH{
 	background-color: #494750;
@@ -89,7 +89,7 @@
 /*  	width: 100%;
 		position: absolute; */
 	height: 80px;
-	margin-top: 50px;
+	margin-top: 40px;
 }
 
 #feb, #feb2{
@@ -135,7 +135,7 @@
 }
 
 #si1 li, #si2 li{
-	color: red;
+	color: black;
 	margin-top: 5px;
 	margin-left: 2%;
 }
