@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.busking.BuskingDTO;
 import com.kh.busking.BuskingService;
+import com.kh.entry.EntryDTO;
+import com.kh.entry.EntryService;
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
 import com.kh.location.LocationDAO;
@@ -35,6 +37,8 @@ public class BuskingController {
 	private MemberService memberService;
 	@Inject
 	private LocationDAO locationDAO;
+	@Inject
+	private EntryService entryService;
 
 	@RequestMapping(value="buskView")
 	public void buskView(String id,BuskingDTO buskingDTO,Model model) throws Exception{
@@ -116,5 +120,27 @@ public class BuskingController {
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
+	@RequestMapping(value="entryUpdate")
+	public ModelAndView entryUpdate(BuskingDTO buskingDTO,HttpSession session) throws Exception{
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("member");
+		ModelAndView mv=new ModelAndView();
+		EntryDTO entryDTO=new EntryDTO();
+		entryDTO.setBusk_num(buskingDTO.getNum());
+		entryDTO.setId(memberDTO.getId());
+		int result=entryService.insert(entryDTO);
+		String s="fail";
+		if(result>0){
+			result=buskingService.entryUpdate(buskingDTO);
+			if(result>0){
+				s="Success";
+			}
+		}
+		mv.addObject("path", "buskView?num="+buskingDTO.getNum()+"&id="+buskingDTO.getWriter());
+		mv.addObject("message",s);
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
 	
 }

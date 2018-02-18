@@ -34,4 +34,7 @@ public class BuskingDAO {
 	public int delete(BuskingDTO buskingDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"Delete", buskingDTO);
 	}
+	public int entryUpdate(BuskingDTO buskingDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"entryUpdate", buskingDTO);
+	}
 }

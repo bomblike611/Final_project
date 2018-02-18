@@ -93,4 +93,7 @@ public class BuskingService {
 		return buskingDAO.delete(buskingDTO);
 	}
 	
+	public int entryUpdate(BuskingDTO buskingDTO) throws Exception{
+		return buskingDAO.entryUpdate(buskingDTO);
+	}
 }

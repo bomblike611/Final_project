@@ -14,5 +14,6 @@
 		<typeAlias type="com.kh.cal.CalDTO" alias="CalDTO"/>
 		<typeAlias type="com.kh.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.kh.util.ListData" alias="ListData"/>
+		<typeAlias type="com.kh.entry.EntryDTO" alias="EntryDTO"/>
 	</typeAliases>
   </configuration>

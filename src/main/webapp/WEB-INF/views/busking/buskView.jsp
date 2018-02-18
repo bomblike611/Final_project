@@ -21,7 +21,7 @@
 		location.href="./buskDelete?num=${view.num}";
 	}
 	function participant(){
-		location.href="";
+		location.href="./entryUpdate?num=${view.num}&writer=${view.writer}";
 	}
 	
 
@@ -130,7 +130,7 @@
 							<p>후원을 원하시는 경우 밑의 후원버튼을 클릭시 후원창으로 연결됩니다.</p>
 							<span></span>
 							<div onclick="donation()">후원하기</div>
-							<div onclick="particepant()">참가신청</div>
+							<div onclick="participant()">참가신청</div>
 							<div onclick="update()">수정</div>
 							<div onclick="o_delete()">삭제</div>
 						</div>

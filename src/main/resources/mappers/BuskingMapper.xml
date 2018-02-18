@@ -50,4 +50,8 @@ select nvl(count(num),0) from busking
 select * from busking where num=#{num}
 </select>
 
+<update id="entryUpdate" parameterType="BuskingDTO">
+update busking set entry_member=entry_member+1 where num=#{num}
+</update>
+
 </mapper>
