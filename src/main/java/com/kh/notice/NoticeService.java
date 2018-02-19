@@ -40,7 +40,7 @@ public class NoticeService {
 	
 	public int insert(NoticeDTO noticeDTO,MultipartFile [] file, HttpSession session) throws Exception{
 		
-		noticeDAO.noticeWrite(noticeDTO);
+		int result=noticeDAO.noticeWrite(noticeDTO);
 		FileSaver fileSaver = new FileSaver();
 		String filepath = session.getServletContext().getRealPath("resources/upload");
 		System.out.println(filepath);
@@ -48,17 +48,9 @@ public class NoticeService {
 		if(!f.exists()){
 			f.mkdirs();
 		}
-List<String> names = fileSaver.saver(file, filepath);
 		
-		for(int i=0;i<names.size();i++){
-			FileDTO fileDTO = new FileDTO();
-			fileDTO.setFname(names.get(i));
-			fileDTO.setOname(file[i].getOriginalFilename());
-			fileDTO.setNum(noticeDTO.getNum());
-			fileDAO.insert(fileDTO);
-		}
 		
-		return 1;
+		return result;
 	}
 		
 	}
@@ -68,4 +60,4 @@ List<String> names = fileSaver.saver(file, filepath);
 		
 		
 		 
-}
+

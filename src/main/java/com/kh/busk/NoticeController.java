@@ -36,7 +36,7 @@ public class NoticeController {
 		return "notice/noticewrite";
 	}
      
-@RequestMapping(value="noticeWrite", method=RequestMethod.POST)
+@RequestMapping(value="noticewrite", method=RequestMethod.POST)
 public String insert(NoticeDTO noticeDTO,MultipartFile [] file,HttpSession session, RedirectAttributes re) throws Exception{
 	int result=noticeService.insert(noticeDTO, file, session);
 	String message="Write Fail";
@@ -45,7 +45,17 @@ public String insert(NoticeDTO noticeDTO,MultipartFile [] file,HttpSession sessi
 	}
 	
 	re.addFlashAttribute("message", message);
-	return "redirect:./noticeList";
+	return "redirect:./noticelist";
+}
+
+@RequestMapping(value="noticeView")
+	public ModelAndView selectOne(int num)throws Exception{
+	NoticeDTO noticeDTO=noticeService.selectOne(num);
+	ModelAndView mv = new ModelAndView();
+	mv.addObject("view", noticeDTO);
+	mv.setViewName("notice/noticeView");
+	return mv;
+	
 }
 
 }

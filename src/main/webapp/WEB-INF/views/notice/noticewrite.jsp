@@ -48,7 +48,7 @@
 <%@include file="../temp/header.jsp"%>
 	<section id="main">
 	<h1>테스트</h1>
-	<form action="./noticewrite" method="post">
+	<form action="./noticewrite" method="POST" enctype="multipart/form-data" >
 		<p>Title : <input type="text" name="title"></p>
 		<p>Writer : <input type="text" name="writer"></p>
 		<p>contents : <textarea rows="" cols="" name="contents"></textarea></p>

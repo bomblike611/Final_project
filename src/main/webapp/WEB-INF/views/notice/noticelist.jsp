@@ -41,12 +41,14 @@
 			<div class="my_wrap">
 				<div class="searchFrm">
 				
-					<form name="frm" action="./noticeList">
+					<form name="frm" action="./noticelist">
 						<select id="sel" name="kind">
 							<option value="title">번호</option>
 							<option value="writer">제목</option>
 						</select> 
-							<input type="text" name="search">
+						<label>
+							<input type="text" name="schkeyword" id="schkeyword" maxlength="30" size="30">
+						</label>
 							<input id="btn" type="submit" value="검색">
 					</form>
 				</div>
@@ -62,21 +64,26 @@
 					<tbody>
 						<tr>
 							<th>번호</th>
-							<th>구분</th>
 							<th>제목</th>
-							<th>등록일</th>
+							<th>작성자</th>
 							<th>조회수</th>
 						</tr>
-				
+						<c:forEach items="${list}" var="dto">
 							<tr>
-								<td>dd</td>
-								<td>dd</td>
-								<td>dd${dto.title}</td>
-								<td>dd</td>
-								<td>dd</td>
+								<td>${dto.num}</td>
+								<td>
+									<c:catch>
+										<c:forEach begin="1" end="${dto.depth}" var="i">
+											-
+										</c:forEach>
+									</c:catch>
+									<a href="${notice}View?num=${dto.num}">${dto.title}</a>
+								</td>
+								<td>${dto.writer}</td>
+								<td>${dto.reg_date}</td>
+								<td>${dto.hit}</td>
 							</tr>
-					
-
+						</c:forEach>
 					</tbody>
 				</table>
 				
