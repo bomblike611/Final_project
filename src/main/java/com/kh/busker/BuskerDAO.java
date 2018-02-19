@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.spon.SingerDTO;
+import com.kh.member.MemberDTO;
+
+
 
 @Repository
 public class BuskerDAO {
@@ -16,8 +18,17 @@ public class BuskerDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "BuskerMapper.";
 	
-	public List<SingerDTO> buskerList(){
-		return sqlSession.selectList(NAMESPACE+"buskerList");
+	public List<MemberDTO> buskerList(String teamname){
+		return sqlSession.selectList(NAMESPACE+"buskerList", teamname);
+	}
+	public List<String> getteamname() {
+		return sqlSession.selectList(NAMESPACE+"getteamname");
+	}
+	public List<MemberDTO> singerList() {
+		return sqlSession.selectList(NAMESPACE+"singerList");
+	}
+	public MemberDTO buskerOne(SearchData searchData) {
+		return sqlSession.selectOne(NAMESPACE+"buskerOne", searchData);
 	}
 	
 }

@@ -6,15 +6,24 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.kh.spon.SingerDTO;
+import com.kh.member.MemberDTO;
 @Service
 public class BuskerService {
 
 	@Inject
 	private BuskerDAO buskerDAO;
 	
-	public List<SingerDTO> buskerList(){
-		return buskerDAO.buskerList();
+	public List<MemberDTO> buskerList(String teamname){
+		return buskerDAO.buskerList(teamname);
 	}
 	
+	public List<String> getteamname() {
+		return buskerDAO.getteamname();
+	}
+	public List<MemberDTO> singerList(){
+		return buskerDAO.singerList();
+	}
+	public MemberDTO buskerOne(SearchData searchData){
+		return buskerDAO.buskerOne(searchData);
+	}
 }

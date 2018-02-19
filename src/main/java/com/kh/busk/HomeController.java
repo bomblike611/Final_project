@@ -20,6 +20,7 @@ public class HomeController {
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @return 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -54,5 +55,6 @@ public class HomeController {
 		return "redirect:"+callback+"?callback_func="+callback_func+file_result;
 		
 	}
+
 	
 }

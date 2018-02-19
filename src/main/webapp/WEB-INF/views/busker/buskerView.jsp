@@ -15,9 +15,11 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(function(){
+		var title = "${team[0].fname}";
+		$("body").css("background-image", 'url("/busk/resources/upload/'+title+'")');
 		$("img").click(function(){
-			var title = $(this).attr("title");
-			$("body").css("background-image", "url('/busk/resources/images/busker/"+title+" (1).jpg')");
+			title = $(this).attr("title");
+			$("body").css("background-image", 'url("/busk/resources/upload/'+title+'")');
 		});
 		$("#donation").click(function(){
 			location.href="/busk/donation/spon_main";
@@ -71,24 +73,23 @@
 			}else{
 				$("#progress2").html("<img alt='' src='/busk/resources/images/rightB_icon.png'>");
 				var message = $("#message").val();
+				var email = $("#email").val();
+				var name = $("#name").val();
+				var phone = $("#phone").val();
 				IMP.request_pay({
 				    pg : 'uplus', // version 1.1.0부터 지원.
 				    pay_method : 'card',
 				    merchant_uid : 'merchant_' + new Date().getTime(),
-				    name : '버스커후원',
+				    name : '${team[0].teamName}후원',
 				    amount : money,
-				    buyer_email : '${member.email}',
-				    buyer_name : '${member.name}',
-				    buyer_tel : '${member.phone}',
+				    buyer_email : email,
+				    buyer_name : name,
+				    buyer_tel : phone,
 				    buyer_addr : roadaddr,
 				    buyer_postcode : postaddr,
 				}, function(rsp) {
 				    if ( rsp.success ) {
 				        var msg = '결제가 완료되었습니다.';
-				        msg += '고유ID : ' + rsp.imp_uid;
-				        msg += '상점 거래ID : ' + rsp.merchant_uid;
-				        msg += '결제 금액 : ' + rsp.paid_amount;
-				        msg += '카드 승인번호 : ' + rsp.apply_num;
 				        location.href="../spon/success?id=${member.id}&teamName=twice&price="+money+"&message="+message;
 				    } else {
 				        var msg = '결제에 실패하였습니다.';
@@ -152,37 +153,14 @@
 			<table id="busker_member">
 				<tr>
 					<%-- <c:forEach > --%>
-					<td><img title="1" src="/busk/resources/images/busker/1.jpg">
-					</td>
-
-					<td><img title="2" src="/busk/resources/images/busker/2.jpg">
-					</td>
+					<c:forEach begin="0" end="${team.size()}" var="i" step="2">
+						<td><img src="/busk/resources/upload/${team[i].fname}" title="${team[i].fname}">
+						</td>
+	
+						<td><img src="/busk/resources/upload/${team[i+1].fname}" title="${team[i+1].fname}">
+						</td>
+					</c:forEach>
 					<%-- </c:forEach> --%>
-				</tr>
-				<tr>
-					<td><img title="3" src="/busk/resources/images/busker/3.jpg">
-					</td>
-
-					<td><img title="4" src="/busk/resources/images/busker/4.jpg">
-					</td>
-				</tr>
-				<tr>
-					<td><img title="5" src="/busk/resources/images/busker/5.jpg">
-					</td>
-
-					<td><img title="6" src="/busk/resources/images/busker/6.jpg">
-					</td>
-				</tr>
-				<tr>
-					<td><img title="7" src="/busk/resources/images/busker/7.jpg">
-					</td>
-
-					<td><img title="8" src="/busk/resources/images/busker/8.jpg">
-					</td>
-				</tr>
-				<tr>
-					<td><img title="9" src="/busk/resources/images/busker/9.jpg">
-					</td>
 				</tr>
 
 			</table>

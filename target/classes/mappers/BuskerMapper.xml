@@ -5,8 +5,20 @@
   
   <mapper namespace="BuskerMapper">
   	
-  	<select id="buskerList" resultType="SingerDTO">
-  		select * from singer
+  	<select id="getteamname" resultType="String">
+  		select distinct teamname from member where job='singer'
   	</select>
+  	
+  	<select id="buskerList" resultType="MemberDTO" parameterType="String">
+  		select * from member where teamname=#{teamName}
+   	</select>
+   	
+   	<select id="singerList" resultType="MemberDTO">
+  		select * from member
+   	</select>
+   	
+   	<select id="buskerOne" resultType="MemberDTO" parameterType="SearchData">
+  		select * from member
+   	</select>
   	
   </mapper>
