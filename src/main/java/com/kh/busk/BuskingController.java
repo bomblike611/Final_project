@@ -28,7 +28,7 @@ import com.kh.util.ListData;
 @RequestMapping(value="/busking/**")
 @Controller
 public class BuskingController {
-	
+
 	@Inject
 	private BuskingService buskingService;
 	@Inject
@@ -47,6 +47,7 @@ public class BuskingController {
 		List<FileDTO> ar=fileDAO.selectList();
 		LocationDTO l=new LocationDTO();
 		l.setLoc_name(buskingDTO2.getLocation());
+		l.setNum(0);
 		LocationDTO locationDTO=locationDAO.locationView(l);
 		model.addAttribute("team", memberDTO);
 		model.addAttribute("view", buskingDTO2);
@@ -54,12 +55,18 @@ public class BuskingController {
 		model.addAttribute("loc", locationDTO);
 
 	}
-	
+
 	@RequestMapping(value="buskWrite",method=RequestMethod.GET)
 	public void buskWrite(BuskingDTO buskingDTO,Model model) throws Exception{
 		BuskingDTO buskingDTO2=buskingService.selectOne(buskingDTO);
-		
+
 		List<FileDTO> ar=fileDAO.selectList();
+		ListData listData=new ListData();
+		int totalCount=locationDAO.locationTotalCount(listData);
+		listData.setStartRow(1);
+		listData.setLastRow(totalCount);
+		List<LocationDTO> loc_ar=locationDAO.locationList(listData);
+		model.addAttribute("loc", loc_ar);
 		model.addAttribute("view", buskingDTO2);
 		model.addAttribute("files", ar);
 	}
@@ -76,7 +83,7 @@ public class BuskingController {
 		}
 		return mv;
 	}
-	
+
 	@RequestMapping(value="buskUpdate",method=RequestMethod.GET)
 	public void buskUpdate(BuskingDTO buskingDTO,Model model) throws Exception{
 		BuskingDTO buskingDTO2=buskingService.selectOne(buskingDTO);
@@ -97,7 +104,7 @@ public class BuskingController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-	
+
 	@RequestMapping(value="buskList")
 	public ModelAndView buskList(ListData listData) throws Exception{
 		ModelAndView mv=new ModelAndView();
@@ -109,7 +116,7 @@ public class BuskingController {
 	@RequestMapping(value="buskDelete")
 	public ModelAndView buskDelete(BuskingDTO buskingDTO,HttpSession session) throws Exception{
 		ModelAndView mv=new ModelAndView();
-		
+
 		int result=buskingService.delete(buskingDTO, session);
 		String message="fail";
 		if(result>0){
@@ -120,20 +127,22 @@ public class BuskingController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-	
+
 	@RequestMapping(value="entryUpdate")
 	public ModelAndView entryUpdate(BuskingDTO buskingDTO,HttpSession session) throws Exception{
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("member");
 		ModelAndView mv=new ModelAndView();
-		EntryDTO entryDTO=new EntryDTO();
-		entryDTO.setBusk_num(buskingDTO.getNum());
-		entryDTO.setId(memberDTO.getId());
-		int result=entryService.insert(entryDTO);
 		String s="fail";
-		if(result>0){
-			result=buskingService.entryUpdate(buskingDTO);
+		if(memberDTO!=null){
+			EntryDTO entryDTO=new EntryDTO();
+			entryDTO.setBusk_num(buskingDTO.getNum());
+			entryDTO.setId(memberDTO.getId());
+			int result=entryService.insert(entryDTO);
 			if(result>0){
-				s="Success";
+				result=buskingService.entryUpdate(buskingDTO);
+				if(result>0){
+					s="Success";
+				}
 			}
 		}
 		mv.addObject("path", "buskView?num="+buskingDTO.getNum()+"&id="+buskingDTO.getWriter());
@@ -141,6 +150,6 @@ public class BuskingController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-	
-	
+
+
 }

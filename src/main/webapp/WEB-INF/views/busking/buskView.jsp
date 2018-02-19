@@ -40,7 +40,7 @@
 	var geocoder = new daum.maps.services.Geocoder();
 
 	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('${view.location}', function(result, status) {
+	geocoder.addressSearch('${loc.area}', function(result, status) {
 
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === daum.maps.services.Status.OK) {
@@ -55,7 +55,7 @@
 
 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">${loc.area}</div>'
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">${view.location}</div>'
 	        });
 	        infowindow.open(map, marker);
 
@@ -74,9 +74,6 @@
 				<div id="busktitle">
 					<img src="../resources/upload/acoustic-guitar.png" id="guitarImg">
 					<h3>
-						<c:catch>
-								${team.genre}]
-								</c:catch>
 					${view.title}</h3>
 					<p>${view.teamname}</p>
 				</div>
@@ -128,11 +125,15 @@
 							<p>위의 참여자수는 가수들이 어느정도 참여자가 올 것인지 측정하기 위해</p>
 							<p>쓰여진 것이므로 실제 참여자수와 다를 수 있습니다.</p>
 							<p>후원을 원하시는 경우 밑의 후원버튼을 클릭시 후원창으로 연결됩니다.</p>
+							<c:if test="${not empty member}">
 							<span></span>
 							<div onclick="donation()">후원하기</div>
 							<div onclick="participant()">참가신청</div>
+							<c:if test="${member.id eq view.writer}">
 							<div onclick="update()">수정</div>
 							<div onclick="o_delete()">삭제</div>
+							</c:if>
+							</c:if>
 						</div>
 					</div>
 				</div>

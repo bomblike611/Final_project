@@ -90,6 +90,7 @@ public class BuskingService {
 				int t=fileDAO.Delete(fileDTO);
 			}
 		}
+		
 		return buskingDAO.delete(buskingDTO);
 	}
 	

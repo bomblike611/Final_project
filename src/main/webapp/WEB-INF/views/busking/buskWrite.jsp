@@ -12,6 +12,12 @@
 <title>## 노래왕 버스킹 -Busking Write페이지입니다</title>
 <script type="text/javascript">
 	$(function() {
+		$(".loc",this).each(function(){
+			if($(this).prop("selected")){
+				title=$(this).attr("title");
+				}			
+		});
+		$("#entry").val(title);
 		//전역변수
 		var obj = [];
 		//스마트에디터 프레임생성
@@ -32,14 +38,33 @@
 		$("#btn").click(function() {
 			//id가 smarteditor인 textarea에 에디터에서 대입
 			obj.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+			var check=$("#check").prop("checked");
+			
 			//폼 submit
-			document.frm.submit();
+			if(check){
+				if($(".val").val()!=""){
+					document.frm.submit();
+				}else{
+					alert("빈 칸을 채워 주세요.");
+				}
+			}else{
+				alert("이용자 동의사항에 동의해주세요.");
+			}
 		});
 
 		$("#check2").click(function() {
 			$("#privateInfo").slideToggle("slow");
 		}); 
 		
+		$("#location").change(function(){
+			var title="";
+			$(".loc",this).each(function(){
+				if($(this).prop("selected")){
+					title=$(this).attr("title");
+					}			
+			});
+			$("#entry").val(title);
+		});
 		
 
 		var fileTarget = $('.filebox .upload-hidden');
@@ -106,23 +131,30 @@
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>공연명</th>
-						<td><input type="text" name="title" placeholder="공연명을 입력해주세요"></td>
+						<td><input type="text" class="val" name="title" placeholder="공연명을 입력해주세요"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>팀명</th>
-						<td><input type="text" name="teamname" placeholder="가수명"></td>
+						<td><input type="text" class="val" name="teamname" value="${member.teamname}" placeholder="가수명"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연지역</th>
-						<td><select name="location"><option value="가게">가게</option></select></td>
+						<td>
+						<select name="location" id="location">
+						<c:forEach items="${loc}" var="l">
+						<option value="${l.loc_name}" title="${l.entry}" class="loc" >${l.loc_name}</option>
+						</c:forEach>
+						</select>
+						
+						</td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연일자</th>
-						<td><input type="date" name="busk_date"></td>
+						<td><input type="date" class="val" name="busk_date"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>참가자수</th>
-						<td><input type="number" name="entry" value="0"></td>
+						<td><input type="number" id="entry" name="entry" value="0" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연포스터</th>
