@@ -25,4 +25,24 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		</context:component-scan>
 		
+		<context:component-scan base-package="com.kh.member">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<context:component-scan base-package="com.kh.file">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<context:component-scan base-package="com.kh.cal">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<context:component-scan base-package="com.kh.spon">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<context:component-scan base-package="com.kh.busker">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
 </beans>

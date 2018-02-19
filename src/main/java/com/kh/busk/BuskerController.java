@@ -1,15 +1,20 @@
 package com.kh.busk;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.busker.BuskerService;
-import com.kh.spon.SingerDTO;
+import com.kh.busker.SearchData;
+import com.kh.member.MemberDTO;
 @Controller
 @RequestMapping(value="/busker/**")
 public class BuskerController {
@@ -17,17 +22,41 @@ public class BuskerController {
 	@Inject
 	private BuskerService buskerService;
 	
-	@RequestMapping(value="buskerList")
+	@RequestMapping(value="buskerList", method=RequestMethod.GET)
 	public ModelAndView buskerList(){
+		List<MemberDTO> buskerList = null;
 		ModelAndView mv = new ModelAndView();
-		List<SingerDTO> buskerList = buskerService.buskerList();
-		mv.addObject("buskerList", buskerList);
+		List<String> getteamname = buskerService.getteamname();
+		Map<String, Object> member = new HashMap<>();
+		for(int i=0;i<getteamname.size();i++){
+			buskerList = buskerService.buskerList(getteamname.get(i));
+			ArrayList<String> member2 = new ArrayList<>();
+			for(int z =0;z<buskerList.size();z++){
+				member2.add(buskerList.get(z).getName());
+			}
+			member.put(getteamname.get(i), member2);
+		}
+		List<MemberDTO> singerList = buskerService.singerList();
+		mv.addObject("teamname",getteamname);
+		mv.addObject("m", member);
+		mv.addObject("list", singerList);
+
+		
+		return mv;
+	}
+	@RequestMapping(value="buskerList", method=RequestMethod.POST)
+	public ModelAndView buskerList(SearchData searchData){
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO=buskerService.buskerOne(searchData);
 		return mv;
 	}
 	@RequestMapping(value="buskerView")
-	public void buskerView(){
+	public ModelAndView buskerView(String teamname){
+		ModelAndView mv = new ModelAndView();
+		List<MemberDTO> buskerList = buskerService.buskerList(teamname);
+		mv.addObject("team", buskerList);
 		
-		
+		return mv;
 	}
 	
 }
