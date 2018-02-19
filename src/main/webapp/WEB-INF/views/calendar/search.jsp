@@ -75,14 +75,14 @@
 			<!--================================ 보여지는 폼 ================================-->
 			<c:forEach items="${list}" var="dto" begin="0" end="5">
 				<div id="bigbox">
-					<div id="singer">${dto.contents}</div>
+					<div id="singer">${dto.genre}</div>
 					<div id="singerle" class="nalja" title="${dto.busk_date}"></div>
 					<div id="singerri1">${dto.teamname}</div>
 					<div id="singerri2">
 						<div id="singerri3">
 							<div id="singerri4">
 								<div id="pic">
-									<p>사진</p>
+									<p>${f.fname}</p>
 								</div>
 								<p>${dto.location}</p>
 								<p class="siin" title="${dto.busk_date}"></p>

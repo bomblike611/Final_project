@@ -8,10 +8,12 @@
   	<select id="selectList" parameterType="ListData" resultType="CalDTO">
   		select * from (select rownum R, N.* from (select * from busking 
   		<if test="kind == 'teamname'">
-  		 		 where teamname LIKE '%'||#{search}||'%'
-  		 		 </if>
+  		 where teamname LIKE '%'||#{search}||'%'
+  		 </if>
   		order by busk_date asc) N) where R between #{startRow} and #{lastRow}
   	</select>
+  	
+  	
   	
   	<select id="totalCount" parameterType="ListData" resultType="int">
   		select nvl(count(num),0) from busking
