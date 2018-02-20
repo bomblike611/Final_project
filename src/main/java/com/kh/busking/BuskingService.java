@@ -18,29 +18,39 @@ import com.kh.util.PageMaker;
 
 @Service
 public class BuskingService {
-	
+
 	@Inject
 	private BuskingDAO buskingDAO;
 	@Inject
 	private FileDAO fileDAO;
-	
-	public int insert(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] files) throws Exception{
+
+	public int insert(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] files,MultipartFile file) throws Exception{
 		String filepath=session.getServletContext().getRealPath("resources/upload");
 		File f=new File(filepath);
 		if(!f.exists()){
 			f.mkdir();
 		}
-		int result=buskingDAO.insert(buskingDTO);
 		FileSaver fileSaver=new FileSaver();
-		for(MultipartFile file : files){
-			String fname=fileSaver.saver(file, filepath);
+		if(file!=null){
+		String fname2=fileSaver.saver(file, filepath);
+		buskingDTO.setFname(fname2);
+		buskingDTO.setOname(file.getOriginalFilename());
+		}else{
+			buskingDTO.setFname("null");
+			buskingDTO.setOname("null");
+		}
+		int result=buskingDAO.insert(buskingDTO);
+		for(MultipartFile file2 : files){
+			if(file2!=null){
+			String fname=fileSaver.saver(file2, filepath);
 			FileDTO fileDTO=new FileDTO();
 			fileDTO.setFname(fname);
-			fileDTO.setOname(file.getOriginalFilename());
+			fileDTO.setOname(file2.getOriginalFilename());
 			fileDTO.setNum(buskingDTO.getNum());
 			fileDTO.setLoc_name("null");
 			fileDTO.setTeamName("null");
 			fileDAO.insert(fileDTO);
+			}
 		}
 		return result;
 	}
@@ -58,28 +68,39 @@ public class BuskingService {
 	public BuskingDTO selectOne(BuskingDTO buskingDTO) throws Exception{
 		return buskingDAO.selectOne(buskingDTO);
 	}
-	
-	public int update(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] files) throws Exception{
+
+	public int update(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] files,MultipartFile f2) throws Exception{
 		FileSaver fileSaver = new FileSaver();
 		String filepath = session.getServletContext().getRealPath("resources/upload");
 		File f = new File(filepath);
 		if(!f.exists()){
 			f.mkdir();
 		}
-		for(MultipartFile file : files){
-			String fname=fileSaver.saver(file, filepath);
-			FileDTO fileDTO=new FileDTO();
-			fileDTO.setFname(fname);
-			fileDTO.setOname(file.getOriginalFilename());
-			fileDTO.setNum(buskingDTO.getNum());
-			fileDTO.setLoc_name("null");
-			fileDTO.setTeamName("null");
-			fileDAO.insert(fileDTO);
+		if(f2!=null){
+			String fname2=fileSaver.saver(f2, filepath);
+			buskingDTO.setFname(fname2);
+			buskingDTO.setOname(f2.getOriginalFilename());
+		}else{
+			buskingDTO.setFname("null");
+			buskingDTO.setOname("null");
 		}
-		
+			for(MultipartFile file : files){
+				if(file!=null){
+					String fname=fileSaver.saver(file, filepath);
+					FileDTO fileDTO=new FileDTO();
+					fileDTO.setFname(fname);
+					fileDTO.setOname(file.getOriginalFilename());
+					fileDTO.setNum(buskingDTO.getNum());
+					fileDTO.setLoc_name("null");
+					fileDTO.setTeamName("null");
+					fileDAO.insert(fileDTO);
+				}
+			}
+		System.out.println(buskingDTO.getFname());
+
 		return buskingDAO.update(buskingDTO);
 	}
-	
+
 	public int delete(BuskingDTO buskingDTO,HttpSession session) throws Exception{
 		List<FileDTO> ar=fileDAO.selectList();
 		String filepath = session.getServletContext().getRealPath("resources/upload");
@@ -90,9 +111,10 @@ public class BuskingService {
 				int t=fileDAO.Delete(fileDTO);
 			}
 		}
+
 		return buskingDAO.delete(buskingDTO);
 	}
-	
+
 	public int entryUpdate(BuskingDTO buskingDTO) throws Exception{
 		return buskingDAO.entryUpdate(buskingDTO);
 	}

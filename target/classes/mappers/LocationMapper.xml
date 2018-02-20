@@ -39,10 +39,10 @@
   
   <select id="locationView" resultType="LocationDTO" parameterType="LocationDTO">
   select * from location
-  <if test="num == null">
+  <if test="num == 0">
   	where loc_name=#{loc_name}
   </if>
-  <if test="num != null">
+  <if test="num != 0">
    where num=#{num}  
   </if>
   </select>
