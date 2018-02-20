@@ -18,17 +18,40 @@
 			$('#fromDate').prop('max', $(this).val());
 		});
 
-		/* 공연날짜 */
-		$(".nalja").each(function() {
-			var nal = $(this).attr("title");
-			$(this).html(nal.substr(5, 5));
-		});
-
-		/* 공연시간 */
-		$(".siin").each(function() {
-			var busktime = $(this).attr("title");
-			$(this).html(busktime.substr(0,16));
-		});
+	  	/* 공연날짜(달) */
+	       $(".nalja").each(function(){
+	 		var nal=$(this).attr("title");
+	   		var mon=nal.substr(5,2);
+	  		switch(mon){
+	 		case "01" : mon = "JAN"; break;
+	 		case "02" : mon = "FEB"; break; 
+	 		case "03" : mon = "MAR"; break; 
+	 		case "04" : mon = "APR"; break; 
+	 		case "05" : mon = "MAY"; break; 
+	 		case "06" : mon = "JUN"; break; 
+	 		case "07" : mon = "JUL"; break; 
+	 		case "08" : mon = "AUG"; break; 
+	 		case "09" : mon = "SEP"; break; 
+	 		case "10" : mon = "OCT"; break; 
+	 		case "11" : mon = "NOV"; break; 
+	 		case "12" : mon = "DEC"; break; 
+	 		}
+	 		$(this).html(mon); 
+	 	}); 
+	  	
+	    /* 공연날짜(일) */
+	      	$(".nalil").each(function(){
+	 		var nal=$(this).attr("title");
+	 		$(this).html(nal.substr(8,2)); 
+	 	});
+	  	/* 공연시간 */
+	    $(".siin").each(function(){
+		 		var nal=$(this).attr("title");
+		 		$(this).html(nal.substr(11,5)); 
+		 });  
+	  	$(".balloon").each(function(){
+	  		var com = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	  	});
 
 		$(".page").click(function() {
 			var cur = $(this).attr("title");
@@ -51,9 +74,10 @@
 			<div id="sec">
 				<div class="row">
 					<input type="hidden" name="curPage" value="1"> 
-					<select name="kind">
+<!-- 					<select name="kind">
 					<option value="teamname">teamname</option>
-					</select>
+					
+					</select> -->
 					
 			<span><input name="search" class="balloon" id="sing" type="text"
 						placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label></span>
@@ -64,40 +88,44 @@
 					<span><input name="toDate" class="balloon" id="toDate" type="date"
 						 /><label for="toDate">To date</label></span>
 						
-		<!-- 			<span><input name="search" class="balloon" id="place" type="text"
-						placeholder="Seoul, Hongdae, CGV..." /><label for="place">Place</label></span> -->
-
+<!-- 					<span><input name="search" class="balloon" id="place" type="text"
+						placeholder="Seoul, Hongdae, CGV..." /><label for="place">Place</label></span>
+ -->
 					<input type="submit" id="btn" value="Search"
 						style="cursor: pointer;">
 				</div>
-
 			</div>
 			<!--================================ 보여지는 폼 ================================-->
+				
+					<c:if test="${listData.search eq ''}">			
+						<p>조회된 정보가 없습니다.</p>
+					</c:if>
 			<c:forEach items="${list}" var="dto" begin="0" end="5">
-				<div id="bigbox">
-					<div id="singer">${dto.genre}</div>
-					<div id="singerle" class="nalja" title="${dto.busk_date}"></div>
-					<div id="singerri1">${dto.teamname}</div>
-					<div id="singerri2">
-						<div id="singerri3">
-							<div id="singerri4">
-								<div id="pic">
-									<p>${f.fname}</p>
+					<c:if test="${listData.search ne ''}">
+						<div id="bigbox">
+							<div id="singer">${dto.writer}</div>
+							<div id="singerle">
+							<p class="nalja" title="${dto.busk_date}"></p>
+							<p class="nalil" title="${dto.busk_date}"></p>
+							</div>
+							<div id="singerri1">${dto.teamname}</div>
+							<div id="singerri2">
+								<div id="singerri3">
+									<div id="singerri4">
+										<div id="pic">
+											<p>${f.fname}</p>
+										</div>
+										<p>${dto.location}</p>
+										<p class="siin" title="${dto.busk_date}"></p>
+										<div id="spon">후원하기</div>
+										</div>
+									<div id="map" style="width: 70%; height: 390px;"></div>
 								</div>
-								<p>${dto.location}</p>
-								<p class="siin" title="${dto.busk_date}"></p>
-						
-								
-								<div id="spon">후원하기</div>
-								</div>
-							
-
-							<div id="map" style="width: 70%; height: 390px;"></div>
-
+							</div>
 						</div>
-					</div>
-				</div>
+					</c:if>
 			</c:forEach>
+				
 		</form>
 
 		<!--================================ 페이징처리 ================================-->

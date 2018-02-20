@@ -17,6 +17,9 @@ public class CalService {
 	private CalDAO calDAO;
 	
 	public List<CalDTO> selectList(ListData listData) throws Exception{
+		if(listData.getSearch() == null){	
+			listData.setSearch("");
+		}
 		int totalCount = calDAO.totalCount(listData);
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.pageMaker(totalCount, listData);

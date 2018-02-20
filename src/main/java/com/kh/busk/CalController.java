@@ -19,7 +19,6 @@ public class CalController {
 	
 	@Inject
 	private CalService calservice;
-	private String month;
 	
 	@RequestMapping(value="search")
 	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
@@ -49,40 +48,6 @@ public class CalController {
 	public ModelAndView upcoming(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<CalDTO> ar = calservice.selectList(listData);
-		
-/*		for(CalDTO clCalDTO :ar){
-			String arr =clCalDTO.getBusk_date().toString().substring(0, 16);
-			arr=arr.replace(" ", "-");
-			String [] arrr=arr.toString().split("-");
-			System.out.println(arrr[1]);
-				switch(arrr[1]){
-				case "01": arrr[1] = "JAN";
-				break;
-				case "02": arrr[1] = "FEB";
-				break;
-				case "03": arrr[1] = "MAR";
-				break;
-				case "04": arrr[1] = "APR";
-				break;
-				case "05": arrr[1] = "MAY";
-				break;
-				case "06": arrr[1] = "JUN";
-				break;
-				case "07": arrr[1] = "JUL";
-				break;
-				case "08": arrr[1] = "AUG";
-				break;
-				case "09": arrr[1] = "SEP";
-				break;
-				case "10": arrr[1] = "OCT";
-				break;
-				case "11": arrr[1] = "NOV";
-				break;
-				case "12": arrr[1] = "DEC";
-				break;
-				}	
-				mv.addObject("mon", arrr);
-		}*/
 		mv.addObject("list", ar);
 		mv.addObject("page", listData);
 		mv.setViewName("calendar/upcoming");

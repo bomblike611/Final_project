@@ -18,26 +18,27 @@ $(function(){
   	});
 	
   	/* 공연날짜(달) */
-      	$(".nalja").each(function(){
+       $(".nalja").each(function(){
  		var nal=$(this).attr("title");
-/*  		var mon=$(this).html(nal.substr(5,2));
- 		switch (mon){
- 		case 01 : mon = "JAN"; break;
- 		case 02 : mon = "FEB"; break; 
- 		case 03 : mon = "MAR"; break; 
+   		var mon=nal.substr(5,2);
+  		switch(mon){
+ 		case "01" : mon = "JAN"; break;
+ 		case "02" : mon = "FEB"; break; 
+ 		case "03" : mon = "MAR"; break; 
  		case "04" : mon = "APR"; break; 
- 		case "05" : nal = "MAY"; break; 
- 		case "06" : nal = "JUN"; break; 
- 		case "07" : nal = "JUL"; break; 
- 		case "08" : nal = "AUG"; break; 
- 		case "09" : nal = "SEP"; break; 
- 		case "10" : nal = "OCT"; break; 
- 		case "11" : nal = "NOV"; break; 
- 		case "12" : nal = "DEC"; break; 
- 		} */
- 		
- 		alert(nal);
- 	});  
+ 		case "05" : mon = "MAY"; break; 
+ 		case "06" : mon = "JUN"; break; 
+ 		case "07" : mon = "JUL"; break; 
+ 		case "08" : mon = "AUG"; break; 
+ 		case "09" : mon = "SEP"; break; 
+ 		case "10" : mon = "OCT"; break; 
+ 		case "11" : mon = "NOV"; break; 
+ 		case "12" : mon = "DEC"; break; 
+ 		}
+  		
+ 		$(this).html(mon); 
+ 	}); 
+ 	
   	
     /* 공연날짜(일) */
       	$(".nalil").each(function(){
@@ -78,7 +79,7 @@ $(function(){
 						
 				<c:forEach items="${list}" var="dto" varStatus="status">	
 				 	<c:if test="${status.first}">
-		 			<div class="yo">		
+		 			<div class="yo">			 		
 						<p class="nalja" title="${dto.busk_date}"></p>
 						<p class="nalil" title="${dto.busk_date}"></p>
 					</div>
@@ -107,7 +108,7 @@ $(function(){
 				</div>
 <!-- ================================ 보이는 부분 ================================ -->
 	
-<c:forEach items="${list}" var="dto" begin="1" end="1">
+<c:forEach items="${list}" var="dto" begin="1" end="2">
 				<div class="imgbox"  id="yoilbox">
 					<div class="yo" id="feb">
 							<p class="nalja" title="${dto.busk_date}"></p>
@@ -135,7 +136,7 @@ $(function(){
 </c:forEach>
 				
 <!-- ================================ 가려지는 부분 ================================ -->
-<c:forEach items="${list}" var="dto" begin="2" end="5">
+<c:forEach items="${list}" var="dto" begin="3" end="4">
  				<div class="imgbox yoilbox2" id="yoilbox2">
 					<div class="yo" id="feb2">
 						<p class="nalja" title="${dto.busk_date}"></p>
