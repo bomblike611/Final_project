@@ -10,6 +10,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<script type="text/javascript">
+function memberlist(){
+	location.href="./memberList";
+}
+function singerJoin(){
+	location.href="./singerJoin";
+}
+</script>
 <body>
 	<%@include file="../temp/header.jsp"%>
 	<section id="main">
@@ -18,8 +26,8 @@
 			<p>회원들의 정보확인과 강제탈퇴가 가능합니다.</p>
 		</div>
 		<ul id="ul">
-			<li>List</li>
-			<li>singer</li>
+			<li onclick="memberlist()">List</li>
+			<li onclick="singerJoin()">singer</li>
 		</ul>
 		<div id="list">
 		<table class="table table-bordered" id="table">

@@ -69,7 +69,9 @@
 			</c:forEach>
 		</div>
 		<div id="paging">
+		<c:if test="${member.job ne 'singer'}">		
 		<div id="write">Write</div>
+		</c:if>
 		</div>
 	</section>
 	<a href="./buskList" id="top"><img
