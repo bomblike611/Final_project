@@ -10,7 +10,7 @@
 <body>
 <%@include file="../temp/header.jsp"%>
 	<section id="main">v
-<h1>View</h1>
+<h1>noticeView</h1>
 
 	<h1>Title : ${view.title}</h1>
 	<h1>Contents : ${view.contents}</h1>

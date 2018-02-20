@@ -20,6 +20,7 @@ public class NoticeService {
 
 	@Inject
 	private NoticeDAO noticeDAO;
+	@Inject
 	private FileDAO fileDAO; 
 	
 	public int noticeWrite(NoticeDTO noticeDTO) throws Exception{
@@ -50,6 +51,14 @@ public class NoticeService {
 		}
 		
 		
+		
+		for(int i=0;i<file.length;i++){
+			FileDTO fileDTO = new FileDTO();
+			fileDTO.setFname(names.get(i));
+			fileDTO.setOname(file[i].getOriginalFilename());
+			fileDTO.setNum(noticeDTO.getNum());
+			fileDTO.insert(fileDTO);
+		}
 		return result;
 	}
 		

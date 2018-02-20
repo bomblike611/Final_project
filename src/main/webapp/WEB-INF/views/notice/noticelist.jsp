@@ -64,24 +64,24 @@
 					<tbody>
 						<tr>
 							<th>번호</th>
-							<th>제목</th>
 							<th>작성자</th>
-							<th>조회수</th>
+							<th>제목</th>
+							<th>작성일자</th>
 						</tr>
 						<c:forEach items="${list}" var="dto">
 							<tr>
 								<td>${dto.num}</td>
+								<td>${dto.title}</td>
 								<td>
-									<c:catch>
+								    <c:catch>
 										<c:forEach begin="1" end="${dto.depth}" var="i">
 											-
 										</c:forEach>
 									</c:catch>
-									<a href="${notice}View?num=${dto.num}">${dto.title}</a>
+									<a href="${notice}View?num=${dto.num}">${dto.writer}</a>
 								</td>
-								<td>${dto.writer}</td>
 								<td>${dto.reg_date}</td>
-								<td>${dto.hit}</td>
+								
 							</tr>
 						</c:forEach>
 					</tbody>

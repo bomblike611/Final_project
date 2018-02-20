@@ -27,9 +27,22 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 @RequestMapping(value="noticelist")
-	public void noticelist(ListData listData) {
+	public ModelAndView selectList(ListData listData) throws Exception {
 		
+	ModelAndView mv = new ModelAndView();
+	List<NoticeDTO> ar = noticeService.selectList(listData);
+	for(int i=0; i<ar.size();i++){
+		String s = ar.get(i).getReg_date();
+		s=s.substring(0, 10);
+		ar.get(i).setReg_date(s);
 	}
+	
+	mv.addObject("list", ar);
+	mv.addObject("page", listData);
+	mv.setViewName("notice/noticelist");
+	return mv;
+	}
+
 @RequestMapping(value="noticewrite", method=RequestMethod.GET)
 	public String insert() throws Exception {
 		
