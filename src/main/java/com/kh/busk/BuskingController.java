@@ -70,10 +70,11 @@ public class BuskingController {
 		model.addAttribute("view", buskingDTO2);
 		model.addAttribute("files", ar);
 	}
+	
 	@RequestMapping(value="buskWrite",method=RequestMethod.POST)
-	public ModelAndView buskWrite(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] file) throws Exception{
+	public ModelAndView buskWrite(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] file,MultipartFile f) throws Exception{
 		ModelAndView mv=new ModelAndView();
-		int result=buskingService.insert(buskingDTO, session, file);
+		int result=buskingService.insert(buskingDTO, session, file,f);
 		if(result>0){
 			mv.setViewName("redirect:../busking/buskList");
 		}else{
@@ -86,21 +87,25 @@ public class BuskingController {
 
 	@RequestMapping(value="buskUpdate",method=RequestMethod.GET)
 	public void buskUpdate(BuskingDTO buskingDTO,Model model) throws Exception{
+		ListData listData=new ListData();
+		int totalCount=locationDAO.locationTotalCount(listData);
+		listData.setStartRow(1);
+		listData.setLastRow(totalCount);
+		List<LocationDTO> loc_ar=locationDAO.locationList(listData);
 		BuskingDTO buskingDTO2=buskingService.selectOne(buskingDTO);
-		List<FileDTO> ar=fileDAO.selectList();
-		model.addAttribute("files", ar);
+		model.addAttribute("loc", loc_ar);
 		model.addAttribute("view", buskingDTO2);
 	}
 	@RequestMapping(value="buskUpdate",method=RequestMethod.POST)
-	public ModelAndView buskUpdate(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] file) throws Exception{
-		int result=buskingService.update(buskingDTO, session, file);
+	public ModelAndView buskUpdate(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] file,MultipartFile f) throws Exception{
+		int result=buskingService.update(buskingDTO, session, file,f);
 		ModelAndView mv=new ModelAndView();
 		String s="Fail";
 		if(result>0){
 			s="Success";
 		}
 		mv.addObject("message", s);
-		mv.addObject("path", "./buskView?num="+buskingDTO.getNum());
+		mv.addObject("path", "buskView?num="+buskingDTO.getNum()+"&id="+buskingDTO.getWriter());
 		mv.setViewName("common/result");
 		return mv;
 	}

@@ -46,18 +46,16 @@
 		<div id="consertList">
 		<c:forEach items="${list}" var="l">
 			<figure class="snip1200">
-		<c:forEach items="${files}" var="f">
-		<%-- <c:if test="${f.num ne l.num }">
+			<c:if test="${l.fname eq 'null'}">
 		<img
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample27.jpg"
 					alt="${l.title}" />
-		</c:if> --%>
-		<c:if test="${f.num eq l.num}">
-				<img
-					src="../resources/upload/${f.fname}"
+			</c:if>
+			<c:if test="${l.fname ne 'null'}">
+			<img
+					src="../resources/upload/${l.fname}"
 					alt="${l.title}" />
-		</c:if>
-		</c:forEach>
+			</c:if>
 				<figcaption>
 					<p><b>${l.teamname }</b><br>${l.location} / ${l.busk_date}</p>
 					<div class="heading">

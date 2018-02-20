@@ -29,17 +29,49 @@
 			}
 		});
 		//전송버튼
-		$("#btn").click(function() {
+	$("#btn").click(function() {
 			//id가 smarteditor인 textarea에 에디터에서 대입
 			obj.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+			var check=$("#check").prop("checked");
+			
 			//폼 submit
-			document.frm.submit();
+			if(check){
+				if($(".val").val()!=""){
+					document.frm.submit();
+				}else{
+					alert("빈 칸을 채워 주세요.");
+				}
+			}else{
+				alert("이용자 동의사항에 동의해주세요.");
+			}
 		});
 
 		$("#check2").click(function() {
 			$("#privateInfo").slideToggle("slow");
 		}); 
 		
+		
+		$(".delete").click(function(){
+			if(confirm("삭제 후 복구는 불가능합니다. 정말로 삭제하시겠습니까?")){
+			var fname=$(this).attr("id");
+			$(this).prev().remove();
+			$(this).remove();
+			$.get("../location/fileDelete?fname="+fname,function(message){
+				alert(message.trim());
+			});
+			$("#file").html('<div class="filebox bs3-primary preview-image"><input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;"><label for="input_file">업로드</label> <input type="file" id="input_file" name="f" class="val" class="upload-hidden"></div>');
+			}
+		});
+		
+		$("#location").change(function(){
+			var title="";
+			$(".loc",this).each(function(){
+				if($(this).prop("selected")){
+					title=$(this).attr("title");
+					}			
+			});
+			$("#entry").val(title);
+		});
 		
 
 		var fileTarget = $('.filebox .upload-hidden');
@@ -100,39 +132,52 @@
 				<h2>Busking Write</h2>
 				<p>가수분들은 공연 시간 10분전에 도착하여 공간확보를 미리 부탁드립니다.</p>
 			</div>
-			<form action="./buskWrite" name="frm" method="post"
+			<form action="./buskUpdate" name="frm" method="post"
 				enctype="multipart/form-data">
-				<input type="hidden" name="writer" value="${view.writer }">
+				<input type="hidden" name="writer" value="${view.writer}">
 				<input type="hidden" name="num" value="${view.num}">
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>공연명</th>
-						<td><input type="text" name="title" placeholder="공연명을 입력해주세요" value="${view.title }"></td>
+						<td><input type="text" name="title" class="val" placeholder="공연명을 입력해주세요" value="${view.title }"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>팀명</th>
-						<td><input type="text" name="teamname" placeholder="가수명" value="${view.teamname}"></td>
+						<td><input type="text" name="teamname" class="val" placeholder="가수명" value="${view.teamname}"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연지역</th>
-						<td><select name="location"><option value="가게">가게</option></select></td>
+						<td>
+						<select name="location" id="location">
+						<c:forEach items="${loc}" var="l">
+						<option value="${l.loc_name}" title="${l.entry}" class="loc" >${l.loc_name}</option>
+						</c:forEach>
+						</select>
+						</td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연일자</th>
-						<td><input type="date" name="busk_date" value="${view.busk_date}"></td>
+						<td><input type="date" name="busk_date" class="val" value="${view.busk_date}"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>참가자수</th>
-						<td><input type="number" name="entry" value="${view.entry }" readonly="readonly"></td>
+						<td><input type="number" name="entry" class="val" value="${view.entry }" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연포스터</th>
-						<td><div class="filebox bs3-primary preview-image">
+						<td id="file">
+						<c:if test="${not empty fname}">
+						<p class="p"><img src="../resources/upload/${view.fname}" style="width: 70px; height: 50px">${view.oname}</p><span class="delete ${view.fname}">X</span>						
+						</c:if>
+						<c:if test="${empty fname}">
+						<div class="filebox bs3-primary preview-image">
                             <input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;">
 
                             <label for="input_file">업로드</label> 
-                          <input type="file" id="input_file" name="file" class="upload-hidden"> 
-                        </div></td>
+                          <input type="file" id="input_file" name="f" class="val" class="upload-hidden"> 
+                        </div>
+						</c:if>
+                        </td>
 					</tr>
 					<tr>
 						<th colspan="2"><span style="color: red;">*</span>소개</th>

@@ -79,11 +79,7 @@
 				</div>
 				<div id="buskcontents">
 					<div id="img">
-					<c:forEach items="${fileAr}" var="f">
-					<c:if test="${f.num eq view.num}">
-						<img src="../resources/upload/${f.fname}">					
-					</c:if>
-					</c:forEach>
+						<img src="../resources/upload/${view.fname}">					
 					</div>
 					<div id="singerProfile">
 						<table>
