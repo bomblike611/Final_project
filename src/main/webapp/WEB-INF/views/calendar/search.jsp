@@ -11,12 +11,42 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$('#fromDate').on('change', function() {
-			$('#toDate').prop('min', $(this).val());
-		});
-		$('#toDate').on('change', function() {
-			$('#fromDate').prop('max', $(this).val());
-		});
+		/* 날짜검색 */
+ 		$("#btn").click(function(){
+ 			/* if(!$("#fromDate").val()){
+				alert("시작선택"); return false;
+			}
+			if(!$("#toDate").val()){
+				alert("끝선택"); return false;
+			}
+			var date1 = new Date($("#fromDate").val());
+			var date2 = new Date($("#toDate").val());
+			if(date2 - date1 <0){
+				alert("다시확인"); return false;
+			} */
+			
+		  	/* 날짜 선택한날 이후로 안보이기 */
+			 		$('#fromDate').on('change', function() {
+						$('#toDate').prop('min', $(this).val());
+					});
+					$('#toDate').on('change', function() {
+						$('#fromDate').prop('max', $(this).val());
+					});
+		
+			var startDate = $("#fromDate").val().split('-');
+			var endDate = $("#toDate").val().split('-');
+	alert(startDate);
+	alert(endDate);
+			var startDateCompare = new Date(startDate[0], startDate[1]-1, startDate[2]);
+			alert(startDateCompare);
+			var endDateCompare = new Date(endDate[0], endDate[1]-1, endDate[2]);
+			alert(endDateCompare);
+			/* if(startDateCompare.getTime() > endDateCompare.getTime()){
+				alert("시작날짜와 종료날짜를 확인해 주세요.");
+				return; */
+			}
+			$("#frm").submit();
+		}); 
 
 	  	/* 공연날짜(달) */
 	       $(".nalja").each(function(){
@@ -37,8 +67,7 @@
 	 		case "12" : mon = "DEC"; break; 
 	 		}
 	 		$(this).html(mon); 
-	 	}); 
-	  	
+	 	}); 	  	
 	    /* 공연날짜(일) */
 	      	$(".nalil").each(function(){
 	 		var nal=$(this).attr("title");
@@ -48,10 +77,11 @@
 	    $(".siin").each(function(){
 		 		var nal=$(this).attr("title");
 		 		$(this).html(nal.substr(11,5)); 
-		 });  
-	  	$(".balloon").each(function(){
-	  		var com = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	  	});
+		 });
+	  	/* 장소검색 대소문자 변경 */
+	  	$("#place").on('keyup', function(){
+	  		$(this).val($(this).val().toUpperCase());
+	  	});	  	
 
 		$(".page").click(function() {
 			var cur = $(this).attr("title");
@@ -74,12 +104,8 @@
 			<div id="sec">
 				<div class="row">
 					<input type="hidden" name="curPage" value="1"> 
-<!-- 					<select name="kind">
-					<option value="teamname">teamname</option>
-					
-					</select> -->
-					
-			<span><input name="search" class="balloon" id="sing" type="text"
+
+					<span><input name="search" class="balloon" id="sing" type="text"
 						placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label></span>
 						
 					<span><input name="fromDate" class="balloon" id="fromDate"
@@ -88,25 +114,19 @@
 					<span><input name="toDate" class="balloon" id="toDate" type="date"
 						 /><label for="toDate">To date</label></span>
 						
-<!-- 					<span><input name="search" class="balloon" id="place" type="text"
-						placeholder="Seoul, Hongdae, CGV..." /><label for="place">Place</label></span>
- -->
-					<input type="submit" id="btn" value="Search"
-						style="cursor: pointer;">
+					<span><input name="kind" class="balloon" id="place" type="text"
+						placeholder="Seoul, Hongdae, CGV..."/><label for="place">Place</label></span>
+
+					<input type="submit" id="btn" value="Search" style="cursor: pointer;">
 				</div>
 			</div>
-			<!--================================ 보여지는 폼 ================================-->
-				
-					<c:if test="${listData.search eq ''}">			
-						<p>조회된 정보가 없습니다.</p>
-					</c:if>
+			<!--================================ 보여지는 폼 ================================-->	
 			<c:forEach items="${list}" var="dto" begin="0" end="5">
-					<c:if test="${listData.search ne ''}">
 						<div id="bigbox">
 							<div id="singer">${dto.writer}</div>
 							<div id="singerle">
-							<p class="nalja" title="${dto.busk_date}"></p>
-							<p class="nalil" title="${dto.busk_date}"></p>
+							<p class="nalja" title="${dto.busk_date}"></p><!-- 요 -->
+							<p class="nalil" title="${dto.busk_date}"></p><!-- 일 -->
 							</div>
 							<div id="singerri1">${dto.teamname}</div>
 							<div id="singerri2">
@@ -116,16 +136,14 @@
 											<p>${f.fname}</p>
 										</div>
 										<p>${dto.location}</p>
-										<p class="siin" title="${dto.busk_date}"></p>
+										<p class="siin" title="${dto.busk_date}"></p><!-- 시간 -->
 										<div id="spon">후원하기</div>
 										</div>
 									<div id="map" style="width: 70%; height: 390px;"></div>
 								</div>
 							</div>
-						</div>
-					</c:if>
-			</c:forEach>
-				
+						</div>							
+				</c:forEach>	
 		</form>
 
 		<!--================================ 페이징처리 ================================-->

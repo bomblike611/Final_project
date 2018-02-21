@@ -1,140 +1,122 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>## 노래왕 버스킹 -(upcoming)입니다</title>
-<link href="../resources/css/calendar/upcoming.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>## 노래왕 버스킹 -(year)입니다</title>
+<link href="../resources/css/calendar/year.css" rel="stylesheet">
+<link rel='stylesheet' href='http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'/> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
 
-	$("#show").click(function(){
-		$("#yoilbox2").slideDown("slow");
-	});
+	/* Kurien / Kurien's Blog / http://blog.kurien.co.kr */
+	/* 주석만 제거하지 않는다면, 어떤 용도로 사용하셔도 좋습니다. */
+
+	function kCalendar(id, date) {
+		var kCalendar = document.getElementById(id);
 		
-  	/* 공연날짜 */
- 	$(".nalja").each(function(){
- 		var nal=$(this).attr("title");
- 		$(this).html(nal.substr(5,5)); 
- 	});
-	
-	/* 공연시간 */
-  	$(".siin").each(function(){
- 		var busktime=$(this).attr("title");
- 		$(this).html(busktime.substr(11,5));	
- 	});
- 
+		if( typeof( date ) !== 'undefined' ) {
+			date = date.split('-');
+			date[1] = date[1] - 1;
+			date = new Date(date[0], date[1], date[2]);
+		} else {
+			var date = new Date();
+		}
+		var currentYear = date.getFullYear();
+		//년도를 구함
+		
+		var currentMonth = date.getMonth() + 1;
+		//연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
+		
+		var currentDate = date.getDate();
+		//오늘 일자.
+		
+		date.setDate(1);
+		var currentDay = date.getDay();
+		//이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
+		
+		var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+		var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+		if( (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0 )
+			lastDate[1] = 29;
+		//각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일 임.
+		
+		var currentLastDate = lastDate[currentMonth-1];
+		var week = Math.ceil( ( currentDay + currentLastDate ) / 7 );
+		//총 몇 주인지 구함.
+		
+		if(currentMonth != 1)
+			var prevDate = currentYear + '-' + ( currentMonth - 1 ) + '-' + currentDate;
+		else
+			var prevDate = ( currentYear - 1 ) + '-' + 12 + '-' + currentDate;
+		//만약 이번달이 1월이라면 1년 전 12월로 출력.
+		
+		if(currentMonth != 12) 
+			var nextDate = currentYear + '-' + ( currentMonth + 1 ) + '-' + currentDate;
+		else
+			var nextDate = ( currentYear + 1 ) + '-' + 1 + '-' + currentDate;
+		//만약 이번달이 12월이라면 1년 후 1월로 출력.
 
-		/* $(".nalja").each(function(){
-		var buskdate=$(this).attr("id");
-			if($(this).attr("id")==buskdate){
-			var nal=$(this).attr("title");
-			$(this).html(nal.substring(8,10));			
+		
+		if( currentMonth < 10 )
+			var currentMonth = '0' + currentMonth;
+		//10월 이하라면 앞에 0을 붙여준다.
+		
+		var calendar = '';
+		
+		calendar += '<div id="header">';
+		calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
+		calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
+		calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')">></a></span>';
+		calendar += '		</div>';
+		calendar += '		<table border="0" cellspacing="0" cellpadding="0">';
+		calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
+		calendar += '			<thead>';
+		calendar += '				<tr>';
+		calendar += '				  <th class="sun" scope="row">일</th>';
+		calendar += '				  <th class="mon" scope="row">월</th>';
+		calendar += '				  <th class="tue" scope="row">화</th>';
+		calendar += '				  <th class="wed" scope="row">수</th>';
+		calendar += '				  <th class="thu" scope="row">목</th>';
+		calendar += '				  <th class="fri" scope="row">금</th>';
+		calendar += '				  <th class="sat" scope="row">토</th>';
+		calendar += '				</tr>';
+		calendar += '			</thead>';
+		calendar += '			<tbody>';
+		
+		var dateNum = 1 - currentDay;
+		
+		for(var i = 0; i < week; i++) {
+			calendar += '			<tr>';
+			for(var j = 0; j < 7; j++, dateNum++) {
+				if( dateNum < 1 || dateNum > currentLastDate ) {
+					calendar += '				<td class="' + dateString[j] + '"> </td>';
+					continue;
+				}
+				calendar += '				<td class="' + dateString[j] + '">' + dateNum + '</td>';
 			}
-		}); */
-	/* 공연날짜 */
-/*  	$(".nalja").each(function(){
- 		var nal=$(this).attr("title");
- 		$(this).html(nal.substring(5,10));
- 	}); */
-	
-});
+			calendar += '			</tr>';
+		}
+		
+		calendar += '			</tbody>';
+		calendar += '		</table>';
+		
+		kCalendar.innerHTML = calendar;
+	}
 
 </script>
+
 </head>
 <body>
-	<%@ include file="../temp/header.jsp"%>
-	<section id="main">
-		<%@ include file="./calHeader.jsp"%>
-<!--================================ 사진 부분 ================================-->
-				<form id="frm" name="frm" action="upcoming">
-				<div class="imgbox">
-					<img alt="" src="../resources/images/calendar_img/4.jpg" style="width: 100%" height="100%">
-					<div id="hh"></div>
-						<div id="hd">Upcoming Busk</div>
-						
-				<c:forEach items="${list}" var="dto">	
-		 			<div class="yo">
-						<p class="nalja" title="${dto.busk_date}"></p>
-					</div>
-					
-					<div id="ga">
-						<p>
-						${dto.teamname}
-						</p>
-					</div>
-<!-- ================================ 그레이박스 부분 ================================ -->				
-				<div class="imgbox" id="graybox">
-					<div class="si">
-						<ul>
-							<li id="tim">
-							<img src="../resources/images/calendar_img/clock.png">
-							시간: <span class="siin" title="${dto.busk_date}"></span>
-							</li>
-							<li id="loca">
-							<img src="../resources/images/calendar_img/location.png">
-							<span>위치: ${dto.location}</span>
-							</li>
-						</ul>				
-					</div>
-				</div>
-					</c:forEach>	
-				</div>
-<!-- ================================ 보이는 부분 ================================ -->			
-				<div class="imgbox"  id="yoilbox">
-				<c:forEach items="${list}" var="dto" begin="2">	
-					<div class="yo" id="feb">
-						<p class="nalja" title="${dto.busk_date}"></p>
-					</div>
-					<div class="yobup">
-						<ul>
-							<li>${dto.teamname}</li>
-						</ul>
-					</div>
-					<div class="si" id="si1">
-						<ul>
-							<li id="tim">
-							<img src="../resources/images/calendar_img/clock.png">
-							시간: <span class="siin" title="${dto.busk_date}"></span>
-							</li>
-							<li id="loca">
-							<img src="../resources/images/calendar_img/location.png">
-							<span>위치: ${dto.location}</span>
-							</li>
-						</ul>				
-					</div>
-					</c:forEach>
-				</div>
-<!-- ================================ 가려지는 부분 ================================ -->
-				<div class="imgbox"  id="yoilbox2">
-					<div class="yo" id="feb2">
-						<p class="nalja" title="${dto.busk_date}"></p>
-					</div>
-					<div class="yobup">
-						<ul>
-							<li>${dto.teamname}</li>
-						</ul>
-					</div>
-					<div class="si" id="si2">
-						<ul>
-							<li id="tim">
-							<img src="../resources/images/calendar_img/clock.png">
-							시간: <span class="siin" title="${dto.busk_date}"></span>
-							</li>
-							<li id="loca">
-							<img src="../resources/images/calendar_img/location.png">
-							<span>위치: ${dto.location}</span>
-							</li>
-						</ul>				
-					</div>
-				</div>
-				
-				</form>
-<!-- ================================ 더보기 ================================ -->
-					<button id="show">더보기</button>
-
-	</section>
+	<%@ include file="../temp/header.jsp" %>
+		<section id="main">
+	<%@ include file="./calHeader.jsp" %>
+	<div id="heart">
+	♥<span>ADD TO WISHLIST</span>
+	</div>
+	
+	
+</section>
 </body>
 </html>

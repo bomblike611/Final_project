@@ -51,7 +51,7 @@ $(function(){
  		var busktime=$(this).attr("title");
  		$(this).html(busktime.substr(11,5));	
  	});
-  
+
 	/* 유진이코드 */
 		/* $(".nalja").each(function(){
 		var buskdate=$(this).attr("id");
