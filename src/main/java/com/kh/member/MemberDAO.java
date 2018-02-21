@@ -43,7 +43,12 @@ public class MemberDAO {
 		return sqlSession.selectList(NAMESPACE+"memberList", listData);
 	}
 	
-	
+	public List<MemberDTO> singerList(ListData listData) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"singerList", listData);
+	}
+	public int totalCount(ListData listData) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
+	}
 	
 	
 	

@@ -67,3 +67,15 @@ thead th{
 	text-align: center;
 }
 
+.check{
+	text-align: center;
+	width: 5%;
+}
+
+#check{
+	cursor: pointer;
+}
+
+#check:hover{
+	color:red;
+}

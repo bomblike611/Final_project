@@ -74,9 +74,13 @@ public class MemberService {
 	}
 	
 	
+	public List<MemberDTO> singerList(ListData listData) throws Exception{
+		return memberDAO.singerList(listData);
+	}
 	
-	
-	
+	public int totalCount(ListData listData) throws Exception{
+		return memberDAO.totalCount(listData);
+	}
 	
 	
 	

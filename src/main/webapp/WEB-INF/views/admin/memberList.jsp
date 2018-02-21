@@ -36,7 +36,7 @@
 			<table class="table table-bordered" id="table">
 				<thead>
 					<tr>
-						<th>check</th>
+						<th class="check">check</th>
 						<th>ID</th>
 						<th>NAME</th>
 						<th>PHONE</th>
@@ -47,18 +47,31 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach items="${list}" var="l">
 					<tr>
-						<td><input type="checkbox" name="check"></td>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
+						<td class="check"><input type="checkbox" name="check"></td>
+						<td>${l.id}</td>
+						<td>${l.name}</td>
+						<td>${l.phone}</td>
+						<td>${l.email}</td>
+						<td>${l.job}</td>
+						<td>${l.point}</td>
 						<td class="delete">X</td>
 					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
+			<div id="pagination">
+			<c:if test="${page.curBlock > 1}">
+				<span class="page" title="${page.startNum-1}">[이전]</span>
+			</c:if>
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+				<span class="page" title="${i}">${i}</span>
+			</c:forEach>
+			<c:if test="${page.curBlock < page.totalBlock}">
+				<span class="page" title="${page.lastNum+1}">[다음]</span>
+			</c:if>
+		</div>
 		</div>
 	</section>
 </body>
