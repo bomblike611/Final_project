@@ -32,7 +32,7 @@
 		$("#check").click(function() {
 			$(".checked").each(function(){
 				var c=$(this).prop("checked");
-				alert(c);
+				
 			});
 			
 		});
