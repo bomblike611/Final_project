@@ -50,7 +50,7 @@ public class NoticeController {
 	}
      
 @RequestMapping(value="noticewrite", method=RequestMethod.POST)
-public String insert(NoticeDTO noticeDTO,MultipartFile [] file,HttpSession session, RedirectAttributes re) throws Exception{
+public String insert(NoticeDTO noticeDTO,MultipartFile file,HttpSession session, RedirectAttributes re) throws Exception{
 	int result=noticeService.insert(noticeDTO, file, session);
 	String message="Write Fail";
 	if(result>0){
@@ -69,6 +69,13 @@ public String insert(NoticeDTO noticeDTO,MultipartFile [] file,HttpSession sessi
 	mv.setViewName("notice/noticeView");
 	return mv;
 	
+}
+
+@RequestMapping(value="noticeUpdate", method=RequestMethod.GET)
+	public String update(int num, Model model) throws Exception{
+	NoticeDTO noticeDTO = noticeService.selectOne(num);
+	model.addAttribute("view", noticeDTO);
+	return "notice/noticeUpdate";
 }
 
 }

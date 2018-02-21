@@ -78,7 +78,7 @@
 											-
 										</c:forEach>
 									</c:catch>
-									<a href="${notice}View?num=${dto.num}">${dto.writer}</a>
+									<a href="noticeView?num=${dto.num}">${dto.writer}</a>
 								</td>
 								<td>${dto.reg_date}</td>
 								

@@ -23,9 +23,13 @@ public class NoticeService {
 	@Inject
 	private FileDAO fileDAO; 
 	
-	public int noticeWrite(NoticeDTO noticeDTO) throws Exception{
+	public int noticewrite(NoticeDTO noticeDTO) throws Exception{
 		
 		return noticeDAO.noticeWrite(noticeDTO);
+	}
+	
+	public int update(NoticeDTO noticeDTO) throws Exception{
+		return noticeDAO.update(noticeDTO);
 	}
 
 		public List<NoticeDTO> selectList(ListData listData) throws Exception {
@@ -39,7 +43,7 @@ public class NoticeService {
 		return noticeDAO.selectOne(num);
 	}
 	
-	public int insert(NoticeDTO noticeDTO,MultipartFile [] file, HttpSession session) throws Exception{
+	public int insert(NoticeDTO noticeDTO,MultipartFile file, HttpSession session) throws Exception{
 		
 		int result=noticeDAO.noticeWrite(noticeDTO);
 		FileSaver fileSaver = new FileSaver();
@@ -50,15 +54,18 @@ public class NoticeService {
 			f.mkdirs();
 		}
 		
+		String names=fileSaver.saver(file, filepath);
 		
 		
-		for(int i=0;i<file.length;i++){
 			FileDTO fileDTO = new FileDTO();
-			fileDTO.setFname(names.get(i));
-			fileDTO.setOname(file[i].getOriginalFilename());
+			fileDTO.setFname(names);
+			fileDTO.setOname(file.getOriginalFilename());
 			fileDTO.setNum(noticeDTO.getNum());
-			fileDTO.insert(fileDTO);
-		}
+			fileDTO.setLoc_name("");
+			fileDTO.setTeamName("");
+			fileDAO.insert(fileDTO);
+			
+		
 		return result;
 	}
 		

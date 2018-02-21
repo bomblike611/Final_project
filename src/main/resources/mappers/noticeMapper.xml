@@ -7,7 +7,10 @@
   <mapper namespace="noticeMapper">
   	
   	<insert id="insert" parameterType="NoticeDTO">
-  		insert into notice values(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate)
+  	<selectKey keyProperty="num" order="BEFORE" resultType="int">  <!-- sqldeveloper.exe DB NUM에 넘버 순차적으로 넣어주기-->
+  	select board_seq.nextval from dual
+  	</selectKey>
+  		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, sysdate)
   	</insert>
   	
   	
@@ -41,13 +44,30 @@
   			where R between #{startRow} and #{lastRow} <!-- Map의 key를 써줌 -->
   		</select>
   		
-  		<select id="selectOne" parameterType="int">
+  		<select id="selectOne" parameterType="int" resultType="NoticeDTO" resultMap="NoticeResult2">
   			select n.*, f.* from notice n, files f 
   			where n.num=#{num} and n.num=f.num(+)
   		</select>
+  		
+  		<resultMap type="NoticeDTO" id="NoticeResult2">
+  			<id property="num"  column="num"/>
+  			<result property="title" column="title"/>
+  			<result property="writer" column="writer" />
+  			<result property="contents" column="contents"/>
+  			<result property="reg_date" column="reg_date"/>
+  			
+  			<collection property="files" ofType="FileDTO" javaType="ArrayList">
+  				
+  				<result property="loc_name" column="loc_name"/>
+  				<result property="teamname" column="teamname"/>
+  				<result property="num" column="num"/>
+  				<result property="fname" column="fname"/>
+  				<result property="oname" column="oname"/>
+  			</collection>
+  		</resultMap>
   	
   		<update id="update" parameterType="NoticeDTO">
-  			update notice set title=#{title},contents=#{contents} where num=#{num}
+  			update notice set title=#{title},writer=#{writer},contents=#{contents} where num=#{num}
   		</update>
   	<delete id="delete" parameterType="int">
   			delete notice where num=#{num}

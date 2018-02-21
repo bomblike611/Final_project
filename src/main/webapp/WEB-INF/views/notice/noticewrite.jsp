@@ -11,14 +11,7 @@
 <script type="text/javascript">
 	$(function() {
 	 	var i=0;
-	 	/*$("#btn").click(function() {
-			if(i<5){
-				$("#result").append('<input type="file" name="file'+i+'"><span class="remove">X</span><br>');
-				i++;
-			}else{
-				alert("최대 5개만 가능합니다");
-			}
-		}); */
+	 	
 
 		$("#btn").click(function() {
 			if(i<5){
