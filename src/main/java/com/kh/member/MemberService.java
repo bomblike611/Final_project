@@ -1,6 +1,7 @@
 package com.kh.member;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.member.MemberDTO;
 import com.kh.util.FileSaver;
+import com.kh.util.ListData;
 
 @Service
 public class MemberService {
@@ -67,7 +69,9 @@ public class MemberService {
 	}
 	
 	
-	
+	public List<MemberDTO> memberList(ListData listData) throws Exception{
+		return memberDAO.memberList(listData);
+	}
 	
 	
 	

@@ -1,9 +1,13 @@
 package com.kh.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.kh.util.ListData;
 
 
 @Repository
@@ -35,7 +39,9 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberView", id);
 	}
 	
-	
+	public List<MemberDTO> memberList(ListData listData)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"memberList", listData);
+	}
 	
 	
 	

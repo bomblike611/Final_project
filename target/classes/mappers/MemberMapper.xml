@@ -26,5 +26,25 @@
  	select * from member where id=#{id}
  	</select>
  	
+ 	<select id="memberList" parameterType="ListData" resultType="MemberDTO">
+ 	select * from (select rownum R,M.* (select * from member 
+ 	<if test="search == 'singer'">
+  	where job LIKE '%'||#{search}||'%'
+  	</if>
+  	<if test="search == 'member'">
+  	where job LIKE '%'||#{search}||'%'
+  	</if>
+  	) M) where R between #{startRow} and #{lastRow} order by R desc
+ 	</select>
+ 	
+ 	<select id="totalCount" resultType="int" parameterType="ListData">
+  	select nvl(count(id),0) from member
+  	<if test="search == 'singer'">
+  	where job LIKE '%'||#{search}||'%'
+  	</if>
+  	<if test="search == 'member'">
+  	where job LIKE '%'||#{search}||'%'
+  	</if>
+  	</select>
  	
   </mapper>
