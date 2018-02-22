@@ -71,6 +71,17 @@
 		});
 		location.reload();
 	}
+	function mailSend(){
+		$(".checked").each(function(){
+			var choice=$(this).prop("checked");
+			if(choice){
+				var emails=$(this).attr("id");
+				$.post("./mailSender",{email:emails},function(result){
+					alert(result.trim());
+				});
+			}
+		});
+	}
 </script>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -85,7 +96,7 @@
 		</ul>
 		<div id="list">
 			<div class="success" >전체 메세지전송</div>
-			<div class="success" >선택 메세지전송</div>
+			<div class="success" onclick="mailSend()" >선택 메세지전송</div>
 			<div class="success" onclick="choiceSuccess()">선택 탈퇴</div>
 			<table class="table table-bordered" id="table">
 				<thead>
@@ -104,7 +115,7 @@
 					<c:forEach items="${list}" var="l">
 						<tr>
 							<td class="check"><input type="checkbox" name="check"
-								class="checked" title="${l.id}"></td>
+								class="checked" title="${l.id}" id="${l.email }"></td>
 							<td>${l.id}</td>
 							<td>${l.name}</td>
 							<td>${l.phone}</td>
@@ -128,6 +139,27 @@
 				</c:if>
 			</div>
 		</div>
+		
+		<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
+		
 	</section>
 </body>
 </html>

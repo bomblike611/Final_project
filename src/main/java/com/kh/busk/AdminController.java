@@ -78,22 +78,24 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/mailSender")
-	public void mailSender(HttpServletRequest request, ModelMap mo) throws AddressException, MessagingException {
-		
+	@RequestMapping(value = "mailSender")
+	public ModelAndView mailSender(MemberDTO memberDTO, ModelMap mo,String subject,String body) throws AddressException, MessagingException {
+		ModelAndView mv=new ModelAndView();
 		// 네이버일 경우 smtp.naver.com 을 입력합니다.
 		// Google일 경우 smtp.gmail.com 을 입력합니다.
-		String host = "smtp.naver.com";
+		String host = "smtp.daum.net";
 		
-		final String username = "XXXXXXXX";       //네이버 아이디를 입력해주세요. @nave.com은 입력하지 마시구요.
-		final String password = "YYYYYYYY";   //네이버 이메일 비밀번호를 입력해주세요.
+		final String username = "rhtn611";       
+		final String password = "busking01";   //네이버 이메일 비밀번호를 입력해주세요.
 		int port=465; //포트번호
 		 
 		// 메일 내용
-		String recipient = "WWWWWWW@gmail.com";    //받는 사람의 메일주소를 입력해주세요.
-		String subject = "메일테스트"; 					  //메일 제목 입력해주세요.
-		String body = username+"님으로 부터 메일을 받았습니다."; //메일 내용 입력해주세요.
-		 
+		System.out.println(memberDTO.getEmail());
+		String recipient = memberDTO.getEmail();    //받는 사람의 메일주소를 입력해주세요.
+		if(subject==null){
+			subject="반갑습니다. 노래왕 버스킹 홈페이지 입니다.";
+			body="반갑습니다. 노래왕 버스킹 홈페이지 입니다.";
+		}
 		Properties props = System.getProperties(); // 정보를 담기 위한 객체 생성
 		 
 		// SMTP 서버 정보 설정
@@ -114,7 +116,7 @@ public class AdminController {
 		session.setDebug(true); //for debug
 		   
 		Message mimeMessage = new MimeMessage(session); //MimeMessage 생성
-		mimeMessage.setFrom(new InternetAddress("XXXXXXXX@naver.com")); //발신자 셋팅 , 보내는 사람의 이메일주소를 한번 더 입력합니다. 이때는 이메일 풀 주소를 다 작성해주세요.
+		mimeMessage.setFrom(new InternetAddress("rhtn611@daum.net")); //발신자 셋팅 , 보내는 사람의 이메일주소를 한번 더 입력합니다. 이때는 이메일 풀 주소를 다 작성해주세요.
 		mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); //수신자셋팅 //.TO 외에 .CC(참조) .BCC(숨은참조) 도 있음
 
 
@@ -122,5 +124,8 @@ public class AdminController {
 		mimeMessage.setText(body);        //내용셋팅
 		Transport.send(mimeMessage); //javax.mail.Transport.send() 이용
 		
+		mv.setViewName("common/fileResult");
+		mv.addObject("result", "메일 전송");
+		return mv;
 	}
 }
