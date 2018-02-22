@@ -85,7 +85,9 @@ public class NoticeService {
 		String filePath = session.getServletContext().getRealPath("resources/upload");
 		List<FileDTO> ar= fileDAO.selectList(num);
 		int result=noticeDAO.delete(num);
-		result = fileDAO.delete(num);
+		FileDTO fileDTO1 = new FileDTO();
+		fileDTO1.setNum(num);
+		result = fileDAO.delete(fileDTO1);
 		for(FileDTO fileDTO: ar){
 			try{
 				File file = new File(filePath, fileDTO.getFname());
@@ -97,7 +99,7 @@ public class NoticeService {
 		return result;
 	}
 	
-	
+}
 		
 		
 		

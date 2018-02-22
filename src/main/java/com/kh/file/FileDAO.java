@@ -24,9 +24,12 @@ public class FileDAO {
 		return sqlSession.selectList(NAMESPACE+"selectList");
 	}
 	
+	public List<FileDTO> selectList(int num) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"selectList1");
+	}
+	
 	public int Delete(FileDTO fileDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"delete", fileDTO);
 	}
-	
 
 }
