@@ -52,8 +52,38 @@
 				    });
 			}
 		});
-
+		
+		$(".delete").click(function(){
+			var ids=$(this).attr("title");
+			$.post("./singerUpdate",{id:ids},function(result){
+				alert(result.trim());
+			});
+			location.reload();
+		});
+		
 	});
+	
+	function allSuccess(){
+		$(".checked").each(function(){
+			var ids=$(this).attr("title");
+			$.post("./singerUpdate",{id:ids},function(result){
+				alert(result.trim());
+			});
+		});
+		location.reload();
+	}
+	function choiceSuccess(){
+		$(".checked").each(function(){
+			var choice=$(this).prop("checked");
+			if(choice){
+				var ids=$(this).attr("title");
+				$.post("./singerUpdate",{id:ids},function(result){
+					alert(result.trim());
+				});
+			}
+		});
+		location.reload();
+	}
 </script>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -67,8 +97,8 @@
 			<li onclick="singerJoin()">singer</li>
 		</ul>
 		<div id="list">
-		<div class="success">전체 승인</div>
-		<div class="success">선택 승인</div>
+		<div class="success" onclick="allSuccess()">전체 승인</div>
+		<div class="success" onclick="choiceSuccess()">선택 승인</div>
 			<table class="table table-bordered" id="table">
 				<thead>
 					<tr>
@@ -86,14 +116,14 @@
 					<c:forEach items="${list}" var="l">
 						<tr>
 							<td class="check"><input type="checkbox" name="check"
-								class="checked"></td>
+								class="checked" title="${l.id}"></td>
 							<td>${l.id}</td>
 							<td>${l.name}</td>
 							<td>${l.phone}</td>
 							<td>${l.email}</td>
 							<td>${l.job}</td>
 							<td>${l.point}</td>
-							<td class="delete">승인</td>
+							<td class="delete" title="${l.id}">승인</td>
 						</tr>
 					</c:forEach>
 

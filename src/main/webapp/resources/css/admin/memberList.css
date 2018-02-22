@@ -33,6 +33,7 @@
 	line-height: 50px;
 	border: 1px solid #E7E7E7;
 	transition: background-color 1s, color 0.5s;
+	cursor: pointer;
 }
 
 #ul>li:hover {

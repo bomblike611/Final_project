@@ -28,7 +28,6 @@ public class MemberDAO {
 
 	
 	public int memberUpdate(MemberDTO memberDTO) throws Exception{
-		System.out.println(memberDTO.getFname());
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
 	}
 	
@@ -49,7 +48,9 @@ public class MemberDAO {
 	public int totalCount(ListData listData) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
 	}
-	
+	public int singerUpdate(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"singerUpdate", memberDTO);
+	}
 	
 	
 	

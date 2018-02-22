@@ -20,6 +20,57 @@
 	function singerJoin() {
 		location.href = "./singerJoin";
 	}
+	$(function() {
+		var check = false;
+		$("#check").mouseover(function() {
+			$("#check").html("all");
+		});
+		$("#check").mouseout(function() {
+			$("#check").html("check");
+		});
+
+		$("#check").click(function() {
+			if(!check){
+				$(".checked").prop("checked","true");
+				check=true;
+			}else{
+				 $('.checked').prop('checked',function(){
+				        return !$(this).prop('checked');
+				    });
+			}
+		});
+		
+		$(".delete").click(function(){
+			var ids=$(this).attr("title");
+			$.post("./adminDelete",{id:ids},function(result){
+				alert(result.trim());
+			});
+			location.reload();
+		});
+		
+	});
+	
+	function allSuccess(){
+		$(".checked").each(function(){
+			var ids=$(this).attr("title");
+			$.post("./adminDelete",{id:ids},function(result){
+				alert(result.trim());
+			});
+		});
+		location.reload();
+	}
+	function choiceSuccess(){
+		$(".checked").each(function(){
+			var choice=$(this).prop("checked");
+			if(choice){
+				var ids=$(this).attr("title");
+				$.post("./adminDelete",{id:ids},function(result){
+					alert(result.trim());
+				});
+			}
+		});
+		location.reload();
+	}
 </script>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -33,10 +84,13 @@
 			<li onclick="singerJoin()">singer</li>
 		</ul>
 		<div id="list">
+			<div class="success" >전체 메세지전송</div>
+			<div class="success" >선택 메세지전송</div>
+			<div class="success" onclick="choiceSuccess()">선택 탈퇴</div>
 			<table class="table table-bordered" id="table">
 				<thead>
 					<tr>
-						<th class="check">check</th>
+						<th class="check" id="check">check</th>
 						<th>ID</th>
 						<th>NAME</th>
 						<th>PHONE</th>
@@ -47,31 +101,32 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach items="${list}" var="l">
-					<tr>
-						<td class="check"><input type="checkbox" name="check"></td>
-						<td>${l.id}</td>
-						<td>${l.name}</td>
-						<td>${l.phone}</td>
-						<td>${l.email}</td>
-						<td>${l.job}</td>
-						<td>${l.point}</td>
-						<td class="delete">X</td>
-					</tr>
-				</c:forEach>
+					<c:forEach items="${list}" var="l">
+						<tr>
+							<td class="check"><input type="checkbox" name="check"
+								class="checked" title="${l.id}"></td>
+							<td>${l.id}</td>
+							<td>${l.name}</td>
+							<td>${l.phone}</td>
+							<td>${l.email}</td>
+							<td>${l.job}</td>
+							<td>${l.point}</td>
+							<td class="delete" title="${l.id}">X</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<div id="pagination">
-			<c:if test="${page.curBlock > 1}">
-				<span class="page" title="${page.startNum-1}">[이전]</span>
-			</c:if>
-			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<span class="page" title="${i}">${i}</span>
-			</c:forEach>
-			<c:if test="${page.curBlock < page.totalBlock}">
-				<span class="page" title="${page.lastNum+1}">[다음]</span>
-			</c:if>
-		</div>
+				<c:if test="${page.curBlock > 1}">
+					<span class="page" title="${page.startNum-1}">[이전]</span>
+				</c:if>
+				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+					<span class="page" title="${i}">${i}</span>
+				</c:forEach>
+				<c:if test="${page.curBlock < page.totalBlock}">
+					<span class="page" title="${page.lastNum+1}">[다음]</span>
+				</c:if>
+			</div>
 		</div>
 	</section>
 </body>
