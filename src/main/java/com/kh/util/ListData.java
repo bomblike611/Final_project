@@ -4,6 +4,8 @@ public class ListData {
 
 	private String search;
 	private String kind;
+	private String fromDate;
+	private String toDate;
 	private Integer curPage;
 	private Integer perPage;
 	private Integer startNum;
@@ -83,6 +85,18 @@ public class ListData {
 	}
 	public void setPerPage(Integer perPage) {
 		this.perPage = perPage;
+	}
+	public String getFromDate() {
+		return fromDate;
+	}
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+	public String getToDate() {
+		return toDate;
+	}
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
 	}
 
 	

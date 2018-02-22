@@ -18,8 +18,15 @@ public class MemberDTO {
 	private String position;
 	private String sns;
 	private String state;
+	private String [] member;
 	
 	
+	public String[] getMember() {
+		return member;
+	}
+	public void setMember(String[] member) {
+		this.member = member;
+	}
 	public String getTeamName() {
 		return teamName;
 	}

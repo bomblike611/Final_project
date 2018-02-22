@@ -11,14 +11,16 @@
 <script type="text/javascript">
 	$(function() {
 		var count = 0;
-		$("#add").click(function() {
-				if (count < 3) {
-				count++;
-				$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file" class="oo"></p>');
-				} else {
-					alert("사진은 4개까지 등록 가능합니다.");
-				}
-		});
+		$("#add")
+				.click(
+						function() {
+							if (count < 3) {
+								count++;
+								$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file" class="oo"></p>');
+							} else {
+								alert("사진은 4개까지 등록 가능합니다.");
+							}
+						});
 		$("#remove").click(function() {
 			if (count > 0) {
 				$(".p").each(function() {
@@ -31,25 +33,26 @@
 				alert("사진 1개는 반드시 등록해야합니다.");
 			}
 		});
-	$("#search").click(function(){
-		window.open("./locationMap", "장소검색하기", "top=100,status=no, left=200,width=1500, height=800, toolbar=no, menubar=no, location=no, scrollbars=no, resizable=no");
-	});
+		$("#search").click(function() {
+							window.open("./locationMap","장소검색하기","top=100,status=no, left=200,width=1500, height=800, toolbar=no, menubar=no, location=no, scrollbars=no, resizable=no");
+						});
 
-	$("#btn").click(function(){
-		var check=true;
-		$(".oo").each(function(){
-			if($(this).val()==""){
-				check=false;
+		$("#btn").click(function() {
+			var check = true;
+			$(".oo").each(function() {
+				if ($(this).val() == "") {
+					check = false;
+				}
+			});
+			if (check) {
+				document.frm.submit();
+			} else {
+				alert("모든 항목을 채워주세요.");
 			}
 		});
-		if(check){
-			document.frm.submit();
-		}else{
-			alert("모든 항목을 채워주세요.");
-		}
-	});
+
 	
-	
+		
 	});
 </script>
 
@@ -66,7 +69,8 @@
 			</div>
 			<div id="WriteForm">
 				<div id="realForm">
-					<form action="locationWrite" method="post" name="frm" enctype="multipart/form-data">
+					<form action="locationWrite" method="post" name="frm"
+						enctype="multipart/form-data">
 						<table id="formdata">
 							<tr>
 								<td><span style="color: red;">*</span>장소명</td>
@@ -92,9 +96,8 @@
 								<td><span style="color: red;">*</span>사진
 									<p id="add">ADD</p>
 									<p id="remove">REMOVE</p></td>
-								<td id="picture"><p class="p">
-										<input type="file" name="file" class="oo">
-									</p></td>
+								<td id="picture">
+								<p class="p"><input type="file" name="file" class="oo"></p></td>
 							</tr>
 							<tr>
 								<td>설명</td>
@@ -102,7 +105,7 @@
 							</tr>
 						</table>
 					</form>
-						<button class="btn btn--stripe" id="btn">Location Write</button>
+					<button class="btn btn--stripe" id="btn">Location Write</button>
 				</div>
 			</div>
 		</div>
@@ -110,142 +113,206 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae88eb2c4820eb8b91b58f0cfc8ea570&libraries=services"></script>
 	<script>
-$(function(){
-	var addr="";
-	var name="";
-	$("#main").ready(function(){
-		$("#main").click(function(){
-		addr= $("#area").val();
-		name= $("#area").attr("title");
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
+		$(function() {
+			var addr = "";
+			var name = "";
+			$("#main")
+					.ready(
+							function() {
+								$("#main")
+										.click(
+												function() {
+													addr = $("#area").val();
+													name = $("#area").attr(
+															"title");
+													var mapContainer = document
+															.getElementById('map'), // 지도를 표시할 div 
+													mapOption = {
+														center : new daum.maps.LatLng(
+																33.450701,
+																126.570667), // 지도의 중심좌표
+														level : 3
+													// 지도의 확대 레벨
+													};
 
-	// 지도를 생성합니다    
-	var map = new daum.maps.Map(mapContainer, mapOption); 
+													// 지도를 생성합니다    
+													var map = new daum.maps.Map(
+															mapContainer,
+															mapOption);
 
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new daum.maps.services.Geocoder();
+													// 주소-좌표 변환 객체를 생성합니다
+													var geocoder = new daum.maps.services.Geocoder();
 
-	// 주소로 좌표를 검색합니다
-	if(addr==""){
-		geocoder.addressSearch("서울 서초구 서초동 산 130-6", function(result, status) {
+													// 주소로 좌표를 검색합니다
+													if (addr == "") {
+														geocoder
+																.addressSearch(
+																		"서울 서초구 서초동 산 130-6",
+																		function(
+																				result,
+																				status) {
 
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === daum.maps.services.Status.OK) {
+																			// 정상적으로 검색이 완료됐으면 
+																			if (status === daum.maps.services.Status.OK) {
 
-		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+																				var coords = new daum.maps.LatLng(
+																						result[0].y,
+																						result[0].x);
 
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
+																				// 결과값으로 받은 위치를 마커로 표시합니다
+																				var marker = new daum.maps.Marker(
+																						{
+																							map : map,
+																							position : coords
+																						});
 
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">예술의 전당</div>'
-		        });
-		        infowindow.open(map, marker);
+																				// 인포윈도우로 장소에 대한 설명을 표시합니다
+																				var infowindow = new daum.maps.InfoWindow(
+																						{
+																							content : '<div style="width:150px;text-align:center;padding:6px 0;">예술의 전당</div>'
+																						});
+																				infowindow
+																						.open(
+																								map,
+																								marker);
 
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-		    } 
-		});    
-	}else{
-	geocoder.addressSearch(addr, function(result, status) {
+																				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+																				map
+																						.setCenter(coords);
+																			}
+																		});
+													} else {
+														geocoder
+																.addressSearch(
+																		addr,
+																		function(
+																				result,
+																				status) {
 
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === daum.maps.services.Status.OK) {
+																			// 정상적으로 검색이 완료됐으면 
+																			if (status === daum.maps.services.Status.OK) {
 
-	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+																				var coords = new daum.maps.LatLng(
+																						result[0].y,
+																						result[0].x);
 
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new daum.maps.Marker({
-	            map: map,
-	            position: coords
-	        });
+																				// 결과값으로 받은 위치를 마커로 표시합니다
+																				var marker = new daum.maps.Marker(
+																						{
+																							map : map,
+																							position : coords
+																						});
 
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
-	        });
-	        infowindow.open(map, marker);
+																				// 인포윈도우로 장소에 대한 설명을 표시합니다
+																				var infowindow = new daum.maps.InfoWindow(
+																						{
+																							content : '<div style="width:150px;text-align:center;padding:6px 0;">'
+																									+ name
+																									+ '</div>'
+																						});
+																				infowindow
+																						.open(
+																								map,
+																								marker);
 
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords);
-	    } 
-	});    
-	}
+																				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+																				map
+																						.setCenter(coords);
+																			}
+																		});
+													}
+												});
+								var mapContainer = document
+										.getElementById('map'), // 지도를 표시할 div 
+								mapOption = {
+									center : new daum.maps.LatLng(33.450701,
+											126.570667), // 지도의 중심좌표
+									level : 3
+								// 지도의 확대 레벨
+								};
+
+								// 지도를 생성합니다    
+								var map = new daum.maps.Map(mapContainer,
+										mapOption);
+
+								// 주소-좌표 변환 객체를 생성합니다
+								var geocoder = new daum.maps.services.Geocoder();
+
+								// 주소로 좌표를 검색합니다
+								if (addr == "") {
+									geocoder
+											.addressSearch(
+													"서울 서초구 서초동 산 130-6",
+													function(result, status) {
+
+														// 정상적으로 검색이 완료됐으면 
+														if (status === daum.maps.services.Status.OK) {
+
+															var coords = new daum.maps.LatLng(
+																	result[0].y,
+																	result[0].x);
+
+															// 결과값으로 받은 위치를 마커로 표시합니다
+															var marker = new daum.maps.Marker(
+																	{
+																		map : map,
+																		position : coords
+																	});
+
+															// 인포윈도우로 장소에 대한 설명을 표시합니다
+															var infowindow = new daum.maps.InfoWindow(
+																	{
+																		content : '<div style="width:150px;text-align:center;padding:6px 0;">예술의 전당</div>'
+																	});
+															infowindow
+																	.open(map,
+																			marker);
+
+															// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+															map
+																	.setCenter(coords);
+														}
+													});
+								} else {
+									geocoder
+											.addressSearch(
+													addr,
+													function(result, status) {
+
+														// 정상적으로 검색이 완료됐으면 
+														if (status === daum.maps.services.Status.OK) {
+
+															var coords = new daum.maps.LatLng(
+																	result[0].y,
+																	result[0].x);
+
+															// 결과값으로 받은 위치를 마커로 표시합니다
+															var marker = new daum.maps.Marker(
+																	{
+																		map : map,
+																		position : coords
+																	});
+
+															// 인포윈도우로 장소에 대한 설명을 표시합니다
+															var infowindow = new daum.maps.InfoWindow(
+																	{
+																		content : '<div style="width:150px;text-align:center;padding:6px 0;">'
+																				+ name
+																				+ '</div>'
+																	});
+															infowindow
+																	.open(map,
+																			marker);
+
+															// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+															map
+																	.setCenter(coords);
+														}
+													});
+								}
+							});
+
 		});
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
-
-	// 지도를 생성합니다    
-	var map = new daum.maps.Map(mapContainer, mapOption); 
-
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new daum.maps.services.Geocoder();
-
-	// 주소로 좌표를 검색합니다
-	if(addr==""){
-		geocoder.addressSearch("서울 서초구 서초동 산 130-6", function(result, status) {
-
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === daum.maps.services.Status.OK) {
-
-		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">예술의 전당</div>'
-		        });
-		        infowindow.open(map, marker);
-
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-		    } 
-		});    
-	}else{
-	geocoder.addressSearch(addr, function(result, status) {
-
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === daum.maps.services.Status.OK) {
-
-	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new daum.maps.Marker({
-	            map: map,
-	            position: coords
-	        });
-
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
-	        });
-	        infowindow.open(map, marker);
-
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords);
-	    } 
-	});    
-	}
-	});
-
-
-});    
-</script>
+	</script>
 </body>
 </html>

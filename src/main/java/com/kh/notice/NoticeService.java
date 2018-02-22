@@ -83,7 +83,7 @@ public class NoticeService {
 	
 	public int delete(int num, HttpSession session) throws Exception {
 		String filePath = session.getServletContext().getRealPath("resources/upload");
-		List<FileDTO> ar= fileDAO.se
+		List<FileDTO> ar= fileDAO.selectList(num);
 		int result=noticeDAO.delete(num);
 		result = fileDAO.delete(num);
 		for(FileDTO fileDTO: ar){
@@ -95,7 +95,6 @@ public class NoticeService {
 			}
 		}
 		return result;
-		
 	}
 	
 	

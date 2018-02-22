@@ -15,6 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
+
+import com.kh.util.ListData;
+
+
 import com.kh.notice.NoticeDTO;
 import com.kh.notice.NoticeService;
 import com.kh.util.ListData;

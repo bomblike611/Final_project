@@ -10,9 +10,15 @@
   			insert into files values(#{loc_name}, #{teamname},#{num},#{fname}, #{oname})
   		</insert>
   		
+<<<<<<< HEAD
   		<delete id="delete" parameterType="int">
   			delete files where num=#{num}
   		</delete>
+=======
+  		<select id="selectList" resultType="FileDTO">
+  			select * from files
+  		</select>
+>>>>>>> master
   		
   		<delete id="deleteFnum" parameterType="int">
   			delete files where fnum=#{fnum}
@@ -22,6 +28,23 @@
   			select * from files where num=#{num}
   		</select>
   		
+  		<delete id="delete" parameterType="FileDTO">
+  		delete files 
+  		<choose>
+  		<when test="fname != null">
+  		where fname=#{fname}
+  		</when>
+  		<when test="loc_name != null">
+  		where loc_name=#{loc_name}
+  		</when>
+  		<when test="teamname != null">
+  		where teamname=#{teamname}
+  		</when>
+  		<when test="num != 0">
+  		where num=#{num}
+  		</when>
+  		</choose>
+  		</delete>
   		
   		
   	</mapper>

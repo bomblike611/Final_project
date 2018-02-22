@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +11,29 @@
 
 <script type="text/javascript">
 $(function(){
+	$("#btn").click(function() {
+		var check = true;
+		$(".oo").each(function() {
+			if ($(this).val() == "") {
+				check = false;
+			}
+		});
+		if (check) {
+			document.frm.submit();
+		} else {
+			alert("모든 항목을 채워주세요.");
+		}
+	});
 	var count=0;
+		$(".p").each(function(){
+			if(count<4){
+			count++;
+			}
+		});
 	$("#add").click(function(){
-		if(count<3){
+		if(count<4){
 		count++;
-		$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file"></p>');
+		$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file" class="oo"></p>');
 		}else{
 			alert("사진은 4개까지 등록 가능합니다.");
 		}
@@ -32,6 +51,19 @@ $(function(){
 		}
 	});
 	
+	$(".delete").click(function(){
+		if(confirm("삭제 후 복구는 불가능합니다. 정말로 삭제하시겠습니까?")){
+		var fname=$(this).attr("id");
+		$(this).prev().remove();
+		$(this).remove();
+		count--;
+		$.get("./fileDelete?fname="+fname,function(message){
+			alert(message.trim());
+		});
+		
+		}
+	});
+	
 });
 </script>
 </head>
@@ -46,28 +78,35 @@ $(function(){
 			</div>
 			<div id="WriteForm">
 				<div id="realForm">
-					<form action="locationUpdate" method="post">
+					<form action="locationUpdate" method="post" name="frm" enctype="multipart/form-data">
+					<input type="hidden" name="num" value="${view.num}">
 						<table id="formdata">
 							<tr>
 								<td><span style="color:red;">*</span>장소명</td>
-								<td><input type="text" id="input" name="loc_name"
-									placeholder="장소를 입력해주세요"></td>
+								<td><input type="text" class="oo" name="loc_name" value="${view.loc_name }"
+									placeholder="장소를 입력해주세요"></td> 
 							</tr>
 							<tr>
 								<td><span style="color:red;">*</span>주소</td>
-								<td><input type="text" id="input" name="addr" placeholder="주소가 입력됩니다"></td>
+								<td><input type="text" class="oo" name="area" placeholder="주소가 입력됩니다" readonly="readonly" value="${view.area }"></td>
 							</tr>
+							<tr><td><span style="color:red;">*</span>사진<p id="add">ADD</p><p id="remove">REMOVE</p></td><td id="picture">
+							<c:forEach items="${files}" var="f">
+							<p class="p"><img src="../resources/upload/${f.fname}" style="width: 70px; height: 50px">${f.oname}</p><span class="delete ${f.fname}">X</span>
+							</c:forEach>
+							</td></tr>
 							<tr>
-								<td colspan="2"><div id="map"></div></td>
+								<td><span style="color: red;">*</span>최대인원</td>
+								<td><input type="number" class="oo" name="entry"
+									placeholder="인원수를 입력해주세요" value="${view.entry}"></td>
 							</tr>
-							<tr><td><span style="color:red;">*</span>사진<p id="add">ADD</p><p id="remove">REMOVE</p></td><td id="picture"><p class="p"><input type="file" name="file"></p></td></tr>
 							<tr>
 								<td>설명</td>
-								<td><textarea></textarea></td>
+								<td><textarea name="memo">${view.memo }</textarea></td>
 							</tr>
 						</table>
 					</form>
-						<button class="btn btn--stripe" >Location Write</button>
+						<button class="btn btn--stripe" id="btn">Location Write</button>
 				</div>
 			</div>
 		</div>
