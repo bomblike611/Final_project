@@ -21,7 +21,7 @@
 					url:"../file/fileDelete",
 					type:"GET",
 					data:{
-						fnum:fnum,
+						num:num,
 						fname:fname
 					},
 					success:function(data){
@@ -93,7 +93,7 @@
 		<p><input type="button" value="FileAdd" id="btn"></p>
 		<div id="result">
 		<c:forEach items="${view.files}" var="file">
-			<p><input type="text" value="${file.oname}" readonly="readonly"><span class="del" title="${file.fnum}" id="${file.fname}">X</span></p>
+			<p><input type="text" value="${file.oname}" readonly="readonly"><span class="del" title="${file.num}" id="${file.fname}">X</span></p>
 		</c:forEach>
 		</div>	
 		

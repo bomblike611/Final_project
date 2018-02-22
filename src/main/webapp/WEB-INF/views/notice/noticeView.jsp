@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@include file="../temp/header.jsp"%>
-	<section id="main">v
+	<section id="main">
 <h1>noticeView</h1>
 
 	<h1>Title : ${view.title}</h1>

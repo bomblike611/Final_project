@@ -71,13 +71,20 @@ public String insert(NoticeDTO noticeDTO,MultipartFile file,HttpSession session,
 	
 }
 
-@RequestMapping(value="noticeUpdate", method=RequestMethod.GET)
+@RequestMapping(value="Update", method=RequestMethod.GET)
 	public String update(int num, Model model) throws Exception{
 	NoticeDTO noticeDTO = noticeService.selectOne(num);
 	model.addAttribute("view", noticeDTO);
 	return "notice/noticeUpdate";
 }
 
+@RequestMapping(value="Update", method=RequestMethod.POST)
+	public String update(NoticeDTO noticeDTO,MultipartFile file,HttpSession session, RedirectAttributes re) throws Exception{
+	int result=noticeService.update(noticeDTO, file, session);
+	
+	
+	}
+		
 }
 
 	
