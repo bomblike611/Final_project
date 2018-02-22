@@ -83,8 +83,14 @@ canvas{
 					if (pArr[part] == "꽝") {
 						alert("꽝입니다. 아쉽지만 다음에 다시 도전해주세요!");
 					} else {
+						$.get("./pointInsert?use_point="+pArr[part],function(dd){
+							if(dd == "로그아웃되었거나 회원정보가 존재하지 않습니다." || "점수 획득 실패!"){
+								
+							}else{								
 						<%@include file="./firework.js"%>
-						alert("축하드립니다! Point : " + pArr[part] + "점 적립!");
+							}
+							alert(dd.trim());
+						});
 					}
 				}
 
