@@ -30,11 +30,27 @@
 		});
 
 		$("#check").click(function() {
-			$(".checked").each(function(){
-				var c=$(this).prop("checked");
-				
-			});
-			
+			/* 		alert(check);
+			if (!check) {
+				$(".checked").each(function() {
+					var c = $(this).prop("checked");
+					if (!c) {
+						$(this).prop("checked", "true");
+					}
+					check = true;
+				});
+			}else{
+				$(".checked").removeAttr("checked");
+				check = false;
+			} */
+			if(!check){
+				$(".checked").prop("checked","true");
+				check=true;
+			}else{
+				 $('.checked').prop('checked',function(){
+				        return !$(this).prop('checked');
+				    });
+			}
 		});
 
 	});
@@ -51,6 +67,8 @@
 			<li onclick="singerJoin()">singer</li>
 		</ul>
 		<div id="list">
+		<div class="success">전체 승인</div>
+		<div class="success">선택 승인</div>
 			<table class="table table-bordered" id="table">
 				<thead>
 					<tr>
@@ -67,7 +85,8 @@
 				<tbody>
 					<c:forEach items="${list}" var="l">
 						<tr>
-							<td class="check"><input type="checkbox" name="check" class="checked"></td>
+							<td class="check"><input type="checkbox" name="check"
+								class="checked"></td>
 							<td>${l.id}</td>
 							<td>${l.name}</td>
 							<td>${l.phone}</td>
