@@ -12,6 +12,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="../resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <script type="text/javascript">
 	function memberlist() {
@@ -21,6 +25,41 @@
 		location.href = "./singerJoin";
 	}
 	$(function() {
+		//스마트에디터
+			//전역변수
+		var obj = [];
+		//스마트에디터 프레임생성
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : obj,
+			elPlaceHolder : "contents",
+			sSkinURI : "../resources/SE2/SmartEditor2Skin.html",
+			htParams : {
+				// 툴바 사용 여부
+				bUseToolbar : true,
+				// 입력창 크기 조절바 사용 여부
+				bUseVerticalResizer : true,
+				// 모드 탭(Editor | HTML | TEXT) 사용 여부
+				bUseModeChanger : true,
+			}
+		});
+		//전송버튼
+		$("#btn").click(function() {
+			//id가 smarteditor인 textarea에 에디터에서 대입
+			obj.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+			$(".checked").each(function(){
+				var choice=$(this).prop("checked");
+				if(choice){
+					var emails=$(this).attr("id");
+					$("#tt").append('<input type="hidden" name="email" value="'+emails+'">')
+				}
+			});
+			document.frm.submit();
+			$("#myModal").css("display","none");
+		});
+		
+		//////////////////////////////
+		
+		
 		var check = false;
 		$("#check").mouseover(function() {
 			$("#check").html("all");
@@ -48,6 +87,10 @@
 			location.reload();
 		});
 		
+		$(".close").click(function(){
+			$("#myModal").css("display","none");
+		});
+		
 	});
 	
 	function allSuccess(){
@@ -71,14 +114,20 @@
 		});
 		location.reload();
 	}
+	function mailSendArea(){
+		$("#myModal").css("display","block");
+		
+	}
 	function mailSend(){
+		var s=$("#contents").val();
+		alert(s);
 		$(".checked").each(function(){
 			var choice=$(this).prop("checked");
 			if(choice){
 				var emails=$(this).attr("id");
-				$.post("./mailSender",{email:emails},function(result){
+				/* $.post("./mailSender",{email:emails},function(result){
 					alert(result.trim());
-				});
+				}); */
 			}
 		});
 	}
@@ -96,7 +145,7 @@
 		</ul>
 		<div id="list">
 			<div class="success" >전체 메세지전송</div>
-			<div class="success" onclick="mailSend()" >선택 메세지전송</div>
+			<div class="success" onclick="mailSendArea()" >선택 메세지전송</div>
 			<div class="success" onclick="choiceSuccess()">선택 탈퇴</div>
 			<table class="table table-bordered" id="table">
 				<thead>
@@ -129,13 +178,13 @@
 			</table>
 			<div id="pagination">
 				<c:if test="${page.curBlock > 1}">
-					<span class="page" title="${page.startNum-1}">[이전]</span>
+					<span class="page" title="${page.startNum-1}" class="list pageing">[이전]</span>
 				</c:if>
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-					<span class="page" title="${i}">${i}</span>
+					<span class="page" title="${i}" class="list btn_now pageing">${i}</span>
 				</c:forEach>
 				<c:if test="${page.curBlock < page.totalBlock}">
-					<span class="page" title="${page.lastNum+1}">[다음]</span>
+					<span class="page" title="${page.lastNum+1}" class="list pageing">[다음]</span>
 				</c:if>
 			</div>
 		</div>
@@ -147,14 +196,14 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Modal Header</h2>
+      <h2>노래왕 버스킹 메일</h2>
     </div>
     <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
+    	<form action="./mailSender" name="frm" id="tt" enctype="multipart/form-data">
+    	<input type="text" name="subject" placeholder="제목을 입력해주세요.">
+      <textarea name="body" id="contents" style="width: 80%; height: 600px;"></textarea>
+      <div class="success" id="btn">Mail Send</div>
+      </form>
     </div>
   </div>
 
