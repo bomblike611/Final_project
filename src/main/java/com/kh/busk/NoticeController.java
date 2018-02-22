@@ -50,7 +50,7 @@ public class NoticeController {
 	}
      
 @RequestMapping(value="noticewrite", method=RequestMethod.POST)
-public String insert(NoticeDTO noticeDTO,MultipartFile file,HttpSession session, RedirectAttributes re) throws Exception{
+public String insert(NoticeDTO noticeDTO,MultipartFile[] file,HttpSession session, RedirectAttributes re) throws Exception{
 	int result=noticeService.insert(noticeDTO, file, session);
 	String message="Write Fail";
 	if(result>0){
@@ -72,20 +72,40 @@ public String insert(NoticeDTO noticeDTO,MultipartFile file,HttpSession session,
 }
 
 @RequestMapping(value="Update", method=RequestMethod.GET)
-	public String update(int num, Model model) throws Exception{
+public String noticeupdate(int num, Model model)throws Exception{
 	NoticeDTO noticeDTO = noticeService.selectOne(num);
 	model.addAttribute("view", noticeDTO);
+	
 	return "notice/noticeUpdate";
 }
 
-@RequestMapping(value="Update", method=RequestMethod.POST)
-	public String update(NoticeDTO noticeDTO,MultipartFile file,HttpSession session, RedirectAttributes re) throws Exception{
-	int result=noticeService.update(noticeDTO, file, session);
-	
-	
-	}
-		
+@RequestMapping(value="Update",method=RequestMethod.POST)
+public ModelAndView noticeUpdate(NoticeDTO noticeDTO,MultipartFile [] file,HttpSession session) throws Exception{
+   ModelAndView mv=new ModelAndView();
+   System.out.println(noticeDTO.getWriter());
+   System.out.println(noticeDTO.getNum());
+   int result=noticeService.update(noticeDTO, session, file);
+   String s="Fail";
+   if(result>0){
+      s="Success";
+   }
+   mv.addObject("message", s);
+   mv.addObject("path", "noticeView?num="+noticeDTO.getNum());
+   mv.setViewName("common/result");
+   return mv;
+   
 }
+
+public String delete(int num, HttpSession session)throws Exception{
+	int result=noticeService.delete(num, session);
+	
+	return "redirect:./noticeList";
+	
+}
+
+
+	}
+
 
 	
 

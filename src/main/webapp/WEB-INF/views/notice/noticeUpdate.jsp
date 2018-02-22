@@ -38,8 +38,8 @@
 		
 		
 	
-	 	var i=${fn:length(view.files)};
-	 	alert(i);
+	 	/* var i=${fn:length(view.files)};
+	 	alert(i); */
 	 	/*$("#btn").click(function() {
 			if(i<5){
 				$("#result").append('<input type="file" name="file'+i+'"><span class="remove">X</span><br>');
@@ -86,7 +86,7 @@
 	<h1>Update</h1>
 	<form action="Update" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${view.num}">
-		<p>Writer : <input type="text" value="${view.writer}" disabled="disabled"></p>
+		<p>Writer : <input type="text" value="${view.writer}" name="writer" readonly="readonly"></p>
 		<p>Title  : <input type="text" value="${view.title}" name="title"></p>
 		<p>Contents : <textarea rows="" cols="" name="contents">${view.contents}</textarea>
 		
