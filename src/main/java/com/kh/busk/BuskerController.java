@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.busker.BuskerService;
-import com.kh.busker.SearchData;
 import com.kh.member.MemberDTO;
+import com.kh.util.ListData;
 @Controller
 @RequestMapping(value="/busker/**")
 public class BuskerController {
@@ -40,14 +40,15 @@ public class BuskerController {
 		mv.addObject("teamname",getteamname);
 		mv.addObject("m", member);
 		mv.addObject("list", singerList);
-
-		
+		mv.addObject("search", "");
 		return mv;
 	}
 	@RequestMapping(value="buskerList", method=RequestMethod.POST)
-	public ModelAndView buskerList(SearchData searchData){
+	public ModelAndView buskerList(ListData listData){
 		ModelAndView mv = new ModelAndView();
-		MemberDTO memberDTO=buskerService.buskerOne(searchData);
+		List<MemberDTO> buskerList =buskerService.buskerOne(listData);
+		mv.addObject("search", buskerList);
+		mv.setViewName("busker/buskerAjax");
 		return mv;
 	}
 	@RequestMapping(value="buskerView")

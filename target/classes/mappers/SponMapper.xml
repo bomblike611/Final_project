@@ -9,4 +9,8 @@
   		insert into spon values(#{id}, #{teamName}, #{price}, #{message})
   	</insert>
   	
+  	<insert id="point" parameterType="PointDTO">
+  		insert into point values(point_seq.nextval, ${id}, sysdate, #{reason}, #{use_point})
+  	</insert>
+  	
   </mapper>

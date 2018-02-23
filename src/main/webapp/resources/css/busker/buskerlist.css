@@ -129,4 +129,14 @@ select{
 	color: white;
 	
 }
+.cannotfind{
+	background-color:white;
+	width: 44%;
+	height: 60%;
+	margin: 0 auto;
+	list-style: none;
+	border-right: 1px #C2BCB9 solid;
+	border-left: 1px #C2BCB9 solid;
+	text-align: center;
+}
 

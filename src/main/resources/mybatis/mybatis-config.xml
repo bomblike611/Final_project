@@ -14,7 +14,6 @@
 		<typeAlias type="com.kh.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.kh.util.ListData" alias="ListData"/>
 		<typeAlias type="com.kh.entry.EntryDTO" alias="EntryDTO"/>
-		<typeAlias type="com.kh.busker.SearchData" alias="SearchData"/>
 		<typeAlias type="com.kh.point.PointDTO" alias="PointDTO"/>
 	</typeAliases>
   </configuration>

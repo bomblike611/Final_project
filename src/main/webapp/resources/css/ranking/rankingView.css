@@ -116,7 +116,6 @@ select{
 .graph div {
 	height: 100%;
 	background-color: red;
-	width: 70px;
 }
 #ranking_table p {
 	display: inline-block;

@@ -11,6 +11,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$('#fromDate').on('change', function() {
+			$('#toDate').prop('min', $(this).val());
+		});
+		$('#toDate').on('change', function() {
+			$('#fromDate').prop('max', $(this).val());
+		});
 		/* 날짜검색 */
  		$("#btn").click(function(){
  			/* if(!$("#fromDate").val()){
@@ -26,28 +32,22 @@
 			} */
 			
 		  	/* 날짜 선택한날 이후로 안보이기 */
-			 		$('#fromDate').on('change', function() {
-						$('#toDate').prop('min', $(this).val());
-					});
-					$('#toDate').on('change', function() {
-						$('#fromDate').prop('max', $(this).val());
-					});
+			 		
 		
 			var startDate = $("#fromDate").val().split('-');
 			var endDate = $("#toDate").val().split('-');
-	alert(startDate);
-	alert(endDate);
+			alert(startDate);
+			alert(endDate);
 			var startDateCompare = new Date(startDate[0], startDate[1]-1, startDate[2]);
 			alert(startDateCompare);
 			var endDateCompare = new Date(endDate[0], endDate[1]-1, endDate[2]);
 			alert(endDateCompare);
-			/* if(startDateCompare.getTime() > endDateCompare.getTime()){
-				alert("시작날짜와 종료날짜를 확인해 주세요.");
-				return; */
-			}
 			$("#frm").submit();
 		}); 
-
+			/* if(startDateCompare.getTime() > endDateCompare.getTime()){
+				alert("시작날짜와 종료날짜를 확인해 주세요.");
+				return;
+			} */
 	  	/* 공연날짜(달) */
 	       $(".nalja").each(function(){
 	 		var nal=$(this).attr("title");

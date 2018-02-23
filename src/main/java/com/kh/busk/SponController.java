@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.member.MemberDTO;
+import com.kh.point.PointDTO;
 import com.kh.spon.SponDTO;
 import com.kh.spon.SponService;
 
@@ -33,10 +34,17 @@ public class SponController {
 		return mv;
 	}
 	@RequestMapping(value="success")
-	public ModelAndView success(SponDTO sponDTO){
+	public ModelAndView success(SponDTO sponDTO, HttpSession session){
 		ModelAndView mv = new ModelAndView();
 		int result=0;
 		result=sponService.spon(sponDTO);
+		PointDTO pointDTO = new PointDTO();
+		pointDTO.setId(((MemberDTO)session.getAttribute("member")).getId());
+		pointDTO.setReason("후원 적립 포인트");
+		pointDTO.setUse_point(Integer.parseInt(sponDTO.getPrice())/100);
+		if(result>0){
+			result=sponService.spon(pointDTO);
+		}
 		mv.setViewName("redirect: /busk/");
 		return mv;
 	}
