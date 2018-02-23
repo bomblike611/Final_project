@@ -11,7 +11,7 @@
   		</insert>
   		
 
-  		<delete id="delete" parameterType="int">
+  		<delete id="delete1" parameterType="FileDTO">
   			delete files where num=#{num}
   		</delete>
 
@@ -24,13 +24,11 @@
   			delete files where fnum=#{fnum}
   		</delete>
   		
-  		<select id="selectList" parameterType="int" resultType="FileDTO">
-  			select * from files where num=#{num}
-  		</select>
-  		
   		<select id="selectList1" parameterType="int" resultType="FileDTO">
   			select * from files where num=#{num}
   		</select>
+  		
+  		
   		
   		<delete id="delete" parameterType="FileDTO">
   		delete files 

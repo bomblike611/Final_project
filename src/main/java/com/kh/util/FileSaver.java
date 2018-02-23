@@ -23,7 +23,7 @@ public class FileSaver {
 		return fileName;
 	}
 	
-<<<<<<< HEAD
+
 	public List<String> saver(MultipartFile [] file, String filepath)throws Exception{
 	      List<String> fileNames = new ArrayList<>();
 	      for(MultipartFile f: file){
@@ -32,7 +32,7 @@ public class FileSaver {
 	      }
 	      return fileNames;
 	   }
-=======
+
 	public void fileDelete(String filepath,String fileName) throws Exception{
 		try{
 		File file=new File(filepath, fileName);
@@ -40,7 +40,7 @@ public class FileSaver {
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
->>>>>>> master
+
 
 	}
 }

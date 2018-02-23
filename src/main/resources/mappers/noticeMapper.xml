@@ -27,7 +27,7 @@
 			</if>
   		</select>
   	
-  	<select id="selectList" parameterType="listData" resultType="NoticeDTO">
+  	<select id="selectList1" parameterType="listData" resultType="NoticeDTO">
   			select * from
   			(select rownum R, N.* from
   			(select * from notice
@@ -69,7 +69,7 @@
   		<update id="update" parameterType="NoticeDTO">
   			update notice set title=#{title},writer=#{writer},contents=#{contents} where num=#{num}
   		</update>
-  	<delete id="delete" parameterType="int">
+  	<delete id="delete1" parameterType="int">
   			delete notice where num=#{num}
   		</delete>
   	

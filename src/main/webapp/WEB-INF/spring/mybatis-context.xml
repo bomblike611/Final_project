@@ -8,8 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		id="propertyPlaceholderConfigurer">
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyPlaceholderConfigurer">
 		<property name="location" value="classpath:/mybatis/db.properties"></property>
 	</bean>
 	
@@ -20,33 +19,24 @@
 		<property name="driverClassName" value="${jdbc.driver}"></property>
 	</bean>
 
-	<!-- sql문과 합치는 역할 -->
+
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml"></property>
 		<property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></property>
 	</bean>
 
-	<!-- 전송 후 결과처리 -->
+
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
 	</bean>
 	
-	<!-- 트랜잭션 처리 클래스 -->
+	
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
-	<!-- <tx:advice transaction-manager="transactionManager" id="txAdvice">
-		<tx:attributes>
-			<tx:method name="*" rollback-for="RuntimeException"/>
-		</tx:attributes>
-	</tx:advice>
-
-	<aop:config proxy-target-class="true">
-		<aop:pointcut expression="execution(* com.iu.notice.NoticeService.*(..))" id="rtx"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="rtx"/>
-	</aop:config> -->
+	
 	<tx:annotation-driven proxy-target-class="true"/>
 
 </beans>

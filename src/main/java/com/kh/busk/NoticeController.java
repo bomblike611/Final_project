@@ -100,11 +100,11 @@ public ModelAndView noticeUpdate(NoticeDTO noticeDTO,MultipartFile [] file,HttpS
    return mv;
    
 }
-
+@RequestMapping(value="Delete",method=RequestMethod.GET)
 public String delete(int num, HttpSession session)throws Exception{
 	int result=noticeService.delete(num, session);
 	
-	return "redirect:./noticeList";
+	return "redirect:./noticelist";
 	
 }
 

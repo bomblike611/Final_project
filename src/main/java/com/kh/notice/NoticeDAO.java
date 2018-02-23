@@ -26,7 +26,7 @@ public class NoticeDAO{
 	}
 	
 	public List<NoticeDTO> selectList(ListData listData) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"selectList", listData);
+		return sqlSession.selectList(NAMESPACE+"selectList1", listData);
 	}
 	
 	public NoticeDTO selectOne(int num) throws Exception {
@@ -38,7 +38,7 @@ public class NoticeDAO{
 	}
 	
 	public int delete(int num) throws Exception {
-		return sqlSession.insert(NAMESPACE+"delete",num);
+		return sqlSession.insert(NAMESPACE+"delete1",num);
 	}
 	
     public int noticeWrite(NoticeDTO noticeDTO) throws Exception {

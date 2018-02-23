@@ -87,7 +87,7 @@ public class NoticeService {
 		int result=noticeDAO.delete(num);
 		FileDTO fileDTO1 = new FileDTO();
 		fileDTO1.setNum(num);
-		result = fileDAO.delete(fileDTO1);
+		result = fileDAO.Delete(fileDTO1);
 		for(FileDTO fileDTO: ar){
 			try{
 				File file = new File(filePath, fileDTO.getFname());

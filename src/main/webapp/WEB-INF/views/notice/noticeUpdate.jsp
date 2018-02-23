@@ -28,7 +28,6 @@
 						if(data.trim()==1){
 							$(del).prev().remove();
 							$(del).remove();
-							i--;
 						}
 					}
 					
@@ -50,20 +49,14 @@
 		}); */
 
 		$("#btn").click(function() {
-			if(i<5){
 				var ex=$("#ex").html();
 				$("#result").append(ex);
-				i++;
-			}else{
-				alert("최대 5개만 가능합니다");
-			}
 		});
 		
 		//위임이 필요하기때문에 on을 사용하여 위임해줌
 		$("#result").on("click",".remove",function() {
 			$(this).prev().remove();
 			$(this).remove();
-			i--;
 		});			
 	});
 	
