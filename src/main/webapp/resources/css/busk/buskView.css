@@ -2,7 +2,7 @@
 
 
 #container {
-	padding-top: 160px;
+	padding-top: 100px;
 	width: 55%;
 	margin: 0 auto;
 	height: 100%;
@@ -21,7 +21,6 @@
 #busktitle {
 	height: 20%;
 	width: 100%;
-	margin-top: 3%;
 }
 
 #busktitle>h3 {
@@ -55,6 +54,7 @@
 	width: 100%;
 	height: 90%;
 	padding: 5% 0;
+	overflow: hidden;
 }
 
 

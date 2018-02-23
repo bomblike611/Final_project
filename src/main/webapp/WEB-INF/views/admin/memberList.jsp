@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -Member List페이지입니다</title>
 <link href="../resources/css/admin/memberList.css" rel="stylesheet">
+<link href="../resources/css/common/paging.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -23,6 +24,11 @@
 
 	$(function() {
 		
+		$(".btn_now").click(function(){
+			cur=$(this).attr("title");
+			document.page.curPage.value=cur;
+			document.page.submit();
+		});
 		
 		var curPage='${page.curPage}';
 		$(".btn_now").each(function(){
@@ -149,6 +155,9 @@
 <body>
 	<%@include file="../temp/header.jsp"%>
 	<section id="main">
+	<form action="./memberList" name="page">
+	<input type="hidden" name="curPage">
+	</form>
 		<div id="loc">
 			<h2>Member List</h2>
 			<p>회원들의 정보확인과 강제탈퇴가 가능합니다.</p>
@@ -192,13 +201,13 @@
 			</table>
 			<div id="pagination">
 				<c:if test="${page.curBlock > 1}">
-					<span title="${page.startNum-1}" class="page list pageing">[이전]</span>
+					<button title="${page.startNum-1}" class="page list pageing">[이전]</button>
 				</c:if>
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-					<span title="${i}" class="page list btn_now pageing">${i}</span>
+					<button title="${i}" class="page list btn_now pageing">${i}</button>
 				</c:forEach>
 				<c:if test="${page.curBlock < page.totalBlock}">
-					<span title="${page.lastNum+1}" class="page list pageing">[다음]</span>
+					<button title="${page.lastNum+1}" class="page list pageing">[다음]</button>
 				</c:if>
 			</div>
 		</div>

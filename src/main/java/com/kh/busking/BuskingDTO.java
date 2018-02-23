@@ -17,8 +17,16 @@ public class BuskingDTO {
 	private int entry_member;
 	private String fname;
 	private String oname;
+	private String genre;
 	
 	
+	
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
 	public String getFname() {
 		return fname;
 	}
