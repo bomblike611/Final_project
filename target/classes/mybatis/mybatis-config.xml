@@ -6,7 +6,16 @@
   <configuration>
 	<typeAliases>
 		<typeAlias type="com.kh.member.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.kh.busking.BuskingDTO" alias="BuskingDTO"/>
 		<typeAlias type="com.kh.file.FileDTO" alias="FileDTO"/>
 		<typeAlias type="com.kh.location.LocationDTO" alias="LocationDTO"/>
+		<typeAlias type="com.kh.spon.SponDTO" alias="SponDTO"/>
+		<typeAlias type="com.kh.util.ListData" alias="listData"/>
+		<typeAlias type="com.kh.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.kh.cal.CalDTO" alias="CalDTO"/>
+		<typeAlias type="com.kh.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.kh.util.ListData" alias="ListData"/>
+		<typeAlias type="com.kh.entry.EntryDTO" alias="EntryDTO"/>
+		<typeAlias type="com.kh.point.PointDTO" alias="PointDTO"/>
 	</typeAliases>
   </configuration>
