@@ -39,7 +39,7 @@
 
 		});
 		$(".nextBtn").click(function() {
-			if ($("#siteAgreement").prop("checked", true); && $("#personalAgreement").prop("checked", true); && $("#checkALL").prop("checked", true);) {
+			if ($("#siteAgreement").prop("checked", true) && $("#personalAgreement").prop("checked", true) && $("#checkALL").prop("checked", true)) {
 				window.location = '/busk/member/memberJoin';
 			}else{
 				window.location ='/busk/member/memberAgree';

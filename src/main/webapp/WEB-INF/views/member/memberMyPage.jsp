@@ -9,7 +9,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link href="/busk/resources/css/member.css" rel="stylesheet">
 <script type="text/javascript">
-<<<<<<< HEAD
+/* 
    $(function(){
       
       $("label").click(function() {
@@ -59,7 +59,7 @@
        function readURL(input) {
                if (input.files && input.files[0]) {
                var reader = new FileReader();
-=======
+======= */
 	$(function(){
 		
 		if ($("#pw").val()=="FaceBook") {
@@ -113,7 +113,7 @@
 		 function readURL(input) {
 	            if (input.files && input.files[0]) {
 	            var reader = new FileReader();
->>>>>>> jh_branch
+/* >>>>>>> jh_branch */
 
                reader.onload = function (e) {
                        $('#poto').attr('src', e.target.result);

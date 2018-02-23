@@ -60,7 +60,7 @@
 				<figcaption>
 					<p><b>${l.teamname }</b><br>${l.location} / ${l.busk_date}</p>
 					<div class="heading">
-						<h2>${l.teamname}
+						<h2>
 							<span>${l.title}</span>
 						</h2>
 					</div>
