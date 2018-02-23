@@ -31,7 +31,7 @@
  	select * from member where id=#{id}
  	</select>
  	
-<<<<<<< HEAD
+
  	<select id="memberList" parameterType="ListData" resultType="MemberDTO">
  	select * from (select rownum R,M.* from (select * from member 
  	<if test="search == 'singer'">
@@ -63,7 +63,7 @@
   	<update id="singerUpdate" parameterType="MemberDTO">
   	update member set state='승인' where id=#{id}
   	</update>
-=======
+
  	<select id="memberIdCheck" parameterType="String" resultType="MemberDTO">
  		select id from member where id=#{id}
  	</select>
@@ -71,7 +71,7 @@
  	<select id="memberID" parameterType="String" resultType="String">
 		select id from member where email = #{email}
  	</select>
->>>>>>> jh_branch
+
  	
  	<select id="memberPW" parameterType="String" resultType="String">
  		select pw from member where email = #{email}

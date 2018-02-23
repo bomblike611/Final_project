@@ -42,7 +42,7 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberView", id);
 	}
 	
-<<<<<<< HEAD
+
 	public List<MemberDTO> memberList(ListData listData)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"memberList", listData);
 	}
@@ -57,7 +57,7 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"singerUpdate", memberDTO);
 	}
 	
-=======
+
 	public MemberDTO memberIdCheck(String id) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", id);
 	}
@@ -72,14 +72,7 @@ public class MemberDAO {
 	public String memberPW(String email) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberPW", email);
 	}
->>>>>>> jh_branch
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
