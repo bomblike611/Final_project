@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +20,19 @@
 	src="../resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <script type="text/javascript">
-	function memberlist() {
-		location.href = "./memberList";
-	}
-	function singerJoin() {
-		location.href = "./singerJoin";
-	}
+
 	$(function() {
-		//스마트에디터
+		
+		
+		var curPage='${page.curPage}';
+		$(".btn_now").each(function(){
+			if($(this).attr("title")==curPage){
+				$(this).css("background-color","#582D32");
+				$(this).css("color","white");
+			} 
+		});
+		
+		//스마트에디터///////////////////////////////////////
 			//전역변수
 		var obj = [];
 		//스마트에디터 프레임생성
@@ -57,7 +64,7 @@
 			$("#myModal").css("display","none");
 		});
 		
-		//////////////////////////////
+		////////////////////////////////////////////////
 		
 		
 		var check = false;
@@ -93,6 +100,13 @@
 		
 	});
 	
+	//onclick 함수 선언부
+	function memberlist() {
+		location.href = "./memberList";
+	}
+	function singerJoin() {
+		location.href = "./singerJoin";
+	}
 	function allSuccess(){
 		$(".checked").each(function(){
 			var ids=$(this).attr("title");
@@ -144,8 +158,8 @@
 			<li onclick="singerJoin()">singer</li>
 		</ul>
 		<div id="list">
-			<div class="success" >전체 메세지전송</div>
-			<div class="success" onclick="mailSendArea()" >선택 메세지전송</div>
+			<div class="success">전체 메세지전송</div>
+			<div class="success" onclick="mailSendArea()">선택 메세지전송</div>
 			<div class="success" onclick="choiceSuccess()">선택 탈퇴</div>
 			<table class="table table-bordered" id="table">
 				<thead>
@@ -178,37 +192,39 @@
 			</table>
 			<div id="pagination">
 				<c:if test="${page.curBlock > 1}">
-					<span class="page" title="${page.startNum-1}" class="list pageing">[이전]</span>
+					<span title="${page.startNum-1}" class="page list pageing">[이전]</span>
 				</c:if>
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-					<span class="page" title="${i}" class="list btn_now pageing">${i}</span>
+					<span title="${i}" class="page list btn_now pageing">${i}</span>
 				</c:forEach>
 				<c:if test="${page.curBlock < page.totalBlock}">
-					<span class="page" title="${page.lastNum+1}" class="list pageing">[다음]</span>
+					<span title="${page.lastNum+1}" class="page list pageing">[다음]</span>
 				</c:if>
 			</div>
 		</div>
-		
+
 		<!-- The Modal -->
-<div id="myModal" class="modal">
+		<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>노래왕 버스킹 메일</h2>
-    </div>
-    <div class="modal-body">
-    	<form action="./mailSender" name="frm" id="tt" enctype="multipart/form-data">
-    	<input type="text" name="subject" placeholder="제목을 입력해주세요.">
-      <textarea name="body" id="contents" style="width: 80%; height: 600px;"></textarea>
-      <div class="success" id="btn">Mail Send</div>
-      </form>
-    </div>
-  </div>
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>노래왕 버스킹 메일</h2>
+				</div>
+				<div class="modal-body">
+					<form action="./mailSender" name="frm" id="tt"
+						enctype="multipart/form-data">
+						<input type="text" name="subject" placeholder="제목을 입력해주세요.">
+						<textarea name="body" id="contents"
+							style="width: 80%; height: 600px;"></textarea>
+						<div class="success" id="btn">Mail Send</div>
+					</form>
+				</div>
+			</div>
 
-</div>
-		
+		</div>
+
 	</section>
 </body>
 </html>

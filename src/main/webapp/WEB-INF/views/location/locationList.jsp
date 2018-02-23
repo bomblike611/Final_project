@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -Location List페이지입니다 ##</title>
 <link href="../resources/css/location/list.css" rel="stylesheet">
+<link href="../resources/css/common/paging.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.css">
 <link rel="stylesheet"
@@ -109,16 +110,16 @@
 			</div>
 		</div>
 		<div id="pagination">
-			<c:if test="${page.curBlock > 1}">
-				<span class="page" title="${page.startNum-1}">[이전]</span>
-			</c:if>
-			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<span class="page" title="${i}">${i}</span>
-			</c:forEach>
-			<c:if test="${page.curBlock < page.totalBlock}">
-				<span class="page" title="${page.lastNum+1}">[다음]</span>
-			</c:if>
-		</div>
+				<c:if test="${page.curBlock > 1}">
+					<span class="page" title="${page.startNum-1}" class="list pageing">[이전]</span>
+				</c:if>
+				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+					<span class="page" title="${i}" class="list btn_now pageing">${i}</span>
+				</c:forEach>
+				<c:if test="${page.curBlock < page.totalBlock}">
+					<span class="page" title="${page.lastNum+1}" class="list pageing">[다음]</span>
+				</c:if>
+			</div>
 	</section>
 	<a href="./locationList" id="top"><img
 		src="../resources/upload/acoustic-guitar.png"><br>Top</a>

@@ -57,18 +57,13 @@ public class BuskingController {
 	}
 
 	@RequestMapping(value="buskWrite",method=RequestMethod.GET)
-	public void buskWrite(BuskingDTO buskingDTO,Model model) throws Exception{
-		BuskingDTO buskingDTO2=buskingService.selectOne(buskingDTO);
-
-		List<FileDTO> ar=fileDAO.selectList();
+	public void buskWrite(Model model) throws Exception{
 		ListData listData=new ListData();
 		int totalCount=locationDAO.locationTotalCount(listData);
 		listData.setStartRow(1);
 		listData.setLastRow(totalCount);
 		List<LocationDTO> loc_ar=locationDAO.locationList(listData);
 		model.addAttribute("loc", loc_ar);
-		model.addAttribute("view", buskingDTO2);
-		model.addAttribute("files", ar);
 	}
 	
 	@RequestMapping(value="buskWrite",method=RequestMethod.POST)

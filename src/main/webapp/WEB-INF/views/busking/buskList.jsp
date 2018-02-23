@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../resources/css/busk/buskList.css" rel="stylesheet">
 <link href="../resources/css/busk/search.css" rel="stylesheet">
+<link href="../resources/css/common/paging.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>## 노래왕 버스킹 -Busking List페이지입니다</title>
@@ -32,11 +33,11 @@
 		</div>
 		<form action="./buskList" method="post">
 			<div id="searchForm">
-				<select>
+				<select name="kind">
 					<option>전체</option>
-					<option>지난공연</option>
-					<option>현재공연</option>
-					<option>예정공연</option>
+					<option value="title">제목</option>
+					<option value="contents">내용</option>
+					<option value="teamname">가수명</option>
 				</select>
 				<input id="search" name="search" type="text"
 					placeholder="What're we looking for ?"> <input
@@ -69,7 +70,18 @@
 			</c:forEach>
 		</div>
 		<div id="paging">
-		<c:if test="${member.job ne 'singer'}">		
+		<div id="pagination">
+			<c:if test="${page.curBlock > 1}">
+				<span class="page" title="${page.startNum-1}">[이전]</span>
+			</c:if>
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+				<span class="page" title="${i}">${i}</span>
+			</c:forEach>
+			<c:if test="${page.curBlock < page.totalBlock}">
+				<span class="page" title="${page.lastNum+1}">[다음]</span>
+			</c:if>
+		</div>
+		<c:if test="${member.job eq 'singer'}">		
 		<div id="write">Write</div>
 		</c:if>
 		</div>
