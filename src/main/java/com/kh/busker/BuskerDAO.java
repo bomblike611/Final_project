@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.member.MemberDTO;
+import com.kh.util.ListData;
 
 
 
@@ -27,8 +28,10 @@ public class BuskerDAO {
 	public List<MemberDTO> singerList() {
 		return sqlSession.selectList(NAMESPACE+"singerList");
 	}
-	public MemberDTO buskerOne(SearchData searchData) {
-		return sqlSession.selectOne(NAMESPACE+"buskerOne", searchData);
+	public List<MemberDTO> buskerOne(ListData listData) {
+		System.out.println(listData.getKind());
+		System.out.println(listData.getSearch());
+		return sqlSession.selectList(NAMESPACE+"buskerOne", listData);
 	}
 	
 }

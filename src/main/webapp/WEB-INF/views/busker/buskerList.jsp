@@ -11,12 +11,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$(".link").click(function(){
+		$("#busker_list").on("click",".link",function(){
 			var teamname = $(this).attr("title");
 			location.href = "./buskerView?teamname="+teamname;
 		});
 		$("#searchw").click(function() {
-			$("form").submit();
+			var kind = $("#kind").val();
+			var search = $("#gosearch").val();
+			$.post("./buskerList",{kind:kind, search:search}, function(data){
+				$("#busker_list").html(data);
+		    });
 		});
 	});
 </script>
@@ -28,22 +32,20 @@
 				<img src="../resources/upload/acoustic-guitar.png" style="width:80px;height: 80px;">
 				<h2>Busker List</h2>
 				<p>찾고싶은 버스커를 검색해보세요.</p>
-				<form action="./buskerList" method="post">
 					<div id="search">
 						<div id="search2">
-							<select name="kind">
+							<select id="kind">
 								<option value="팀명">팀명</option>
 								<option value="팀원">팀원</option>
 							</select> 
-							<input type="text" name="search" placeholder="검색어를 입력해주세요">
+							<input type="text" id="gosearch" placeholder="검색어를 입력해주세요">
 							<img id="searchw" src="/busk/resources/upload/search.png" style="width:20px;height: 20px;">
 						</div>
 					</div>
-				</form>
 			</div>
 			<div id="busker_list">
 				<ul>
-					<c:forEach items="${teamname}" var="t" varStatus="index">
+					<c:forEach items="${teamname}" var="t">
 								<li class="list_item">
 										<div class="busker_img">
 										<c:forEach items="${list}" var="list1">

@@ -90,7 +90,7 @@
 				}, function(rsp) {
 				    if ( rsp.success ) {
 				        var msg = '결제가 완료되었습니다.';
-				        location.href="../spon/success?id=${member.id}&teamName=twice&price="+money+"&message="+message;
+				        location.href="../spon/success?id=${member.id}&teamName=${team[0].teamName}&price="+money+"&message="+message;
 				    } else {
 				        var msg = '결제에 실패하였습니다.';
 				        msg += '에러내용 : ' + rsp.error_msg;
@@ -106,6 +106,7 @@
 			var etc = this.value;
 			$(this).parent().attr("title",etc);
 			money = etc;
+			
 		});
 		$("#spon_main").on("click",".addr_search",function(){
 			new daum.Postcode({

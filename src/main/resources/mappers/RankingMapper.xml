@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="RankingMapper">
+  
+  	<select id="sponMemberRank" parameterType="ListData" resultType="SponDTO">
+  		select
+	  		<if test="kind == '다후원회원'">
+		  		id, SUM(price) price from spon
+		  		<if test="search == null">
+		  			GROUP BY ID order by price desc
+		  		</if>
+		  		<if test="search != null">
+		  			where id LIKE '%'||#{search}||'%' GROUP BY ID
+		  		</if>
+	  		</if>
+	  		<if test="kind == '다후원가수'">
+	  			teamname, SUM(price) price from spon
+		  		<if test="search == null">
+		  			GROUP BY TEAMNAME order by price desc
+		  		</if>
+		  		<if test="search != null">
+		  			where teamname LIKE '%'||#{search}||'%' GROUP BY TEAMNAME
+		  		</if>
+	  		</if>
+	  		<if test="kind == '다게시회원'">
+	  			id,	nvl(post, 0) price from member
+	  			<if test="search == null">
+		  			order by post desc
+		  		</if>
+		  		<if test="search != null">
+		  			where id LIKE '%'||#{search}||'%'
+		  		</if>
+	  		</if>
+	  		<if test="kind == '다참여가수'">
+	  			teamname, SUM(entry_member) price from busking
+		  		<if test="search == null">
+		  			GROUP BY TEAMNAME order by price desc
+		  		</if>
+		  		<if test="search != null">
+		  			where teamname LIKE '%'||#{search}||'%' GROUP BY TEAMNAME
+		  		</if>
+	  		</if>
+  	</select>
+  	
+  	<select id="sponMemberRank2" parameterType="SponDTO" resultType="MemberDTO">
+  		select * from member where id in
+  		<foreach item="rankList" collection="list" open="(" separator="," close=")">
+       		#{rankList.id}
+  		</foreach>
+  	</select>
+  	
+  	<select id="sponMemberRank3" parameterType="SponDTO" resultType="MemberDTO">
+  		select * from member where teamname in
+	  		<foreach item="rankList" collection="list" open="(" separator="," close=")">
+	       		#{rankList.teamName}
+	  		</foreach>
+  	</select>
+  
+  </mapper>
