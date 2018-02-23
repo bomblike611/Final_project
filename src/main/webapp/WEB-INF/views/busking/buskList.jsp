@@ -46,9 +46,16 @@
 		<div id="consertList">
 		<c:forEach items="${list}" var="l">
 			<figure class="snip1200">
-				<img
+			<c:if test="${l.fname eq 'null'}">
+		<img
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample27.jpg"
 					alt="${l.title}" />
+			</c:if>
+			<c:if test="${l.fname ne 'null'}">
+			<img
+					src="../resources/upload/${l.fname}"
+					alt="${l.title}" />
+			</c:if>
 				<figcaption>
 					<p><b>${l.teamname }</b><br>${l.location} / ${l.busk_date}</p>
 					<div class="heading">
@@ -62,7 +69,9 @@
 			</c:forEach>
 		</div>
 		<div id="paging">
+		<c:if test="${member.job ne 'singer'}">		
 		<div id="write">Write</div>
+		</c:if>
 		</div>
 	</section>
 	<a href="./buskList" id="top"><img

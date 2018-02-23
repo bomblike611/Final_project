@@ -1,9 +1,13 @@
 package com.kh.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.kh.util.ListData;
 
 
 @Repository
@@ -24,7 +28,6 @@ public class MemberDAO {
 
 	
 	public int memberUpdate(MemberDTO memberDTO) throws Exception{
-		System.out.println(memberDTO.getFname());
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
 	}
 	
@@ -35,10 +38,19 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberView", id);
 	}
 	
+	public List<MemberDTO> memberList(ListData listData)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"memberList", listData);
+	}
 	
-	
-	
-	
+	public List<MemberDTO> singerList(ListData listData) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"singerList", listData);
+	}
+	public int totalCount(ListData listData) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
+	}
+	public int singerUpdate(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"singerUpdate", memberDTO);
+	}
 	
 	
 	

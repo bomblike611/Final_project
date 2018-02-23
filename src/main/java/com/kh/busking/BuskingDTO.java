@@ -15,7 +15,22 @@ public class BuskingDTO {
 	private int entry;
 	private Date busk_date;
 	private int entry_member;
+	private String fname;
+	private String oname;
 	
+	
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getOname() {
+		return oname;
+	}
+	public void setOname(String oname) {
+		this.oname = oname;
+	}
 	public int getEntry_member() {
 		return entry_member;
 	}
