@@ -5,32 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>## 노래왕 버스킹 -(회원가입)입니다</title>
+<title>## 노래왕 버스킹 -(추가정보)입니다</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
-		$("#id").keyup(function() {
-			var id = $(this).val();
-			$.ajax({
-				url : "./memberIdCheck",
-				type : "GET",
-				data : {
-					id : id
-				},
-				success : function(data) {
-					if($.trim(data)  ==  "사용가능한 ID 입니다"){
-						$("#result").css('color', 'green');
-					}else{
-						$("#result").css('color', 'red');
-					}
-					$("#result").html(data);
-				}
-			});
-		});
-		
 		var check = false;
 		$(".job").click(function() {
 			var job = $(this).val();
@@ -43,28 +23,10 @@
 			}
 		});
 		
-		$("#pw").keyup(function() {
-			if ($("#pw").val().length > 7) {
-				$("#pwcheck").text("사용가능한 비밀번호 입니다");
-			} else {
-				$("#pwcheck").text("비밀번호는 8자리 이상이여야 합니다");
-			}
-
-		});
-		$("#pw2").keyup(function() {
-			if ($("#pw").val() == $("#pw2").val()) {
-				$("#pwcheck2").text("비밀번호가 일치합니다");
-			} else {
-				$("#pwcheck2").text("비밀번호가 일치 하지 않습니다");
-			}
-		});
 		
 		$(".nextBtn").click(function(FormSubmit){
 			if(!check){
-					if ($("#id").val() && 
-						($("#pw").val()==$("#pw2").val()) && 
-						$("#name").val() && 
-						$("#age").val() && 
+					if ($("#age").val() && 
 						$("#email").val() && 
 						$("#phone").val().length && 
 						$("#addr").val().length && 
@@ -79,8 +41,7 @@
 							alert("필수입력사항을 입력해주세요")
 						}
 					} else {
-						if ($("#id").val() && $("#pw").val() && $("#pw2").val()
-								&& $("#name").val() && $("#age").val()
+						if (	$("#age").val()
 								&& $("#email").val() && $("#phone").val()
 								&& $("#addr").val() && $("#birth").val()
 								&& $(".job").val() && $("#teamName").val()
@@ -172,7 +133,7 @@
 	<%@include file="../temp/header.jsp"%>
 
 	<div class="join_agree" id="main">
-		<h2 class="tit_bk_left pt30">JOIN</h2>
+		<h2 class="tit_bk_left pt30">추가정보 입력</h2>
 		<div class="join_wrapper">
 			<ul class="stepGuide">
 				<li class="stepGuide_off"><p>1</p> <span style="color: gray;">약관동의</span></li>
@@ -184,41 +145,22 @@
 
 		<span style="float: right;"><span class="sp">* </span>는 필수사항
 			입니다</span>
-		<form action="./memberJoin" method="post" class="joinForm" name="frm"
+		<form action="./memberUpdate" method="post" class="joinForm" name="frm"
 			enctype="multipart/form-data" onsubmit="return FormSubmit();">
-			<table
-				style="width: 100%; border-collapse: collapse; border-spacing: 0;">
+			<table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
 				<!-- 아이디 테이블 -->
-				<tr class="join_tr" style="border-top: 1px #ddd solid;">
-					<td class="join_td"><span class="sp">* </span>아이디</td>
-					<td><input type="text" class="Join_input"
-						placeholder="      Enter ID" id="id" name="id"> <span
-						id="result"></span></td>
-				</tr>
+				<input type="text" class="Join_input" name="id" value="${member.id}">
+				
 
 				<!-- 비밀번호 테이블-->
-				<tr class="join_tr">
-					<td class="join_td"><span class="sp">* </span>비밀번호</td>
-					<td><input type="password" class="Join_input"
-						placeholder="      Enter PW" id="pw" name="pw"><span
-						id="pwcheck"></span></td>
-				</tr>
-
-				<!-- 비밀번호 확인 테이블 -->
-				<tr class="join_tr">
-					<td class="join_td"><span class="sp">* </span>비밀번호 확인</td>
-					<td><input type="password" class="Join_input"
-						placeholder="      Enter Re PW" id="pw2"><span
-						id="pwcheck2"></span></td>
-				</tr>
-
+				
+				<input type="text" class="Join_input" name="pw" value="${member.pw}">
+				
 				<!-- 이름 테이블 -->
-				<tr class="join_tr">
-					<td class="join_td"><span class="sp">* </span>이 름</td>
-					<td><input type="text" class="Join_input"
-						placeholder="      Enter Name" id="name" name="name"></td>
-				</tr>
-
+				<input type="text" class="Join_input" name="name" value="${member.name}">
+			
+			
+			
 				<!-- 나이 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>나 이</td>

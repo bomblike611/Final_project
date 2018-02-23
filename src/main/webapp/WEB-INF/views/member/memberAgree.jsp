@@ -14,9 +14,7 @@
 			window.location = '../';
 		});
 		
-		$(".nextBtn").click(function() {
-			window.location = '/busk/member/memberJoin';
-		});
+	
 		
 		$("#checkALL").click(function() {
 			var check = $(this).prop("checked");
@@ -40,6 +38,13 @@
 			}
 
 		});
+		$(".nextBtn").click(function() {
+			if ($("#siteAgreement").prop("checked", true); && $("#personalAgreement").prop("checked", true); && $("#checkALL").prop("checked", true);) {
+				window.location = '/busk/member/memberJoin';
+			}else{
+				window.location ='/busk/member/memberAgree';
+			}
+		});
 	});
 </script>
 <body>
@@ -58,16 +63,15 @@
 		</div>
 		<!-- 이용약관 시작 -->
 		<div class="checkALL">
-			<input name="checkALL" id="checkALL"
-				type="checkbox" > <label for="checkALL">Varoh 이용약관과
-				개인정보 수집 및 이용에 모두 동의합니다.</label>
+			<input name="checkALL" id="checkALL" type="checkbox"> <label
+				for="checkALL">Varoh 이용약관과 개인정보 수집 및 이용에 모두 동의합니다.</label>
 		</div>
-	<!-- 	<div class="terms_wrapper"> -->
-			<div class="siteTerms">
-				<dl class="varoh">
-					<dt>Varoh 이용약관</dt>
-					<dd class="varoh">
-						<textarea readonly="">(주)비에취어쿠스텔 회원약관은 다음과 같은 내용을 담고 있습니다.
+		<!-- 	<div class="terms_wrapper"> -->
+		<div class="siteTerms">
+			<dl class="varoh">
+				<dt>Varoh 이용약관</dt>
+				<dd class="varoh">
+					<textarea readonly="">(주)비에취어쿠스텔 회원약관은 다음과 같은 내용을 담고 있습니다.
 제 1 장 총 칙
 
 제 1 조 (목적) 
@@ -197,22 +201,23 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 [부칙]
 (시행일)이 규정은 2016년 3월 1일부터 시행합니다. 
 							</textarea>
-					</dd>
-				</dl>
+				</dd>
+			</dl>
 
-				<div class="siteAgree">
-					<input name="siteAgreement" id="siteAgreement" type="checkbox" class="siteAgreement">
-					<label for="siteAgreement">Varoh의 사용약관에 동의합니다.</label>
-				</div>
+			<div class="siteAgree">
+				<input name="siteAgreement" id="siteAgreement" type="checkbox"
+					class="siteAgreement"> <label for="siteAgreement">Varoh의
+					사용약관에 동의합니다.</label>
 			</div>
-			<!--siteTerms end -->
+		</div>
+		<!--siteTerms end -->
 
 
-			<div class="personalTerms">
-				<dl class="varoh">
-					<dt>개인정보 수집 및 이용안내</dt>
-					<dd class="varoh">
-						<textarea readonly="">(주)비에취어쿠스텔(이하 ‘회사’)는 회원님들의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
+		<div class="personalTerms">
+			<dl class="varoh">
+				<dt>개인정보 수집 및 이용안내</dt>
+				<dd class="varoh">
+					<textarea readonly="">(주)비에취어쿠스텔(이하 ‘회사’)는 회원님들의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
 회사는 개인정보취급방침을 통하여 회원님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
 회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
 
@@ -319,21 +324,22 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 시행일자 : 2016년 3월 1일
 					
 								</textarea>
-					</dd>
-				</dl>
+				</dd>
+			</dl>
 
 
-				<div class="personalAgree">
-					<input name="personalAgreement" id="personalAgreement"
-						type="checkbox" class="siteAgreement"> <label for="personalAgreement">Varoh의
-						개인정보의 수집, 이용에 관한 사항에 동의합니다.</label>
-				</div>
+			<div class="personalAgree">
+				<input name="personalAgreement" id="personalAgreement"
+					type="checkbox" class="siteAgreement"> <label
+					for="personalAgreement">Varoh의 개인정보의 수집, 이용에 관한 사항에 동의합니다.</label>
 			</div>
-			<!--personalTerms end -->
+		</div>
+		<!--personalTerms end -->
 		<!-- </div> -->
 		<ul class="btnBox">
-				<button class="nextBtn" type="submit"value="다음 단계로 이동">다음 단계로 이동</button>
-				<button class="cancelBtn" type="submit">취소</button>
+			<button class="nextBtn" type="submit" value="다음 단계로 이동">다음
+				단계로 이동</button>
+			<button class="cancelBtn" type="submit">취소</button>
 		</ul>
 
 	</div>

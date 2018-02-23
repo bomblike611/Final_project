@@ -1,11 +1,24 @@
 package com.kh.notice;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.kh.file.FileDTO;
+
 public class NoticeDTO {
 	private int num;
 	private String title;
 	private String writer;
 	private String contents;
 	private String reg_date;
+	private List<FileDTO> files;   
+	
+	public List<FileDTO> getFiles() {
+		return files;
+	}
+	public void setFiles(List<FileDTO> files) {
+		this.files = files;
+	}
 	public int getNum() {
 		return num;
 	}

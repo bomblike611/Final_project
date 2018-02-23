@@ -135,7 +135,7 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>팀명</th>
-						<td><input type="text" class="val" name="teamname" value="${member.teamname}" placeholder="가수명"></td>
+						<td><input type="text" class="val" name="teamname" <%-- value="${member.teamname}" --%> placeholder="가수명"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연지역</th>

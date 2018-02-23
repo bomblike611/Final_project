@@ -1,0 +1,100 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<title>Insert title here</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$(".del").click(function() {
+			var del =$(this);
+			var fnum=$(this).attr("title");
+			var fname=$(this).attr("id");
+			var check=confirm("삭제시 복구가 불가능 합니다.");
+			if(check){
+				$.ajax({
+					url:"../file/fileDelete",
+					type:"GET",
+					data:{
+						num:num,
+						fname:fname
+					},
+					success:function(data){
+						if(data.trim()==1){
+							$(del).prev().remove();
+							$(del).remove();
+						}
+					}
+					
+				});
+			}
+		});	
+		
+		
+	
+	 	/* var i=${fn:length(view.files)};
+	 	alert(i); */
+	 	/*$("#btn").click(function() {
+			if(i<5){
+				$("#result").append('<input type="file" name="file'+i+'"><span class="remove">X</span><br>');
+				i++;
+			}else{
+				alert("최대 5개만 가능합니다");
+			}
+		}); */
+
+		$("#btn").click(function() {
+				var ex=$("#ex").html();
+				$("#result").append(ex);
+		});
+		
+		//위임이 필요하기때문에 on을 사용하여 위임해줌
+		$("#result").on("click",".remove",function() {
+			$(this).prev().remove();
+			$(this).remove();
+		});			
+	});
+	
+</script>
+<style type="text/css">
+#ex{
+	display:none; 
+}
+
+.remove, .del{
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+	<%@include file="../temp/header.jsp"%>
+	<section id="main">
+	
+	<h1>Update</h1>
+	<form action="Update" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="num" value="${view.num}">
+		<p>Writer : <input type="text" value="${view.writer}" name="writer" readonly="readonly"></p>
+		<p>Title  : <input type="text" value="${view.title}" name="title"></p>
+		<p>Contents : <textarea rows="" cols="" name="contents">${view.contents}</textarea>
+		
+		<p><input type="button" value="FileAdd" id="btn"></p>
+		<div id="result">
+		<c:forEach items="${view.files}" var="file">
+			<p><input type="text" value="${file.oname}" readonly="readonly"><span class="del" title="${file.num}" id="${file.fname}">X</span></p>
+		</c:forEach>
+		</div>	
+		
+		<input type="submit" value="Update">
+	</form>
+			<div id="ex">
+				<input type="file" name="file"><span class="remove">X</span><br>
+			</div>
+	</section>
+</body>
+</html>

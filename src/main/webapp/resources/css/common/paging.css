@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+.pageing{
+	border: none;
+	background-color: white;
+	color: #582D32;
+	width: 30px;
+	height: 30px;
+	border-radius: 50px;
+}
+
+.pageing:hover{
+	background-color: #E1E1E1;
+}
+
+#pagination{
+	width: 300px;
+	margin:10px auto;
+	text-align: center;
+}
