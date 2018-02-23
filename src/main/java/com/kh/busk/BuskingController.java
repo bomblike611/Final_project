@@ -57,7 +57,9 @@ public class BuskingController {
 	}
 
 	@RequestMapping(value="buskWrite",method=RequestMethod.GET)
-	public void buskWrite(Model model) throws Exception{
+	public void buskWrite(Model model,HttpSession session) throws Exception{
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("member");
+		System.out.println(memberDTO.getTeamName());
 		ListData listData=new ListData();
 		int totalCount=locationDAO.locationTotalCount(listData);
 		listData.setStartRow(1);
