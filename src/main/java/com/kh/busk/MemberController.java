@@ -222,8 +222,10 @@ public class MemberController {
 		return "member/memberPW";
 	}
 	
-	
-	
+	@RequestMapping(value="member1", method=RequestMethod.GET)
+	public void member() throws Exception{
+		
+	}
 	
 	
 	

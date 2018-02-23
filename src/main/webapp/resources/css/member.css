@@ -587,6 +587,66 @@ fieldset{
     border-radius: 10%;		
 }
 
+.mypage{
+    width: 49%;
+    height: 30%;
+    float: left;
+    background-color: red;
+}
+.mypage1{
+    width: 49%;
+    height: 30%;
+    float: right;
+    background-color: green;
+}
+.mypage2{
+    width: 49%;
+    height: 30%;
+    float: left;
+    background-color: blue;
+    margin-top: 2%;
+}
+.mypage3{
+	width: 49%;
+    height: 30%;
+    float: right;
+    margin-top: 2%;
+    background-color: yellow;
+}
+.inpo{
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: medium;
+}
+
+.memberinfo{
+	display: inline;
+	position: absolute;
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
