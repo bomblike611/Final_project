@@ -8,11 +8,12 @@
 }
 
 .tit_bk_left {
-    font-size: 40px;
+    font-size: 49px;
     text-align: left;
-    color: #1e1e1f;
+    text-shadow: -0.08em 0.08em #C2BCB9;
+    color: #582D32;
     letter-spacing: 2px;
-    font-weight: normal;
+    font-weight: normal; 
 }
 
 .pt30 {
@@ -43,7 +44,8 @@
     margin-top: 30px;
 }
 #a{
-	color: black;
+	text-shadow: -0.08em 0.08em #C2BCB9;
+    color: #582D32;
 	font-weight: 900;
 }
 
@@ -76,7 +78,8 @@
     display: inline-block;
     width: 109px;
     padding-bottom: 5px;
-    border-bottom: solid 3px #1e1e1f;
+    border-bottom: solid 3px #582D32;
+    color: #582D32;
 }
 
 
@@ -89,7 +92,8 @@
     display: inline-block;
     width: 109px;
     padding-bottom: 5px;
-    border-bottom: solid 3px #1e1e1f;
+    border-bottom: solid 3px #582D32;
+    color: #582D32;
 }
 
 .checkALL {
@@ -164,13 +168,13 @@
 .btnBox .nextBtn {
     width: 170px;
     height: 41px;
-    background: #000;
+    background: #582D32;
     color: #fafafa;
     font-family: Notosanskr, Malgun Gothic;
     font-size: 16px;
     letter-spacing: -.5px;
     text-align: center;
-    border: 2px solid #1e1e1f;
+    border: 2px solid #582D32;
     margin: 0 13px 200px 0;
     cursor: pointer;
 }
@@ -179,12 +183,12 @@
     width: 170px;
     height: 41px;
     background: #fcfcfc;
-    color: #000;
+    color: #582D32;
     font-family: Notosanskr, Malgun Gothic;
     font-size: 16px;
     letter-spacing: -.5px;
     text-align: center;
-    border: 2px solid #1e1e1f;
+    border: 2px solid #582D32;
     cursor: pointer;
 }
 
@@ -231,13 +235,13 @@
 .btnBox2 .nextBtn {
     width: 170px;
     height: 41px;
-    background: #000;
+    background: #582D32;
     color: #fafafa;
     font-family: Notosanskr, Malgun Gothic;
     font-size: 16px;
     letter-spacing: -.5px;
     text-align: center;
-    border: 2px solid #1e1e1f;
+    border: 2px solid #582D32;
     margin: 0 13px 200px 0;
     cursor: pointer;
 }
@@ -246,12 +250,12 @@
     width: 170px;
     height: 41px;
     background: #fcfcfc;
-    color: #000;
+    color: #582D32;
     font-family: Notosanskr, Malgun Gothic;
     font-size: 16px;
     letter-spacing: -.5px;
     text-align: center;
-    border: 2px solid #1e1e1f;
+    border: 2px solid #582D32;
     cursor: pointer;
 }
 
@@ -285,7 +289,7 @@
 .login_member {
     float: left;
     width: 440px;
-    height: 205px;
+    height: 161px;
     margin: 40px 0 0 140px;
     padding-top: 30px;
     padding-right: 95px;
@@ -314,27 +318,40 @@
 
 
 
-.top_wrap input {
+
+.id_login{
     width: 66%;
     height: 40px;
     border: 1px solid #c7c7c7;
     padding-left: 10px;
     margin: 5px 0;
     margin-left: 5px;
-    margin-top: 30px;
+    margin-top: 30px;	
 }
+
+.pw_login{
+    width: 66%;
+    height: 40px;
+    border: 1px solid #c7c7c7;
+    padding-left: 10px;
+    margin: 5px 0;
+    margin-left: 5px;
+    margin-top: 30px;		
+}
+
 
 .login_member .login_Btn {
     width: 120px;
     height: 97px;
     background: #fcfcfc;
-    border: 2px solid #1e1e1f;
+    border: 2px solid #582D32;
     margin: 0;
     float: right;
     position: absolute;
     left: 310px;
     top: 60px;
     cursor: pointer;
+    color: #582D32;
 }
 
 .loginGuide {
@@ -373,13 +390,13 @@ fieldset{
 .JoinBtn {
     width: 170px;
     height: 41px;
-    background: #000;
+    background: #582D32;
     color: #fafafa;
     font-family: Notosanskr, Malgun Gothic;
     font-size: 16px;
     letter-spacing: -.5px;
     text-align: center;
-    border: 2px solid #1e1e1f;
+    border: 2px solid #582D32;
     margin: 0 13px 200px 0;
     cursor: pointer;
     margin-left: 10%;
@@ -500,6 +517,122 @@ fieldset{
 	display:inline-block; 
 	margin-right: 10px;
 }
+
+
+.step{
+	width: 100%;
+    border-top: 1px solid #0b0205;
+    border-bottom: 1px solid #e6e5e6;
+    height: 106px;
+    margin: 35px 0 74px 0;
+    list-style: none;
+    padding : 0;
+    float: left;
+    margin-bottom: auto;
+}
+
+#Search{
+	font-size: 17px;
+    text-align: left;
+    text-shadow: -0.08em 0.08em #C2BCB9;
+    color: #582D32;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+
+
+#id_search{
+    width: 166%;
+    text-align: center;
+    height: 100%;
+    border: 1px solid #582D32;
+    background-color: #582D32;
+    color: white;
+    padding-left: inherit;
+    margin-left: 271%;
+}
+
+#pw_search{
+    width: 27.5%;
+    text-align: center;
+    height: 100%;
+    border: 1px solid #582D32;
+    background-color: #582D32;
+    color: white;
+    padding-left: inherit;
+    margin-left: 70.3%;
+    margin-top: 4px;
+}
+
+
+.fb_position{
+	margin-left: 10.5%;
+}
+
+#enter1{
+	width: 70px;
+    height: 30px;
+    border: 1px solid #582D32;
+    background-color: #582D32;
+    color: white;
+    border-radius: 10%;	
+}
+
+#cancle1{
+	width: 70px;
+    height: 30px;
+    border: 1px solid #582D32;
+    background-color: white;
+    border-radius: 10%;		
+}
+
+.mypage{
+    width: 49%;
+    height: 30%;
+    float: left;
+    background-color: red;
+}
+.mypage1{
+    width: 49%;
+    height: 30%;
+    float: right;
+    background-color: green;
+}
+.mypage2{
+    width: 49%;
+    height: 30%;
+    float: left;
+    background-color: blue;
+    margin-top: 2%;
+}
+.mypage3{
+	width: 49%;
+    height: 30%;
+    float: right;
+    margin-top: 2%;
+    background-color: yellow;
+}
+.inpo{
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: medium;
+}
+
+.memberinfo{
+	display: inline;
+	position: absolute;
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+
+
+
+
+
+
+
 
 
 
