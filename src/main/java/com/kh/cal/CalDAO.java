@@ -22,5 +22,8 @@ public class CalDAO {
 	public int totalCount(ListData listData) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
 	}
+	public CalDTO selectOne(CalDTO calDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"selectOne", calDTO);
+	}
 
 }

@@ -34,12 +34,10 @@ $(function(){
  		case "10" : mon = "OCT"; break; 
  		case "11" : mon = "NOV"; break; 
  		case "12" : mon = "DEC"; break; 
- 		}
-  		
+ 		}		
  		$(this).html(mon); 
  	}); 
  	
-  	
     /* 공연날짜(일) */
       	$(".nalil").each(function(){
  		var nal=$(this).attr("title");
@@ -49,6 +47,7 @@ $(function(){
 	/* 공연시간 */
     	$(".siin").each(function(){
  		var busktime=$(this).attr("title");
+ 		alert(busktime);
  		$(this).html(busktime.substr(11,5));	
  	});
 
