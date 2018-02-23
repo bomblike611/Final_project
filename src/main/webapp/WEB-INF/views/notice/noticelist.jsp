@@ -40,17 +40,31 @@
 			<h1 class="title_top">공지사항</h1>
 			<div class="my_wrap">
 				<div class="searchFrm">
-				
-					<form name="frm" action="./noticelist">
-						<select id="sel" name="kind">
+					<div class="full_column">
+						<form name="frm" id="searchFrm" method="post" action="./noticelist">
+							<input type="hidden" name="currentPage" id="currentPage" value="1">
+							<input type="hidden" name="seq" id="seq">
+							<input type="hidden" name="site" id="site">
+						
+					<div class="floatright">
+						<label>
+						 <select id="sel" name="kind" class="selectBox">
 							<option value="title">번호</option>
 							<option value="writer">제목</option>
-						</select> 
+						</select>
+						
+						 
+						 </label>
+						 
 						<label>
 							<input type="text" name="schkeyword" id="schkeyword" maxlength="30" size="30">
 						</label>
+						<label>
 							<input id="btn" type="submit" value="검색">
+						</label>
+					</div>
 					</form>
+					</div>
 				</div>
 
 				<table class="table_list">

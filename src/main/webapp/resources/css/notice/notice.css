@@ -34,6 +34,8 @@ h1.title_top {
 }
 #sel{
 	height: 22px;
+	width: 110px;
+	display: none;
 }
 .table_list {
     width: 100%;
