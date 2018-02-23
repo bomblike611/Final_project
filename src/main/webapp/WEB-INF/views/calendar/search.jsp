@@ -18,7 +18,7 @@
 			$('#fromDate').prop('max', $(this).val());
 		});
 		/* 날짜검색 */
- 		$("#btn").click(function(){
+ 		/* $("#btn").click(function(){ */
  			/* if(!$("#fromDate").val()){
 				alert("시작선택"); return false;
 			}
@@ -31,10 +31,8 @@
 				alert("다시확인"); return false;
 			} */
 			
-		  	/* 날짜 선택한날 이후로 안보이기 */
-			 		
-		
-			var startDate = $("#fromDate").val().split('-');
+		  	/* 날짜 선택한날 이후로 안보이기 */	
+			/* var startDate = $("#fromDate").val().split('-');
 			var endDate = $("#toDate").val().split('-');
 			alert(startDate);
 			alert(endDate);
@@ -42,12 +40,16 @@
 			alert(startDateCompare);
 			var endDateCompare = new Date(endDate[0], endDate[1]-1, endDate[2]);
 			alert(endDateCompare);
-			$("#frm").submit();
-		}); 
-			/* if(startDateCompare.getTime() > endDateCompare.getTime()){
+			 if(startDateCompare.getTime() > endDateCompare.getTime()){
 				alert("시작날짜와 종료날짜를 확인해 주세요.");
-				return;
-			} */
+				return;}			
+			var result = Math.ceil(endDateCompare - startDateCompare);
+			var oneDay = result/(1000*60*60*24);
+			alert(result);
+			alert(oneDay);
+			 $("").submit();
+		});  */
+		
 	  	/* 공연날짜(달) */
 	       $(".nalja").each(function(){
 	 		var nal=$(this).attr("title");
@@ -88,6 +90,8 @@
 			document.frm.curPage.value = cur;
 			document.frm.search.value = '${page.search}';
 			document.frm.kind.value = '${page.kind}';
+			document.frm.toDate.value = '${page.fromDate}';
+			document.frm.toDate.value = '${page.toDate}';
 			documnet.frm.submit();
 		});
 

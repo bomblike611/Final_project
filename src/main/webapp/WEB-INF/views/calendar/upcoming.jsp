@@ -10,8 +10,8 @@
 <script type="text/javascript">
 $(function(){
 	
-  	var text;
   	$("#show").click(function(){
+  		var text;
   		$(".yoilbox2").slideToggle("slow");
   		text = $(this).text();
   		$(this).text(text == '닫기' ? '더보기' : "닫기");

@@ -6,14 +6,23 @@
 <mapper namespace="CalMapper">
 
 	<select id="selectList" parameterType="ListData" resultType="CalDTO">
-		select * from (select rownum R, N.* from (select * from busking where teamname LIKE '%'||#{search}||'%' and location LIKE '%'||#{kind}||'%' and busk_date  LIKE '%'||#{fromDate}||'%' and busk_date  LIKE '%'||#{toDate}||'%' order by busk_date asc) N ) where R between #{startRow} and #{lastRow}
+		select * from (select rownum R, N.* from (select * from busking where 
+		teamname LIKE '%'||#{search}||'%' and 
+		location LIKE '%'||#{kind}||'%'
+		order by busk_date asc) N ) 
+		where R between #{startRow} and #{lastRow}
 	</select>
 
 	<select id="totalCount" parameterType="ListData" resultType="int">
-		select nvl(count(num),0) from busking where teamname LIKE '%'||#{search}||'%' and location LIKE '%'||#{kind}||'%' and busk_date  LIKE '%'||#{fromDate}||'%' and busk_date  LIKE '%'||#{toDate}||'%'
+		select nvl(count(num),0) from busking where teamname LIKE '%'||#{search}||'%' and location LIKE '%'||#{kind}||'%'
 	</select> 
 
 	<select id="selectOne" parameterType="int" resultType="CalDTO">
 		select * from busking where num=#{num}
 	</select>
+	
+<!-- 	<select id="selectListDate" parameterType="ListData" resultType="CalDTO">
+		select * from busking where busk_date LIKE '%'||#{fromDate}||'%' >= TO_CHAR(busk_date,'YYYY-MM-DD')
+		and busk_date LIKE '%'||#{toDate}||'%' &lt;= TO_CHAR(busk_date,'YYYY-MM-DD')
+	</select> -->
 </mapper>

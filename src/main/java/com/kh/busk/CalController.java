@@ -34,7 +34,7 @@ public class CalController {
 		mv.setViewName("calendar/search");
 		return mv;
 	}
-	
+
 	@RequestMapping(value="month")
 	public void month() throws Exception{
 		
