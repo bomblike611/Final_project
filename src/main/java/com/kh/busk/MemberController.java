@@ -1,6 +1,8 @@
 package com.kh.busk;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -76,11 +78,12 @@ public class MemberController {
 		memberDTO = memberService.memberLogin(memberDTO);
 		if (memberDTO != null) {
 			String addar [] = memberDTO.getAddr().split(",");
-			mv.addObject("message", "LogIn Success");
+			mv.addObject("message", "로그인 성공");
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("addar", addar);
 		}else{
-			mv.addObject("message", "Login Fail");
+			mv.addObject("message", "로그인 실패");
+			mv.addObject("path", "member/memberLogin");
 		}
 		mv.addObject("path", "../");
 		mv.setViewName("common/result");
@@ -90,7 +93,7 @@ public class MemberController {
 	@RequestMapping(value="memberLogOut")
 	public ModelAndView memberLogOut(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("message", "LogOut Success");
+		mv.addObject("message", "로그아웃 완료");
 		session.invalidate();
 		mv.addObject("path", "../");
 		mv.setViewName("common/result");
@@ -104,10 +107,10 @@ public class MemberController {
 	@RequestMapping(value="memberUpdate", method=RequestMethod.POST)
 	public ModelAndView memberUpdate(MemberDTO memberDTO, MultipartFile file, HttpSession session) throws Exception{
 		int result = memberService.memberUpdate(memberDTO, file, session);
-		String message = "Update Fail";
+		String message = "정보수정 실패";
 		if (result>0) {
 			session.setAttribute("member", memberDTO);
-			message = "Update Success";
+			message = "정보수정 완료";
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("message", message);
@@ -122,22 +125,20 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		memberDTO.setPw("FaceBook");
 		int result = 0;
-		System.out.println("memberDTO"+memberDTO);
 		MemberDTO memberDTO2 = memberService.memberLogin(memberDTO);
-		System.out.println(memberDTO2);
 		//memberDTO : id, name, pw   memberDTO2 : MemberDTO or null
 		if (memberDTO2 == null) {
 			result = memberService.APIUpdate(memberDTO);   // memberDTO : id, name, pw   memberDTO2 : null
 			if (result > 0) {
 				session.setAttribute("member", memberDTO);  // memberDTO : id, name, pw
-				mv.addObject("message", "Login Success");  //
+				mv.addObject("message", "로그인 성공");  //
 				mv.addObject("path", "./memberAPIUpdate");
 			}else{
-				mv.addObject("message", "Login Fail");
+				mv.addObject("message", "로그인 실패");
 			}
 		}else{ 												//로그인 됨
 			session.setAttribute("member", memberDTO);      
-			mv.addObject("message", "Login Success");
+			mv.addObject("message", "로그인 성공");
 			mv.addObject("path", "../");
 		}
 		mv.setViewName("common/result");
@@ -174,10 +175,10 @@ public class MemberController {
 		int result = memberService.memberDelete(memberDTO, session);
 		ModelAndView mv = new ModelAndView();
 		if (result > 0) {
-			mv.addObject("message", "Delete Success");
+			mv.addObject("message", "회원 삭제 완료");
 			session.invalidate();
 		}else{
-			mv.addObject("message", "Delete Fail");
+			mv.addObject("message", "회원 삭제 실패");
 		}
 		mv.addObject("path", "../");
 		mv.setViewName("common/result");
@@ -198,25 +199,28 @@ public class MemberController {
 	}
 	
 	
+	//ID 찾기
 	@RequestMapping(value="memberIDSearch", method=RequestMethod.GET)
 	public void memberIDSearch() throws Exception{
 		
 	}
 	
 	
-	public String memberIdSearch() throws Exception{
-		return "../redirect";
+	@RequestMapping(value="memberID", method=RequestMethod.POST)
+	public String memberIdSearch(@RequestParam("email") String email, Model md, HttpServletResponse response) throws Exception{
+		md.addAttribute("id", memberService.memberID(email, response));
+		return "/member/memberID";
 	}
 	
-	@RequestMapping(value="memberIdSearch", method=RequestMethod.POST)
-	public String memberIdSearch(@RequestParam("email") String email, Model md) throws Exception{
-		md.addAttribute("id", memberService.memberIdSearch(email));
-		return "memberIdSearch";
+	//비밀번호 찾기 
+	@RequestMapping(value="memberPWSearch", method=RequestMethod.GET)
+	public void memberPWSearch() throws Exception{}
+	
+	@RequestMapping(value="memberPW", method=RequestMethod.POST)
+	public String memberPwSearch(@RequestParam("email") String email, Model md, HttpServletResponse response) throws Exception{
+		md.addAttribute("pw", memberService.memberPW(email, response));
+		return "member/memberPW";
 	}
-	
-	
-	
-	
 	
 	
 	

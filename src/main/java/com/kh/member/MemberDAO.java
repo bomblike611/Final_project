@@ -40,13 +40,15 @@ public class MemberDAO {
 	}
 	
 	//아이디 찾기
-	public String memberIdSearch(String email) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"memberIdSearch", email);
+	public String memberID(String email) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberID", email);
 	}
 	
-	
-	
-	
+
+	//PW 찾기
+	public String memberPW(String email) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberPW", email);
+	}
 	
 	
 	

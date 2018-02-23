@@ -289,7 +289,7 @@
 .login_member {
     float: left;
     width: 440px;
-    height: 205px;
+    height: 161px;
     margin: 40px 0 0 140px;
     padding-top: 30px;
     padding-right: 95px;
@@ -318,15 +318,27 @@
 
 
 
-.top_wrap input {
+
+.id_login{
     width: 66%;
     height: 40px;
     border: 1px solid #c7c7c7;
     padding-left: 10px;
     margin: 5px 0;
     margin-left: 5px;
-    margin-top: 30px;
+    margin-top: 30px;	
 }
+
+.pw_login{
+    width: 66%;
+    height: 40px;
+    border: 1px solid #c7c7c7;
+    padding-left: 10px;
+    margin: 5px 0;
+    margin-left: 5px;
+    margin-top: 30px;		
+}
+
 
 .login_member .login_Btn {
     width: 120px;
@@ -530,12 +542,50 @@ fieldset{
 
 
 
+#id_search{
+    width: 166%;
+    text-align: center;
+    height: 100%;
+    border: 1px solid #582D32;
+    background-color: #582D32;
+    color: white;
+    padding-left: inherit;
+    margin-left: 271%;
+}
+
+#pw_search{
+    width: 27.5%;
+    text-align: center;
+    height: 100%;
+    border: 1px solid #582D32;
+    background-color: #582D32;
+    color: white;
+    padding-left: inherit;
+    margin-left: 70.3%;
+    margin-top: 4px;
+}
 
 
+.fb_position{
+	margin-left: 10.5%;
+}
 
+#enter1{
+	width: 70px;
+    height: 30px;
+    border: 1px solid #582D32;
+    background-color: #582D32;
+    color: white;
+    border-radius: 10%;	
+}
 
-
-
+#cancle1{
+	width: 70px;
+    height: 30px;
+    border: 1px solid #582D32;
+    background-color: white;
+    border-radius: 10%;		
+}
 
 
 

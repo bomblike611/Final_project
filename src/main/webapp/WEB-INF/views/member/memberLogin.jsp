@@ -22,7 +22,10 @@
 			window.location = '/busk/member/memberAgree';
 		});
 		$("#id_search").click(function() {
-			location.href="../member/memberIDSearch";
+			window.open("../member/memberIDSearch", "", "width=400, height=200,uj left=500, top=200");
+		});
+		$("#pw_search").click(function() {
+			window.open("../member/memberPWSearch", "", "width=400, height=200,uj left=500, top=200");
 		});
 		
 	});
@@ -41,16 +44,16 @@
 					<h5>회원 로그인</h5>
 					<form action="./memberLogin" method="post">
 						<fieldset class="login_set">
-							<input name="id" tabindex="1" class="id" type="text"
+							<input name="id" tabindex="1" class="id_login" type="text"
 								placeholder="아이디"> <input name="pw" tabindex="2"
-								class="pw" type="password" placeholder="비밀번호"
+								class="pw_login" type="password" placeholder="비밀번호"
 								style="margin-top: 5px;">
 
 							<ul class="login_info">
-								<li><input class="ck" type="checkbox" value=""
-									style="height: 12px; width: 12px;">&emsp;아이디 저장</li>
-								<li><input type="button" id="id_search" value="아이디/비밀번호 찾기"></li>
+								<li><input class="ck" type="checkbox" style="height: 12px; width: 12px;">&emsp;아이디 저장</li>
+								<li><input type="button" id="id_search" value="아이디 찾기"></li>
 							</ul>
+								<input type="button" id="pw_search" value="비밀번호 찾기">
 							<button class="login_Btn" type="submit" value="LOGIN">
 								<span>LOGIN</span>
 							</button>
@@ -66,10 +69,12 @@
 				더 많은 혜택을 받으실 수 있습니다.
 				<button class="JoinBtn" type="submit">JOIN</button>
 			</div>
+		<div class="fb_position">
 			<div class="fb-login-button" data-max-rows="1" data-size="large"
 				data-button-type="login_with" data-show-faces="false"
 				data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
 				
+		</div>
 		</div>
 	</div>
 

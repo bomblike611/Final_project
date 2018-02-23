@@ -11,6 +11,10 @@
 <script type="text/javascript">
 	$(function(){
 		
+		if ($("#pw").val()=="FaceBook") {
+			$(".pw_FaceBook").hide();
+		}
+		
 		$("label").click(function() {
 			$("#fu").html("<input type='file' id='profile' name='file'>");
 		});	
@@ -162,7 +166,7 @@
 				</tr>
 			
 			<!-- 비밀번호 테이블-->	
-				<tr class="join_tr">
+				<tr class="join_tr pw_FaceBook">
 					<td class="join_td">
 					<span class="sp">* </span>기존 비밀번호 
 					</td>
@@ -173,7 +177,7 @@
 				</tr>
 				
 			<!-- 변경비밀번호 테이블 -->
-				<tr class="join_tr">
+				<tr class="join_tr pw_FaceBook">
 					<td class="join_td">
 					<span class="sp">* </span>변경 비밀번호
 					</td>
@@ -181,7 +185,7 @@
 				</tr>
 				
 				<!-- 변경비밀번호  확인 테이블 -->
-				<tr class="join_tr">
+				<tr class="join_tr pw_FaceBook">
 					<td class="join_td">
 					<span class="sp">* </span>변경 비밀번호 확인
 					</td>

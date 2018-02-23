@@ -32,8 +32,12 @@
  		select id from member where id=#{id}
  	</select>
  	
- 	<select id="memberIdSearch" parameterType="String" resultType="MemberDTO">
+ 	<select id="memberID" parameterType="String" resultType="String">
 		select id from member where email = #{email}
+ 	</select>
+ 	
+ 	<select id="memberPW" parameterType="String" resultType="String">
+ 		select pw from member where email = #{email}
  	</select>
  	
   </mapper>
