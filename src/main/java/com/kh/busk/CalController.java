@@ -40,7 +40,6 @@ public class CalController {
 		LocationDTO locationDTO=locationDAO.locationView(loca);
 		System.out.println(locationDTO);*/
 		mv= calservice.selectList(listData, mv);
-		
 		mv.setViewName("calendar/search");
 		return mv;
 	}

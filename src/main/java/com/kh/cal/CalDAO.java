@@ -19,11 +19,14 @@ public class CalDAO {
 	public List<CalDTO> selectList(ListData listData) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"selectList", listData);
 	}
-	public int totalCount(ListData listData) throws Exception{
+/*	public int totalCount(ListData listData) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
-	}
+	}*/
 	public CalDTO selectOne(CalDTO calDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"selectOne", calDTO);
+	}
+	public List<CalDTO> sing(ListData listData) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"sing", listData);
 	}
 
 }

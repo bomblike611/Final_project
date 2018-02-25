@@ -2,138 +2,63 @@
 #monthH{
 	background-color: #28272c;
 }
-#mon{
-	width: 70%;
-	height: 80px;
-	margin: auto;
-	display:block;
-
-	position: relative;
-}
-#monin{
-	position: absolute;
-	top: 0;
-	left: 0;
-	color: #C2BCB9;
-	font-size: 300%;
-	font-weight: bolder;
-	letter-spacing: -5px;
-}
-#cal{
-	width: 70%;
-	height: 800px;
-	margin: auto;
-	position: relative;
-	top: 0;
-	left: 0;
-}
-/* ===================달력================== */
-#calendar {
-    width: 70%;
-    height: 1300px;
-    margin: auto;    
+#calendarBox{
+ width: 100%;
+ background-color: #f6fafb;
+ border: solid 4px #e7eff2;
 }
 
-
-#calendar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+#calendarBox table .red{
+ color: red;
 }
 
-#calendar li {
-    display: block;
-    float: left;
-    width:14.342%;
-    padding: 5px;
-    box-sizing:border-box;
-    border: 1px solid #ccc;
-    margin-right: -1px;
-    margin-bottom: -1px;
+#calendarBox table .blue{
+ color: blue;
 }
 
-#calendar ul.weekdays {
-    height: 40px;
-    background: #582d32;
+#calendarBox table .black{
+ color: black;
 }
 
-#calendar ul.weekdays li {
-    text-align: center;
-    text-transform: uppercase;
-    line-height: 20px;
-    border: none !important;
-    padding: 10px 6px;
-    color: #f6f5f1;
-    font-size: 13px;
+#calendarNav{
+ width: 100%;
+ text-align: center;
+ padding-top: 10px;
+ margin-top: 15px;
 }
 
-#calendar .days li {
-    height: 180px;
+#calendarNav select{
+ font-size: 15px;
+ font-weight: bold;
+ margin: 0 5px;
+ padding: 5px;
 }
 
-#calendar .days li:hover {
-    background: #c2bcb9;
+#calendarNav table{
+ width: 100%;
+ text-align: center;
 }
 
-#calendar .date {
-    text-align: center;
-    margin-bottom: 5px;
-    padding: 4px;
-    color: #444444;
-    width: 20px;
-    float: right;
-    vertical-align: bottom;
-
+#calendarNav table th{
+ padding-top: 15px;
+ font-size: 15px;
+ width: 14.3%;
 }
 
-#calendar .event {
-    clear: both;
-    display: block;
-    font-size: 13px;
-    border-radius: 4px;
-    padding: 5px;
-    margin-top: 40px;
-    margin-bottom: 5px;
-    line-height: 14px;
-    background: #e4f2f2;
-    border: 1px solid #b5dbdc;
-    color: #009aafo
-    text-decoration: none;
+#calendarDiv{
+ width: 100%;
+ text-align: center;
 }
 
-#calendar .event-desc {
-    color: #666;
-    margin: 3px 0 7px 0;
-    text-decoration: none;  
+#calendarDiv table{
+ width: 100%;
 }
 
-#calendar .other-month {
-    background: #eae7e7;
-    color: #666;
+#calendarDiv table td{
+ height: 60px;
+ width: 14.3%;
+ padding: 5px;
+ background-color: #ffffff;
+ vertical-align: top;
+ border: 1px solid #f6fafb;
 }
-
-/* ============================
-                Mobile Responsiveness
-   ============================*/
-
-
-@media(max-width: 768px) {
-
-    #calendar .weekdays, #calendar .other-month {
-        display: none;
-    }
-
-    #calendar li {
-        height: auto !important;
-        border: 1px solid #ededed;
-        width: 100%;
-        padding: 10px;
-        margin-bottom: -1px;
-    }
-
-    #calendar .date {
-        float: none;
-    }
-}
-/* ===================달력================== */

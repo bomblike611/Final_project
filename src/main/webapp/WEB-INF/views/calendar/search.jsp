@@ -29,7 +29,7 @@
 			var date2 = new Date($("#toDate").val());
 			if(date2 - date1 <0){
 				alert("다시확인"); return false;
-			} */
+			}
 			
 		  	/* 날짜 선택한날 이후로 안보이기 */	
 			/* var startDate = $("#fromDate").val().split('-');
@@ -86,15 +86,15 @@
 	  		$(this).val($(this).val().toUpperCase());
 	  	});	  	
 
-		$(".page").click(function() {
+/* 		$(".page").click(function() {
 			var cur = $(this).attr("title");
 			document.frm.curPage.value = cur;
 			document.frm.search.value = '${page.search}';
 			document.frm.kind.value = '${page.kind}';
-			document.frm.toDate.value = '${page.fromDate}';
+			document.frm.fromDate.value = '${page.fromDate}';
 			document.frm.toDate.value = '${page.toDate}';
 			documnet.frm.submit();
-		});
+		}); */
 
 	});
 </script>
@@ -154,7 +154,7 @@
 		</form>
 
 		<!--================================ 페이징처리 ================================-->
-		<div id="page">
+<%-- 		<div id="page">
 			<c:if test="${page.curBlock > 1}">
 				<span class="page" title="${page.startNum-1}">《</span>
 			</c:if>
@@ -164,7 +164,7 @@
 			<c:if test="${page.curBlock < page.totalBlock }">
 				<span class="page" title="${page.lastNum+1}">》</span>
 			</c:if>
-		</div>
+		</div> --%>
 
 	</section>
 
