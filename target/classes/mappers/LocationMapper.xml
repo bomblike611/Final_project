@@ -17,8 +17,5 @@
   </delete>
   
   
-  <select id="selectList" resultType="LocationDTO">
-  
-  </select>
   
   </mapper>

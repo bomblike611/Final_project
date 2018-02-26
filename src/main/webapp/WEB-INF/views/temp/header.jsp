@@ -41,7 +41,7 @@
 					<option value="/busk/member/memberAgree">JOIN</option>
 				</c:if>
 				<c:if test="${not empty member}">
-					<option value="/busk/member/memberMyPage?id=${member.id}">MY PAGE</option>
+					<option value="/busk/member/member1?id=${member.id}">MY PAGE</option>
 					<option value="/busk/member/memberLogOut">LOG OUT</option>
 				</c:if>
 			</select>

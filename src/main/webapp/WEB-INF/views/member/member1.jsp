@@ -7,6 +7,13 @@
 <title>## 노래왕 버스킹 -(회원가입 약관동의)입니다</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="/busk/resources/css/member.css" " rel="stylesheet">
+<script type="text/javascript">
+$(function() {
+	$(".update").click(function() {
+		window.location = '/busk/member/memberMyPage';
+	});
+});
+</script>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -55,10 +62,26 @@
 			</tr>
 		</table>
 		</div>
+		<input type="button" value="수정" class="update">  
 	</div>	
 	
 	<div class="mypage1">
 		<h5 class="inpo">노래왕 버스킹 게시한 글 보기</h5>
+		<table>
+			<tr>
+				<td>글 번호</td>
+				<td>제 목</td>
+				<td>글 올린날짜</td>
+				<td>글쓴이</td>
+			</tr>
+			
+			<tr>
+				<td>${notice.num}</td>
+				<td>${notice.title}</td>
+				<td>${notice.reg_date}</td>
+				<td>${notice.writer}</td>
+			</tr>
+		</table>
 	</div>
 	
 	<div class="mypage2">

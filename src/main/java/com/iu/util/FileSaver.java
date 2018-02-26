@@ -11,9 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileSaver {
 	
 	public List<String> saver(MultipartFile [] file, String filepath)throws Exception{
-		List<String> fileNames = new ArrayList<>();
-		System.out.println(file.length);
-		
+		List<String> fileNames = new ArrayList<String>();
 		for(MultipartFile f: file){
 			String fileName=this.saver(f, filepath);
 			fileNames.add(fileName);
