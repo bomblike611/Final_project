@@ -30,13 +30,31 @@ h1.title_top {
 	float: right;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	
 }
+
+.floatright {
+	float: right;
+}
+
 #sel{
 	height: 22px;
 	width: 110px;
 	display: none;
 }
+
+.button.dark, input.button.dark {
+    background: #5D453B;
+    border: 1px solid #5D453B;
+    color: #FFFFFF;
+}
+
+.button.small, input.button.small {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 130%;
+    padding: 3px 8px 4px;
+}
+
 .table_list {
     width: 100%;
     height: 50%;
@@ -62,3 +80,17 @@ h1.title_top {
 #button {
 	float: right;
 }
+
+#schField {
+	width: 110px;
+	
+	
+}
+
+#schkeyword {
+	maxlength: 30;
+	}
+
+
+
+

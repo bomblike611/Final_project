@@ -8,6 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="../resources/css/notice/notice.css"rel="stylesheet">
+<link href="../resources/css/common/paging.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript">
@@ -41,27 +42,27 @@
 			<div class="my_wrap">
 				<div class="searchFrm">
 					<div class="full_column">
-						<form name="frm" id="searchFrm" method="post" action="./noticelist">
+						<form name="frm" id="searchFrm" method="post">
 							<input type="hidden" name="currentPage" id="currentPage" value="1">
 							<input type="hidden" name="seq" id="seq">
 							<input type="hidden" name="site" id="site">
 						
 					<div class="floatright">
-						<label>
-						 <select id="sel" name="kind" class="selectBox">
-							<option value="title">번호</option>
-							<option value="writer">제목</option>
+					 <label>
+						 <select name="schField" id="schField" onchange="this.form.keyword.focus()">
+							<option value="TITLE">제목</option>
+							<option value="CONTENT">내용</option>
 						</select>
-						
+					</label>
 						 
-						 </label>
-						 
-						<label>
-							<input type="text" name="schkeyword" id="schkeyword" maxlength="30" size="30">
-						</label>
-						<label>
-							<input id="btn" type="submit" value="검색">
-						</label>
+					<label>
+					<input type="text" name="schKeyword" id="schKeyword" maxlength="30" size="30" value="" onfocus="this.select()" />
+					</label>
+					
+					<label>
+						<input type="submit" class="button dark small" name="button" value="검색" />
+					</label>
+					
 					</div>
 					</form>
 					</div>
@@ -102,23 +103,30 @@
 				</table>
 				
 				<div>
-		<c:if test="${page.curBlock > 1}">
-			<span class="page" title="${page.startNum-1}">[이전]</span>
-		</c:if>
-		<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<span class="page" title="${i}">${i}</span>
-		</c:forEach>
-		<c:if test="${page.curBlock < page.totalBlock}">
-			<span class="page" title="${page.lastNum+1}">[다음]</span>
-		</c:if>
+		<div id="pagination">
+            <c:if test="${page.curBlock > 1}">
+               <button title="${page.startNum-1}" class="page list pageing">[이전]</button>
+            </c:if>
+            <c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+               <button title="${i}" class="page list btn_now pageing">${i}</button>
+            </c:forEach>
+            <c:if test="${page.curBlock < page.totalBlock}">
+               <button title="${page.lastNum+1}" class="page list pageing">[다음]</button>
+            </c:if>
+         </div>
 	</div>
-	<div id="button">
+	<!-- <div id="button">
 			<a href="./noticewrite">글쓰기</a>
-	</div>
-				
+	</div> -->
+		<!-- admin 만 글쓰기 해주는 방법 -->		
+		<c:if test="${member.id eq 'admin'}">
+			<div id="button">
+			<a href="./noticewrite">글쓰기</a>
 			</div>
+		</c:if>
 
 		</div>
+	</div> 
 		<!--//CONTAINER -->
 	</section>
 
