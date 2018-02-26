@@ -10,6 +10,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>## 노래왕 버스킹 -Busking List페이지입니다</title>
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 </head>
 <script type="text/javascript">
 	$(function() {
@@ -72,13 +73,13 @@
 		<div id="paging">
 		<div id="pagination">
 			<c:if test="${page.curBlock > 1}">
-				<span class="page" title="${page.startNum-1}">[이전]</span>
+				<span class="page" title="${page.startNum-1}">〈</span>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<span class="page" title="${i}">${i}</span>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
-				<span class="page" title="${page.lastNum+1}">[다음]</span>
+				<span class="page" title="${page.lastNum+1}">〉</span>
 			</c:if>
 		</div>
 		<c:if test="${member.job eq 'singer'}">		

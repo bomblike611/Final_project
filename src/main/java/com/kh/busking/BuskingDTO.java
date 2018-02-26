@@ -13,7 +13,7 @@ public class BuskingDTO {
 	private String reg_date;
 	private String location;
 	private int entry;
-	private Date busk_date;
+	private String busk_date;
 	private int entry_member;
 	private String fname;
 	private String oname;
@@ -99,12 +99,12 @@ public class BuskingDTO {
 	public void setEntry(int entry) {
 		this.entry = entry;
 	}
-	public Date getBusk_date() {
+	public String getBusk_date() {
 		return busk_date;
 	}
-	public void setBusk_date(Date busk_date) {
+	public void setBusk_date(String busk_date) {
 		this.busk_date = busk_date;
 	}
-	
+
 	
 }
