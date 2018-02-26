@@ -41,8 +41,7 @@ public class CalService {
 		if(listData.getSearch()==null){
 			listData.setSearch("");
 		}
-		System.out.println("sea :"+listData.getSearch());
-		System.out.println("ddd");
+
 		/*int totalCount = calDAO.totalCount(listData);
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.pageMaker(totalCount, listData);*/

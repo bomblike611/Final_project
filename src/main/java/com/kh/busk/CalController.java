@@ -34,16 +34,23 @@ public class CalController {
 	@RequestMapping(value="search"/*, method=RequestMethod.POST */)
 	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		/*LocationDTO loca = new LocationDTO();
-		loca.setLoc_name(calDTO.getLocation());
-		loca.setNum(0);
-		LocationDTO locationDTO=locationDAO.locationView(loca);
-		System.out.println(locationDTO);*/
 		mv= calservice.selectList(listData, mv);
 		mv.setViewName("calendar/search");
 		return mv;
 	}
-
+	/*@RequestMapping(value="search", method=RequestMethod.POST )
+	public ModelAndView searchmap(CalDTO calDTO, ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		CalDTO calDTO2 = calservice.selectOne(calDTO);
+		LocationDTO loca = new LocationDTO();
+		loca.setLoc_name(calDTO.getLocation());
+		loca.setNum(0);
+		LocationDTO locationDTO=locationDAO.locationView(loca);
+		mv.addObject("list", calDTO2);
+		mv.addObject("loca", locationDTO);
+		mv.setViewName("calendar/search");
+		return mv;
+	}*/
 	@RequestMapping(value="month")
 	public void month() throws Exception{
 		
