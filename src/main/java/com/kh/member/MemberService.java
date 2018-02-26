@@ -1,8 +1,12 @@
 package com.kh.member;
 
 import java.io.File;
+
+import java.util.List;
+
 import java.io.PrintStream;
 import java.io.PrintWriter;
+
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.member.MemberDTO;
 import com.kh.util.FileSaver;
+import com.kh.util.ListData;
 
 @Service
 public class MemberService {
@@ -75,12 +80,30 @@ public class MemberService {
 		return memberDAO.memberDelete(memberDTO);
 	}
 	
+	public MemberDTO memberView(String id)throws Exception{
+		return memberDAO.memberView(id);
+	}
 	
 	public MemberDTO memberIdCheck(String id) throws Exception{
 		return memberDAO.memberIdCheck(id);
 	}
 	
+	public List<MemberDTO> memberList(ListData listData) throws Exception{
+		return memberDAO.memberList(listData);
+	}
 	
+
+	public List<MemberDTO> singerList(ListData listData) throws Exception{
+		return memberDAO.singerList(listData);
+	}
+	
+	public int totalCount(ListData listData) throws Exception{
+		return memberDAO.totalCount(listData);
+	}
+	public int singerUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.singerUpdate(memberDTO);
+	}
+
 	//ID 찾기
 	public String memberID(String email, HttpServletResponse response) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
@@ -117,6 +140,7 @@ public class MemberService {
 		}else{
 			return pw;
 		}
+
 	}
 	
 	

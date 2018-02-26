@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="BuskerMapper">
+  	
+  	<select id="getteamname" resultType="String">
+  		select distinct teamname from member where job='singer'
+  	</select>
+  	
+  	<select id="buskerList" resultType="MemberDTO" parameterType="String">
+  		select * from member where teamname=#{teamName}
+   	</select>
+   	
+   	<select id="singerList" resultType="MemberDTO">
+  		select * from member
+   	</select>
+   	
+   	<select id="buskerOne" resultType="MemberDTO" parameterType="ListData">
+   		select * from member
+   		<where>
+   			<if test="kind == '팀명'">
+   				job='singer' and teamname LIKE '%'||#{search}||'%'
+   			</if>
+   			<if test="kind == '팀원'">
+   				teamname=(select teamname from member where name LIKE '%'||#{search}||'%' and job='singer')
+   			</if>
+   		</where>
+  		<!-- select * from (select rownum R,L.* from (select * from member
+  			<where>
+				job='singer'
+				<if test="kind == '팀명'">
+					and teamname LIKE '%'||#{search}||'%'
+				</if>
+				<if test="kind == '팀원'">
+					and name LIKE '%'||#{search}||'%'
+				</if>
+  			</where>
+  		) L) -->
+	</select>
+  	
+  </mapper>

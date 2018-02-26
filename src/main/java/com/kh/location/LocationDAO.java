@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.util.ListData;
+
 @Repository
 public class LocationDAO {
 
@@ -27,9 +29,15 @@ public class LocationDAO {
 		return sqlSession.delete(NAMESPACE+"delete", locationDTO);
 	}
 	
-	public List<LocationDTO> locationList() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"selectList");
+	public List<LocationDTO> locationList(ListData listData) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"selectList",listData);
 	}
 	
+	public int locationTotalCount(ListData listData) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"totalCount",listData);
+	}
+	public LocationDTO locationView(LocationDTO locationDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"locationView", locationDTO);
+	}
 
 }

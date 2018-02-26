@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
-	<link href="/busk/resources/css/header.css" rel="stylesheet">
+	<link href="/busk/resources/css/common/header.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -29,9 +29,11 @@
 				<li class="sub_nav"><a href="/busk/event/pointRotate">Event</a></li>
 			</ul>
 			<div class="dropdown-content" id="sub_nav">
+
 				<a href="#">Link 1</a>
   	  			<a href="#">Link 2</a>
     			<a href="#">Link 3</a>
+    			<a href="/busk/location/locationList">Location</a>
 			</div>
 		</section>
 		<div id="main_session">

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@
 <body>
 
 
-<%@include file="./temp/header.jsp" %>
+<%@include file="/WEB-INF/views/temp/header.jsp" %>
 
 	<section id="main">
 		<a href="./location/locationWrite">Location_write</a>
@@ -25,6 +27,7 @@
 
 
 <a href="./recommend/communityList">리스트</a>
-
+<a href="./busker/buskerList">busker</a>
+<a href="./ranking/rankingView">ranking</a>
 </body>
 </html>

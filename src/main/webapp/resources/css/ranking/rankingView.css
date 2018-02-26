@@ -1,0 +1,122 @@
+@CHARSET "UTF-8";
+
+body{
+	background-color: #8C8C8C;
+}
+
+#listmain{
+	height: 100%;
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+#rank{
+	float: left;
+	background-color: white;
+	width:94%;
+	height: 320px;
+	margin: 0 3%;
+	margin-top: 5%;
+	text-align: center;
+	color:#582D32;
+	border: 1px #C2BCB9 solid;
+}
+
+#rank>h2{
+	font-size: 30px;
+	text-shadow: -.08em .08em #C2BCB9;
+}
+
+#search{
+	border: 1px #C2BCB9 solid;
+	width: 90%;
+	height: 60px;
+	margin: 3% auto;
+}
+
+#search2{
+	height: 100%;
+	width: 50%;
+	margin: 0 auto;
+}
+
+select{
+	float:left;
+	width: 20%;
+	margin: 2.5% 2.5%;
+	height: 50%;
+}
+
+#search2>input{
+	width:60%;
+	height: 50%;
+	margin: 2.5% 2.5%;
+	border: 1px #F6F5F1 solid;
+}
+
+#searchw{
+	cursor: pointer;
+}
+
+#ranking_list {
+	width: 94%;
+	margin-right:3%;
+	margin-left:3%;
+	height: 90%;
+	float: right;
+	list-style: none;
+	float: left;
+	background-color: white;
+	border: 1px solid #C2BCB9;
+}
+#ranking_chart {
+	margin: 0 auto;
+	width: 90%;
+	margin-top: 30px;	
+}
+#rank a {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#ranking_table {
+	border: 1px solid #582D32;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+#ranking_table td {
+	margin: 0 auto;
+	text-align: center;
+	border-bottom: 1px solid #582D32;
+}
+#ranking_table tr {
+	height: 45px;
+}
+.rankingKind {
+	cursor: pointer;
+}
+.profile_pic {
+	height: 45px;
+}
+.profile_pic img {
+	line-height: 45px;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.graph {
+	height: 10px;
+	width: 100px;
+	display: inline-block;
+	margin-right: 5px;
+}
+.graph div {
+	height: 100%;
+	background-color: red;
+}
+#ranking_table p {
+	display: inline-block;
+}

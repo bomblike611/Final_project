@@ -73,7 +73,7 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
-	public ModelAndView memberLogin(MemberDTO memberDTO,  HttpSession session) throws Exception{
+	public ModelAndView memberLogin(MemberDTO memberDTO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.memberLogin(memberDTO);
 		if (memberDTO != null) {

@@ -4,15 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="../resources/css/notice/notice.css"
-	rel="stylesheet">
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="../resources/css/notice/notice.css"rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+	$(function() {
+		var message='${message}';
+		if(message != ''){
+			alert(message);
+		}
+				
+		$(".page").click(function() {
+			var cur=$(this).attr("title");
+			document.frm.curPage.value=cur;
+			document.frm.search.value='${page.search}';
+			document.frm.kind.value='${page.kind}';
+			document.frm.submit();
+		});
+	});
+</script>
 <title>리스트</title>
 
 </head>
@@ -28,12 +41,14 @@
 			<div class="my_wrap">
 				<div class="searchFrm">
 				
-					<form name="frm" action="./noticeList">
+					<form name="frm" action="./noticelist">
 						<select id="sel" name="kind">
 							<option value="title">번호</option>
 							<option value="writer">제목</option>
 						</select> 
-							<input type="text" name="search">
+						<label>
+							<input type="text" name="schkeyword" id="schkeyword" maxlength="30" size="30">
+						</label>
 							<input id="btn" type="submit" value="검색">
 					</form>
 				</div>
@@ -49,21 +64,26 @@
 					<tbody>
 						<tr>
 							<th>번호</th>
-							<th>구분</th>
+							<th>작성자</th>
 							<th>제목</th>
-							<th>등록일</th>
-							<th>조회수</th>
+							<th>작성일자</th>
 						</tr>
-				
+						<c:forEach items="${list}" var="dto">
 							<tr>
-								<td>dd</td>
-								<td>dd</td>
-								<td>dd${dto.title}</td>
-								<td>dd</td>
-								<td>dd</td>
+								<td>${dto.num}</td>
+								<td>${dto.title}</td>
+								<td>
+								    <c:catch>
+										<c:forEach begin="1" end="${dto.depth}" var="i">
+											-
+										</c:forEach>
+									</c:catch>
+									<a href="noticeView?num=${dto.num}">${dto.writer}</a>
+								</td>
+								<td>${dto.reg_date}</td>
+								
 							</tr>
-					
-
+						</c:forEach>
 					</tbody>
 				</table>
 				
@@ -79,7 +99,7 @@
 		</c:if>
 	</div>
 	<div id="button">
-			<a href="/noticewrite${board}write">글쓰기</a>
+			<a href="./noticewrite">글쓰기</a>
 	</div>
 				
 			</div>

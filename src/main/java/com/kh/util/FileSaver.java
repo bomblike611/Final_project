@@ -22,5 +22,25 @@ public class FileSaver {
 		file.transferTo(f);
 		return fileName;
 	}
+	
 
+	public List<String> saver(MultipartFile [] file, String filepath)throws Exception{
+	      List<String> fileNames = new ArrayList<>();
+	      for(MultipartFile f: file){
+	         String fileName=this.saver(f, filepath);
+	         fileNames.add(fileName);
+	      }
+	      return fileNames;
+	   }
+
+	public void fileDelete(String filepath,String fileName) throws Exception{
+		try{
+		File file=new File(filepath, fileName);
+		file.delete();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+
+
+	}
 }

@@ -1,10 +1,18 @@
 package com.kh.point;
 
 public class PointDTO {
+	private int num;
 	private String id;
 	private String use_date;
 	private String reason;
 	private int use_point;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getId() {
 		return id;
 	}

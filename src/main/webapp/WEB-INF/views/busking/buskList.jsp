@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../resources/css/busk/buskList.css" rel="stylesheet">
 <link href="../resources/css/busk/search.css" rel="stylesheet">
+<link href="../resources/css/common/paging.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>## 노래왕 버스킹 -Busking List페이지입니다</title>
@@ -15,6 +16,12 @@
 		$(".hover").mouseleave(function() {
 			$(this).removeClass("hover");
 		});
+		
+		$("#write").click(function(){
+			location.href="./buskWrite";
+			
+		});
+		
 	});
 </script>
 <body>
@@ -26,11 +33,11 @@
 		</div>
 		<form action="./buskList" method="post">
 			<div id="searchForm">
-				<select>
+				<select name="kind">
 					<option>전체</option>
-					<option>지난공연</option>
-					<option>현재공연</option>
-					<option>예정공연</option>
+					<option value="title">제목</option>
+					<option value="contents">내용</option>
+					<option value="teamname">가수명</option>
 				</select>
 				<input id="search" name="search" type="text"
 					placeholder="What're we looking for ?"> <input
@@ -38,135 +45,45 @@
 			</div>
 		</form>
 		<div id="consertList">
+		<c:forEach items="${list}" var="l">
 			<figure class="snip1200">
-				<img
+			<c:if test="${l.fname eq 'null'}">
+		<img
 					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample27.jpg"
-					alt="${title}" />
+					alt="${l.title}" />
+			</c:if>
+			<c:if test="${l.fname ne 'null'}">
+			<img
+					src="../resources/upload/${l.fname}"
+					alt="${l.title}" />
+			</c:if>
 				<figcaption>
-					<p>집에 가고싶다 ㅠㅠ</p>
+					<p><b>${l.teamname }</b><br>${l.location} / ${l.busk_date}</p>
 					<div class="heading">
 						<h2>
-							<span>노래왕</span>
+							<span>${l.title}</span>
 						</h2>
 					</div>
 				</figcaption>
-				<a href="./buskView"></a>
+				<a href="./buskView?num=${l.num}&id=${l.writer}"></a>
 			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample31.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>디자인 시러...</p>
-					<div class="heading">
-						<h2>
-							해피<span> 버스킹</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample32.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>집에 가고싶다</p>
-					<div class="heading">
-						<h2>
-							화이팅<span> 하세요</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample27.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>집에 가고싶다 ㅠㅠ</p>
-					<div class="heading">
-						<h2>
-							<span>노래왕</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample31.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>디자인 시러...</p>
-					<div class="heading">
-						<h2>
-							해피<span> 버스킹</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample32.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>집에 가고싶다</p>
-					<div class="heading">
-						<h2>
-							화이팅<span> 하세요</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample27.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>집에 가고싶다 ㅠㅠ</p>
-					<div class="heading">
-						<h2>
-							<span>노래왕</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample31.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>디자인 시러...</p>
-					<div class="heading">
-						<h2>
-							해피<span> 버스킹</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
-			<figure class="snip1200">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample32.jpg"
-					alt="${title}" />
-				<figcaption>
-					<p>집에 가고싶다</p>
-					<div class="heading">
-						<h2>
-							화이팅<span> 하세요</span>
-						</h2>
-					</div>
-				</figcaption>
-				<a href="./buskView"></a>
-			</figure>
+			</c:forEach>
 		</div>
 		<div id="paging">
+		<div id="pagination">
+			<c:if test="${page.curBlock > 1}">
+				<span class="page" title="${page.startNum-1}">[이전]</span>
+			</c:if>
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+				<span class="page" title="${i}">${i}</span>
+			</c:forEach>
+			<c:if test="${page.curBlock < page.totalBlock}">
+				<span class="page" title="${page.lastNum+1}">[다음]</span>
+			</c:if>
+		</div>
+		<c:if test="${member.job eq 'singer'}">		
 		<div id="write">Write</div>
+		</c:if>
 		</div>
 	</section>
 	<a href="./buskList" id="top"><img
