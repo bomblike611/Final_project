@@ -12,3 +12,25 @@
 .remove{
 	cursor: pointer;
 }
+
+#container {
+	padding-top: 100px;
+    overflow: hidden;
+    padding-bottom: 150px;
+    height: 1350px;
+	text-align: center;
+    }
+    
+h1.title_top {	
+    margin: 50px 0 20px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #6C4C40;
+    
+}
+
+.my_wrap{
+	width: 60%;
+	margin: 0 auto;
+	border-top: 2px black solid;
+	}

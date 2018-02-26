@@ -39,7 +39,7 @@
 
 		<div id="container">
 			<h1 class="title_top">공지사항</h1>
-			<div class="my_wrap">
+			  <div class="my_wrap">
 				<div class="searchFrm">
 					<div class="full_column">
 						<form name="frm" id="searchFrm" method="post">
