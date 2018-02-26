@@ -7,8 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -(search)입니다</title>
 <link href="../resources/css/calendar/search.css" rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#fromDate').on('change', function() {
@@ -16,6 +15,12 @@
 		});
 		$('#toDate').on('change', function() {
 			$('#fromDate').prop('max', $(this).val());
+		});
+		$("#btn").click(function(){
+			if($("#fromDate").val() && !$("#toDate").val()){
+				alert("종료 날짜를 선택해 주세요.");
+				return false;
+			}
 		});
 		/* 날짜검색 */
  		/* $("#btn").click(function(){ */
@@ -49,11 +54,6 @@
 			alert(oneDay);
 			 $("").submit();
 		});  */
-	  	/* 공연시간 */
-	    $(".siin").each(function(){
-		 	var busktime = $(this).attr("title");
-		 	$(this).html(busktime.substr(11,5)); 
-		 });
 		
 	  	/* 공연날짜(달) */
 	    $(".nalja").each(function(){
@@ -80,7 +80,11 @@
 	 		var nal=$(this).attr("title");
 	 		$(this).html(nal.substr(8,2)); 
 	 	});
-
+	  	/* 공연시간 */
+	    $(".siin").each(function(){
+		 	var busktime = $(this).attr("title");	 	
+		 	$(this).html(busktime.substr(11,5)); 		 	
+		 });
 	  	/* 장소검색 대소문자 변경 */
 	  	$("#place").on('keyup', function(){
 	  		$(this).val($(this).val().toUpperCase());
@@ -125,7 +129,7 @@
 					<input type="submit" id="btn" value="Search" style="cursor: pointer;">
 				</div>
 			</div>
-			<!--================================ 보여지는 폼 ================================-->	
+			<!--================================ 보여지는 폼 ================================-->
 			<c:forEach items="${list}" var="dto" begin="0" end="5">
 						<div id="bigbox">
 							<div id="singer">${dto.writer}</div>

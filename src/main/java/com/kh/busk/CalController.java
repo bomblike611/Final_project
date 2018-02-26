@@ -56,8 +56,9 @@ public class CalController {
 	
 	@RequestMapping(value="upcoming")
 	public ModelAndView upcoming(ListData listData) throws Exception{
-		ModelAndView mv = new ModelAndView();		
-		mv= calservice.selectList(listData, mv);
+		ModelAndView mv = new ModelAndView();
+		List<CalDTO> ar = calservice.selectre(listData);
+		mv.addObject("list", ar);
 		mv.setViewName("calendar/upcoming");
 		return mv;
 	}

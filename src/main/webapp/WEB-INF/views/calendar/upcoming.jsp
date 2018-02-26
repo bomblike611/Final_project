@@ -47,7 +47,6 @@ $(function(){
 	/* 공연시간 */
     	$(".siin").each(function(){
  		var busktime=$(this).attr("title");
- 		alert(busktime);
  		$(this).html(busktime.substr(11,5));	
  	});
 

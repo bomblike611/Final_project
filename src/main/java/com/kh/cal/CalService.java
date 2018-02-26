@@ -23,39 +23,38 @@ public class CalService {
 	@Inject
 	private FileDAO fileDAO;
 	
+	public List<CalDTO> selectre(ListData listData) throws Exception{
+		return calDAO.selectre(listData);
+	}
+	
 	public ModelAndView selectList(ListData listData, ModelAndView mv) throws Exception{
-		if(listData.getKind() == null){			
+	
+		if(listData.getKind()==null){			
 			listData.setKind("");		
 		}
-		if(listData.getFromDate() == null){
+		if(listData.getFromDate()==null){
 			listData.setFromDate("");		
 		}
-		if(listData.getToDate() == null){
+		if(listData.getToDate()==null){
 			listData.setToDate("");
 		}
-		if(listData.getSearch() == null){
+		if(listData.getSearch()==null){
 			listData.setSearch("");
 		}
-		
-/*		int totalCount = calDAO.totalCount(listData);
+		System.out.println("sea :"+listData.getSearch());
+		System.out.println("ddd");
+		/*int totalCount = calDAO.totalCount(listData);
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.pageMaker(totalCount, listData)*/;
-		List<CalDTO> sing = calDAO.sing(listData);
+		pageMaker.pageMaker(totalCount, listData);*/
+		
 		List<CalDTO> ar = calDAO.selectList(listData);
 		List<FileDTO> file = fileDAO.selectList();
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("list", ar);
-		map.put("listt", sing);
-		map.put("file", file);
-		mv.addObject("list", map);
-		/*mv.addObject("list", ar);
-		mv.addObject("list", sing);
-		mv.addObject("file", file);*/
-/*		mv.addObject("page", listData);		*/
+		mv.addObject("list", ar);
+		mv.addObject("file", file);
+		/*mv.addObject("page", listData);	*/	
 		return mv;
 	}
 	public CalDTO selectOne(CalDTO calDTO) throws Exception{
 		return calDAO.selectOne(calDTO);
 	}
-
 }

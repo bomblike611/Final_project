@@ -25,8 +25,8 @@ public class CalDAO {
 	public CalDTO selectOne(CalDTO calDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"selectOne", calDTO);
 	}
-	public List<CalDTO> sing(ListData listData) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"sing", listData);
+	public List<CalDTO> selectre(ListData listData) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"selectre", listData);
 	}
 
 }
