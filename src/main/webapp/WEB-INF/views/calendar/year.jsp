@@ -7,8 +7,8 @@
 <title>## 노래왕 버스킹 -(year)입니다</title>
 <!-- <link href="../resources/css/calendar/year.css" rel="stylesheet"> -->
 <script src="../resources/js/calendar/jquery.min.js" type="text/javascript"></script>
-<script src='../resources/js/calendar/moment.js'></script>
-<script src='../resources/js/fullcalendar.min.js'></script>
+<script src='../resources/js/calendar/moment.min.js' type="text/javascript"></script>
+<script src='../resources/js/fullcalendar.min.js' type="text/javascript"></script>
 <link href='../resources/css/calendar/fullcalendar.min.css' rel='stylesheet' />
 <script type="text/javascript">
 $(function(){
