@@ -50,7 +50,7 @@
 				</select> <input id="search" name="search" type="text"
 					placeholder="What're we looking for ?"> <input
 					id="search_submit" value="Rechercher" type="submit"> <img
-					src="../resources/upload/mic.gif" onclick="mailSendArea()">
+					src="../resources/upload/mic.gif" id="voice" onclick="mailSendArea()">
 			</div>
 		</form>
 		<div id="consertList">
@@ -105,11 +105,6 @@
 			</div>
 			<div class="modal-body">
 				<div>
-					<!-- <h1 class="center" id="headline">
-			<a
-				href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-				Web Speech API</a> Demonstration
-			</h1> -->
 					<div id="info">
 						<p id="info_start">음성인식을 시작하시려면, 마이크 아이콘을 클릭해주세요.</p>
 						<p id="info_speak_now">지금 말씀해주세요.</p>
@@ -123,8 +118,7 @@
 								href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
 								마이크 설정이</a> 제대로 되어 있나 살펴보거나, 컴퓨터에 연결되어 있는 지 확인해주세요.
 						</p>
-						<p id="info_allow">Click the "Allow" button above to enable
-							your microphone.</p>
+						<p id="info_allow">위의 허용버튼을 클릭하여 마이크를 활성화해주세요.</p>
 						<p id="info_denied">마이크 사용 승인이 이루어지지 않았습니다.</p>
 						<p id="info_blocked">마이크 사용이 막혀있습니다. 크롬의
 							chrome://settings/contentExceptions#media-stream으로 이동하여 설정을
@@ -147,7 +141,7 @@
 					</div>
 					<div>
 						<div id="div_language">
-							<select id="select_language" onchange="updateCountry()"></select>
+							Language : <select id="select_language" onchange="updateCountry()"></select>
 							&nbsp;&nbsp; <select id="select_dialect"></select>
 						</div>
 					</div>

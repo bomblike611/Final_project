@@ -292,7 +292,15 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 	color: white;
 }
 
-/* voice recoding */
+#voice{
+	padding-right: 60px;
+	float: right;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+}
+
+/** voice recoding */
 a:link {
     color:#000;
     text-decoration: none;
@@ -349,9 +357,10 @@ a:link {
     font-weight: 300;
   }
   #info {
+  	margin: 30px auto;
     font-size: 20px;
     text-align: center;
-    color: #777;
+    color: #582D32;
     visibility: hidden;
   }
   #results {
@@ -367,4 +376,17 @@ a:link {
     background-color:transparent;
     padding: 0;
   }
-
+  
+  #div_language{
+  width: 50%;
+  margin: 20px auto;
+  text-align: center;
+  color: #582D32;
+  font-size: 20px;
+  }
+	
+	
+#div_language>select{
+	width: 20%;
+	height: 30px;
+}
