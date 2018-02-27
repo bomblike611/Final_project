@@ -104,56 +104,55 @@
 				<h2>음성 검색</h2>
 			</div>
 			<div class="modal-body">
-
-				<div class="right">
-					<button id="start_button" onclick="startButton(event)">
-						<img id="start_img" src="../resources/upload/mic.gif" alt="Start">
-					</button>
-				</div>
-				<div id="results">
-					<span id="final_span" class="final"></span> <span id="interim_span"
-						class="interim"></span>
-					<p>
-				</div>
 				<div>
-					<div id="div_language">
-						<select id="select_language" onchange="updateCountry()"></select>
-						&nbsp;&nbsp; <select id="select_dialect"></select>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div style="display: none;">
-		<h1 class="center" id="headline">
+					<!-- <h1 class="center" id="headline">
 			<a
 				href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
 				Web Speech API</a> Demonstration
-		</h1>
-		<div id="info">
-			<p id="info_start">Click on the microphone icon and begin
-				speaking.</p>
-			<p id="info_speak_now">Speak now.</p>
-			<p id="info_no_speech">
-				No speech was detected. You may need to adjust your <a
-					href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-					microphone settings</a>.
-			</p>
-			<p id="info_no_microphone" style="display: none">
-				No microphone was found. Ensure that a microphone is installed and
-				that <a
-					href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-					microphone settings</a> are configured correctly.
-			</p>
-			<p id="info_allow">Click the "Allow" button above to enable your
-				microphone.</p>
-			<p id="info_denied">Permission to use microphone was denied.</p>
-			<p id="info_blocked">Permission to use microphone is blocked. To
-				change, go to chrome://settings/contentExceptions#media-stream</p>
-			<p id="info_upgrade">
-				Web Speech API is not supported by this browser. Upgrade to <a
-					href="//www.google.com/chrome">Chrome</a> version 25 or later.
-			</p>
+			</h1> -->
+					<div id="info">
+						<p id="info_start">음성인식을 시작하시려면, 마이크 아이콘을 클릭해주세요.</p>
+						<p id="info_speak_now">지금 말씀해주세요.</p>
+						<p id="info_no_speech">
+							음성 신호가 잡히지 않았습니다. 컴퓨터에 연결된 <a
+								href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+								마이크 설정을</a> 확인해주세요.
+						</p>
+						<p id="info_no_microphone" style="display: none">
+							마이크 신호가 잡히지 않았습니다. <a
+								href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+								마이크 설정이</a> 제대로 되어 있나 살펴보거나, 컴퓨터에 연결되어 있는 지 확인해주세요.
+						</p>
+						<p id="info_allow">Click the "Allow" button above to enable
+							your microphone.</p>
+						<p id="info_denied">마이크 사용 승인이 이루어지지 않았습니다.</p>
+						<p id="info_blocked">마이크 사용이 막혀있습니다. 크롬의
+							chrome://settings/contentExceptions#media-stream으로 이동하여 설정을
+							바꿔주세요.</p>
+						<p id="info_upgrade">
+							Web Speech API is not supported by this browser. Upgrade to <a
+								href="//www.google.com/chrome">Chrome</a> version 25 or later.
+						</p>
+					</div>
+
+					<div class="right">
+						<button id="start_button" onclick="startButton(event)">
+							<img id="start_img" src="../resources/upload/mic.gif" alt="Start">
+						</button>
+					</div>
+					<div id="results">
+						<span id="final_span" class="final"></span> <span
+							id="interim_span" class="interim"></span>
+						<p>
+					</div>
+					<div>
+						<div id="div_language">
+							<select id="select_language" onchange="updateCountry()"></select>
+							&nbsp;&nbsp; <select id="select_dialect"></select>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="../resources/js/voice.js"></script>
