@@ -31,27 +31,28 @@ public class BuskingService {
 			f.mkdir();
 		}
 		FileSaver fileSaver=new FileSaver();
-		if(file!=null){
+		if(file.getOriginalFilename()!=""){
+			System.out.println("ss");
 		String fname2=fileSaver.saver(file, filepath);
 		buskingDTO.setFname(fname2);
 		buskingDTO.setOname(file.getOriginalFilename());
+		for(MultipartFile file2 : files){
+			if(file2!=null){
+				String fname=fileSaver.saver(file2, filepath);
+				FileDTO fileDTO=new FileDTO();
+				fileDTO.setFname(fname);
+				fileDTO.setOname(file2.getOriginalFilename());
+				fileDTO.setNum(buskingDTO.getNum());
+				fileDTO.setLoc_name("null");
+				fileDTO.setTeamName("null");
+				fileDAO.insert(fileDTO);
+			}
+		}
 		}else{
 			buskingDTO.setFname("null");
 			buskingDTO.setOname("null");
 		}
 		int result=buskingDAO.insert(buskingDTO);
-		for(MultipartFile file2 : files){
-			if(file2!=null){
-			String fname=fileSaver.saver(file2, filepath);
-			FileDTO fileDTO=new FileDTO();
-			fileDTO.setFname(fname);
-			fileDTO.setOname(file2.getOriginalFilename());
-			fileDTO.setNum(buskingDTO.getNum());
-			fileDTO.setLoc_name("null");
-			fileDTO.setTeamName("null");
-			fileDAO.insert(fileDTO);
-			}
-		}
 		return result;
 	}
 	public ModelAndView selectList(ListData listData,ModelAndView mv) throws Exception{

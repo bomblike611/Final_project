@@ -12,19 +12,10 @@
 <title>## 노래왕 버스킹 -Busking Write페이지입니다</title>
 <script type="text/javascript">
 	$(function() {
-		var recordRTC = RecordRTC(mediaStream);
-		$("#record").click(function(){
-		recordRTC.startRecording();
-		});
-		$("#stop").click(function(){
-		recordRTC.stopRecording(function(audioURL) {
-		   mediaElement.src = audioURL;
-		});		
-		});
-		$(".loc",this).each(function(){
-			if($(this).prop("selected")){
-				title=$(this).attr("title");
-				}			
+		$(".loc", this).each(function() {
+			if ($(this).prop("selected")) {
+				title = $(this).attr("title");
+			}
 		});
 		$("#entry").val(title);
 		//전역변수
@@ -47,83 +38,92 @@
 		$("#btn").click(function() {
 			//id가 smarteditor인 textarea에 에디터에서 대입
 			obj.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
-			var check=$("#check").prop("checked");
-			
+			var check = $("#check").prop("checked");
+
 			//폼 submit
-			if(check){
-				if($(".val").val()!=""){
+			if (check) {
+				if ($(".val").val() != "") {
 					document.frm.submit();
-				}else{
+				} else {
 					alert("빈 칸을 채워 주세요.");
 				}
-			}else{
+			} else {
 				alert("이용자 동의사항에 동의해주세요.");
 			}
 		});
 
 		$("#check2").click(function() {
 			$("#privateInfo").slideToggle("slow");
-		}); 
-		
-		$("#location").change(function(){
-			var title="";
-			$(".loc",this).each(function(){
-				if($(this).prop("selected")){
-					title=$(this).attr("title");
-					}			
+		});
+
+		$("#location").change(function() {
+			var title = "";
+			$(".loc", this).each(function() {
+				if ($(this).prop("selected")) {
+					title = $(this).attr("title");
+				}
 			});
 			$("#entry").val(title);
 		});
-		
 
 		var fileTarget = $('.filebox .upload-hidden');
 
-	    fileTarget.on('change', function(){
-	        if(window.FileReader){
-	            // 파일명 추출
-	            var filename = $(this)[0].files[0].name;
-	        } 
+		fileTarget.on('change',
+				function() {
+					if (window.FileReader) {
+						// 파일명 추출
+						var filename = $(this)[0].files[0].name;
+					}
 
-	        else {
-	            // Old IE 파일명 추출
-	            var filename = $(this).val().split('/').pop().split('\\').pop();
-	        };
+					else {
+						// Old IE 파일명 추출
+						var filename = $(this).val().split('/').pop().split(
+								'\\').pop();
+					}
+					;
 
-	        $(this).siblings('.upload-name').val(filename);
-	    });
+					$(this).siblings('.upload-name').val(filename);
+				});
 
-	    //preview image 
-	    var imgTarget = $('.preview-image .upload-hidden');
+		//preview image 
+		var imgTarget = $('.preview-image .upload-hidden');
 
-	    imgTarget.on('change', function(){
-	        var parent = $(this).parent();
-	        parent.children('.upload-display').remove();
+		imgTarget
+				.on(
+						'change',
+						function() {
+							var parent = $(this).parent();
+							parent.children('.upload-display').remove();
 
-	        if(window.FileReader){
-	            //image 파일만
-	            if (!$(this)[0].files[0].type.match(/image\//)) return;
-	            
-	            var reader = new FileReader();
-	            reader.onload = function(e){
-	                var src = e.target.result;
-	                parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
-	            }
-	            reader.readAsDataURL($(this)[0].files[0]);
-	        }
+							if (window.FileReader) {
+								//image 파일만
+								if (!$(this)[0].files[0].type.match(/image\//))
+									return;
 
-	        else {
-	            $(this)[0].select();
-	            $(this)[0].blur();
-	            var imgSrc = document.selection.createRange().text;
-	            parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+								var reader = new FileReader();
+								reader.onload = function(e) {
+									var src = e.target.result;
+									parent
+											.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
+								}
+								reader.readAsDataURL($(this)[0].files[0]);
+							}
 
-	            var img = $(this).siblings('.upload-display').find('img');
-	            img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
-	        }
-	    });
-		
+							else {
+								$(this)[0].select();
+								$(this)[0].blur();
+								var imgSrc = document.selection.createRange().text;
+								parent
+										.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+
+								var img = $(this).siblings('.upload-display')
+										.find('img');
+								img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""
+										+ imgSrc + "\")";
+							}
+						});
+
 	});
-	
 </script>
 <script src="//cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
 </head>
@@ -182,8 +182,9 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>노래 녹음</th>
-						<td><p id="record">record</p>
-							<p id="stop">stop</p></td>
+						<td><button id="btn-start-recording">Start Recording</button>
+							<button id="btn-stop-recording" disabled>Stop Recording</button>
+							<audio controls autoplay></audio></td>
 					</tr>
 					<tr>
 						<th colspan="2"><span style="color: red;">*</span>소개</th>
@@ -192,6 +193,46 @@
 						<th colspan="2"><textarea name="contents" id="contents"></textarea></th>
 					</tr>
 				</table>
+				<script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+				<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+				<script>
+	var audio = document.querySelector('audio');
+				function captureMicrophone(callback) {
+    				navigator.mediaDevices.getUserMedia({audio: true}).then(callback).catch(function(error) {
+        			alert('Unable to access your microphone.');
+        			console.error(error);
+    			});
+				}
+function stopRecordingCallback() {
+    var blob = recorder.getBlob();
+    audio.src = URL.createObjectURL(blob);
+    audio.play();
+    recorder.microphone.stop();
+}
+var recorder; // globally accessible
+$('#btn-start-recording').click(function(){
+	
+    this.disabled = true;
+    captureMicrophone(function(microphone) {
+        setSrcObject(microphone, audio);
+        audio.play();
+        recorder = RecordRTC(microphone, {
+            type: 'audio',
+            recorderType: StereoAudioRecorder,
+            desiredSampRate: 16000
+        });
+        recorder.startRecording();
+        // release microphone on stopRecording
+        recorder.microphone = microphone;
+        document.getElementById('btn-stop-recording').disabled = false;
+});
+});
+
+document.getElementById('btn-stop-recording').onclick = function() {
+    this.disabled = true;
+    recorder.stopRecording(stopRecordingCallback);
+};
+</script>
 				<div id="private">
 					<h2>개인정보보호를 위한 이용자 동의사항</h2>
 					<p>노래왕버스킹은 개인정보보호법 등 관련 법률에 따라 개인정보 수집 이용 시 정보 주체에게 사전 고지하고 이에
