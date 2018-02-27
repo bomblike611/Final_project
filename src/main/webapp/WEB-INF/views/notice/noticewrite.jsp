@@ -5,11 +5,9 @@
 <html>
 <head>
 <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../resources/css/notice/write.css"rel="stylesheet">
-<link href="../resources/css/common/paging.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 
 	$(function() {
@@ -55,7 +53,7 @@
 			$(this).remove();
 		});			
 	});
-	
+
 </script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -67,18 +65,22 @@
 	
 	<!--CONTAINER -->
 	
-	<div id="container">
-	<h1 class="title_top">공지사항 글 등록</h1>
-		<div class="my_wrap">
-	<form action="./noticewrite" method="POST" enctype="multipart/form-data" >
-		<p>Title : <input type="text" name="title"></p>
-		<p>Writer : <input type="text" name="writer"></p>
-		<p>contents : <textarea rows="" cols="" name="contents"></textarea></p>
-		<p><input type="button" value="FileAdd" id="btn"></p>
+	<div id="pop_wrap">
+	<h2 id="pop">공지사항 글 등록</h2>
+		<div class="pop_con">
+			 <ul class="top_info">
+				 <li>관리자용 글 등록 폐이지 입니다.</li>
+			 </ul>
+			
+	<form action="./noticewrite" method="post" enctype="multipart/form-data" >
+		<p class="input_col">작성자 : <input type="text" name="title"></p>
+		<p class="input_col">제목 : <input type="text" name="writer"></p>
+		<p class="input_col" >글내용  <textarea rows="" cols="" name="contents" id="contents"></textarea></p>
+		<p><input type="button" value="FileAdd" id="btn" class="input_col"></p>
 		<div id="result">
 		</div>	
 		
-		<button>Write</button>
+		<button id="save" class="input_col">글 등록</button>
 	</form>
 			<div id="ex">
 				<input type="file" name="file"><span class="remove">X</span><br>
