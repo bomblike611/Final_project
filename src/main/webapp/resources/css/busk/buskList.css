@@ -390,3 +390,27 @@ a:link {
 	width: 20%;
 	height: 30px;
 }
+
+#voiceResult{
+	display:none;
+	text-align: center;
+	
+}
+
+#write2{
+	cursor: pointer;
+	border: 1px #C2BCB9 solid;
+	text-align: center;
+	height: 40px;
+	width: 10%;
+	margin: 0 auto;
+	line-height: 40px;
+	color: #582D32;
+	font-weight: bold;
+	transition:background-color 2s;
+}
+
+#write2:hover{
+	background-color: #582D32;
+	color: white;
+}

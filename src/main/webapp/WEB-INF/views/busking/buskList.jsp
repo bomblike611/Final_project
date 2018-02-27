@@ -19,9 +19,44 @@
 
 	}
 	$(function() {
+		$(".btn_now").click(function(){
+			cur=$(this).attr("title");
+			document.page.curPage.value=cur;
+			document.page.submit();
+		});
+		
+		var curPage='${page.curPage}';
+		$(".btn_now").each(function(){
+			if($(this).attr("title")==curPage){
+				$(this).css("background-color","#582D32");
+				$(this).css("color","white");
+			} 
+		});
+		var title="";
+		$("#write2").click(function() {
+			var span = $("#final_span").html() + "";
+			alert(span);
+			var val = $("#search").val(span);
+			$(".e").each(function(){
+				if($(this).prop("selected")){
+					title=$(this).attr("title");
+				alert(title);
+				}
+			});
+			$(".t").each(function(){
+				if($(this,".t").val()==title){
+					$("#kind").val(title);
+					alert($("#kind").val());
+					$("#frrm").submit();
+				}
+			});
+			$("#myModal").css("display", "none");
+		});
+
 		$(".close").click(function() {
 			$("#myModal").css("display", "none");
 		});
+
 		$(".hover").mouseleave(function() {
 			$(this).removeClass("hover");
 		});
@@ -40,17 +75,18 @@
 			<h2>Busking List</h2>
 			<p>기간에 따라 공연을 골라보실 수 있습니다. 마우스 클릭시 공연 상세페이지로 이동합니다.</p>
 		</div>
-		<form action="./buskList" method="post">
+		<form action="./buskList" id="frrm" name="frrm" method="post">
 			<div id="searchForm">
-				<select name="kind">
+				<select name="kind" id="kind">
 					<option>전체</option>
-					<option value="title">제목</option>
-					<option value="contents">내용</option>
-					<option value="teamname">가수명</option>
+					<option value="title" class="t">제목</option>
+					<option value="contents" class="t">내용</option>
+					<option value="teamname" class="t">가수명</option>
 				</select> <input id="search" name="search" type="text"
 					placeholder="What're we looking for ?"> <input
 					id="search_submit" value="Rechercher" type="submit"> <img
-					src="../resources/upload/mic.gif" id="voice" onclick="mailSendArea()">
+					src="../resources/upload/mic.gif" id="voice"
+					onclick="mailSendArea()">
 			</div>
 		</form>
 		<div id="consertList">
@@ -81,13 +117,13 @@
 		<div id="paging">
 			<div id="pagination">
 				<c:if test="${page.curBlock > 1}">
-					<span class="page" title="${page.startNum-1}">〈</span>
+					<button title="${page.startNum-1}" class="page list pageing">＜</button>
 				</c:if>
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-					<span class="page" title="${i}">${i}</span>
+					<button title="${i}" class="page list btn_now pageing">${i}</button>
 				</c:forEach>
 				<c:if test="${page.curBlock < page.totalBlock}">
-					<span class="page" title="${page.lastNum+1}">〉</span>
+					<button title="${page.lastNum+1}" class="page list pageing">＞</button>
 				</c:if>
 			</div>
 			<c:if test="${member.job eq 'singer'}">
@@ -104,7 +140,12 @@
 				<h2>음성 검색</h2>
 			</div>
 			<div class="modal-body">
-				<div>
+				<div id="div_language">
+					검색할 카테고리 : <select name="kind" id="selection">
+						<option value="title" title="title" class="e">제목</option>
+						<option value="contents" title="contents" class="e">내용</option>
+						<option value="teamname" title="teamname" class="e">가수명</option>
+					</select>
 					<div id="info">
 						<p id="info_start">음성인식을 시작하시려면, 마이크 아이콘을 클릭해주세요.</p>
 						<p id="info_speak_now">지금 말씀해주세요.</p>
@@ -141,9 +182,14 @@
 					</div>
 					<div>
 						<div id="div_language">
-							Language : <select id="select_language" onchange="updateCountry()"></select>
-							&nbsp;&nbsp; <select id="select_dialect"></select>
+							Language : <select id="select_language"
+								onchange="updateCountry()"></select> &nbsp;&nbsp; <select
+								id="select_dialect"></select>
 						</div>
+					</div>
+					<div id="voiceResult">
+						<p>음성이 올바르게 인식되었다면, Search버튼을 눌러주세요.</p>
+						<div id="write2" class="close2">Search</div>
 					</div>
 				</div>
 			</div>

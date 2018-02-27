@@ -12,6 +12,15 @@
 <title>## 노래왕 버스킹 -Busking Write페이지입니다</title>
 <script type="text/javascript">
 	$(function() {
+		var recordRTC = RecordRTC(mediaStream);
+		$("#record").click(function(){
+		recordRTC.startRecording();
+		});
+		$("#stop").click(function(){
+		recordRTC.stopRecording(function(audioURL) {
+		   mediaElement.src = audioURL;
+		});		
+		});
 		$(".loc",this).each(function(){
 			if($(this).prop("selected")){
 				title=$(this).attr("title");
@@ -116,6 +125,7 @@
 	});
 	
 </script>
+<script src="//cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -131,27 +141,26 @@
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>공연명</th>
-						<td><input type="text" class="val" name="title" placeholder="공연명을 입력해주세요"></td>
+						<td><input type="text" class="val" name="title"
+							placeholder="공연명을 입력해주세요"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>팀명</th>
-						<td><input type="text" class="val" name="teamname" value="${team.teamName}" placeholder="가수명"></td>
+						<td><input type="text" class="val" name="teamname"
+							value="${team.teamName}" placeholder="가수명"></td>
 					</tr>
 					<tr>
-								<th><span style="color: red;">*</span>장르</th>
-								<td><input type="text" class="oo" name="genre"
-									placeholder="장르를 입력해주세요"></td>
-							</tr>
+						<th><span style="color: red;">*</span>장르</th>
+						<td><input type="text" class="oo" name="genre"
+							placeholder="장르를 입력해주세요"></td>
+					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연지역</th>
-						<td>
-						<select name="location" id="location">
-						<c:forEach items="${loc}" var="l">
-						<option value="${l.loc_name}" title="${l.entry}" class="loc" >${l.loc_name}</option>
-						</c:forEach>
-						</select>
-						
-						</td>
+						<td><select name="location" id="location">
+								<c:forEach items="${loc}" var="l">
+									<option value="${l.loc_name}" title="${l.entry}" class="loc">${l.loc_name}</option>
+								</c:forEach>
+						</select></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연일자</th>
@@ -159,16 +168,22 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>참가자수</th>
-						<td><input type="number" id="entry" name="entry" value="0" readonly="readonly"></td>
+						<td><input type="number" id="entry" name="entry" value="0"
+							readonly="readonly"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연포스터</th>
 						<td><div class="filebox bs3-primary preview-image">
-                            <input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;">
-
-                            <label for="input_file">업로드</label> 
-                          <input type="file" id="input_file" name="f" class="upload-hidden"> 
-                        </div></td>
+								<input class="upload-name" value="파일선택" disabled="disabled"
+									style="width: 200px;"> <label for="input_file">업로드</label>
+								<input type="file" id="input_file" name="f"
+									class="upload-hidden">
+							</div></td>
+					</tr>
+					<tr>
+						<th><span style="color: red;">*</span>노래 녹음</th>
+						<td><p id="record">record</p>
+							<p id="stop">stop</p></td>
 					</tr>
 					<tr>
 						<th colspan="2"><span style="color: red;">*</span>소개</th>
@@ -186,10 +201,10 @@
 							style="float: right;" id="check2">▼ </span>
 					</div>
 					<div id="privateInfo">
-						<p> - 개인정보의 수집 및 이용 목적: 노래왕 버스킹 버스킹 게시물 등록 서비스 이용</p>
-						<p> - 수집하는 개인정보 항목: 이름, 휴대전화, 이메일</p>
-						<p> - 개인정보 보유 및 이용 기간: 동의일로부터 6개월</p>
-						<p> - 귀하는 동의를 거부할 권리가 있으나, 위 사항에 동의하지 않으실 경우 노래왕 버스킹 서비스 이용에
+						<p>- 개인정보의 수집 및 이용 목적: 노래왕 버스킹 버스킹 게시물 등록 서비스 이용</p>
+						<p>- 수집하는 개인정보 항목: 이름, 휴대전화, 이메일</p>
+						<p>- 개인정보 보유 및 이용 기간: 동의일로부터 6개월</p>
+						<p>- 귀하는 동의를 거부할 권리가 있으나, 위 사항에 동의하지 않으실 경우 노래왕 버스킹 서비스 이용에
 							제한을 받을 수 있습니다.</p>
 					</div>
 				</div>

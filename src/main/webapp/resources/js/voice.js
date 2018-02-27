@@ -134,10 +134,6 @@ if (!('webkitSpeechRecognition' in window)) {
       range.selectNode(document.getElementById('final_span'));
       window.getSelection().addRange(range);
     }
-    if (create_email) {
-      create_email = false;
-      createEmail();
-    }
   };
   recognition.onresult = function(event) {
     var interim_transcript = '';
@@ -187,20 +183,10 @@ function copyButton() {
   copy_info.style.display = 'inline-block';
   showInfo('');
 }
-function emailButton() {
-  if (recognizing) {
-    create_email = true;
-    recognizing = false;
-    recognition.stop();
-  } else {
-    createEmail();
-  }
-  email_button.style.display = 'none';
-  email_info.style.display = 'inline-block';
-  showInfo('');
-}
 function startButton(event) {
   if (recognizing) {
+	var voice_display=document.getElementById('voiceResult');
+	voice_display.style.display='block';
     recognition.stop();
     return;
   }
