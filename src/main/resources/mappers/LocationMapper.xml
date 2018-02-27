@@ -26,8 +26,6 @@
   </if>
   </select>
   
-<<<<<<< HEAD
-=======
   <select id="selectList" resultType="LocationDTO" parameterType="ListData">
   select * from (select rownum R,L.* from (select * from location 
   <if test="kind == 'loc_name'">
@@ -48,6 +46,4 @@
    where num=#{num}  
   </if>
   </select>
->>>>>>> master
-  
   </mapper>

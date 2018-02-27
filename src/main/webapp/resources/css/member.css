@@ -642,24 +642,99 @@ fieldset{
     margin-left: 5%;
 }
 
+.memberNotice{
+	margin-left: 4.5%;
+	width: 91%;
+	margin-top: 3%;
+	border-collapse: collapse;
+}
 
+#noticeNum{
+	width: 11%;
+    text-align: center;
+    background-color: #F6F6F4;
+    height: 30px;
+    border-bottom: 1px solid #DDD;
+    color: #774F41;
+}
 
+#noticeTitle{
+	width: 42%;
+    text-align: center;
+    background-color: #F6F6F4;
+    height: 30px;
+    border-bottom: 1px solid #DDD;
+    color: #774F41;
+}
 
+#noticeReg_date {
+    width: 24%;
+    text-align: center;
+    background-color: #F6F6F4;
+    height: 30px;
+    border-bottom: 1px solid #DDD;
+    color: #774F41;
+}
 
+#noticeId{
+	width: 22%;
+    text-align: center;
+    background-color: #F6F6F4;
+    height: 30px;
+    border-bottom: 1px solid #DDD;
+    color: #774F41;
+}
 
+.add{
+	width: 15%;
+    height: 11%;
+    background: #fcfcfc;
+    color: #582D32;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #582D32;
+    cursor: pointer;
+    margin-top: 9%;
+    margin-left: 5%;
+}
 
+#memberNotice_checkbox{
+    width: 5%;	
+}
 
+#memberNotice_num{
+    width: 10%;	
+}
 
+#memberNotice_title{
+	width: 40%;	
+}
 
+#memberNotice_reg_date{
+	width: 10%;	
+}
 
+#memberNotice_writer{
+	width: 10%;	
+}
 
+.memberNoticeList_table{
+	width: 100%;
+}
 
+.memberNotice_tr{
+	background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    height: 50px;
+    text-align: center;
+}
 
-
-
-
-
-
-
+.memberNotice_tr2{
+    border: 1px solid #ddd;
+    height: 50px;
+    text-align: center;
+}
 
 

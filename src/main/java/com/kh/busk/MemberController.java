@@ -1,5 +1,7 @@
 package com.kh.busk;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.member.MemberDTO;
 import com.kh.member.MemberService;
+import com.kh.notice.NoticeDTO;
+import com.kh.notice.NoticeService;
+import com.kh.util.ListData;
+import com.kh.util.PageMaker;
 
 @Controller
 @RequestMapping(value="/member/**")
@@ -23,6 +29,8 @@ public class MemberController {
 
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private NoticeService noticeService;
 	
 	@RequestMapping(value="memberIdCheck")
 	public ModelAndView memberIdCheck()throws Exception{
@@ -223,12 +231,38 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="member1", method=RequestMethod.GET)
-	public void member() throws Exception{
+	public ModelAndView member(ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<NoticeDTO> ar = noticeService.selectList(listData);
 		
+		for(int i=0; i<ar.size();i++){
+			String s = ar.get(i).getReg_date();
+			s=s.substring(0,10);
+			ar.get(i).setReg_date(s);
+		}
+		
+		mv.addObject("list", ar);
+		mv.addObject("page", listData);
+		mv.setViewName("member/member1");
+		return mv;
 	}
 	
-	
-	
+	@RequestMapping(value="memberNoticeList", method=RequestMethod.GET)
+	public ModelAndView memberNoticeList(ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<NoticeDTO> ar = noticeService.selectList(listData);
+		
+		for(int i=0; i<ar.size();i++){
+			String s = ar.get(i).getReg_date();
+			s=s.substring(0,10);
+			ar.get(i).setReg_date(s);
+		}
+		
+		mv.addObject("list", ar);
+		mv.addObject("page", listData);
+		mv.setViewName("member/memberNoticeList");
+		return mv;
+	}
 	
 	
 	

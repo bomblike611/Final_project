@@ -12,6 +12,10 @@ $(function() {
 	$(".update").click(function() {
 		window.location = '/busk/member/memberMyPage';
 	});
+	
+	$(".add").click(function() {
+		window.location = '/busk/member/memberNoticeList';
+	});
 });
 </script>
 </head>
@@ -67,21 +71,32 @@ $(function() {
 	
 	<div class="mypage1">
 		<h5 class="inpo">노래왕 버스킹 게시한 글 보기</h5>
-		<table>
-			<tr>
-				<td>글 번호</td>
-				<td>제 목</td>
-				<td>글 올린날짜</td>
-				<td>글쓴이</td>
+		<table class="memberNotice">
+			<tr class="coll">
+				<td id="noticeNum">글 번호</td>
+				<td id="noticeTitle">제 목</td>
+				<td id="noticeReg_date">날 짜</td>
+				<td id="noticeId">글쓴이</td>
 			</tr>
 			
+			<c:catch>
+			<c:forEach items="${list}" var="notice" varStatus="j">
+				<c:if test="${notice.writer eq member.id}">
+				<c:if test="${j.index lt 3 }">
 			<tr>
-				<td>${notice.num}</td>
-				<td>${notice.title}</td>
-				<td>${notice.reg_date}</td>
-				<td>${notice.writer}</td>
+				<td id="noticeNum" style="background-color: white; color: black;">${notice.num}</td>
+				<td id="noticeTitle" style="background-color: white; color: black;">${notice.title}</td>
+				<td id="noticeReg_date" style="background-color: white; color: black;">${notice.reg_date}</td>
+				<td id="noticeId" style="background-color: white; color: black;">${notice.writer}</td>
 			</tr>
+				
+				</c:if>
+				</c:if>
+			</c:forEach>
+			</c:catch>
+			
 		</table>
+		<input type="button" value="더보기" class="add">  
 	</div>
 	
 	<div class="mypage2">
