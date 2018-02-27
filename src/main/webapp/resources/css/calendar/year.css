@@ -2,25 +2,3 @@
 #yearH{
 	background-color: #494750;
 }
-#heart{
-	width: 10%;
-	font-size: 300%;
-	background-color: white;
-	border: none;
-	margin: auto;
-	cursor: pointer;
-}
-#heart:hover{
-	color: #ff8080;
-}
-#heart span{
-	color: gray;
-	font-weight: bolder;
-	
-}
-.red{
-	color: red;
-}
-span{
-	font-size: 10px;
-}

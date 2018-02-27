@@ -10,8 +10,8 @@
 <script type="text/javascript">
 $(function(){
 	
-  	var text;
   	$("#show").click(function(){
+  		var text;
   		$(".yoilbox2").slideToggle("slow");
   		text = $(this).text();
   		$(this).text(text == '닫기' ? '더보기' : "닫기");
@@ -34,12 +34,10 @@ $(function(){
  		case "10" : mon = "OCT"; break; 
  		case "11" : mon = "NOV"; break; 
  		case "12" : mon = "DEC"; break; 
- 		}
-  		
+ 		}		
  		$(this).html(mon); 
  	}); 
  	
-  	
     /* 공연날짜(일) */
       	$(".nalil").each(function(){
  		var nal=$(this).attr("title");
