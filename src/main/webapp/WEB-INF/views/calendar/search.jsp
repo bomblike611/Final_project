@@ -220,7 +220,7 @@
 			var geocoder = new daum.maps.services.Geocoder();
 
 			// 주소로 좌표를 검색합니다
-			geocoder.addressSearch('${loc.area}', function(result, status) {
+			geocoder.addressSearch('${loca.area}', function(result, status) {
 
 			    // 정상적으로 검색이 완료됐으면 
 			     if (status === daum.maps.services.Status.OK) {

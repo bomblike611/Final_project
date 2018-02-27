@@ -34,20 +34,20 @@ public class CalController {
 	@RequestMapping(value="search"/*, method=RequestMethod.POST */)
 	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv= calservice.selectList(listData, mv);
-		mv.setViewName("calendar/search");
-		return mv;
-	}
-	/*@RequestMapping(value="search", method=RequestMethod.POST )
-	public ModelAndView searchmap(CalDTO calDTO, ListData listData) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		CalDTO calDTO2 = calservice.selectOne(calDTO);
+		/*CalDTO calDTO2 = calservice.selectOne(calDTO);
 		LocationDTO loca = new LocationDTO();
 		loca.setLoc_name(calDTO.getLocation());
 		loca.setNum(0);
 		LocationDTO locationDTO=locationDAO.locationView(loca);
 		mv.addObject("list", calDTO2);
-		mv.addObject("loca", locationDTO);
+		mv.addObject("loca", locationDTO);*/
+		mv= calservice.selectList(listData, mv);
+		mv.setViewName("calendar/search");
+		return mv;
+	}
+	/*@RequestMapping(value="search")
+	public ModelAndView searchmap(CalDTO calDTO, ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calendar/search");
 		return mv;
 	}*/
