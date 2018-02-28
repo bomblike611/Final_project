@@ -20,6 +20,10 @@ import com.kh.member.MemberDTO;
 import com.kh.member.MemberService;
 import com.kh.notice.NoticeDTO;
 import com.kh.notice.NoticeService;
+import com.kh.point.PointDTO;
+import com.kh.point.PointService;
+import com.kh.spon.SponDTO;
+import com.kh.spon.SponService;
 import com.kh.util.ListData;
 import com.kh.util.PageMaker;
 
@@ -31,6 +35,10 @@ public class MemberController {
 	private MemberService memberService;
 	@Inject
 	private NoticeService noticeService;
+	@Inject
+	private PointService pointService;
+	@Inject
+	private SponService sponService;
 	
 	@RequestMapping(value="memberIdCheck")
 	public ModelAndView memberIdCheck()throws Exception{
@@ -231,17 +239,32 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="member1", method=RequestMethod.GET)
-	public ModelAndView member(ListData listData) throws Exception{
+	public ModelAndView member(ListData listData, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		PointDTO pointDTO = new PointDTO();
+		SponDTO sponDTO = new SponDTO();
+		pointDTO.setId(memberDTO.getId());
+		sponDTO.setId(memberDTO.getId());
 		List<NoticeDTO> ar = noticeService.selectList(listData);
-		
+		List<PointDTO> ar2 = pointService.pointList(pointDTO);
+		List<SponDTO> ar3 = sponService.sponList(sponDTO);
 		for(int i=0; i<ar.size();i++){
 			String s = ar.get(i).getReg_date();
 			s=s.substring(0,10);
 			ar.get(i).setReg_date(s);
 		}
 		
+		for(int u=0; u<ar2.size();u++){
+			String k = ar2.get(u).getUse_date();
+			k=k.substring(0,10);
+			ar2.get(u).setUse_date(k);
+		}
+		
+		
 		mv.addObject("list", ar);
+		mv.addObject("pointList", ar2);
+		mv.addObject("sponList", ar3);
 		mv.addObject("page", listData);
 		mv.setViewName("member/member1");
 		return mv;
@@ -251,20 +274,63 @@ public class MemberController {
 	public ModelAndView memberNoticeList(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<NoticeDTO> ar = noticeService.selectList(listData);
-		
 		for(int i=0; i<ar.size();i++){
 			String s = ar.get(i).getReg_date();
 			s=s.substring(0,10);
 			ar.get(i).setReg_date(s);
 		}
-		
 		mv.addObject("list", ar);
 		mv.addObject("page", listData);
 		mv.setViewName("member/memberNoticeList");
 		return mv;
 	}
 	
+	@RequestMapping(value="memberNoticeView", method=RequestMethod.GET)
+	public ModelAndView selectOne(int num)throws Exception{
+		NoticeDTO noticeDTO=noticeService.selectOne(num);
+		ModelAndView mv = new ModelAndView();
+		String s = noticeDTO.getReg_date();
+		s=s.substring(0, 10);
+		mv.addObject("view", noticeDTO);
+		mv.setViewName("member/memberNoticeView");
+		return mv;
+
+	}
 	
+	@RequestMapping(value="memberPointList", method=RequestMethod.GET)
+	public ModelAndView memberPointList(HttpSession session, ListData listData)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		PointDTO pointDTO = new PointDTO();
+		pointDTO.setId(memberDTO.getId());
+		List<PointDTO> ar = pointService.pointList(pointDTO);
+		for(int i=0; i<ar.size();i++){
+			String s = ar.get(i).getUse_date();
+			s=s.substring(0,10);
+			ar.get(i).setUse_date(s);;
+		}
+		mv.addObject("list", ar);
+		mv.addObject("page", listData);
+		mv.setViewName("member/memberPointList");
+		return mv;
+	}
 	
+	@RequestMapping(value="memberSponList", method=RequestMethod.GET)
+	public ModelAndView memberSponList(HttpSession session, ListData listData)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		SponDTO sponDTO = new SponDTO();
+		sponDTO.setId(memberDTO.getId());
+		List<SponDTO> ar = sponService.sponList(sponDTO);
+		
+		mv.addObject("list", ar);
+		mv.addObject("page", listData);
+		mv.setViewName("member/memberSponList");
+		return mv;
+	}
+	
+	@RequestMapping(value="access", method=RequestMethod.GET)
+	public void Access() throws Exception{
+	}
 	
 }

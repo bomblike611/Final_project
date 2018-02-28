@@ -43,6 +43,6 @@ $(function() {
 				<button class="cancelBtn" type="button">HOME</button>		
 		</ul>
 	</div>
-
+	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>

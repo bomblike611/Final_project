@@ -246,7 +246,7 @@
 <body>
 
 	<%@include file="../temp/header.jsp"%>
-	<div class="join_agree" id="main">
+	<div class="join_agree">
 		<h2 class="tit_bk_left pt30">My Page</h2>
 		<span style="float: right;"><span class="sp">* </span>는 필수사항
 			입니다</span>
@@ -426,8 +426,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
+	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>

@@ -274,7 +274,6 @@
 .join_OK{
 	margin-left: 15%;
 	margin-right: 15%;
-	height: 600px;
 	padding: 80px 0;
 }
 
@@ -550,7 +549,7 @@ fieldset{
     background-color: #582D32;
     color: white;
     padding-left: inherit;
-    margin-left: 271%;
+    margin-left: 307%;
 }
 
 #pw_search{
@@ -589,26 +588,28 @@ fieldset{
 
 .mypage{
     width: 49%;
-    height: 29.5%;
+    height: 19.5%;
     float: left;
     border: 2px solid #582D32;
+    margin-top: 4%;
 }
 .mypage1{
     width: 49%;
-    height: 29.5%;
+    height: 19.5%;
     float: right;
     border: 2px solid #582D32;
+    margin-top: 4%;
 }
 .mypage2{
     width: 49%;
-    height: 30%;
+    height: 21%;
     float: left;
     border: 2px solid #582D32;
     margin-top: 2%;
 }
 .mypage3{
 	width: 49%;
-    height: 30%;
+    height: 21%;
     float: right;
     margin-top: 2%;
    	border: 2px solid #582D32;
@@ -624,6 +625,7 @@ fieldset{
 	position: absolute;
 	margin-top: 1%;
 	margin-left: 1%;
+	border-collapse: collapse;
 }
 
 
@@ -736,5 +738,61 @@ fieldset{
     height: 50px;
     text-align: center;
 }
+
+.memberNoticeUpdate{
+	width: 170px;
+    height: 41px;
+    background: #582D32;
+    color: #fafafa;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #582D32;
+    margin: 0 13px 200px 0;
+    cursor: pointer;
+}
+
+.memberNoticeDelete{
+	width: 170px;
+    height: 41px;
+    background: #fcfcfc;
+    color: #582D32;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #582D32;
+    cursor: pointer;
+}
+
+.memberinfo_td1{
+	background-color: #F6F6F4;	
+	color: #774F41;
+}
+
+#noticemember{
+	text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

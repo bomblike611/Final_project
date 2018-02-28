@@ -38,6 +38,7 @@
 			}
 
 		});
+		
 		$(".nextBtn").click(function() {
 			if ($("#siteAgreement").prop("checked", true) && $("#personalAgreement").prop("checked", true) && $("#checkALL").prop("checked", true)) {
 				window.location = '/busk/member/memberJoin';
@@ -52,7 +53,7 @@
 
 	<%@include file="../temp/header.jsp"%>
 
-	<div class="join_agree" id="main">
+	<div class="join_agree">
 		<h2 class="tit_bk_left pt30">JOIN</h2>
 		<div class="join_wrapper">
 			<ul class="stepGuide">
@@ -65,13 +66,13 @@
 		<!-- 이용약관 시작 -->
 		<div class="checkALL">
 			<input name="checkALL" id="checkALL" type="checkbox"> <label
-				for="checkALL">Varoh 이용약관과 개인정보 수집 및 이용에 모두 동의합니다.</label>
+				for="checkALL">Busking 이용약관과 개인정보 수집 및 이용에 모두 동의합니다.</label>
 		</div>
 		<!-- 	<div class="terms_wrapper"> -->
 		<div class="siteTerms">
-			<dl class="varoh">
-				<dt>Varoh 이용약관</dt>
-				<dd class="varoh">
+			<dl class="Busking">
+				<dt>Busking 이용약관</dt>
+				<dd class="Busking">
 					<textarea readonly="">(주)비에취어쿠스텔 회원약관은 다음과 같은 내용을 담고 있습니다.
 제 1 장 총 칙
 
@@ -207,7 +208,7 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 
 			<div class="siteAgree">
 				<input name="siteAgreement" id="siteAgreement" type="checkbox"
-					class="siteAgreement"> <label for="siteAgreement">Varoh의
+					class="siteAgreement"> <label for="siteAgreement">Busking의
 					사용약관에 동의합니다.</label>
 			</div>
 		</div>
@@ -215,9 +216,9 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 
 
 		<div class="personalTerms">
-			<dl class="varoh">
+			<dl class="Busking">
 				<dt>개인정보 수집 및 이용안내</dt>
-				<dd class="varoh">
+				<dd class="Busking">
 					<textarea readonly="">(주)비에취어쿠스텔(이하 ‘회사’)는 회원님들의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
 회사는 개인정보취급방침을 통하여 회원님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
 회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
@@ -332,7 +333,7 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 			<div class="personalAgree">
 				<input name="personalAgreement" id="personalAgreement"
 					type="checkbox" class="siteAgreement"> <label
-					for="personalAgreement">Varoh의 개인정보의 수집, 이용에 관한 사항에 동의합니다.</label>
+					for="personalAgreement">Busking의 개인정보의 수집, 이용에 관한 사항에 동의합니다.</label>
 			</div>
 		</div>
 		<!--personalTerms end -->
@@ -344,7 +345,6 @@ o	7. 기타 회사가 정한 이용조건에 위반한 경우
 		</ul>
 
 	</div>
-
-
+	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>

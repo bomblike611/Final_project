@@ -7,31 +7,29 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="/busk/resources/css/member.css" " rel="stylesheet">
+<link href="/busk/resources/css/member.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
 
 	<div class="join_agree">
-		<h2 class="tit_bk_left pt30">My Notice</h2>
+		<h2 class="tit_bk_left pt30">My Point</h2>
 		<table class="memberNoticeList_table" style="border-collapse: collapse; margin-top: 5%;">
 			<tr class="memberNotice_tr">
-				<td id="memberNotice_num" style="border: 1px solid #ddd;">글 번호</td>
-				<td id="memberNotice_title" style="border: 1px solid #ddd;">제 목</td>
+				<td id="memberNotice_num" style="border: 1px solid #ddd;">아이디</td>
+				<td id="memberNotice_title" style="border: 1px solid #ddd;">포인트 내용</td>
 				<td id="memberNotice_reg_date" style="border: 1px solid #ddd;">날 짜</td>
-				<td id="memberNotice_writer" style="border: 1px solid #ddd;">글쓴이</td>
+				<td id="memberNotice_writer" style="border: 1px solid #ddd;">잔여 포인트</td>
 			</tr>
 			<c:catch>
-			<c:forEach items="${list}" var="notice" varStatus="j">
-				<c:if test="${notice.writer eq member.id}">
+			<c:forEach items="${list}" var="point" varStatus="j">
 				<c:if test="${j.index lt 5 }">
 				<tr class="memberNotice_tr2">
-					<td id="memberNotice_num" style="border: 1px solid #ddd;">${notice.num}</td>
-					<td id="memberNotice_title" style="border: 1px solid #ddd; text-align: left;"><a href="memberNoticeView?num=${notice.num}">${notice.title}</a></td>
-					<td id="memberNotice_reg_date" style="border: 1px solid #ddd;">${notice.reg_date}</td>
-					<td id="memberNotice_writer" style="border: 1px solid #ddd;">${notice.writer}</td>
+					<td id="memberNotice_num" style="border: 1px solid #ddd;">${point.id}</td>
+					<td id="memberNotice_title" style="border: 1px solid #ddd; text-align: left;">${point.reason}</td>
+					<td id="memberNotice_reg_date" style="border: 1px solid #ddd;">${point.use_date}</td>
+					<td id="memberNotice_writer" style="border: 1px solid #ddd;">${point.use_point}</td>
 				</tr>
-				</c:if>
 				</c:if>
 			</c:forEach>
 			</c:catch>

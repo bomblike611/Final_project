@@ -171,7 +171,7 @@
 <body>
 	<%@include file="../temp/header.jsp"%>
 
-	<div class="join_agree" id="main">
+	<div class="join_agree">
 		<h2 class="tit_bk_left pt30">JOIN</h2>
 		<div class="join_wrapper">
 			<ul class="stepGuide">
@@ -321,8 +321,6 @@
 			</ul>
 		</form>
 	</div>
-
-
-
+	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>

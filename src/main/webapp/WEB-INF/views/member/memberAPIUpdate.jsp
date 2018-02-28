@@ -132,7 +132,7 @@
 <body>
 	<%@include file="../temp/header.jsp"%>
 
-	<div class="join_agree" id="main">
+	<div class="join_agree">
 		<h2 class="tit_bk_left pt30">추가정보 입력</h2>
 		<div class="join_wrapper">
 			<ul class="stepGuide">
@@ -148,19 +148,6 @@
 		<form action="./memberUpdate" method="post" class="joinForm" name="frm"
 			enctype="multipart/form-data" onsubmit="return FormSubmit();">
 			<table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
-				<!-- 아이디 테이블 -->
-				<input type="text" class="Join_input" name="id" value="${member.id}">
-				
-
-				<!-- 비밀번호 테이블-->
-				
-				<input type="text" class="Join_input" name="pw" value="${member.pw}">
-				
-				<!-- 이름 테이블 -->
-				<input type="text" class="Join_input" name="name" value="${member.name}">
-			
-			
-			
 				<!-- 나이 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>나 이</td>
@@ -265,8 +252,6 @@
 			</ul>
 		</form>
 	</div>
-
-
-
+	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>
