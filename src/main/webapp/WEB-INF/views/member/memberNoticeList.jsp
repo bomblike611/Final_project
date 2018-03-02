@@ -29,7 +29,7 @@
 					<td id="memberNotice_num" style="border: 1px solid #ddd;">${notice.num}</td>
 					<td id="memberNotice_title" style="border: 1px solid #ddd; text-align: left;"><a href="memberNoticeView?num=${notice.num}">${notice.title}</a></td>
 					<td id="memberNotice_reg_date" style="border: 1px solid #ddd;">${notice.reg_date}</td>
-					<td id="memberNotice_writer" style="border: 1px solid #ddd;">${notice.writer}</td>
+					<td id="memberNotice_writer" style="border: 1px solid #ddd;">${member.name}</td>
 				</tr>
 				</c:if>
 				</c:if>

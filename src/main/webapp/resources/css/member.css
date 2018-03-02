@@ -651,7 +651,7 @@ fieldset{
 	border-collapse: collapse;
 }
 
-#noticeNum{
+.noticeNum{
 	width: 11%;
     text-align: center;
     background-color: #F6F6F4;
@@ -660,7 +660,7 @@ fieldset{
     color: #774F41;
 }
 
-#noticeTitle{
+.noticeTitle{
 	width: 42%;
     text-align: center;
     background-color: #F6F6F4;
@@ -669,7 +669,7 @@ fieldset{
     color: #774F41;
 }
 
-#noticeReg_date {
+.noticeReg_date {
     width: 24%;
     text-align: center;
     background-color: #F6F6F4;
@@ -678,7 +678,7 @@ fieldset{
     color: #774F41;
 }
 
-#noticeId{
+.noticeId{
 	width: 22%;
     text-align: center;
     background-color: #F6F6F4;
@@ -706,19 +706,19 @@ fieldset{
     width: 5%;	
 }
 
-#memberNotice_num{
+.memberNotice_num{
     width: 10%;	
 }
 
-#memberNotice_title{
+.memberNotice_title{
 	width: 40%;	
 }
 
-#memberNotice_reg_date{
+.memberNotice_reg_date{
 	width: 10%;	
 }
 
-#memberNotice_writer{
+#.memberNotice_writer{
 	width: 10%;	
 }
 

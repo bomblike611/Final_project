@@ -41,7 +41,7 @@ $(function() {
 			
 			<tr>
 				<td id="memberNotice_writer" class="memberNotice_tr" style="border: 1px solid #ddd;">글쓴이</td>
-				<td id="memberNotice_writer" style="border: 1px solid #ddd;">${view.writer}</td>
+				<td id="memberNotice_writer" style="border: 1px solid #ddd;">${member.name}</td>
 			</tr>
 		</table>	
 		<input type="button" value="Update" id="update" class="memberNoticeUpdate">

@@ -260,7 +260,7 @@ public class MemberController {
 			k=k.substring(0,10);
 			ar2.get(u).setUse_date(k);
 		}
-		
+		System.out.println(ar3.get(0).getMessage());
 		
 		mv.addObject("list", ar);
 		mv.addObject("pointList", ar2);

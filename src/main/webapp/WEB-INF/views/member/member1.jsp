@@ -81,10 +81,10 @@ $(function() {
 		<h5 class="inpo">노래왕 버스킹 게시한 글 보기</h5>
 		<table class="memberNotice">
 			<tr class="coll">
-				<td id="noticeNum">글 번호</td>
-				<td id="noticeTitle">제 목</td>
-				<td id="noticeReg_date">날 짜</td>
-				<td id="noticeId">글쓴이</td>
+				<td class="noticeNum">글 번호</td>
+				<td class="noticeTitle">제 목</td>
+				<td class="noticeReg_date">날 짜</td>
+				<td class="noticeId">글쓴이</td>
 			</tr>
 			
 			<c:catch>
@@ -92,10 +92,10 @@ $(function() {
 				<c:if test="${notice.writer eq member.id}">
 				<c:if test="${j.index lt 3 }">
 			<tr>
-				<td id="noticeNum" style="background-color: white; color: black;">${notice.num}</td>
-				<td id="noticeTitle" style="background-color: white; color: black;"><a href="memberNoticeView?num=${notice.num}" id="noticemember">${notice.title}</a></td>
-				<td id="noticeReg_date" style="background-color: white; color: black;">${notice.reg_date}</td>
-				<td id="noticeId" style="background-color: white; color: black;">${notice.writer}</td>
+				<td class="noticeNum" style="background-color: white; color: black;">${notice.num}</td>
+				<td class="noticeTitle" style="background-color: white; color: black;"><a href="memberNoticeView?num=${notice.num}" id="noticemember">${notice.title}</a></td>
+				<td class="noticeReg_date" style="background-color: white; color: black;">${notice.reg_date}</td>
+				<td class="noticeId" style="background-color: white; color: black;">${member.name}</td>
 			</tr>
 				
 				</c:if>
@@ -111,20 +111,20 @@ $(function() {
 		<h5 class="inpo">노래왕 버스킹 후원목록</h5>
 				<table class="memberNotice">
 			<tr class="coll">
-				<td id="noticeNum">ID</td>
-				<td id="noticeTitle">TeamName</td>
-				<td id="noticeReg_date">Price</td>
-				<td id="noticeId">Message</td>
+				<td class="noticeNum">Name</td>
+				<td class="noticeTitle">TeamName</td>
+				<td class="noticeReg_date">Price</td>
+				<td class="noticeId">Message</td>
 			</tr>
 			
 			<c:catch>
 			<c:forEach items="${sponList}" var="spon" varStatus="j">
 				<c:if test="${j.index lt 3 }">
 			<tr>
-				<td id="noticeNum" style="background-color: white; color: black;">${spon.id}</td>
-				<td id="noticeTitle" style="background-color: white; color: black;">${spon.teamname}</td>
-				<td id="noticeReg_date" style="background-color: white; color: black;">${spon.price}</td>
-				<td id="noticeId" style="background-color: white; color: black;">${spon.message}</td>
+				<td class="noticeNum" style="background-color: white; color: black;">${member.name}</td>
+				<td class="noticeTitle" style="background-color: white; color: black;">${spon.teamName}</td>
+				<td class="noticeReg_date" style="background-color: white; color: black;">${spon.price}</td>
+				<td class="noticeId" style="background-color: white; color: black;">${spon.message}</td>
 			</tr>
 				</c:if>
 			</c:forEach>
@@ -138,20 +138,20 @@ $(function() {
 		<h5 class="inpo">노래왕 버스킹 포인트내역 확인</h5>
 				<table class="memberNotice">
 			<tr class="coll">
-				<td id="noticeNum">ID</td>
-				<td id="noticeTitle">USE_DATE</td>
-				<td id="noticeReg_date">REASON</td>
-				<td id="noticeId">USE_POINT</td>
+				<td class="noticeNum">Name</td>
+				<td class="noticeTitle">USE_DATE</td>
+				<td class="noticeReg_date">REASON</td>
+				<td class="noticeId">USE_POINT</td>
 			</tr>
 			
 			<c:catch>
 			<c:forEach items="${pointList}" var="point" varStatus="j">
 				<c:if test="${j.index lt 3 }">
 			<tr>
-				<td id="noticeNum" style="background-color: white; color: black;">${point.id}</td>
-				<td id="noticeTitle" style="background-color: white; color: black;">${point.use_date}</td>
-				<td id="noticeReg_date" style="background-color: white; color: black;">${point.reason}</td>
-				<td id="noticeId" style="background-color: white; color: black;">${point.use_point}</td>
+				<td class="noticeNum" style="background-color: white; color: black;">${member.name}</td>
+				<td class="noticeTitle" style="background-color: white; color: black;">${point.use_date}</td>
+				<td class="noticeReg_date" style="background-color: white; color: black;">${point.reason}</td>
+				<td class="noticeId" style="background-color: white; color: black;">${point.use_point}</td>
 			</tr>
 				</c:if>
 			</c:forEach>

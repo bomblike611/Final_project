@@ -16,19 +16,19 @@
 		<h2 class="tit_bk_left pt30">My Spon</h2>
 		<table class="memberNoticeList_table" style="border-collapse: collapse; margin-top: 5%;">
 			<tr class="memberNotice_tr">
-				<td id="memberNotice_num" style="border: 1px solid #ddd;">아이디</td>
-				<td id="memberNotice_title" style="border: 1px solid #ddd;">팀 이 름</td>
-				<td id="memberNotice_reg_date" style="border: 1px solid #ddd;">가 격</td>
-				<td id="memberNotice_writer" style="border: 1px solid #ddd;">메 모</td>
+				<td class="memberNotice_num" style="border: 1px solid #ddd;">아이디</td>
+				<td class="memberNotice_title" style="border: 1px solid #ddd;">팀 이 름</td>
+				<td class="memberNotice_reg_date" style="border: 1px solid #ddd;">가 격</td>
+				<td class="memberNotice_writer" style="border: 1px solid #ddd;">메 모</td>
 			</tr>
 			<c:catch>
 			<c:forEach items="${list}" var="spon" varStatus="j">
 				<c:if test="${j.index lt 5 }">
 				<tr class="memberNotice_tr2">
-					<td id="memberNotice_num" style="border: 1px solid #ddd;">${spon.id}</td>
-					<td id="memberNotice_title" style="border: 1px solid #ddd; text-align: left;">${spon.teamname}</td>
-					<td id="memberNotice_reg_date" style="border: 1px solid #ddd;">${spon.price}</td>
-					<td id="memberNotice_writer" style="border: 1px solid #ddd;">${spon.message}</td>
+					<td class="memberNotice_num" style="border: 1px solid #ddd;">${spon.id}</td>
+					<td class="memberNotice_title" style="border: 1px solid #ddd; text-align: left;">${spon.teamName}</td>
+					<td class="memberNotice_reg_date" style="border: 1px solid #ddd;">${spon.price}</td>
+					<td class="memberNotice_writer" style="border: 1px solid #ddd;">${spon.message}</td>
 				</tr>
 				</c:if>
 			</c:forEach>
