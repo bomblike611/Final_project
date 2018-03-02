@@ -89,7 +89,10 @@
 	  	$("#place").on('keyup', function(){
 	  		$(this).val($(this).val().toUpperCase());
 	  	});	  	
-
+	  	/* 장소검색 대소문자 변경 */
+	  	$("#sing").on('keyup', function(){
+	  		$(this).val($(this).val().toUpperCase());
+	  	});	
 /* 		$(".page").click(function() {
 			var cur = $(this).attr("title");
 			document.frm.curPage.value = cur;
@@ -113,7 +116,6 @@
 			<div id="sec">
 				<div class="row">
 					<input type="hidden" name="curPage" value="1"> 
-
 					<span><input name="search" class="balloon" id="sing" type="text"
 						placeholder="메리플레인, 하진우, 현이..." /><label for="sing">Singer</label></span>
 						
@@ -131,6 +133,7 @@
 			</div>
 			<!--================================ 보여지는 폼 ================================-->
 			<c:forEach items="${list}" var="dto" begin="0" end="5">
+			<%-- <input type="hidden" name="num" value="${dto.num}"> --%>
 						<div id="bigbox">
 							<div id="singer">${dto.writer}</div>
 							<div id="singerle">
@@ -153,7 +156,48 @@
 									<div id="map" style="width: 70%; height: 390px;"></div>
 								</div>
 							</div>
-						</div>							
+						</div>	
+					<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44dc488bb7ee1b14cd2765f0530ea05b&libraries=services"></script>
+	<script>
+		$(function() {
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new daum.maps.LatLng(37.56573, 126.97879), // 지도의 중심좌표
+		        level: 3, // 지도의 확대 레벨
+		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new daum.maps.Map(mapContainer, mapOption); 
+
+		// 지도 타입 변경 컨트롤을 생성한다
+		var mapTypeControl = new daum.maps.MapTypeControl();
+
+		// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+		map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);	
+
+		// 지도에 확대 축소 컨트롤을 생성한다
+		var zoomControl = new daum.maps.ZoomControl();
+
+		// 지도의 우측에 확대 축소 컨트롤을 추가한다
+		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+		// 지도에 마커를 생성하고 표시한다
+		var marker = new daum.maps.Marker({
+		    position: new daum.maps.LatLng(37.56573, 126.97879), // 마커의 좌표
+		    map: map // 마커를 표시할 지도 객체
+		});
+
+		// 마커 위에 표시할 인포윈도우를 생성한다
+		var infowindow = new daum.maps.InfoWindow({
+		    content : '<div style="padding:5px;">${dto.location}</div>' // 인포윈도우에 표시할 내용
+		});
+
+		// 인포윈도우를 지도에 표시한다
+		infowindow.open(map, marker);
+		});
+	</script>						
 				</c:forEach>	
 		</form>
 
@@ -172,79 +216,6 @@
 
 	</section>
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44dc488bb7ee1b14cd2765f0530ea05b&libraries=services"></script>
-	<script>
-		$(function() {
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			mapOption = {
-				center : new daum.maps.LatLng(37.545875, 127.107935), // 지도의 중심좌표
-				level : 4, // 지도의 확대 레벨
-				mapTypeId : daum.maps.MapTypeId.ROADMAP
-			// 지도종류
-			};
-
-			// 지도를 생성한다 
-			var map = new daum.maps.Map(mapContainer, mapOption);
-
-			// 지도 타입 변경 컨트롤을 생성한다
-			var mapTypeControl = new daum.maps.MapTypeControl();
-
-			// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-			map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
-
-			// 지도에 확대 축소 컨트롤을 생성한다
-			var zoomControl = new daum.maps.ZoomControl();
-
-			// 지도의 우측에 확대 축소 컨트롤을 추가한다
-			map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-
-/* 			// 커스텀 오버레이를 생성하고 지도에 표시한다
-			var customOverlay = new daum.maps.CustomOverlay(
-					{
-						map : map,
-						content : '<div style="padding:0 5px;background:#fff;">${view.location}</div>',
-						position : new daum.maps.LatLng(37.545875, 127.107935), // 커스텀 오버레이를 표시할 좌표
-						xAnchor : 0.5, // 컨텐츠의 x 위치
-						yAnchor : 0
-					// 컨텐츠의 y 위치
-					});
-			// 지도에 마커를 생성하고 표시한다
-			var marker = new daum.maps.Marker({
-				position : new daum.maps.LatLng(37.545875, 127.107935), // 마커의 좌표
-				map : map
-			// 마커를 표시할 지도 객체
-			}); */
-/* ====================================================================================== */
-			// 주소-좌표 변환 객체를 생성합니다
-			var geocoder = new daum.maps.services.Geocoder();
-
-			// 주소로 좌표를 검색합니다
-			geocoder.addressSearch('${loca.area}', function(result, status) {
-
-			    // 정상적으로 검색이 완료됐으면 
-			     if (status === daum.maps.services.Status.OK) {
-
-			        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-			        // 결과값으로 받은 위치를 마커로 표시합니다
-			        var marker = new daum.maps.Marker({
-			            map: map,
-			            position: coords
-			        });
-
-			        // 인포윈도우로 장소에 대한 설명을 표시합니다
-			        var infowindow = new daum.maps.InfoWindow({
-			            content: '<div style="width:150px;text-align:center;padding:6px 0;">${list.location}</div>'
-			        });
-			        infowindow.open(map, marker);
-
-			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			        map.setCenter(coords);
-			    } 
-			}); 
-
-		});
-	</script>
+	
 </body>
 </html>

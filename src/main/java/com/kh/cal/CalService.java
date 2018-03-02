@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
+import com.kh.location.LocationDAO;
+import com.kh.location.LocationDTO;
 import com.kh.util.ListData;
 import com.kh.util.PageMaker;
 
@@ -22,6 +24,8 @@ public class CalService {
 	private CalDAO calDAO;
 	@Inject
 	private FileDAO fileDAO;
+	@Inject
+	private LocationDAO locationDAO;
 	
 	public List<CalDTO> selectre(ListData listData) throws Exception{
 		return calDAO.selectre(listData);

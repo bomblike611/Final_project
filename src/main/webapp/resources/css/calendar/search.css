@@ -290,6 +290,7 @@ body {
 
 #map{
 	border: 1px solid white;
+	z-index: 999;
 }       
 #info{
 	width: 100%;

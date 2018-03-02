@@ -34,9 +34,10 @@ public class CalController {
 	@RequestMapping(value="search"/*, method=RequestMethod.POST */)
 	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		/*CalDTO calDTO2 = calservice.selectOne(calDTO);
 		LocationDTO loca = new LocationDTO();
-		loca.setLoc_name(calDTO.getLocation());
+		loca.setLoc_name(calDTO2.getLocation());
 		loca.setNum(0);
 		LocationDTO locationDTO=locationDAO.locationView(loca);
 		mv.addObject("list", calDTO2);
