@@ -33,7 +33,7 @@
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
-	<div class="join_agree" id="main">
+	<div class="join_agree">
 		<h2 class="tit_bk_left pt30">LOGIN</h2>
 		<ul class="loginGuide">
 		</ul>
@@ -65,7 +65,7 @@
 			<!--top_wrap end--->
 
 			<div class="login_joinGuide">
-				아직 Varoh 회원이 아니신가요?<br> Varoh의 회원이 되시면 할인쿠폰과 <br> 이벤트 참여 등
+				아직 Busking 회원이 아니신가요?<br> Busking의 회원이 되시면 할인쿠폰과 <br> 이벤트 참여 등
 				더 많은 혜택을 받으실 수 있습니다.
 				<button class="JoinBtn" type="submit">JOIN</button>
 			</div>
@@ -154,7 +154,7 @@
 
 
 	<!-- 페이스북 로그인 API And -->
-
+	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>
 

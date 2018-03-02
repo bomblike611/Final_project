@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
-	<div class="join_agree" id="main">
+	<div class="join_agree">
 		<h2 class="tit_bk_left pt30">Member Delete</h2>
 		
 		
@@ -37,9 +37,5 @@
          </div>
 		
 	</div>
-	
-	
-	
-	
 </body>
 </html>

@@ -21,4 +21,7 @@ public class SponService {
 		return sponDAO.spon(pointDTO);
 	}
 	
+	public List<SponDTO> sponList(SponDTO sponDTO) throws Exception{
+		return sponDAO.sponList(sponDTO);
+	}
 }

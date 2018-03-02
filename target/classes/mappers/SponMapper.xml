@@ -13,4 +13,7 @@
   		insert into point values(point_seq.nextval, ${id}, sysdate, #{reason}, #{use_point})
   	</insert>
   	
+  	 <select id="sponList" parameterType="SponDTO" resultType="SponDTO">
+		select * from spon where id=#{id} 	
+ 	</select>
   </mapper>

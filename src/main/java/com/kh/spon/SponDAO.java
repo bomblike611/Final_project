@@ -23,4 +23,7 @@ public class SponDAO {
 		return sqlSession.insert(NAMESPACE+"point", pointDTO);
 	}
 	
+	public List<SponDTO> sponList(SponDTO sponDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"sponList", sponDTO);
+	}
 }

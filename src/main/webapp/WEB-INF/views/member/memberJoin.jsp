@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -(회원가입)입니다</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
-	$(function(){
-		
+	$(function() {
+
 		$("#id").keyup(function() {
 			var id = $(this).val();
 			$.ajax({
@@ -21,28 +22,28 @@
 					id : id
 				},
 				success : function(data) {
-					if($.trim(data)  ==  "사용가능한 ID 입니다"){
+					if ($.trim(data) == "사용가능한 ID 입니다") {
 						$("#result").css('color', 'green');
-					}else{
+					} else {
 						$("#result").css('color', 'red');
 					}
 					$("#result").html(data);
 				}
 			});
 		});
-		
+
 		var check = false;
 		$(".job").click(function() {
 			var job = $(this).val();
-			if(job=='singer'){
+			if (job == 'singer') {
 				$(".singer").show();
 				check = true;
-			}else{
+			} else {
 				$(".singer").hide();
 				check = false;
 			}
 		});
-		
+
 		$("#pw").keyup(function() {
 			if ($("#pw").val().length > 7) {
 				$("#pwcheck").text("사용가능한 비밀번호 입니다");
@@ -58,23 +59,23 @@
 				$("#pwcheck2").text("비밀번호가 일치 하지 않습니다");
 			}
 		});
-		
-		$(".nextBtn").click(function(FormSubmit){
-			if(!check){
-					if ($("#id").val() && 
-						($("#pw").val()==$("#pw2").val()) && 
-						$("#name").val() && 
-						$("#age").val() && 
-						$("#email").val() && 
-						$("#phone").val().length && 
-						$("#addr").val().length && 
-						$("#birth").val().length && 
-						$(".job").val().length > 0) {
-					if (grecaptcha.getResponse() == ""){ 
-						alert("자동가입 방지를 위해 체크를 하세요");
-						} else { 
-						frm.submit();
-						}
+
+		$(".nextBtn").click(
+				function(FormSubmit) {
+					if (!check) {
+						if ($("#id").val()
+								&& ($("#pw").val() == $("#pw2").val())
+								&& $("#name").val() && $("#age").val()
+								&& $("#email").val()
+								&& $("#phone").val().length
+								&& $("#addr").val().length
+								&& $("#birth").val().length
+								&& $(".job").val().length > 0) {
+							if (grecaptcha.getResponse() == "") {
+								alert("자동가입 방지를 위해 체크를 하세요");
+							} else {
+								frm.submit();
+							}
 						} else {
 							alert("필수입력사항을 입력해주세요")
 						}
@@ -86,17 +87,17 @@
 								&& $(".job").val() && $("#teamName").val()
 								&& $("#position").val()
 								&& $("#sns").val().length > 0) {
-							if (grecaptcha.getResponse() == ""){ 
+							if (grecaptcha.getResponse() == "") {
 								alert("리캡챠를 체크해야 합니다.");
-								} else { 
-							frm.submit();
+							} else {
 								frm.submit();
-								}
+								frm.submit();
+							}
 						} else {
 							alert("필수입력사항을 입력해주세요")
 						}
 					}
-			});
+				});
 
 		$(".addrSearch")
 				.click(
@@ -146,7 +147,7 @@
 		$("#profile").on('change', function() {
 			readURL(this);
 		});
-		
+
 		function readURL(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
@@ -162,8 +163,7 @@
 		$(".cancelBtn").click(function() {
 			window.location = '../';
 		});
-		
-		
+
 	});
 </script>
 <link href="/busk/resources/css/member.css" rel="stylesheet">
@@ -171,7 +171,7 @@
 <body>
 	<%@include file="../temp/header.jsp"%>
 
-	<div class="join_agree" id="main">
+	<div class="join_agree">
 		<h2 class="tit_bk_left pt30">JOIN</h2>
 		<div class="join_wrapper">
 			<ul class="stepGuide">
@@ -247,7 +247,7 @@
 					<td><input type="text" class="Join_input addrSearch"
 						placeholder="      우편번호" id="postcode" name="addr"
 						readonly="readonly" style="margin-bottom: 5px;">
-					<button type="button" class="addrSearch" id="addrSearch" style="">주소찾기</button>
+						<button type="button" class="addrSearch" id="addrSearch" style="">주소찾기</button>
 						<br> <input type="text" class="Join_input addrSearch"
 						placeholder="      기본주소" id="roadAddress" name="addr"
 						readonly="readonly" style="width: 35%"><br> <input
@@ -258,28 +258,26 @@
 				<!-- 생년월일 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>생년월일</td>
-					<td><input type="date" class="Join_input" id="birth" name="birth">
-					</td>
+					<td><input type="date" class="Join_input" id="birth"
+						name="birth"></td>
 				</tr>
 
 				<!-- 프로필사진 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>프로필 사진</td>
-					<td>
-					
-						<c:if test="${member.fname eq null}" >
-						&emsp;&emsp;&nbsp;<img src="../resources/images/노답.jpg"  class="poto" id="poto" style="width: 100px; height: 100px;">
+					<td><c:if test="${member.fname eq null}">
+						&emsp;&emsp;&nbsp;<img src="../resources/images/노답.jpg"
+								class="poto" id="poto" style="width: 100px; height: 100px;">
+						</c:if> <c:if test="${member.fname ne null} ">
+						&emsp;&emsp;&nbsp;<img id="poto" class="poto"
+								src="../resources/upload/${member.fname}"
+								style="width: 100px; height: 100px;">
 						</c:if>
-						<c:if test="${member.fname ne null} ">
-						&emsp;&emsp;&nbsp;<img id="poto" class="poto" src="../resources/upload/${member.fname}" style="width: 100px; height: 100px;">
-						</c:if>
-						
+
 						<div class="filebox">
-						<label for="profile">업로드</label> 
-						<input type="file" id="profile" name="file">
-						</div>
-						
-						</td>
+							<label for="profile">업로드</label> <input type="file" id="profile"
+								name="file">
+						</div></td>
 				</tr>
 				<!-- 직업 테이블 -->
 				<tr class="join_tr">
@@ -310,11 +308,11 @@
 					<td><input type="text" class="Join_input"
 						placeholder="      Enter SNS" id="sns" name="sns"></td>
 				</tr>
-					<!-- 자동가입 방지 테이블 -->
+				<!-- 자동가입 방지 테이블 -->
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>자동가입 방지</td>
-					<td><div class="g-recaptcha" data-sitekey="6Lcp-EQUAAAAAJa_e5mTOGz2tgsZ484HZKEPc3vz"></div>
-					</td>
+					<td><div class="g-recaptcha"
+							data-sitekey="6Lcp-EQUAAAAAJa_e5mTOGz2tgsZ484HZKEPc3vz"></div></td>
 				</tr>
 			</table>
 			<ul class="btnBox2">
@@ -323,8 +321,6 @@
 			</ul>
 		</form>
 	</div>
-
-
-
+	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>

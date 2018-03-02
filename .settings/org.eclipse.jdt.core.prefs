@@ -1,9 +1,9 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=master
 eclipse.preferences.version=1
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
-<<<<<<< HEAD
-=======
 org.eclipse.jdt.core.compiler.codegen.methodParameters=do not generate
->>>>>>> jh_branch
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
 org.eclipse.jdt.core.compiler.codegen.unusedLocal=preserve
 org.eclipse.jdt.core.compiler.compliance=1.8
