@@ -1,3 +1,4 @@
+<%@page import="com.kh.cal.CalDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -12,38 +13,39 @@
 <script>
 
   $(document).ready(function() {
-
+	$(".team").each(function(){
+	   var teamname = $(this).attr("title");
+	   var bu = $(this).attr("title");
+	   
     $('#calendar').fullCalendar({
       header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,basicWeek,basicDay'
       },
-      defaultDate: '2018-02-12',
+      defaultDate: $('#calendar').fullCalendar('today'),
       navLinks: true, // can click day/week names to navigate views
       editable: true,
       eventLimit: true, // allow "more" link when too many events
-      
-      
-      
+
       events: [
         {
-          title: 'All Day Event',
-          start: '2018-02-01'
+          title: teamname,
+          start:'2018-03-07'
         },
         {
-          title: 'Long Event',
-          start: '2018-02-07',
-          end: '2018-02-10'
-        },
+          title: teamname,
+          start: '2018-03-18',
+          end: '2018-03-20'
+        }/* ,
         {
           id: 999,
           title: 'Repeating Event',
           start: '2018-02-09T16:00:00'
-        }
+        } */
       ]
     });
-
+    });
   });
 
 </script>
@@ -69,7 +71,8 @@
   <div id='calendar'></div>
   <div>
   <c:forEach items="${list}" var="v">
-  <h3>DD:${v.teamname }</h3>
+  <p class="team" title="${v.teamname }"></p>
+  <p class="team" title="${v.busk_date }"></p>
   </c:forEach>
 </div>
 </section>
