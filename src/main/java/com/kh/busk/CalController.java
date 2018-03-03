@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -60,6 +61,15 @@ public class CalController {
 	@RequestMapping(value="year")
 	public void year() throws Exception{
 		
+	}
+
+	@RequestMapping(value="dd")
+	public ModelAndView  dd(ListData listData) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<CalDTO> ar = calservice.dd(listData);
+		mv.addObject("list", ar);
+		mv.setViewName("calendar/dd");
+		return mv;
 	}
 	
 	@RequestMapping(value="upcoming")

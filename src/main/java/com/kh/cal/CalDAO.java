@@ -28,5 +28,8 @@ public class CalDAO {
 	public List<CalDTO> selectre(ListData listData) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"selectre", listData);
 	}
+	public List<CalDTO> dd(ListData listData) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"dd", listData);
+	}
 
 }

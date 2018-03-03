@@ -27,6 +27,10 @@ public class CalService {
 	@Inject
 	private LocationDAO locationDAO;
 	
+	public List<CalDTO> dd(ListData listData) throws Exception{
+		return calDAO.dd(listData);
+	}
+	
 	public List<CalDTO> selectre(ListData listData) throws Exception{
 		return calDAO.selectre(listData);
 	}

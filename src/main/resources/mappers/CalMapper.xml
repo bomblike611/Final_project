@@ -37,4 +37,10 @@
 		order by busk_date asc) N )
 		where R between #{startRow} and #{lastRow}
 	</select>
+	
+	<select id="dd" parameterType="ListData" resultType="CalDTO">
+		select * from (select rownum R, N.* from (select * from busking
+		order by busk_date asc) N )
+		where R between #{startRow} and #{lastRow}
+	</select>
 </mapper>

@@ -89,7 +89,7 @@
 	  	$("#place").on('keyup', function(){
 	  		$(this).val($(this).val().toUpperCase());
 	  	});	  	
-	  	/* 장소검색 대소문자 변경 */
+	  	/* 가수검색 대소문자 변경 */
 	  	$("#sing").on('keyup', function(){
 	  		$(this).val($(this).val().toUpperCase());
 	  	});	
