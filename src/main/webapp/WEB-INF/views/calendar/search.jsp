@@ -151,7 +151,7 @@
 										<p>${dto.location}</p>
 										<p>${dto.busk_date}</p><!-- 시간 -->
 										</div>
-										<div id="spon">후원하기</div>
+										<div id="spon"><a href="./upcoming">후원하기</a></div>
 										</div>
 									<div id="map" style="width: 70%; height: 390px;"></div>
 								</div>
@@ -198,7 +198,8 @@
 		infowindow.open(map, marker);
 		});
 	</script>						
-				</c:forEach>	
+				</c:forEach>
+
 		</form>
 
 		<!--================================ 페이징처리 ================================-->

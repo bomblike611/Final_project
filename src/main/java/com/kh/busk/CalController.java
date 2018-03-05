@@ -5,18 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.cal.CalDTO;
 import com.kh.cal.CalService;
-import com.kh.file.FileDAO;
-import com.kh.file.FileDTO;
 import com.kh.location.LocationDAO;
-import com.kh.location.LocationDTO;
-import com.kh.location.LocationService;
 import com.kh.util.ListData;
 
 @Controller
@@ -28,10 +22,6 @@ public class CalController {
 	@Inject
 	private LocationDAO locationDAO;
 
-/*	@RequestMapping(value="search")
-	public void searche(CalDTO calDTO, ListData listData) throws Exception{
-		
-	}*/
 	@RequestMapping(value="search"/*, method=RequestMethod.POST */)
 	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -47,27 +37,18 @@ public class CalController {
 		mv.setViewName("calendar/search");
 		return mv;
 	}
-	/*@RequestMapping(value="search")
-	public ModelAndView searchmap(CalDTO calDTO, ListData listData) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("calendar/search");
-		return mv;
-	}*/
-	@RequestMapping(value="month")
-	public void month() throws Exception{
-		
-	}
-	
-	@RequestMapping(value="year")
-	public void year() throws Exception{
-		
-	}
 
 	@RequestMapping(value="dd")
-	public ModelAndView  dd(ListData listData) throws Exception{
+	public ModelAndView dd(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<CalDTO> ar = calservice.dd(listData);
-		mv.addObject("list", ar);
+		String data = "[";
+		List<CalDTO> ar = calservice.dd();
+		for (CalDTO calDTO : ar){
+		data=data+"{"+"title:\""+calDTO.getTeamname()+"\",";
+		data=data+"start:\""+calDTO.getBusk_date()+"\"}"+",";
+		}
+		data=data+"]";
+		mv.addObject("obj", data);
 		mv.setViewName("calendar/dd");
 		return mv;
 	}

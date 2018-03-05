@@ -1,8 +1,6 @@
 package com.kh.cal;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -12,9 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
 import com.kh.location.LocationDAO;
-import com.kh.location.LocationDTO;
 import com.kh.util.ListData;
-import com.kh.util.PageMaker;
 
 
 @Service
@@ -26,9 +22,9 @@ public class CalService {
 	private FileDAO fileDAO;
 	@Inject
 	private LocationDAO locationDAO;
-	
-	public List<CalDTO> dd(ListData listData) throws Exception{
-		return calDAO.dd(listData);
+
+	public List<CalDTO> dd() throws Exception{
+		return calDAO.dd();
 	}
 	
 	public List<CalDTO> selectre(ListData listData) throws Exception{

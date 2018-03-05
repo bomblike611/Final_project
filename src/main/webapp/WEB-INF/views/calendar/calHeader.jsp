@@ -10,10 +10,8 @@
 	<div id="choice">
 		<ul>
 			<li class="chobox" id="searchH"><a href="./search">SEARCH</a></li>
-			<li class="chobox" id="yearH"><a href="./year">YEAR</a></li>
-			<li class="chobox" id="monthH"><a href="./month">MONTH</a></li>
+			<li class="chobox" id="monthH"><a href="./dd">MONTH</a></li>
 			<li class="chobox" id="upcomingH"><a href="./upcoming">COMING</a></li>
-			<li class="chobox" id="upcomingH"><a href="./dd">dd</a></li>
 		</ul>
 	</div>
 </body>

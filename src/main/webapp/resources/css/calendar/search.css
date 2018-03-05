@@ -233,16 +233,20 @@ body {
 	height: 40px;
 	float: left;
 	text-align: center;
-	color: #A54040;
 	border: #EAE7E7 1px solid;
 	line-height: 40px;
 	font-size: 14px;
+}
+#spon a{	
+	color: #A54040;
+	text-decoration: none;
 }
 
 #spon:hover{
 	color: white;
 	background-color: #A54040;
 	transition:background-color 2s;
+	text-decoration: none;
 }
 
 #page{

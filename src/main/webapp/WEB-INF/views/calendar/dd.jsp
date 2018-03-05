@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset='utf-8' />
+<title>## 노래왕 버스킹 -(Month)입니다</title>
+<link href="../resources/css/calendar/dd.css" rel="stylesheet">
 <link href='../resources/css/calendar/fullcalendar.min.css' rel='stylesheet' />
 <link href='../resources/css/calendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <script src='../resources/js/moment.min.js'></script>
@@ -13,68 +15,31 @@
 <script>
 
   $(document).ready(function() {
-	$(".team").each(function(){
-	   var teamname = $(this).attr("title");
-	   var bu = $(this).attr("title");
-	   
+
     $('#calendar').fullCalendar({
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,basicWeek,basicDay'
+        right: ''
       },
-      defaultDate: $('#calendar').fullCalendar('today'),
+      defaultDate: new Date, //$('#calendar').fullCalendar('today'),
       navLinks: true, // can click day/week names to navigate views
       editable: true,
       eventLimit: true, // allow "more" link when too many events
 
-      events: [
-        {
-          title: teamname,
-          start:'2018-03-07'
-        },
-        {
-          title: teamname,
-          start: '2018-03-18',
-          end: '2018-03-20'
-        }/* ,
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2018-02-09T16:00:00'
-        } */
-      ]
-    });
+      events: 	  
+    	  ${obj}
     });
   });
 
 </script>
-<style>
 
-  body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-    font-size: 14px;
-  }
-
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-</style>
 </head>
 <body>
 <section id="main">
+<div id="space"></div>
 		<%@ include file="./calHeader.jsp"%>
   <div id='calendar'></div>
-  <div>
-  <c:forEach items="${list}" var="v">
-  <p class="team" title="${v.teamname }"></p>
-  <p class="team" title="${v.busk_date }"></p>
-  </c:forEach>
-</div>
 </section>
 </body>
 </html>
