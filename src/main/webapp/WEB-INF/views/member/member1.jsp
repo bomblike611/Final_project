@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>## 노래왕 버스킹 -(회원가입 약관동의)입니다</title>
+<title>## 노래왕 버스킹 -(마이페이지)입니다</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="/busk/resources/css/member.css" rel="stylesheet">
 <script type="text/javascript">
