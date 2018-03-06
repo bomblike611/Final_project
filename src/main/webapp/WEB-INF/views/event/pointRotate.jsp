@@ -39,8 +39,8 @@ canvas{
 			/* serpiko.tistory.com */
 			window.onload = function() {
 
-				var pArr = [ "1", "5", "50", "5", "꽝", "3", "10", "70",
-						"80", "100" ];
+				var pArr = [ "1", "5", "50", "5", "꽝", "3", "10", "3",
+						"1", "100" ];
 
 				$('#image').click(function() {
 					rotation();
