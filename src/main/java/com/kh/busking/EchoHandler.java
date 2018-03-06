@@ -1,4 +1,4 @@
-package com.kh.point;
+package com.kh.busking;
 
 import java.util.ArrayList;
 import java.util.List;

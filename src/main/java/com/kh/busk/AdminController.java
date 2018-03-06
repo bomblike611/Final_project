@@ -129,8 +129,8 @@ public class AdminController {
 		mv.setViewName("redirect:../admin/memberList");
 		return mv;
 	}
-	@RequestMapping(value="NewFile")
-	public void NewFile() throws Exception{
+	@RequestMapping(value="/chat")
+	public void chat() throws Exception{
 		
 	}
 }
