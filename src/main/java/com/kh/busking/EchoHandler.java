@@ -46,7 +46,7 @@ private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
         //연결되어있는 모든 클라이언트들에게 메시지를 전송한다
         //2 List
         for(WebSocketSession sess : sessionList){
-            sess.sendMessage(new TextMessage("echo: " + message.getPayload() ));
+            sess.sendMessage(new TextMessage(session.getId()+": " + message.getPayload() ));
         }
         
         //1 Map

@@ -184,7 +184,7 @@
 						<th><span style="color: red;">*</span>노래 녹음</th>
 						<td><button id="btn-start-recording">Start Recording</button>
 							<button id="btn-stop-recording" disabled>Stop Recording</button>
-							<audio controls autoplay></audio></td>
+							<audio controls autoplay ></audio></td>
 					</tr>
 					<tr>
 						<th colspan="2"><span style="color: red;">*</span>소개</th>
@@ -203,12 +203,12 @@
         			console.error(error);
     			});
 				}
-function stopRecordingCallback() {
-    var blob = recorder.getBlob();
-    audio.src = URL.createObjectURL(blob);
-    audio.play();
-    recorder.microphone.stop();
-}
+	function stopRecordingCallback() {
+	    var blob = recorder.getBlob();
+	    audio.src = URL.createObjectURL(blob);
+	    audio.play();
+	    recorder.microphone.stop();
+	}
 var recorder; // globally accessible
 $('#btn-start-recording').click(function(){
 	
