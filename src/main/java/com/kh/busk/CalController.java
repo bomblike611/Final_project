@@ -1,5 +1,6 @@
 package com.kh.busk;
 
+import java.net.URL;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,14 +27,15 @@ public class CalController {
 	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		/*CalDTO calDTO2 = calservice.selectOne(calDTO);
+		
+		/*
 		LocationDTO loca = new LocationDTO();
 		loca.setLoc_name(calDTO2.getLocation());
 		loca.setNum(0);
 		LocationDTO locationDTO=locationDAO.locationView(loca);
-		mv.addObject("list", calDTO2);
 		mv.addObject("loca", locationDTO);*/
-		mv= calservice.selectList(listData, mv);
+		
+		mv= calservice.selectList(calDTO, listData, mv);
 		mv.setViewName("calendar/search");
 		return mv;
 	}
@@ -43,9 +45,11 @@ public class CalController {
 		ModelAndView mv = new ModelAndView();
 		String data = "[";
 		List<CalDTO> ar = calservice.dd();
+		URL url = new URL("http://localhost/busk/busking/buskView?num=");
 		for (CalDTO calDTO : ar){
 		data=data+"{"+"title:\""+calDTO.getTeamname()+"\",";
-		data=data+"start:\""+calDTO.getBusk_date()+"\"}"+",";
+		data=data+"start:\""+calDTO.getBusk_date()+"\",";
+		data=data+"url:\""+url+calDTO.getNum()+"&id="+calDTO.getWriter()+"\"}"+",";
 		}
 		data=data+"]";
 		mv.addObject("obj", data);
@@ -57,11 +61,6 @@ public class CalController {
 	public ModelAndView upcoming(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<CalDTO> ar = calservice.selectre(listData);
-		int i=2;
-		for(i=2; i<=5; i++){
-			mv.addObject("i", i);
-			System.out.println(i);
-		}
 		mv.addObject("list", ar);
 		mv.setViewName("calendar/upcoming");
 		return mv;

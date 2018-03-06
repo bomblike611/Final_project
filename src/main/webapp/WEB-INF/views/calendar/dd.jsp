@@ -28,7 +28,14 @@
       eventLimit: true, // allow "more" link when too many events
 
       events: 	  
-    	  ${obj}
+    	  ${obj},
+    	  
+      eventClick: function(event){
+    	  if(event.url){
+    		  window.open(event.url);
+    		  return false;
+    		}
+    	}
     });
   });
 

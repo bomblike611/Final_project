@@ -33,9 +33,7 @@
 	</select>
 	
 	<select id="selectre" parameterType="ListData" resultType="CalDTO">
-		select * from (select rownum R, N.* from (select * from busking
-		order by busk_date asc) N )
-		where R between #{startRow} and #{lastRow}
+	select * from busking where busk_date >= sysdate order by busk_date asc
 	</select>
 	
 	<select id="dd" resultType="CalDTO">

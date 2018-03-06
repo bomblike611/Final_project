@@ -31,7 +31,7 @@ public class CalService {
 		return calDAO.selectre(listData);
 	}
 	
-	public ModelAndView selectList(ListData listData, ModelAndView mv) throws Exception{
+	public ModelAndView selectList(CalDTO calDTO,ListData listData, ModelAndView mv) throws Exception{
 	
 		if(listData.getKind()==null){			
 			listData.setKind("");		
@@ -52,6 +52,8 @@ public class CalService {
 		
 		List<CalDTO> ar = calDAO.selectList(listData);
 		List<FileDTO> file = fileDAO.selectList();
+		CalDTO calDTO2 = calDAO.selectOne(calDTO);
+		mv.addObject("lis", calDTO2);
 		mv.addObject("list", ar);
 		mv.addObject("file", file);
 		/*mv.addObject("page", listData);	*/	

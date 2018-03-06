@@ -149,7 +149,8 @@
 										</div>
 										<div id="info">
 										<p>${dto.location}</p>
-										<p>${dto.busk_date}</p><!-- 시간 -->
+										<p>${dto.busk_date}</p>
+										<p>${dto.contents}</p>
 										</div>
 										<div id="spon"><a href="./upcoming">후원하기</a></div>
 										</div>
