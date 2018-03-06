@@ -57,6 +57,11 @@ public class CalController {
 	public ModelAndView upcoming(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<CalDTO> ar = calservice.selectre(listData);
+		int i=2;
+		for(i=2; i<=5; i++){
+			mv.addObject("i", i);
+			System.out.println(i);
+		}
 		mv.addObject("list", ar);
 		mv.setViewName("calendar/upcoming");
 		return mv;

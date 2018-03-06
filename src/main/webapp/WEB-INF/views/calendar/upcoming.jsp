@@ -49,15 +49,6 @@ $(function(){
  		var busktime=$(this).attr("title");
  		$(this).html(busktime.substr(11,5));	
  	});
-
-	/* 유진이코드 */
-		/* $(".nalja").each(function(){
-		var buskdate=$(this).attr("id");
-			if($(this).attr("id")==buskdate){
-			var nal=$(this).attr("title");
-			$(this).html(nal.substring(8,10));			
-			}
-		}); */
 	
 });
 
@@ -106,7 +97,7 @@ $(function(){
 				</div>
 <!-- ================================ 보이는 부분 ================================ -->
 	
-<c:forEach items="${list}" var="dto" begin="1" end="2">
+<c:forEach items="${list}" var="dto" begin="1" end="1">
 				<div class="imgbox"  id="yoilbox">
 					<div class="yo" id="feb">
 							<p class="nalja" title="${dto.busk_date}"></p>
@@ -134,7 +125,7 @@ $(function(){
 </c:forEach>
 				
 <!-- ================================ 가려지는 부분 ================================ -->
-<c:forEach items="${list}" var="dto" begin="3" end="4">
+<c:forEach items="${list}" var="dto" begin="2">
  				<div class="imgbox yoilbox2" id="yoilbox2">
 					<div class="yo" id="feb2">
 						<p class="nalja" title="${dto.busk_date}"></p>
@@ -161,7 +152,7 @@ $(function(){
 </c:forEach>
 				</form>
 <!-- ================================ 더보기 ================================ -->
-					<button id="show"><span></span> 더보기 </button>
+					<button id="show" onclick="btn"><span></span> 더보기 </button>
 
 	</section>
 </body>

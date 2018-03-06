@@ -20,7 +20,7 @@
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: ''
+        right: 'month,basicWeek,basicDay'
       },
       defaultDate: new Date, //$('#calendar').fullCalendar('today'),
       navLinks: true, // can click day/week names to navigate views
