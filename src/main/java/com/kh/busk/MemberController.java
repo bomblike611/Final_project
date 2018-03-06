@@ -97,11 +97,11 @@ public class MemberController {
 			mv.addObject("message", "로그인 성공");
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("addar", addar);
+			mv.addObject("path", "../");
 		}else{
 			mv.addObject("message", "로그인 실패");
-			mv.addObject("path", "member/memberLogin");
+			mv.addObject("path", "memberLogin");
 		}
-		mv.addObject("path", "../");
 		mv.setViewName("common/result");
 		return mv;
 	}

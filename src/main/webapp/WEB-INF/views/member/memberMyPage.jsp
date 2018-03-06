@@ -64,6 +64,7 @@
        }
    });
 
+   
 	$(function(){
 		
 		if ($("#pw").val()=="FaceBook") {
@@ -183,6 +184,7 @@
          });
          
         $(".cancelBtnOK").click(function(){
+        if (confirm("정말 탈퇴하시겠습니까?") == true) {
          if($("#pwCheck2").val()==$("#pwCheck").val()){
             frm2.submit();
             
@@ -192,7 +194,9 @@
          }else if($("#pwCheck2").val() != $("#pwCheck").val()){
             alert("비밀번호가 틀렸습니다");
          }
-            
+        }else{
+        	return;
+        }
       });
         
         $("#btnn").click(function() {

@@ -60,16 +60,15 @@
 			}
 		});
 
-		$(".nextBtn").click(
-				function(FormSubmit) {
+		$(".nextBtn").click(function(FormSubmit) {
 					if (!check) {
 						if ($("#id").val()
-								&& ($("#pw").val() == $("#pw2").val()
+								&& $("#pw").val() == $("#pw2").val()
 								&& $("#name").val() && $("#age").val()
 								&& $("#email").val()
-								&& $("#phone").val().length
-								&& $("#addr").val().length
-								&& $("#birth").val().length
+								&& $("#phone").val()
+								&& $("#addr").val()
+								&& $("#birth").val()
 								&& $(".job").val().length > 0) {
 							if (grecaptcha.getResponse() == "") {
 								alert("자동가입 방지를 위해 체크를 하세요");
