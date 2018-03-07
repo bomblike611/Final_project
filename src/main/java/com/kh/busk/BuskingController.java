@@ -71,6 +71,10 @@ public class BuskingController {
 	@RequestMapping(value="buskWrite",method=RequestMethod.POST)
 	public ModelAndView buskWrite(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] file,MultipartFile f) throws Exception{
 		ModelAndView mv=new ModelAndView();
+		if(buskingDTO.getAudio()==null){
+			buskingDTO.setAudio("null");
+		}
+		System.out.println(buskingDTO.getAudio());
 		int result=buskingService.insert(buskingDTO, session, file,f);
 		if(result>0){
 			mv.setViewName("redirect:../busking/buskList");

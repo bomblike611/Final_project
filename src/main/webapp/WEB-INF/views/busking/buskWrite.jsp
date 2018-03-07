@@ -137,7 +137,8 @@
 			</div>
 			<form action="./buskWrite" name="frm" method="post"
 				enctype="multipart/form-data">
-				<input type="hidden" name="writer" value="테스트">
+				<input type="hidden" name="writer" value="${member.id}">
+				<input type="hidden" name="audio" value="" id="audio">
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>공연명</th>
@@ -206,6 +207,7 @@
 	function stopRecordingCallback() {
 	    var blob = recorder.getBlob();
 	    audio.src = URL.createObjectURL(blob);
+	    $("#audio").val(audio.src);
 	    audio.play();
 	    recorder.microphone.stop();
 	}
@@ -232,6 +234,33 @@ document.getElementById('btn-stop-recording').onclick = function() {
     this.disabled = true;
     recorder.stopRecording(stopRecordingCallback);
 };
+
+function SaveToDisk(fileURL, fileName) {
+    // for non-IE
+    if (!window.ActiveXObject) {
+        var save = document.createElement('a');
+        save.href = fileURL;
+        save.download = fileName || 'unknown';
+        save.style = 'display:none;opacity:0;color:transparent;';
+        (document.body || document.documentElement).appendChild(save);
+        if (typeof save.click === 'function') {
+            save.click();
+        } else {
+            save.target = '_blank';
+            var event = document.createEvent('Event');
+            event.initEvent('click', true, true);
+            save.dispatchEvent(event);
+        }
+        (window.URL || window.webkitURL).revokeObjectURL(save.href);
+    }
+    // for IE
+    else if (!!window.ActiveXObject && document.execCommand) {
+        var _window = window.open(fileURL, '_blank');
+        _window.document.close();
+        _window.document.execCommand('SaveAs', true, fileName || fileURL)
+        _window.close();
+    }
+}
 </script>
 				<div id="private">
 					<h2>개인정보보호를 위한 이용자 동의사항</h2>

@@ -1,6 +1,5 @@
 package com.kh.busking;
 
-import java.sql.Date;
 
 public class BuskingDTO {
 
@@ -18,9 +17,15 @@ public class BuskingDTO {
 	private String fname;
 	private String oname;
 	private String genre;
+	private String audio;
 	
 	
-	
+	public String getAudio() {
+		return audio;
+	}
+	public void setAudio(String audio) {
+		this.audio = audio;
+	}
 	public String getGenre() {
 		return genre;
 	}

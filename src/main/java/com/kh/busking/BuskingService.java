@@ -32,12 +32,11 @@ public class BuskingService {
 		}
 		FileSaver fileSaver=new FileSaver();
 		if(file.getOriginalFilename()!=""){
-			System.out.println("ss");
 		String fname2=fileSaver.saver(file, filepath);
 		buskingDTO.setFname(fname2);
 		buskingDTO.setOname(file.getOriginalFilename());
 		for(MultipartFile file2 : files){
-			if(file2!=null){
+			if(file2.getOriginalFilename()!=""){
 				String fname=fileSaver.saver(file2, filepath);
 				FileDTO fileDTO=new FileDTO();
 				fileDTO.setFname(fname);
