@@ -1,21 +1,17 @@
 package com.kh.busk;
 
+import java.net.URL;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.cal.CalDTO;
 import com.kh.cal.CalService;
-import com.kh.file.FileDAO;
-import com.kh.file.FileDTO;
 import com.kh.location.LocationDAO;
-import com.kh.location.LocationDTO;
-import com.kh.location.LocationService;
 import com.kh.util.ListData;
 
 @Controller
@@ -27,38 +23,38 @@ public class CalController {
 	@Inject
 	private LocationDAO locationDAO;
 
-/*	@RequestMapping(value="search")
-	public void searche(CalDTO calDTO, ListData listData) throws Exception{
-		
-	}*/
 	@RequestMapping(value="search"/*, method=RequestMethod.POST */)
 	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		/*CalDTO calDTO2 = calservice.selectOne(calDTO);
+		
+		
+		/*
 		LocationDTO loca = new LocationDTO();
-		loca.setLoc_name(calDTO.getLocation());
+		loca.setLoc_name(calDTO2.getLocation());
 		loca.setNum(0);
 		LocationDTO locationDTO=locationDAO.locationView(loca);
-		mv.addObject("list", calDTO2);
 		mv.addObject("loca", locationDTO);*/
-		mv= calservice.selectList(listData, mv);
+		
+		mv= calservice.selectList(calDTO, listData, mv);
 		mv.setViewName("calendar/search");
 		return mv;
 	}
-	/*@RequestMapping(value="search")
-	public ModelAndView searchmap(CalDTO calDTO, ListData listData) throws Exception{
+
+	@RequestMapping(value="dd")
+	public ModelAndView dd(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("calendar/search");
+		String data = "[";
+		List<CalDTO> ar = calservice.dd();
+		URL url = new URL("http://localhost/busk/busking/buskView?num=");
+		for (CalDTO calDTO : ar){
+		data=data+"{"+"title:\""+calDTO.getTeamname()+"\",";
+		data=data+"start:\""+calDTO.getBusk_date()+"\",";
+		data=data+"url:\""+url+calDTO.getNum()+"&id="+calDTO.getWriter()+"\"}"+",";
+		}
+		data=data+"]";
+		mv.addObject("obj", data);
+		mv.setViewName("calendar/dd");
 		return mv;
-	}*/
-	@RequestMapping(value="month")
-	public void month() throws Exception{
-		
-	}
-	
-	@RequestMapping(value="year")
-	public void year() throws Exception{
-		
 	}
 	
 	@RequestMapping(value="upcoming")

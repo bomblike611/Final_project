@@ -15,7 +15,7 @@ public class CalDAO {
 	@Inject
 	private SqlSession sqlSession;
 	private final String NAMESPACE="CalMapper.";
-	
+
 	public List<CalDTO> selectList(ListData listData) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"selectList", listData);
 	}
@@ -27,6 +27,9 @@ public class CalDAO {
 	}
 	public List<CalDTO> selectre(ListData listData) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"selectre", listData);
+	}
+	public List<CalDTO> dd() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"dd");
 	}
 
 }
