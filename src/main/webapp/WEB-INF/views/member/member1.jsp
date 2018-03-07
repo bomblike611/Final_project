@@ -99,7 +99,7 @@ $(function() {
 		</table>
 		</div>
 		<input type="button" value="수정" class="update">  
-		<input type="button" value="비밀번호 변경" class="cancelBtn update" style="width: 18%;"> 
+		<input type="button" value="비밀번호 변경" class="cancelBtn update2" style="width: 18%;"> 
 	</div>	
 	
 	<div class="mypage1">

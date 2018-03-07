@@ -792,7 +792,20 @@ fieldset{
     color: black;
 }
 
-
+.update2{
+	width: 15%;
+    height: 11%;
+    background: #fcfcfc;
+    color: #582D32;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #582D32;
+    cursor: pointer;
+    margin-top: 12%;
+    margin-left: 5%;
+}
 
 
 
