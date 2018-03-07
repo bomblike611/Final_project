@@ -24,6 +24,30 @@ $(function() {
 	$(".add2").click(function() {
 		window.location = '/busk/member/memberPointList';
 	});
+	
+	 $(".cancelBtn").click(function(){
+         $("#myModal").css("display","block");
+      });
+      $(".close").click(function(){
+         $("#myModal").css("display","none");
+      });
+       
+      $(".cancelBtnOK").click(function(){
+      if (confirm("정말 변경하시겠습니까?") == true) {
+       if($("#pwCheck3").val()==$("#pwCheck4").val()){
+    	   if($("#pwCheck").val()==$("#pwCheck2").val()){
+          	frm2.submit();
+    	   }
+       }else if($("#pwCheck3").val()==""){
+          alert("비밀번호를 입력해주세요");
+          
+       }else if($("#pwCheck4").val() != $("#pwCheck3").val()){
+          alert("비밀번호가 틀렸습니다");
+       }
+      }else{
+      	return;
+      }
+    });
 });
 </script>
 </head>
@@ -75,6 +99,7 @@ $(function() {
 		</table>
 		</div>
 		<input type="button" value="수정" class="update">  
+		<input type="button" value="비밀번호 변경" class="cancelBtn update" style="width: 18%;"> 
 	</div>	
 	
 	<div class="mypage1">
@@ -160,6 +185,69 @@ $(function() {
 		</table>
 		<input type="button" value="더보기" class="add add2" style="margin-top: 10%;">  
 	</div>	
+	</div>
+	
+		<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog2">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4>
+						<span class="glyphicon glyphicon-lock"></span>비밀번호 변경
+					</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./memberPwUpdate" method="post" name="frm2">
+						<p>${member.name}회원님</p>
+						<input type="hidden" name="id" value="${member.id}">
+						<p>
+							<img id="poto2" src="../resources/upload/${member.fname}"
+								style="width: 50px; height: 50px; border-radius: 50%;">
+							${member.id}
+						</p>
+						<br> <br>
+						<p style="font-size: small;">계속하시려면 먼저 본인임을 인증하세요</p>
+						<br> <br> <br>
+						<p style="font-size: x-small; color: blue;">기존 비민번호를 입력하세요</p>
+						<input type="hidden" value="${member.pw}" id="pwCheck4">
+						<p>
+							<input type="password" id="pwCheck3"
+								style="border-radius: 4px; border: 1px solid #ccc; height: 20px; width: 50%">
+						</p>
+						
+						<p style="font-size: x-small; color: blue;">변경  비민번호를 입력하세요</p>
+						<p>
+							<input type="password" id="pwCheck"
+								style="border-radius: 4px; border: 1px solid #ccc; height: 20px; width: 50%" name="pw">
+						</p>
+						
+						<p style="font-size: x-small; color: blue;">변경  비민번호 확인</p>
+						<p>
+							<input type="password" id="pwCheck2"
+								style="border-radius: 4px; border: 1px solid #ccc; height: 20px; width: 50%">
+						</p>
+						<br>
+						<input type="hidden" value="${member.name}" name="name">
+						<input type="hidden" value="${member.age}" name="age">
+						<input type="hidden" value="${member.email}" name="email">
+						<input type="hidden" value="${member.phone}" name="phone">
+						<input type="hidden" value="${member.addr}" name="addr">
+						<input type="hidden" value="${member.birth}" name="birth">
+						<input type="hidden" value="${member.job}" name="job">
+						<input type="hidden" value="${member.point}" name="point">
+						<input type="hidden" value="${member.fname}" name="fname">
+						<input type="hidden" value="${member.oname}" name="oname">
+						<input type="hidden" value="${member.position}" name="position">
+						<input type="hidden" value="${member.sns}" name="sns">
+						<input type="hidden" value="${member.state}" name="state">
+						<input type="hidden" value="${member.teamName}" name="teamName">
+						<button class="cancelBtnOK" type="button">비밀번호 변경</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 	<%@include file="../temp/footer.jsp"%>
 

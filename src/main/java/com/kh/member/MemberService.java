@@ -68,6 +68,10 @@ public class MemberService {
 		return memberDAO.memberUpdate(memberDTO);
 	}
 	
+	public int memberPwUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.memberPwUpdate(memberDTO);
+	}
+	
 	public int APIUpdate(MemberDTO memberDTO) throws Exception{
 		return memberDAO.APIUpdate(memberDTO);
 	}

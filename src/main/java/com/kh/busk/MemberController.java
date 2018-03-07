@@ -135,6 +135,21 @@ public class MemberController {
 		return mv;
 	}
 	
+	@RequestMapping(value="memberPwUpdate", method=RequestMethod.POST)
+	public ModelAndView memberPwUpdate(MemberDTO memberDTO, HttpSession session) throws Exception{
+		int result = memberService.memberPwUpdate(memberDTO);
+		String message = "비밀번호 변경 실패";
+		if (result>0) {
+			session.setAttribute("member", memberDTO);
+			message = "비밀번호 변경 완료";
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("message", message);
+		mv.addObject("path", "../");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
 	
 	@RequestMapping(value="APIUpdate", method=RequestMethod.GET)
 	public ModelAndView APIUpdate(MemberDTO memberDTO,  HttpSession session) throws Exception{
