@@ -13,69 +13,40 @@
 	cursor: pointer;          
 }
 
-#pop {
-	font-size: 20px;
-    color: #fff;
-    line-height: 50px;
-    padding: 0 30px;
-    background: #9f8e80;	
-}
-
 #pop_wrap {
-    width: 950px;
-    height: 800px;
-	padding: 30px;
-	position: relative;
-	max-width: 1180px;
+	background: #f7f7f7;
+}
+.container {
+	max-width: 930px;
+    padding: 60px 30px 45px 30px;
+    width: 100%;
     margin: 0 auto;
-    border-style: outset;
-    margin-top: 100px;
-    
-    
 }
-    
-.top_info {
-    margin-bottom: 15px;
+.container h2 {
+    margin-bottom: 20px;
 }
-
-ul, ol {
-    list-style-type: none;
+h2 {
+    font-size: 1.6rem;
+    color: #333;
 }
-
-.writer {
-	width: 30px;
-	padding-bottom: 30px;
+.container .titSummary {
+    font-size: 20px;
 }
-
-.input_wrap .input_col {
-    display: table;
-    width: 150%;
-    border-top: 2px solid #d3d3d3;
+.inputGroup {
+    border-top: 1px solid #aaa;
+    width: 100%;
 }
-
-#contents {
-	
-	width: 70%;
-	height: 300px;
+.inputBox {
+    border-bottom: 1px solid #ddd;
+    padding: 9px 0;
+}
+.inputBox {
+    border-bottom: 1px solid #ddd;
+    padding: 9px 0;
 }
 
-#btn {
-	
-}
 
-.input_col {
-	margin-top: 10px;
-}
 
-#save {
-	
-}
 
-.input_wrap .input_title {
-    display: table-cell;
-    width: 130px;
-    padding: 8px 20px;
-    font-size: 16px;
-    line-height: 34px;
-    background: #f6f6f6;
-}
+
+

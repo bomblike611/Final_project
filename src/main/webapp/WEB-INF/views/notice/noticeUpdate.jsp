@@ -1,100 +1,127 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<title>Insert title here</title>
-</head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../resources/css/notice/write.css"rel="stylesheet">
+<link href="../resources/css/busk/buskWrite.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
-	$(function() {
-		$(".del").click(function() {
-			var del =$(this);
-			var fnum=$(this).attr("title");
-			var fname=$(this).attr("id");
-			var check=confirm("삭제시 복구가 불가능 합니다.");
-			if(check){
-				$.ajax({
-					url:"../file/fileDelete",
-					type:"GET",
-					data:{
-						num:num,
-						fname:fname
-					},
-					success:function(data){
-						if(data.trim()==1){
-							$(del).prev().remove();
-							$(del).remove();
-						}
-					}
-					
-				});
-			}
-		});	
-		
-		
-	
-	 	/* var i=${fn:length(view.files)};
-	 	alert(i); */
-	 	/*$("#btn").click(function() {
-			if(i<5){
-				$("#result").append('<input type="file" name="file'+i+'"><span class="remove">X</span><br>');
-				i++;
-			}else{
-				alert("최대 5개만 가능합니다");
-			}
-		}); */
 
-		$("#btn").click(function() {
-				var ex=$("#ex").html();
-				$("#result").append(ex);
+	$(function() {
+		
+		var count = 0;
+		$("#add")
+				.click(
+						function() {
+							if (count < 3) {
+								count++;
+								$("#picture").append('<p class="p" id="'+count+'"><input type="file" name="file" class="oo"></p>');
+							} else {
+								alert("사진은 4개까지 등록 가능합니다.");
+							}
+						});
+		$("#remove").click(function() {
+			if (count > 0) {
+				$(".p").each(function() {
+					if ($(this).attr("id") == count) {
+						$(this).remove();
+						count--;
+					}
+				});
+			} else {
+				alert("사진 1개는 반드시 등록해야합니다.");
+			}
 		});
 		
-		//위임이 필요하기때문에 on을 사용하여 위임해줌
-		$("#result").on("click",".remove",function() {
-			$(this).prev().remove();
-			$(this).remove();
-		});			
+	 	var i=0;
+	 	
+	 	//전역변수
+		var obj = [];
+		//스마트에디터 프레임생성
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : obj,
+			elPlaceHolder : "contents",
+			sSkinURI : "../resources/SE2/SmartEditor2Skin.html",
+			htParams : {
+				// 툴바 사용 여부
+				bUseToolbar : true,
+				// 입력창 크기 조절바 사용 여부
+				bUseVerticalResizer : true,
+				// 모드 탭(Editor | HTML | TEXT) 사용 여부
+				bUseModeChanger : true,
+			}
+		});
+		//전송버튼
+	$("#btn").click(function() {
+			//id가 smarteditor인 textarea에 에디터에서 대입
+			obj.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+			
+			
+			//폼 submit
+			
+				if($(".val").val()!=""){
+					document.frm.submit();
+				}else{
+					alert("빈 칸을 채워 주세요.");
+				}
+			
+		});
+
+		
 	});
-	
+
 </script>
-<style type="text/css">
-#ex{
-	display:none; 
-}
 
-.remove, .del{
-	cursor: pointer;
-}
-
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>## 노래왕 버스킹 -(Update)입니다</title>
 </head>
 <body>
-	<%@include file="../temp/header.jsp"%>
+<%@include file="../temp/header.jsp"%>
 	<section id="main">
-	
-	<h1>Update</h1>
-	<form action="Update" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="num" value="${view.num}">
-		<p>Writer : <input type="text" value="${view.writer}" name="writer" readonly="readonly"></p>
-		<p>Title  : <input type="text" value="${view.title}" name="title"></p>
-		<p>Contents : <textarea rows="" cols="" name="contents">${view.contents}</textarea>
-		
-		<p><input type="button" value="FileAdd" id="btn"></p>
-		<div id="result">
-		<c:forEach items="${view.files}" var="file">
-			<p><input type="text" value="${file.oname}" readonly="readonly"><span class="del" title="${file.num}" id="${file.fname}">X</span></p>
-		</c:forEach>
-		</div>	
-		
-		<input type="submit" value="Update">
-	</form>
-			<div id="ex">
-				<input type="file" name="file"><span class="remove">X</span><br>
+		<div id="WritePage">
+			<div id="loc">
+				<h2>Notice Update</h2>
+				<p>관리자 전용 공지 업데이트 폐이지</p>
 			</div>
+			<form action="./noticeUpdate" name="frm" method="post"
+				enctype="multipart/form-data">
+				<input type="hidden" name="num" value="${view.num}">
+				<table>
+					<tr>
+						<th><span style="color: red;">*</span>작성자</th>
+						<td><input type="text" readonly="readonly" name="title" class="val" value="${view.writer}"></td>
+					</tr>
+					<tr>
+						<th><span style="color: red;">*</span>제목</th>
+						<td><input type="text" name="writer" class="val" value="${view.title}"></td>
+					</tr>
+					
+					<tr>
+								<th><span style="color: red;">*</span>사진
+									<p id="add">추가</p>
+									<p id="remove">삭제</p>
+								</th>
+								<td id="picture">
+								<p class="p"><input type="file" name="file" class="val" value="파일선택"></p></td>
+							</tr>
+					
+				
+					
+					<tr>
+						<th colspan="2"><span style="color: red;">*</span>글내용</th>
+					</tr>
+					<tr>
+						<th colspan="2"><textarea name="contents" id="contents" >${view.contents}</textarea></th>
+					</tr>
+				</table>
+				
+			</form>
+			<button class="btn btn--stripe" id="btn">NoticeWrite</button>
+		</div>
 	</section>
 </body>
 </html>

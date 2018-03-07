@@ -84,7 +84,7 @@ public String noticeupdate(int num, Model model)throws Exception{
 	return "notice/noticeUpdate";
 }
 
-@RequestMapping(value="Update",method=RequestMethod.POST)
+@RequestMapping(value="noticeUpdate",method=RequestMethod.POST)
 public ModelAndView noticeUpdate(NoticeDTO noticeDTO,MultipartFile [] file,HttpSession session) throws Exception{
    ModelAndView mv=new ModelAndView();
    System.out.println(noticeDTO.getWriter());

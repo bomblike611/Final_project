@@ -50,8 +50,8 @@
 					<div class="floatright">
 					 <label>
 						 <select name="schField" id="schField" onchange="this.form.keyword.focus()">
+							<option value="NUM">번호</option>
 							<option value="TITLE">제목</option>
-							<option value="CONTENT">내용</option>
 						</select>
 					</label>
 						 
