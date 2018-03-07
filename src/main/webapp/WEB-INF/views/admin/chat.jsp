@@ -23,7 +23,7 @@
     });
     //WebSocket을 지정한 URL로 연결한다
     //서버랑 연결 -> 에코핸들러가서 출력
-    var sock = new SockJS("<c:url value="/echo"/>");
+    var sock = new SockJS("ws://192.168.20.53/busk/admin/echo");
     //WebSocket 서버에서 메시지를 보내면 자동으로 실행된다
     //var onMessage = function onMessage //변수
     sock.onmessage = onMessage;
