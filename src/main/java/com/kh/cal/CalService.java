@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
-import com.kh.location.LocationDAO;
 import com.kh.util.ListData;
 
 
@@ -20,8 +19,6 @@ public class CalService {
 	private CalDAO calDAO;
 	@Inject
 	private FileDAO fileDAO;
-	@Inject
-	private LocationDAO locationDAO;
 
 	public List<CalDTO> dd() throws Exception{
 		return calDAO.dd();

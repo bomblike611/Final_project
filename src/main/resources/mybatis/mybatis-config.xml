@@ -4,12 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
+  	<settings>
+  	<setting name="jdbcTypeForNull" value="VARCHAR"/>
+  	</settings>
 	<typeAliases>
 		<typeAlias type="com.kh.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.kh.busking.BuskingDTO" alias="BuskingDTO"/>
 		<typeAlias type="com.kh.file.FileDTO" alias="FileDTO"/>
 		<typeAlias type="com.kh.location.LocationDTO" alias="LocationDTO"/>
-
 		<typeAlias type="com.kh.notice.NoticeDTO" alias="NoticeDTO"/>
 
 		<typeAlias type="com.kh.spon.SponDTO" alias="SponDTO"/>
