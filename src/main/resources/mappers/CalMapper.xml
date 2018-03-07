@@ -35,7 +35,7 @@
 		select * from busking order by busk_date asc
 	</select>
 	
-	<select id="totalCount" parameterType="ListData" resultType="int">
+	<!-- <select id="totalCount" parameterType="ListData" resultType="int">
 		select nvl(count(num),0) from busking
 			<where>
 			<if test="search !=''">
@@ -49,5 +49,5 @@
   				and busk_date &lt;= TO_DATE(#{toDate},'YYYY-MM-DD')+0.99999421
   			</if>
   			</where>
-	</select>
+	</select> -->
 </mapper>

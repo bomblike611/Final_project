@@ -22,8 +22,6 @@ public class CalService {
 	private CalDAO calDAO;
 	@Inject
 	private FileDAO fileDAO;
-	@Inject
-	private LocationService locationService;
 
 	public List<CalDTO> month() throws Exception{
 		return calDAO.month();
@@ -48,17 +46,16 @@ public class CalService {
 			listData.setSearch("");
 		}
 
-		int totalCount = calDAO.totalCount(listData);
+		/*int totalCount = calDAO.totalCount(listData);
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.pageMaker(totalCount, listData);
+		pageMaker.pageMaker(totalCount, listData);*/
 
 		List<CalDTO> ar = calDAO.selectList(listData);
 		List<FileDTO> file = fileDAO.selectList();
-		
-		locationService.locationList(listData, mv)   ar.get(0)
+
 		mv.addObject("list", ar);
 		mv.addObject("file", file);
-		mv.addObject("page", listData);
+		/*mv.addObject("page", listData);*/
 		return mv;
 	}
 

@@ -185,7 +185,7 @@
 		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 /* ======================================================================= */
 		// 지도에 마커를 생성하고 표시한다
-		  var marker = new daum.maps.Marker({
+		 /*  var marker = new daum.maps.Marker({
 		    position: new daum.maps.LatLng(37.56573, 126.97879), // 마커의 좌표
 		    map: map // 마커를 표시할 지도 객체
 		});
@@ -195,11 +195,11 @@
 		    content : '<div style="width:150px;padding:5px;text-align:center;">${dto.location}</div>' // 인포윈도우에 표시할 내용
 		});
 		// 인포윈도우를 지도에 표시한다
-		infowindow.open(map, marker); 
+		infowindow.open(map, marker); */ 
 		
 /* ======================================================================= */
 		// 주소-좌표 변환 객체를 생성합니다
-		/*  var geocoder = new daum.maps.services.Geocoder();
+		  var geocoder = new daum.maps.services.Geocoder();
 
 		// 주소로 좌표를 검색합니다
 		geocoder.addressSearch('${loca.area}', function(result, status) {
@@ -223,7 +223,7 @@
 		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 		        map.setCenter(coords);
 		    }
-		});	 */	
+		});		
 /* ======================================================================= */
 		});
 	</script>	
