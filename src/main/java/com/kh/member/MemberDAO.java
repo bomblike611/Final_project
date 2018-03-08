@@ -31,6 +31,10 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
 	}
 	
+	public int memberPwUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"memberPwUpdate", memberDTO);
+	}
+	
 	public int APIUpdate(MemberDTO memberDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"APIUpdate", memberDTO);
 	}

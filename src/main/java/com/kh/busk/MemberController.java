@@ -97,11 +97,11 @@ public class MemberController {
 			mv.addObject("message", "로그인 성공");
 			session.setAttribute("member", memberDTO);
 			session.setAttribute("addar", addar);
+			mv.addObject("path", "../");
 		}else{
 			mv.addObject("message", "로그인 실패");
-			mv.addObject("path", "member/memberLogin");
+			mv.addObject("path", "memberLogin");
 		}
-		mv.addObject("path", "../");
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -127,6 +127,21 @@ public class MemberController {
 		if (result>0) {
 			session.setAttribute("member", memberDTO);
 			message = "정보수정 완료";
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("message", message);
+		mv.addObject("path", "../");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@RequestMapping(value="memberPwUpdate", method=RequestMethod.POST)
+	public ModelAndView memberPwUpdate(MemberDTO memberDTO, HttpSession session) throws Exception{
+		int result = memberService.memberPwUpdate(memberDTO);
+		String message = "비밀번호 변경 실패";
+		if (result>0) {
+			session.setAttribute("member", memberDTO);
+			message = "비밀번호 변경 완료";
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("message", message);
@@ -260,7 +275,6 @@ public class MemberController {
 			k=k.substring(0,10);
 			ar2.get(u).setUse_date(k);
 		}
-		System.out.println(ar3.get(0).getMessage());
 		
 		mv.addObject("list", ar);
 		mv.addObject("pointList", ar2);

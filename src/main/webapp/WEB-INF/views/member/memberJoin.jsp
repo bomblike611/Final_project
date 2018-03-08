@@ -60,16 +60,15 @@
 			}
 		});
 
-		$(".nextBtn").click(
-				function(FormSubmit) {
+		$(".nextBtn").click(function(FormSubmit) {
 					if (!check) {
 						if ($("#id").val()
-								&& ($("#pw").val() == $("#pw2").val())
+								&& $("#pw").val() == $("#pw2").val()
 								&& $("#name").val() && $("#age").val()
 								&& $("#email").val()
-								&& $("#phone").val().length
-								&& $("#addr").val().length
-								&& $("#birth").val().length
+								&& $("#phone").val()
+								&& $("#addr").val()
+								&& $("#birth").val()
 								&& $(".job").val().length > 0) {
 							if (grecaptcha.getResponse() == "") {
 								alert("자동가입 방지를 위해 체크를 하세요");
@@ -269,8 +268,8 @@
 						&emsp;&emsp;&nbsp;<img src="../resources/images/노답.jpg"
 								class="poto" id="poto" style="width: 100px; height: 100px;">
 						</c:if> <c:if test="${member.fname ne null} ">
-						&emsp;&emsp;&nbsp;<img id="poto" class="poto"
 								src="../resources/upload/${member.fname}"
+						&emsp;&emsp;&nbsp;<img id="poto" class="poto"
 								style="width: 100px; height: 100px;">
 						</c:if>
 

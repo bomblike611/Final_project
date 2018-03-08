@@ -64,6 +64,7 @@
        }
    });
 
+   
 	$(function(){
 		
 		if ($("#pw").val()=="FaceBook") {
@@ -183,6 +184,7 @@
          });
          
         $(".cancelBtnOK").click(function(){
+        if (confirm("정말 탈퇴하시겠습니까?") == true) {
          if($("#pwCheck2").val()==$("#pwCheck").val()){
             frm2.submit();
             
@@ -192,7 +194,9 @@
          }else if($("#pwCheck2").val() != $("#pwCheck").val()){
             alert("비밀번호가 틀렸습니다");
          }
-            
+        }else{
+        	return;
+        }
       });
         
         $("#btnn").click(function() {
@@ -208,30 +212,6 @@
 	         $("#myModal").css("display","none");
 	      });
 	      
-	      $("#pwCheck2").keyup(function() {
-	    	  var pwcheck = $("#pwCheck").val();
-	    	  var pwcheck2 = $("#pwCheck2").val();
-				if (pwcheck==pwcheck2) {
-					$("#pwcheck3").text("비밀번호가 일치합니다");
-					$("#pwcheck3").css({"color": "green","font-size":"x-small"});
-				} else {
-					$("#pwcheck3").text("비밀번호가 일치 하지 않습니다");
-					$("#pwcheck3").css({"color": "red","font-size":"x-small"});
-				}
-			});
-	      
-	  	$(".cancelBtnOK").click(function(){
-			if($("#pwCheck2").val()==$("#pwCheck").val()){
-				frm2.submit();
-				
-			}else if($("#pwCheck2").val()==""){
-				alert("비밀번호를 입력해주세요");
-				
-			}else if($("#pwCheck2").val() != $("#pwCheck").val()){
-				alert("비밀번호가 틀렸습니다");
-			}
-				
-		});
 	  	
 	  	$("#btnn").click(function() {
 			alert("${member.fname}");
@@ -263,28 +243,8 @@
 				</tr>
 
 				<!-- 비밀번호 테이블-->
-				<tr class="join_tr">
-					<td class="join_td"><span class="sp">* </span>기존 비밀번호</td>
-					<td><input type="hidden" value="${member.pw}" id="pw">
-						<input type="password" class="Join_input" id="pw2"><span
-						id="pwcheck"></span></td>
-				</tr>
+					<input type="hidden" value="${member.pw}" id="pw" name="pw">
 
-				<!-- 변경비밀번호 테이블 -->
-				<tr class="join_tr">
-					<td class="join_td"><span class="sp">* </span>변경 비밀번호</td>
-					<td><input type="password" class="Join_input"
-						placeholder="      Enter Re PW" id="cpw" name="pw"><span
-						id="cpwcheck"></span></td>
-				</tr>
-
-				<!-- 변경비밀번호  확인 테이블 -->
-				<tr class="join_tr">
-					<td class="join_td"><span class="sp">* </span>변경 비밀번호 확인</td>
-					<td><input type="password" class="Join_input"
-						placeholder="      Enter Re PW" id="cpw2"><span
-						id="cpwcheck2"></span></td>
-				</tr>
 
 				<!-- 이름 테이블 -->
 				<tr class="join_tr">

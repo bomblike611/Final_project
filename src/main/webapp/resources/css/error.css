@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+#error{
+    text-align: center;
+    margin-top: 15%;	
+}
+
+#error404{
+	font-size: 110px;
+    font-family: fantasy;
+    height: 5%;
+}
+
+#opps{
+	color: gray;
+    font-size: 23px;
+    height: 2%;
+}
+
+#enter{
+	color: #ddd;
+    font-size: inherit;
+}
+
+#homeBtn{
+	width: 170px;
+    height: 41px;
+    background: #582D32;
+    color: #fafafa;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #582D32;
+    margin: 0 13px 200px 0;
+    cursor: pointer;
+    margin-top: 3%;
+}

@@ -5,16 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>## 노래왕 버스킹 -(로그인)입니다</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-	charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-
 <link href="/busk/resources/css/member.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
@@ -157,24 +150,3 @@
 	<%@include file="../temp/footer.jsp"%>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

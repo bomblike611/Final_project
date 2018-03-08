@@ -40,11 +40,10 @@
 		});
 		
 		$(".nextBtn").click(function() {
-			if ($("#siteAgreement").prop("checked", true) && $("#personalAgreement").prop("checked", true) && $("#checkALL").prop("checked", true)) {
-				window.location = '/busk/member/memberJoin';
+			if ($("#siteAgreement").prop("checked")==true && $("#personalAgreement").prop("checked")==true && $("#checkALL").prop("checked")==true) {
+				window.location ='/busk/member/memberJoin';
 			}else{
 				alert("이용약관에 모두 동의하셔야합니다.");
-				window.location ='/busk/member/memberAgree';
 			}
 		});
 	});

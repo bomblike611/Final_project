@@ -42,11 +42,13 @@
     font-size: 36px;
     color: #cdcdcd;
     margin-top: 30px;
+    margin-bottom: 6%;
 }
 #a{
 	text-shadow: -0.08em 0.08em #C2BCB9;
     color: #582D32;
 	font-weight: 900;
+	margin-bottom: 6%;
 }
 
 #a2{
@@ -490,7 +492,7 @@ fieldset{
 .filebox label {
   display: inline-block;
   padding: .5em .75em;
-  color: #999;
+  color: black;
   font-size: inherit;
   line-height: normal;
   vertical-align: middle;
@@ -499,6 +501,7 @@ fieldset{
   border: 1px solid #ebebeb;
   border-bottom-color: #e2e2e2;
   border-radius: .25em;
+  
 }
 
 .filebox input[type="file"]  {  
@@ -775,8 +778,34 @@ fieldset{
 	text-decoration: none;
 }
 
+#addrSearch{
+	display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+    color: black;
+}
 
-
+.update2{
+	width: 15%;
+    height: 11%;
+    background: #fcfcfc;
+    color: #582D32;
+    font-family: Notosanskr, Malgun Gothic;
+    font-size: 16px;
+    letter-spacing: -.5px;
+    text-align: center;
+    border: 2px solid #582D32;
+    cursor: pointer;
+    margin-top: 12%;
+    margin-left: 5%;
+}
 
 
 
