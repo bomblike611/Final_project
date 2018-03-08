@@ -18,8 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import com.kh.util.ListData;
-
-
+import com.kh.member.MemberDTO;
 import com.kh.notice.NoticeDTO;
 import com.kh.notice.NoticeService;
 import com.kh.util.ListData;
@@ -102,8 +101,10 @@ public ModelAndView noticeUpdate(NoticeDTO noticeDTO,MultipartFile [] file,HttpS
 }
 @RequestMapping(value="Delete",method=RequestMethod.GET)
 public String delete(int num, HttpSession session)throws Exception{
+	MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+	if (memberDTO.getId().equals("admin")){
 	int result=noticeService.delete(num, session);
-	
+	}
 	return "redirect:./noticelist";
 	
 }

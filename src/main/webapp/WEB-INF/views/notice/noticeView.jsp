@@ -23,8 +23,10 @@
 	
 	<div class="center">
 		<div class="button large dark">
-			<a href="Update?num=${view.num}">Update</a>
-			<a href="Delete?num=${view.num}">Delete</a>
+			<c:if test="${member.id eq 'admin'}">  <!--게시판 del 키 버튼이 관리자만이 볼수 있게끔 -->
+				<a href="Update?num=${view.num}">Update</a>
+				<a href="Delete?num=${view.num}">Delete</a>
+			</c:if>
 		</div>
 	</div>
 	</section>
