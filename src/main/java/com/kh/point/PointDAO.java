@@ -1,5 +1,7 @@
 package com.kh.point;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +18,10 @@ public class PointDAO {
 	
 	public int delete(PointDTO pointDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"delete", pointDTO);
+	}
+	
+	public List<PointDTO> pointlist(PointDTO pointDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE, pointDTO);
 	}
 	
 }

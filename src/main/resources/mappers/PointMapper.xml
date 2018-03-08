@@ -12,4 +12,8 @@
  delete point where num=#{num}
  </delete>
  
+ <select id="selectList" parameterType="PointDTO" resultType="PointDTO">
+ select * from point where id=${id}
+ </select>
+ 
  </mapper>
