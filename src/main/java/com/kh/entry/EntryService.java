@@ -1,5 +1,7 @@
 package com.kh.entry;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -14,5 +16,8 @@ public class EntryService {
 	}
 	public int delete(EntryDTO entryDTO)throws Exception{
 		return entryDAO.delete(entryDTO);
+	}
+	public List<EntryDTO> selectList(EntryDTO entryDTO) throws Exception{
+		return entryDAO.selectList(entryDTO);
 	}
 }

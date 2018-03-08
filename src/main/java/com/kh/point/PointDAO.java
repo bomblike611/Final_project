@@ -19,8 +19,10 @@ public class PointDAO {
 	public int delete(PointDTO pointDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"delete", pointDTO);
 	}
-	
-	public List<PointDTO> pointList(PointDTO pointDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"pointList", pointDTO);
+
+	public List<PointDTO> pointlist(PointDTO pointDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"selectList", pointDTO);
 	}
+	
+
 }

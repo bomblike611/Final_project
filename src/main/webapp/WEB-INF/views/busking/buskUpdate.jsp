@@ -149,7 +149,7 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>장르</th>
-						<td><input type="text" class="oo" name="genre"
+						<td><input type="text" class="oo" name="genre" value="${view.genre}"
 							placeholder="장르를 입력해주세요"></td>
 					</tr>
 					<tr>

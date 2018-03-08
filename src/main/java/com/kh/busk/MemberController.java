@@ -262,7 +262,7 @@ public class MemberController {
 		pointDTO.setId(memberDTO.getId());
 		sponDTO.setId(memberDTO.getId());
 		List<NoticeDTO> ar = noticeService.selectList(listData);
-		List<PointDTO> ar2 = pointService.pointList(pointDTO);
+		List<PointDTO> ar2 = pointService.selectList(pointDTO);
 		List<SponDTO> ar3 = sponService.sponList(sponDTO);
 		for(int i=0; i<ar.size();i++){
 			String s = ar.get(i).getReg_date();
@@ -317,7 +317,7 @@ public class MemberController {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		PointDTO pointDTO = new PointDTO();
 		pointDTO.setId(memberDTO.getId());
-		List<PointDTO> ar = pointService.pointList(pointDTO);
+		List<PointDTO> ar = pointService.selectList(pointDTO);
 		for(int i=0; i<ar.size();i++){
 			String s = ar.get(i).getUse_date();
 			s=s.substring(0,10);

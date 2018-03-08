@@ -17,8 +17,10 @@ public class PointService {
 	public int delete(PointDTO pointDTO) throws Exception{
 		return pointDAO.delete(pointDTO);
 	}
-	
-	public List<PointDTO> pointList(PointDTO pointDTO) throws Exception{
-		return pointDAO.pointList(pointDTO);
+
+
+	public List<PointDTO> selectList(PointDTO pointDTO) throws Exception{
+		return pointDAO.pointlist(pointDTO);
+
 	}
 }

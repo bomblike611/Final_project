@@ -2,6 +2,75 @@
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800)
 	;
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #582D32;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #582D32;
+    color: white;
+}
+
 
 figure.snip1200 {
 	font-family: 'Raleway', Arial, sans-serif;
@@ -28,6 +97,7 @@ figure.snip1200 * {
 }
 
 figure.snip1200 img {
+	height: 310px;
 	max-width: 100%;
 	position: relative;
 	opacity: 0.9;
@@ -223,3 +293,125 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 	color: white;
 }
 
+#voice{
+	padding-right: 60px;
+	float: right;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+}
+
+/** voice recoding */
+a:link {
+    color:#000;
+    text-decoration: none;
+  }
+  a:visited {
+    color:#000;
+  }
+  a:hover {
+    color:#33F;
+  }
+  .button {
+    background: -webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);
+    border: 1px solid #076bd2;
+    border-radius: 3px;
+    color: #fff;
+    display: none;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.3;
+    padding: 8px 25px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #076bd2;
+    letter-spacing: normal;
+  }
+  .center {
+    padding: 10px;
+    text-align: center;
+  }
+  .final {
+    color: black;
+    padding-right: 3px; 
+  }
+  .interim {
+    color: gray;
+  }
+  .info {
+    font-size: 14px;
+    text-align: center;
+    color: #777;
+    display: none;
+  }
+  .right {
+    float: right;
+  }
+  .sidebyside {
+    display: inline-block;
+    width: 45%;
+    min-height: 40px;
+    text-align: left;
+    vertical-align: top;
+  }
+  #headline {
+    font-size: 40px;
+    font-weight: 300;
+  }
+  #info {
+  	margin: 30px auto;
+    font-size: 20px;
+    text-align: center;
+    color: #582D32;
+    visibility: hidden;
+  }
+  #results {
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    min-height: 150px;
+  }
+  #start_button {
+    border: 0;
+    background-color:transparent;
+    padding: 0;
+  }
+  
+  #div_language{
+  width: 50%;
+  margin: 20px auto;
+  text-align: center;
+  color: #582D32;
+  font-size: 20px;
+  }
+	
+	
+#div_language>select{
+	width: 20%;
+	height: 30px;
+}
+
+#voiceResult{
+	display:none;
+	text-align: center;
+	
+}
+
+#write2{
+	cursor: pointer;
+	border: 1px #C2BCB9 solid;
+	text-align: center;
+	height: 40px;
+	width: 10%;
+	margin: 0 auto;
+	line-height: 40px;
+	color: #582D32;
+	font-weight: bold;
+	transition:background-color 2s;
+}
+
+#write2:hover{
+	background-color: #582D32;
+	color: white;
+}

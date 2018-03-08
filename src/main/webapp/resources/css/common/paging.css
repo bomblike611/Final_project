@@ -7,6 +7,7 @@
 	width: 30px;
 	height: 30px;
 	border-radius: 50px;
+	cursor: pointer;
 }
 
 .pageing:hover{

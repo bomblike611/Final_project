@@ -201,13 +201,13 @@
 			</table>
 			<div id="pagination">
 				<c:if test="${page.curBlock > 1}">
-					<button title="${page.startNum-1}" class="page list pageing">[이전]</button>
+					<button title="${page.startNum-1}" class="page list pageing">＜</button>
 				</c:if>
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 					<button title="${i}" class="page list btn_now pageing">${i}</button>
 				</c:forEach>
 				<c:if test="${page.curBlock < page.totalBlock}">
-					<button title="${page.lastNum+1}" class="page list pageing">[다음]</button>
+					<button title="${page.lastNum+1}" class="page list pageing">＞</button>
 				</c:if>
 			</div>
 		</div>
