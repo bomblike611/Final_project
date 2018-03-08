@@ -97,6 +97,7 @@ figure.snip1200 * {
 }
 
 figure.snip1200 img {
+	height: 310px;
 	max-width: 100%;
 	position: relative;
 	opacity: 0.9;
