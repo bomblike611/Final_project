@@ -21,14 +21,6 @@
 	</repositories>
 
 	<dependencies>
-	<!-- web socket -->
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-websocket</artifactId>
-    <version>4.3.2.RELEASE</version>
-</dependency>
-	
 	
 	<!-- mail -->
 		<dependency>

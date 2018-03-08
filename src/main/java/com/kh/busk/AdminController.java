@@ -129,8 +129,4 @@ public class AdminController {
 		mv.setViewName("redirect:../admin/memberList");
 		return mv;
 	}
-	@RequestMapping(value="/chat")
-	public void chat() throws Exception{
-		
-	}
 }
