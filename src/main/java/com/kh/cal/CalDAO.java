@@ -22,10 +22,6 @@ public class CalDAO {
 	private LocationDAO locationDAO;
 
 	public List<CalDTO> selectList(ListData listData) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<LocationDTO> lar = locationDAO.locationList(listData);
-		lar.get(0);
-		mv.addObject("loca", lar);
 		return sqlSession.selectList(NAMESPACE+"selectList", listData);
 	}
 	public CalDTO selectOne(CalDTO calDTO) throws Exception{

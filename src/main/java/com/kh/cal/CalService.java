@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.file.FileDAO;
 import com.kh.file.FileDTO;
+import com.kh.location.LocationDAO;
 import com.kh.location.LocationDTO;
 import com.kh.location.LocationService;
 import com.kh.util.ListData;
@@ -22,6 +23,8 @@ public class CalService {
 	private CalDAO calDAO;
 	@Inject
 	private FileDAO fileDAO;
+	@Inject
+	private LocationDAO locationDAO;
 
 	public List<CalDTO> month() throws Exception{
 		return calDAO.month();
@@ -49,10 +52,13 @@ public class CalService {
 		/*int totalCount = calDAO.totalCount(listData);
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.pageMaker(totalCount, listData);*/
-
+		List<LocationDTO> lar=locationDAO.locationList(listData);
 		List<CalDTO> ar = calDAO.selectList(listData);
 		List<FileDTO> file = fileDAO.selectList();
-
+		for(int i=0; i<ar.size(); i++){
+			mv.addObject("date", ar.get(i));			
+		}
+		mv.addObject("loc", lar);
 		mv.addObject("list", ar);
 		mv.addObject("file", file);
 		/*mv.addObject("page", listData);*/

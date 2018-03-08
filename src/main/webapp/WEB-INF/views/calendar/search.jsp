@@ -61,8 +61,7 @@
 	  	/* 가수검색 대소문자 변경 */
 	  	$("#sing").on('keyup', function(){
 	  		$(this).val($(this).val().toUpperCase());
-	  	});
-	  
+	  	});	  
 	});
 	  	/* 날짜검색 */
  		/* $("#btn").click(function(){ */
@@ -105,7 +104,6 @@
 			document.frm.toDate.value = '${page.toDate}';
 			documnet.frm.submit();
 		}); */
-
 	
 </script>
 </head>
@@ -113,7 +111,9 @@
 	<%@ include file="../temp/header.jsp"%>
 	<section id="main">
 		<%@ include file="./calHeader.jsp"%>
-
+		<div class="floating">
+		광고
+		</div>
 		<!--================================ 서치부분 ================================-->
 		<form id="frm" name="frm" action="search">
 			<div id="sec">
@@ -135,8 +135,7 @@
 				</div>
 			</div>
 			<!--================================ 보여지는 폼 ================================-->
-			<c:forEach items="${list}" var="dto" begin="0" end="5">
-			<input type="hidden" name="num" value="${dto.num}">
+			<c:forEach items="${list}" var="dto" begin="0" end="0">
 						<div id="bigbox">
 							<div id="singer">${dto.writer}</div>
 							<div id="singerle">
@@ -156,83 +155,74 @@
 										</div>
 										<div id="spon"><a href="./upcoming">후원하기</a></div>
 										</div>
+										<c:forEach items="${loc}" var="l">
+										<c:if test="${date.location eq l.loc_name}">
+										<input type="hidden" id="dd" title="${l.area}">
+										</c:if>									
+										</c:forEach>
 									<div id="map" style="width: 70%; height: 390px;"></div>
 								</div>
 							</div>
-						</div>						
-	<script>
-		$(function() {
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new daum.maps.LatLng(37.56573, 126.97879), // 지도의 중심좌표
-		        level: 3, // 지도의 확대 레벨
-		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
-		    }; 
-
-		// 지도를 생성한다 
-		var map = new daum.maps.Map(mapContainer, mapOption); 
-
-		// 지도 타입 변경 컨트롤을 생성한다
-		var mapTypeControl = new daum.maps.MapTypeControl();
-
-		// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-		map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);	
-
-		// 지도에 확대 축소 컨트롤을 생성한다
-		var zoomControl = new daum.maps.ZoomControl();
-
-		// 지도의 우측에 확대 축소 컨트롤을 추가한다
-		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-/* ======================================================================= */
-		// 지도에 마커를 생성하고 표시한다
-		 /*  var marker = new daum.maps.Marker({
-		    position: new daum.maps.LatLng(37.56573, 126.97879), // 마커의 좌표
-		    map: map // 마커를 표시할 지도 객체
-		});
-
-		// 마커 위에 표시할 인포윈도우를 생성한다
-		var infowindow = new daum.maps.InfoWindow({
-		    content : '<div style="width:150px;padding:5px;text-align:center;">${dto.location}</div>' // 인포윈도우에 표시할 내용
-		});
-		// 인포윈도우를 지도에 표시한다
-		infowindow.open(map, marker); */ 
-		
-/* ======================================================================= */
-		// 주소-좌표 변환 객체를 생성합니다
-		  var geocoder = new daum.maps.services.Geocoder();
-
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('${loca.area}', function(result, status) {
-
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === daum.maps.services.Status.OK) {
-
-		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="padding:5px;">${dto.location}</div>'
-		        });
-		        infowindow.open(map, marker);
-
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-		    }
-		});		
-/* ======================================================================= */
-		});
-	</script>	
-				
-				</c:forEach>
+						</div>
+				<script>
+					$(function() {
+						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+						mapOption = {
+							center : new daum.maps.LatLng(37.56573, 126.97879), // 지도의 중심좌표
+							level : 3, // 지도의 확대 레벨
+							mapTypeId : daum.maps.MapTypeId.ROADMAP
+						// 지도종류
+						};
+						// 지도를 생성한다 
+						var map = new daum.maps.Map(mapContainer, mapOption);
+						// 지도 타입 변경 컨트롤을 생성한다
+						var mapTypeControl = new daum.maps.MapTypeControl();
+						// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+						map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+						// 지도에 확대 축소 컨트롤을 생성한다
+						var zoomControl = new daum.maps.ZoomControl();
+						// 지도의 우측에 확대 축소 컨트롤을 추가한다
+						map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+						/* ======================================================================= */
+						// 지도에 마커를 생성하고 표시한다
+						/*  var marker = new daum.maps.Marker({
+						   position: new daum.maps.LatLng(37.56573, 126.97879), // 마커의 좌표
+						   map: map // 마커를 표시할 지도 객체
+						});
+						// 마커 위에 표시할 인포윈도우를 생성한다
+						var infowindow = new daum.maps.InfoWindow({
+						   content : '<div style="width:150px;padding:5px;text-align:center;">${dto.location}</div>' // 인포윈도우에 표시할 내용
+						});
+						// 인포윈도우를 지도에 표시한다
+						infowindow.open(map, marker); */
+						/* ======================================================================= */
+						// 주소-좌표 변환 객체를 생성합니다
+						var geocoder = new daum.maps.services.Geocoder();
+						var areaname = $("#dd").attr("title");
+						// 주소로 좌표를 검색합니다
+						geocoder.addressSearch(areaname, function(result, status) {
+											// 정상적으로 검색이 완료됐으면 
+											if (status === daum.maps.services.Status.OK) {
+												var coords = new daum.maps.LatLng(
+														result[0].y,
+														result[0].x);
+												// 결과값으로 받은 위치를 마커로 표시합니다
+												var marker = new daum.maps.Marker(
+														{map : map, position : coords});
+												// 인포윈도우로 장소에 대한 설명을 표시합니다
+												var infowindow = new daum.maps.InfoWindow(
+														{content : '<div style="width:150px;padding:5px;text-align:center;">${dto.location}</div>'});
+												infowindow.open(map, marker);
+												// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+												map.setCenter(coords);
+											}
+										});
+					});
+				</script>
+			</c:forEach>
 		</form>
-
 		<!--================================ 페이징처리 ================================-->
-<%-- 		<div id="page">
+	<%--<div id="page">
 			<c:if test="${page.curBlock > 1}">
 				<span class="page" title="${page.startNum-1}">《</span>
 			</c:if>

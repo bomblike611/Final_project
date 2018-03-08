@@ -147,17 +147,18 @@ body {
 }
 #bigbox{
 	width: 70%;
-	height: 600px;
+	height: 580px;
 	margin: auto;
 	margin-top: 20px;
 	background-color: #eae7e7;
+	/* border-bottom: 3px solid #c2bcb9; */
 }
 #singer{
 	width: 100%;
 	height: 35px;
 	margin: auto;
-	background-color: #c2bcb9;
-	color: #28272c;
+	background-color: #582d32;
+	color: #fff;
 	font-weight:100;
 	text-align: left;
   	padding: 5px 10px 5px 10px;
@@ -220,7 +221,6 @@ body {
 #pic{
 	width:100%;
 	height: 100px;
-	background-color: yellow;
 	margin-left: 5%;
 	padding: 5px 5px 5px 0px;
 }
@@ -302,4 +302,14 @@ body {
 #map{
 	border: 1px solid white;
 	z-index: 999;
+}
+.floating{
+	position: fixed;
+	right: 45%;
+	top: 300px;
+	margin-right: -720px;
+	text-align: center;
+	width: 120px;
+	height: 500px;
+	background-color: yellow;
 }       
