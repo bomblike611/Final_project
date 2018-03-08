@@ -29,6 +29,7 @@
 <a href="./recommend/communityList">리스트</a>
 <a href="./busker/buskerList">busker</a>
 <a href="./ranking/rankingView">ranking</a>
+<a href="./review/reviewList"></a>
 	<%@include file="/WEB-INF/views/temp/footer.jsp"%>
 </body>
 </html>

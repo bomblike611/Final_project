@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper>
+  	<select id="selectList" parameterType="listData" resultType="ReviewDTO">
+  		select * from
+  		(select rownum R, N. * from
+  		(select * from review
+		<if test="kind == 'title'">
+			where title LIKE '%'|| #{search}||'%'
+		</if>
+		<if test="kind == 'writer'">
+			where writer LIKE '%'|| #{search}||'%'
+		</if>
+		<if test="kind == 'contents'">
+			where contents LIKE '%'|| #{search}||'%'
+		</if>  		
+  		order by num desc) N)
+  		where R between #{startRow} and #{lastRow}
+  	</select>
+  </mapper>
