@@ -15,5 +15,6 @@
 		<typeAlias type="com.kh.util.ListData" alias="ListData"/>
 		<typeAlias type="com.kh.entry.EntryDTO" alias="EntryDTO"/>
 		<typeAlias type="com.kh.point.PointDTO" alias="PointDTO"/>
+		<typeAlias type="com.kh.recommend.RecommendDTO" alias="RecommendDTO"/>
 	</typeAliases>
   </configuration>

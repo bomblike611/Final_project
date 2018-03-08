@@ -63,6 +63,10 @@
 		<context:component-scan base-package="com.kh.point">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		</context:component-scan>
+		
+		<context:component-scan base-package="com.kh.recommend">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
 
 		
 </beans>

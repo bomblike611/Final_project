@@ -7,53 +7,53 @@
   
   	<select id="sponMemberRank" parameterType="ListData" resultType="SponDTO">
   		select
-	  		<if test="kind == '다후원회원'">
+	  		<if test="kind == 'mostSponMember'">
 		  		id, SUM(price) price from spon
-		  		<if test="search == null">
+		  		<if test="search == ''">
 		  			GROUP BY ID order by price desc
 		  		</if>
-		  		<if test="search != null">
+		  		<if test="search != ''">
 		  			where id LIKE '%'||#{search}||'%' GROUP BY ID
 		  		</if>
 	  		</if>
-	  		<if test="kind == '다후원가수'">
+	  		<if test="kind == 'mostSponSinger'">
 	  			teamname, SUM(price) price from spon
-		  		<if test="search == null">
+		  		<if test="search == ''">
 		  			GROUP BY TEAMNAME order by price desc
 		  		</if>
-		  		<if test="search != null">
+		  		<if test="search != ''">
 		  			where teamname LIKE '%'||#{search}||'%' GROUP BY TEAMNAME
 		  		</if>
 	  		</if>
-	  		<if test="kind == '다게시회원'">
+	  		<if test="kind == 'mostPostMember'">
 	  			id,	nvl(post, 0) price from member
-	  			<if test="search == null">
+	  			<if test="search == ''">
 		  			order by post desc
 		  		</if>
-		  		<if test="search != null">
+		  		<if test="search != ''">
 		  			where id LIKE '%'||#{search}||'%'
 		  		</if>
 	  		</if>
-	  		<if test="kind == '다참여가수'">
+	  		<if test="kind == 'mostJoinSinger'">
 	  			teamname, SUM(entry_member) price from busking
-		  		<if test="search == null">
+		  		<if test="search == ''">
 		  			GROUP BY TEAMNAME order by price desc
 		  		</if>
-		  		<if test="search != null">
+		  		<if test="search != ''">
 		  			where teamname LIKE '%'||#{search}||'%' GROUP BY TEAMNAME
 		  		</if>
 	  		</if>
   	</select>
   	
-  	<select id="sponMemberRank2" parameterType="SponDTO" resultType="MemberDTO">
+  	<select id="sponMemberRank2" parameterType="java.util.List" resultType="MemberDTO">
   		select * from member where id in
   		<foreach item="rankList" collection="list" open="(" separator="," close=")">
        		#{rankList.id}
   		</foreach>
   	</select>
   	
-  	<select id="sponMemberRank3" parameterType="SponDTO" resultType="MemberDTO">
-  		select * from member where teamname in
+  	<select id="sponMemberRank3" parameterType="java.util.List" resultType="MemberDTO">
+  		select * from member where teamname in 
 	  		<foreach item="rankList" collection="list" open="(" separator="," close=")">
 	       		#{rankList.teamName}
 	  		</foreach>

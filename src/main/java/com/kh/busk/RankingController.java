@@ -24,34 +24,35 @@ public class RankingController {
 	public ModelAndView rankingView(ListData listData) {
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> buskList = null;
-		System.out.println(listData.getKind());
-		System.out.println(listData.getSearch());
 		if(listData.getKind()==null || listData.getKind().equals("")){
-			listData.setKind("다후원회원");
+			listData.setKind("mostSponMember");
 		}
-		if(listData.getSearch()==null){
+		if(listData.getSearch()==null || listData.getSearch().equals("")){
 			listData.setSearch("");
 		}
-		System.out.println(listData.getKind());
-		System.out.println(listData.getSearch());
 		List<SponDTO> rankList = rankingService.sponMemberRank(listData);
 		if(!rankList.isEmpty()){
-			if(listData.getKind().equals("다후원회원")||listData.getKind().equals("다게시회원")){
+			if(listData.getKind().equals("mostSponMember")||listData.getKind().equals("mostPostMember")){
+				System.out.println(rankList.get(0).getId());
+				System.out.println(rankList.size());
 				buskList = rankingService.sponMemberRank(rankList);
-			}else if(listData.getKind().equals("다후원가수")||listData.getKind().equals("다참여가수")){
+			}else if(listData.getKind().equals("mostSponSinger")||listData.getKind().equals("mostJoinSinger")){
 				buskList = rankingService.sponMemberRank1(rankList);
 			}
 		}
 		mv.addObject("buskList", buskList);
 		mv.addObject("rankList", rankList);
-		if(listData.getKind().equals("다후원회원")||listData.getKind().equals("다게시회원")){
+		for(SponDTO test : rankList){
+			System.out.println(test.getTeamName());	
+		}
+		if(listData.getKind().equals("mostSponMember")||listData.getKind().equals("mostPostMember")){
 			mv.addObject("idorteam", "ID");
-		}else if(listData.getKind().equals("다후원가수")||listData.getKind().equals("다참여가수")){
+		}else if(listData.getKind().equals("mostSponSinger")||listData.getKind().equals("mostJoinSinger")){
 			mv.addObject("idorteam", "팀명");
 		}
-		if(listData.getKind().equals("다후원회원")||listData.getKind().equals("다후원가수")){
+		if(listData.getKind().equals("mostSponMember")||listData.getKind().equals("mostSponSinger")){
 			mv.addObject("priceor", "후원금");
-		}else if(listData.getKind().equals("다게시회원")){
+		}else if(listData.getKind().equals("mostPostMember")){
 			mv.addObject("priceor", "게시글");
 		}else {
 			mv.addObject("priceor", "참여자");

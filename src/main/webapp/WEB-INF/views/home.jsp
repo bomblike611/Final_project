@@ -8,6 +8,8 @@
 <head>
 	<title>Home</title>
 </head>
+
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -18,16 +20,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
 
-
 <%@include file="/WEB-INF/views/temp/header.jsp" %>
+<div id="indexvideo">
+	<video src="/busk/resources/upload/index.mp4" style="width: 100%; height: 100%;" autoplay="autoplay" loop="loop"></video>
+</div>
 
-	<section id="main">
-		<a href="./location/locationWrite">Location_write</a>
-	</section>
-
-
-<a href="./recommend/communityList">리스트</a>
-<a href="./busker/buskerList">busker</a>
-<a href="./ranking/rankingView">ranking</a>
 </body>
 </html>
