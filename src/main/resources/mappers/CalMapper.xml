@@ -6,48 +6,37 @@
 <mapper namespace="CalMapper">
 
 	<select id="selectList" parameterType="ListData" resultType="CalDTO">
-		select * from (select * from (select rownum R, N.* from (select * from busking
-			<where>
-			<if test="search !=''">
-				teamname LIKE '%'||#{search}||'%'
-			</if>
-			<if test="kind !=''">
-				and location LIKE '%'||#{kind}||'%'
-			</if>
-			<if test="fromDate !=''">
-				and busk_date >= TO_DATE(#{fromDate},'YYYY-MM-DD')
-  				and busk_date &lt;= TO_DATE(#{toDate},'YYYY-MM-DD')+0.99999421
-  			</if>
-  			</where>
+	select * from (select rownum R, N.* from (select * from busking
+		<where>
+		<if test="search !=''">
+		teamname LIKE '%'||#{search}||'%'
+		</if>
+		<if test="kind !=''">
+		and location LIKE '%'||#{kind}||'%'
+		</if>
+		<if test="fromDate !=''">
+		and busk_date >= TO_DATE(#{fromDate},'YYYY-MM-DD')
+  		and busk_date &lt;= TO_DATE(#{toDate},'YYYY-MM-DD')+0.99999421
+  		</if>
+  		</where>
 		order by busk_date asc) N )
-		where R between #{startRow} and #{lastRow} ) where busk_date >= sysdate order by busk_date asc
+		where R between #{startRow} and #{lastRow}
 	</select>
+
+<!--<select id="totalCount" parameterType="ListData" resultType="int">
+		select nvl(count(num),0) from busking where busk_date >= TO_DATE(#{fromDate},'YYYY-MM-DD') and
+		busk_date &lt;= TO_DATE(#{toDate},'YYYY-MM-DD')+1
+	</select>  -->
 
 	<select id="selectOne" parameterType="CalDTO" resultType="CalDTO">
 		select * from busking where num=#{num}
 	</select>
 	
-	<select id="upcoming" resultType="CalDTO">
-		select * from busking where busk_date >= sysdate order by busk_date asc
+	<select id="selectre" parameterType="ListData" resultType="CalDTO">
+	select * from busking where busk_date >= sysdate order by busk_date asc
 	</select>
 	
-	<select id="month" resultType="CalDTO">
+	<select id="dd" resultType="CalDTO">
 		select * from busking order by busk_date asc
 	</select>
-	
-	<!-- <select id="totalCount" parameterType="ListData" resultType="int">
-		select nvl(count(num),0) from busking
-			<where>
-			<if test="search !=''">
-				teamname LIKE '%'||#{search}||'%'
-			</if>
-			<if test="kind !=''">
-				and location LIKE '%'||#{kind}||'%'
-			</if>
-			<if test="fromDate !=''">
-				and busk_date >= TO_DATE(#{fromDate},'YYYY-MM-DD')
-  				and busk_date &lt;= TO_DATE(#{toDate},'YYYY-MM-DD')+0.99999421
-  			</if>
-  			</where>
-	</select> -->
 </mapper>

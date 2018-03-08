@@ -6,14 +6,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.cal.CalDTO;
 import com.kh.cal.CalService;
 import com.kh.location.LocationDAO;
-import com.kh.location.LocationDTO;
 import com.kh.util.ListData;
 
 @Controller
@@ -25,14 +23,19 @@ public class CalController {
 	@Inject
 	private LocationDAO locationDAO;
 
-	@RequestMapping(value="search")
-	public ModelAndView search(ListData listData) throws Exception{
+	@RequestMapping(value="search"/*, method=RequestMethod.POST */)
+	public ModelAndView search(CalDTO calDTO, ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-
-		/*locationDTO.setLoc_name(calDTO.getLocation());
-		LocationDTO locationDTO2 = locationDAO.locationView(locationDTO);
-		mv.addObject("loca", locationDTO2);*/
-		mv= calservice.selectList(listData, mv);
+		
+		
+		/*
+		LocationDTO loca = new LocationDTO();
+		loca.setLoc_name(calDTO2.getLocation());
+		loca.setNum(0);
+		LocationDTO locationDTO=locationDAO.locationView(loca);
+		mv.addObject("loca", locationDTO);*/
+		
+		mv= calservice.selectList(calDTO, listData, mv);
 		mv.setViewName("calendar/search");
 		return mv;
 	}
@@ -41,7 +44,7 @@ public class CalController {
 	public ModelAndView dd(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String data = "[";
-		List<CalDTO> ar = calservice.month();
+		List<CalDTO> ar = calservice.dd();
 		URL url = new URL("http://localhost/busk/busking/buskView?num=");
 		for (CalDTO calDTO : ar){
 		data=data+"{"+"title:\""+calDTO.getTeamname()+"\",";
@@ -55,9 +58,9 @@ public class CalController {
 	}
 	
 	@RequestMapping(value="upcoming")
-	public ModelAndView upcoming() throws Exception{
+	public ModelAndView upcoming(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<CalDTO> ar = calservice.upcoming();
+		List<CalDTO> ar = calservice.selectre(listData);
 		mv.addObject("list", ar);
 		mv.setViewName("calendar/upcoming");
 		return mv;
