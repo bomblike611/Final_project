@@ -226,6 +226,9 @@ body {
 }
 #info{
 	margin-top: 100px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 100px;
 }
 #spon{
 	margin-left:8px;
@@ -295,10 +298,30 @@ body {
 #map{
 	border: 1px solid white;
 	z-index: 999;
-}       
-#info{
-	width: 100%;
-	text-align: center;
-	margin-top: 100px;
-	margin-bottom: 100px;
 }
+.floating{
+	position: fixed;
+	right: 45%;
+	top: 220px;
+	margin-right: -720px;
+	text-align: center;
+	width: 120px;
+	height: 495px;
+
+}
+ .floating div:nth-child(1){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
+.floating div:nth-child(2){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
+.floating div:nth-child(3){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
+.floating div:nth-child(4){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
