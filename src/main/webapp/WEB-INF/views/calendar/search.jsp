@@ -8,6 +8,7 @@
 <title>## 노래왕 버스킹 -(search)입니다</title>
 <link href="../resources/css/calendar/search.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44dc488bb7ee1b14cd2765f0530ea05b&libraries=services"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#fromDate').on('change', function() {
@@ -21,39 +22,7 @@
 				alert("종료 날짜를 선택해 주세요.");
 				return false;
 			}
-		});
-		/* 날짜검색 */
- 		/* $("#btn").click(function(){ */
- 			/* if(!$("#fromDate").val()){
-				alert("시작선택"); return false;
-			}
-			if(!$("#toDate").val()){
-				alert("끝선택"); return false;
-			}
-			var date1 = new Date($("#fromDate").val());
-			var date2 = new Date($("#toDate").val());
-			if(date2 - date1 <0){
-				alert("다시확인"); return false;
-			}
-			
-		  	/* 날짜 선택한날 이후로 안보이기 */	
-			/* var startDate = $("#fromDate").val().split('-');
-			var endDate = $("#toDate").val().split('-');
-			alert(startDate);
-			alert(endDate);
-			var startDateCompare = new Date(startDate[0], startDate[1]-1, startDate[2]);
-			alert(startDateCompare);
-			var endDateCompare = new Date(endDate[0], endDate[1]-1, endDate[2]);
-			alert(endDateCompare);
-			 if(startDateCompare.getTime() > endDateCompare.getTime()){
-				alert("시작날짜와 종료날짜를 확인해 주세요.");
-				return;}			
-			var result = Math.ceil(endDateCompare - startDateCompare);
-			var oneDay = result/(1000*60*60*24);
-			alert(result);
-			alert(oneDay);
-			 $("").submit();
-		});  */
+		});	
 		
 	  	/* 공연날짜(달) */
 	    $(".nalja").each(function(){
@@ -92,7 +61,40 @@
 	  	/* 가수검색 대소문자 변경 */
 	  	$("#sing").on('keyup', function(){
 	  		$(this).val($(this).val().toUpperCase());
-	  	});	
+	  	});	  
+	});
+	  	/* 날짜검색 */
+ 		/* $("#btn").click(function(){ */
+ 			/* if(!$("#fromDate").val()){
+				alert("시작선택"); return false;
+			}
+			if(!$("#toDate").val()){
+				alert("끝선택"); return false;
+			}
+			var date1 = new Date($("#fromDate").val());
+			var date2 = new Date($("#toDate").val());
+			if(date2 - date1 <0){
+				alert("다시확인"); return false;
+			}
+			
+		  	/* 날짜 선택한날 이후로 안보이기 */	
+			/* var startDate = $("#fromDate").val().split('-');
+			var endDate = $("#toDate").val().split('-');
+			alert(startDate);
+			alert(endDate);
+			var startDateCompare = new Date(startDate[0], startDate[1]-1, startDate[2]);
+			alert(startDateCompare);
+			var endDateCompare = new Date(endDate[0], endDate[1]-1, endDate[2]);
+			alert(endDateCompare);
+			 if(startDateCompare.getTime() > endDateCompare.getTime()){
+				alert("시작날짜와 종료날짜를 확인해 주세요.");
+				return;}			
+			var result = Math.ceil(endDateCompare - startDateCompare);
+			var oneDay = result/(1000*60*60*24);
+			alert(result);
+			alert(oneDay);
+			 $("").submit();
+		});  */
 /* 		$(".page").click(function() {
 			var cur = $(this).attr("title");
 			document.frm.curPage.value = cur;
@@ -102,15 +104,16 @@
 			document.frm.toDate.value = '${page.toDate}';
 			documnet.frm.submit();
 		}); */
-
-	});
+	
 </script>
 </head>
 <body>
 	<%@ include file="../temp/header.jsp"%>
 	<section id="main">
 		<%@ include file="./calHeader.jsp"%>
-
+		<div class="floating">
+		광고
+		</div>
 		<!--================================ 서치부분 ================================-->
 		<form id="frm" name="frm" action="search">
 			<div id="sec">
@@ -132,8 +135,7 @@
 				</div>
 			</div>
 			<!--================================ 보여지는 폼 ================================-->
-			<c:forEach items="${list}" var="dto" begin="0" end="5">
-			<%-- <input type="hidden" name="num" value="${dto.num}"> --%>
+			<c:forEach items="${list}" var="dto" begin="0" end="0">
 						<div id="bigbox">
 							<div id="singer">${dto.writer}</div>
 							<div id="singerle">
@@ -150,61 +152,77 @@
 										<div id="info">
 										<p>${dto.location}</p>
 										<p>${dto.busk_date}</p>
-										<p>${dto.contents}</p>
 										</div>
 										<div id="spon"><a href="./upcoming">후원하기</a></div>
 										</div>
+										<c:forEach items="${loc}" var="l">
+										<c:if test="${date.location eq l.loc_name}">
+										<input type="hidden" id="dd" title="${l.area}">
+										</c:if>									
+										</c:forEach>
 									<div id="map" style="width: 70%; height: 390px;"></div>
 								</div>
 							</div>
-						</div>	
-					<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44dc488bb7ee1b14cd2765f0530ea05b&libraries=services"></script>
-	<script>
-		$(function() {
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new daum.maps.LatLng(37.56573, 126.97879), // 지도의 중심좌표
-		        level: 3, // 지도의 확대 레벨
-		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
-		    }; 
-
-		// 지도를 생성한다 
-		var map = new daum.maps.Map(mapContainer, mapOption); 
-
-		// 지도 타입 변경 컨트롤을 생성한다
-		var mapTypeControl = new daum.maps.MapTypeControl();
-
-		// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-		map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);	
-
-		// 지도에 확대 축소 컨트롤을 생성한다
-		var zoomControl = new daum.maps.ZoomControl();
-
-		// 지도의 우측에 확대 축소 컨트롤을 추가한다
-		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-
-		// 지도에 마커를 생성하고 표시한다
-		var marker = new daum.maps.Marker({
-		    position: new daum.maps.LatLng(37.56573, 126.97879), // 마커의 좌표
-		    map: map // 마커를 표시할 지도 객체
-		});
-
-		// 마커 위에 표시할 인포윈도우를 생성한다
-		var infowindow = new daum.maps.InfoWindow({
-		    content : '<div style="padding:5px;">${dto.location}</div>' // 인포윈도우에 표시할 내용
-		});
-
-		// 인포윈도우를 지도에 표시한다
-		infowindow.open(map, marker);
-		});
-	</script>						
-				</c:forEach>
-
+						</div>
+				<script>
+					$(function() {
+						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+						mapOption = {
+							center : new daum.maps.LatLng(37.56573, 126.97879), // 지도의 중심좌표
+							level : 3, // 지도의 확대 레벨
+							mapTypeId : daum.maps.MapTypeId.ROADMAP
+						// 지도종류
+						};
+						// 지도를 생성한다 
+						var map = new daum.maps.Map(mapContainer, mapOption);
+						// 지도 타입 변경 컨트롤을 생성한다
+						var mapTypeControl = new daum.maps.MapTypeControl();
+						// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+						map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+						// 지도에 확대 축소 컨트롤을 생성한다
+						var zoomControl = new daum.maps.ZoomControl();
+						// 지도의 우측에 확대 축소 컨트롤을 추가한다
+						map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+						/* ======================================================================= */
+						// 지도에 마커를 생성하고 표시한다
+						/*  var marker = new daum.maps.Marker({
+						   position: new daum.maps.LatLng(37.56573, 126.97879), // 마커의 좌표
+						   map: map // 마커를 표시할 지도 객체
+						});
+						// 마커 위에 표시할 인포윈도우를 생성한다
+						var infowindow = new daum.maps.InfoWindow({
+						   content : '<div style="width:150px;padding:5px;text-align:center;">${dto.location}</div>' // 인포윈도우에 표시할 내용
+						});
+						// 인포윈도우를 지도에 표시한다
+						infowindow.open(map, marker); */
+						/* ======================================================================= */
+						// 주소-좌표 변환 객체를 생성합니다
+						var geocoder = new daum.maps.services.Geocoder();
+						var areaname = $("#dd").attr("title");
+						// 주소로 좌표를 검색합니다
+						geocoder.addressSearch(areaname, function(result, status) {
+											// 정상적으로 검색이 완료됐으면 
+											if (status === daum.maps.services.Status.OK) {
+												var coords = new daum.maps.LatLng(
+														result[0].y,
+														result[0].x);
+												// 결과값으로 받은 위치를 마커로 표시합니다
+												var marker = new daum.maps.Marker(
+														{map : map, position : coords});
+												// 인포윈도우로 장소에 대한 설명을 표시합니다
+												var infowindow = new daum.maps.InfoWindow(
+														{content : '<div style="width:150px;padding:5px;text-align:center;">${dto.location}</div>'});
+												infowindow.open(map, marker);
+												// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+												map.setCenter(coords);
+											}
+										});
+					});
+				</script>
+			</c:forEach>
 		</form>
-
 		<!--================================ 페이징처리 ================================-->
-<%-- 		<div id="page">
+	<%--<div id="page">
 			<c:if test="${page.curBlock > 1}">
 				<span class="page" title="${page.startNum-1}">《</span>
 			</c:if>
@@ -215,9 +233,7 @@
 				<span class="page" title="${page.lastNum+1}">》</span>
 			</c:if>
 		</div> --%>
-
 	</section>
-
 	
 </body>
 </html>
