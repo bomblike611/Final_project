@@ -25,7 +25,7 @@ public class FileSaver {
 	
 
 	public List<String> saver(MultipartFile [] file, String filepath)throws Exception{
-	      List<String> fileNames = new ArrayList<>();
+	      List<String> fileNames = new ArrayList<String>();
 	      for(MultipartFile f: file){
 	         String fileName=this.saver(f, filepath);
 	         fileNames.add(fileName);

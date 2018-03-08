@@ -27,10 +27,10 @@ public class BuskerController {
 		List<MemberDTO> buskerList = null;
 		ModelAndView mv = new ModelAndView();
 		List<String> getteamname = buskerService.getteamname();
-		Map<String, Object> member = new HashMap<>();
+		Map<String, Object> member = new HashMap<String, Object>();
 		for(int i=0;i<getteamname.size();i++){
 			buskerList = buskerService.buskerList(getteamname.get(i));
-			ArrayList<String> member2 = new ArrayList<>();
+			ArrayList<String> member2 = new ArrayList<String>();
 			for(int z =0;z<buskerList.size();z++){
 				member2.add(buskerList.get(z).getName());
 			}
