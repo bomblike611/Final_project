@@ -112,7 +112,10 @@
 	<section id="main">
 		<%@ include file="./calHeader.jsp"%>
 		<div class="floating">
-		광고
+		<div><img alt="" src="../resources/images/calendar_img/Main1.gif" style="width: 100%" height="100%"></div>
+		<div><img alt="" src="../resources/images/calendar_img/Main2.gif" style="width: 100%" height="100%"></div>
+		<div><img alt="" src="../resources/images/calendar_img/Main.gif" style="width: 100%" height="100%"></div>
+		<div><img alt="" src="../resources/images/calendar_img/Main4.gif" style="width: 100%" height="100%"></div>
 		</div>
 		<!--================================ 서치부분 ================================-->
 		<form id="frm" name="frm" action="search">

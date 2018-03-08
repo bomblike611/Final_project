@@ -306,10 +306,26 @@ body {
 .floating{
 	position: fixed;
 	right: 45%;
-	top: 300px;
+	top: 220px;
 	margin-right: -720px;
 	text-align: center;
 	width: 120px;
-	height: 500px;
-	background-color: yellow;
-}       
+	height: 495px;
+
+}
+ .floating div:nth-child(1){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
+.floating div:nth-child(2){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
+.floating div:nth-child(3){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
+.floating div:nth-child(4){
+	border: 1px solid #c2bcb9;
+	height:164px;
+	}
