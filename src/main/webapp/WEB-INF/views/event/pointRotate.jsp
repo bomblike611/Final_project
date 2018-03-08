@@ -38,12 +38,18 @@ canvas{
 		<script>
 			/* serpiko.tistory.com */
 			window.onload = function() {
+				var check=0;
 
 				var pArr = [ "1", "5", "50", "5", "꽝", "3", "10", "3",
 						"1", "100" ];
 
 				$('#image').click(function() {
-					rotation();
+					if(check<1){
+					rotation();					
+					check++;
+					}else{
+						alert("룰렛은 한번만 돌릴 수 있습니다.");
+					}
 				});
 
 				function rotation() {

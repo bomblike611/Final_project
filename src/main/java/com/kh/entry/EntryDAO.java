@@ -1,5 +1,7 @@
 package com.kh.entry;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,5 +19,8 @@ public class EntryDAO {
 	}
 	public int delete(EntryDTO entryDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"delete", entryDTO);
+	}
+	public List<EntryDTO> selectList(EntryDTO entryDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"selectList",entryDTO);
 	}
 }

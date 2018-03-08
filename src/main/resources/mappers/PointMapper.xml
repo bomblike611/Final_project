@@ -13,7 +13,7 @@
  </delete>
  
  <select id="selectList" parameterType="PointDTO" resultType="PointDTO">
- select * from point where id=${id}
+ select * from point where id=#{id}
  </select>
  
  </mapper>

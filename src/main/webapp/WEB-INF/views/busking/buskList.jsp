@@ -19,10 +19,11 @@
 
 	}
 	$(function() {
+			
 		$(".btn_now").click(function(){
 			cur=$(this).attr("title");
-			document.page.curPage.value=cur;
-			document.page.submit();
+			document.frrm.curPage.value=cur;
+			document.frrm.submit();
 		});
 		
 		var curPage='${page.curPage}';
@@ -76,6 +77,7 @@
 			<p>기간에 따라 공연을 골라보실 수 있습니다. 마우스 클릭시 공연 상세페이지로 이동합니다.</p>
 		</div>
 		<form action="./buskList" id="frrm" name="frrm" method="post">
+		<input type="hidden" name="curPage">
 			<div id="searchForm">
 				<select name="kind" id="kind">
 					<option>전체</option>

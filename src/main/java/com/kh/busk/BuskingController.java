@@ -114,7 +114,7 @@ public class BuskingController {
 	@RequestMapping(value="buskList")
 	public ModelAndView buskList(ListData listData) throws Exception{
 		ModelAndView mv=new ModelAndView();
-		listData.setPerPage(6);
+		listData.setPerPage(9);
 		mv=buskingService.selectList(listData, mv);
 		mv.setViewName("busking/buskList");
 		return mv;
@@ -138,17 +138,29 @@ public class BuskingController {
 	public ModelAndView entryUpdate(BuskingDTO buskingDTO,HttpSession session) throws Exception{
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("member");
 		ModelAndView mv=new ModelAndView();
+		boolean check=true;
 		String s="fail";
 		if(memberDTO!=null){
 			EntryDTO entryDTO=new EntryDTO();
 			entryDTO.setBusk_num(buskingDTO.getNum());
 			entryDTO.setId(memberDTO.getId());
-			int result=entryService.insert(entryDTO);
-			if(result>0){
-				result=buskingService.entryUpdate(buskingDTO);
-				if(result>0){
-					s="Success";
+			List<EntryDTO> ar=entryService.selectList(entryDTO);
+			for(EntryDTO entryDTO2:ar){
+				if(ar==null||entryDTO2.getBusk_num()==buskingDTO.getNum()){
+					check=false;
 				}
+			}
+			if(check){
+				System.out.println(entryDTO.getId());
+				int result=entryService.insert(entryDTO);
+				if(result>0){
+					result=buskingService.entryUpdate(buskingDTO);
+					if(result>0){
+						s="Success";
+					}
+				}
+			}else{
+				s="참가는 한번만 가능합니다.";
 			}
 		}
 		mv.addObject("path", "buskView?num="+buskingDTO.getNum()+"&id="+buskingDTO.getWriter());

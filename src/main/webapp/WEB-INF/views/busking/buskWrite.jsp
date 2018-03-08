@@ -12,6 +12,9 @@
 <title>## 노래왕 버스킹 -Busking Write페이지입니다</title>
 <script type="text/javascript">
 	$(function() {
+		var st_date = new Date().toISOString().substr(0, 10).replace('T', ' ');
+		$("#busk_date").attr("min",st_date);
+		
 		$(".loc", this).each(function() {
 			if ($(this).prop("selected")) {
 				title = $(this).attr("title");
@@ -165,7 +168,7 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연일자</th>
-						<td><input type="date" class="val" name="busk_date"></td>
+						<td><input type="date" id="busk_date" class="val" name="busk_date"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>참가자수</th>
