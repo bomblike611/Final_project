@@ -156,7 +156,7 @@
 										<p>${dto.location}</p>
 										<p>${dto.busk_date}</p>
 										</div>
-										<div id="spon"><a href="./upcoming">후원하기</a></div>
+										<div id="spon"><a href="../busker/buskView?teamName=${dto.teamname}">후원하기</a></div>
 										</div>
 										<c:forEach items="${loc}" var="l">
 										<c:if test="${date.location eq l.loc_name}">
