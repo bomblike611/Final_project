@@ -216,7 +216,9 @@
 	    var file = new File([blob], ${member.id}+'.wav', {
 	        type: 'audio/wav'
 	    }
-	    $.get()
+	    $.get("./audioSave?file="+file,function(data){
+	    	alert("dd");
+	    });
 	}
 var recorder; // globally accessible
 $('#btn-start-recording').click(function(){

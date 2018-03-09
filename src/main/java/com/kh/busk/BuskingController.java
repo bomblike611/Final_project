@@ -192,7 +192,7 @@ public class BuskingController {
 	
 	@RequestMapping(value="./audioSave")
 	public void audioSave(MultipartFile file)throws Exception{
-		
+		System.out.println(file.getOriginalFilename());
 	}
 	
 
