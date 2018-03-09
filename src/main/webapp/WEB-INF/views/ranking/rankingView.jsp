@@ -39,7 +39,7 @@
 						</div>
 					</div>
 				</form>
-				<a class="rankingKind" id="다후원회원">후원을 많이 한 회원랭킹</a><a class="rankingKind" id="다후원가수">후원을 많이 받은 가수랭킹</a><a class="rankingKind" id="다게시회원">게시글 작성 많이한 회원랭킹</a><a class="rankingKind" id="다참여가수">버스킹 참여자가 많은 가수랭킹</a>
+				<a class="rankingKind" id="mostSponMember">후원을 많이 한 회원랭킹</a><a class="rankingKind" id="mostSponSinger">후원을 많이 받은 가수랭킹</a><a class="rankingKind" id="mostPostMember">게시글 작성 많이한 회원랭킹</a><a class="rankingKind" id="mostJoinSinger">버스킹 참여자가 많은 가수랭킹</a>
 			</div>
 			<div id="ranking_list">
 				<div id="ranking_chart">
@@ -54,7 +54,7 @@
 								<tr>
 									<td>${index.count}</td>
 									<td><span class="profile_pic"><img src="/busk/resources/upload/${buskList[index.index].fname}">${list.id}${list.teamName}</span></td>
-									<td><div class="graph"><div></div></div><span>${list.price}</span></td>
+									<td><span>${list.price}</span></td>
 								</tr>
 							</c:forEach>
 						</table>

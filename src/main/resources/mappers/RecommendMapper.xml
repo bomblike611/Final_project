@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="RecommendMapper">
+  	<select id="recommendList" parameterType="ListData" resultType="RecommendDTO">
+  		select * from (select rownum R,L.* from (select * from recommend 
+	 	<if test="kind == 'teamName'">
+	 		where teamname LIKE '%'||#{search}||'%'
+	  	</if>
+	  	<if test="kind == 'writer'">
+	  		where writer LIKE '%'||#{search}||'%'
+	  	</if>
+	  	order by num desc ) L) where R between #{startRow} and #{lastRow}
+	 </select>
+  </mapper>
