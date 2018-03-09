@@ -32,7 +32,6 @@ public class NoticeController {
 	
 @RequestMapping(value="noticelist")
 	public ModelAndView selectList(ListData listData) throws Exception {
-		
 	ModelAndView mv = new ModelAndView();
 	List<NoticeDTO> ar = noticeService.selectList(listData);
 	for(int i=0; i<ar.size();i++){

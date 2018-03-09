@@ -13,10 +13,7 @@
 
 <script type="text/javascript">
 	$(function() {
-		var message='${message}';
-		if(message != ''){
-			alert(message);
-		}
+		
 				
 		$(".page").click(function() {
 			var cur=$(this).attr("title");
@@ -42,22 +39,22 @@
 			  <div class="my_wrap">
 				<div class="searchFrm">
 					<div class="full_column">
-						<form name="frm" id="searchFrm" method="post">
-							<input type="hidden" name="currentPage" id="currentPage" value="1">
+						<form name="frm" id="searchFrm" method="post" action="./noticelist">
+							<input type="hidden" name="curPage" id="currentPage" value="1">
 							<input type="hidden" name="seq" id="seq">
 							<input type="hidden" name="site" id="site">
 						
 					<div class="floatright">
 					 <label>
-						 <select name="schField" id="schField" onchange="this.form.keyword.focus()">
-							<option value="NUM">번호</option>
-							<option value="TITLE">제목</option>
+						 <select name="kind" id="schField">
+							<option value="writer">작성자</option>
+							<option value="title">제목</option>
 						</select>
 						<a></a>
 					</label>
 						 
 					<label>
-					<input type="text" name="schKeyword" id="schKeyword" maxlength="30" size="30" value="" onfocus="this.select()" />
+					<input type="text" name="search" id="schKeyword" maxlength="30" size="30" value=""/>
 					</label>
 					
 					<label>
@@ -87,14 +84,14 @@
 						<c:forEach items="${list}" var="dto">
 							<tr>
 								<td>${dto.num}</td>
-								<td>${dto.title}</td>
+								<td>${dto.writer}</td>
 								<td>
 								    <c:catch>
 										<c:forEach begin="1" end="${dto.depth}" var="i">
 											-
 										</c:forEach>
 									</c:catch>
-									<a href="noticeView?num=${dto.num}">${dto.writer}</a>
+									<a href="noticeView?num=${dto.num}">${dto.title}</a>
 								</td>
 								<td>${dto.reg_date}</td>
 								
