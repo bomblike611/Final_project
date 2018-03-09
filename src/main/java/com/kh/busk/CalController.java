@@ -35,16 +35,16 @@ public class CalController {
 		LocationDTO locationDTO=locationDAO.locationView(loca);
 		mv.addObject("loca", locationDTO);*/
 		
-		mv= calservice.selectList(calDTO, listData, mv);
+		mv= calservice.selectList(listData, mv);
 		mv.setViewName("calendar/search");
 		return mv;
 	}
 
 	@RequestMapping(value="dd")
-	public ModelAndView dd(ListData listData) throws Exception{
+	public ModelAndView month(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String data = "[";
-		List<CalDTO> ar = calservice.dd();
+		List<CalDTO> ar = calservice.month();
 		URL url = new URL("http://localhost/busk/busking/buskView?num=");
 		for (CalDTO calDTO : ar){
 		data=data+"{"+"title:\""+calDTO.getTeamname()+"\",";
@@ -58,9 +58,9 @@ public class CalController {
 	}
 	
 	@RequestMapping(value="upcoming")
-	public ModelAndView upcoming(ListData listData) throws Exception{
+	public ModelAndView upcoming() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<CalDTO> ar = calservice.selectre(listData);
+		List<CalDTO> ar = calservice.upcoming();
 		mv.addObject("list", ar);
 		mv.setViewName("calendar/upcoming");
 		return mv;
