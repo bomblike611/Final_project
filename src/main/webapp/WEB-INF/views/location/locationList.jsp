@@ -25,12 +25,18 @@
 			location.href = "./locationWrite";
 		});
 	
-		$(".page").click(function(){
-			var cur= $(this).attr("title");
-			document.frm.curPage.value=cur;
-			document.frm.search.value='${page.search}';
-			document.frm.kind.value='${page.kind}';
-			document.frm.submit();
+		$(".btn_now").click(function(){
+			cur=$(this).attr("title");
+			document.frrm.curPage.value=cur;
+			document.frrm.submit();
+		});
+		
+		var curPage='${page.curPage}';
+		$(".btn_now").each(function(){
+			if($(this).attr("title")==curPage){
+				$(this).css("background-color","#582D32");
+				$(this).css("color","white");
+			} 
 		});
 		
 		
@@ -59,7 +65,9 @@
 							<img id="searchw" src="../resources/upload/search.png"
 								style="width: 20px; height: 20px;">
 						</div>
+						<c:if test="${member.id eq 'admin'}">
 						<div id="adminWrite">Write</div>
+						</c:if>
 					</div>
 				</form>
 			</div>
@@ -109,17 +117,22 @@
   </script>
 			</div>
 		</div>
-		<div id="pagination">
+		<div id="paging">
+			<div id="pagination">
 				<c:if test="${page.curBlock > 1}">
-					<span class="page" title="${page.startNum-1}" class="list pageing">[이전]</span>
+					<button title="${page.startNum-1}" class="page list pageing">＜</button>
 				</c:if>
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-					<span class="page" title="${i}" class="list btn_now pageing">${i}</span>
+					<button title="${i}" class="page list btn_now pageing">${i}</button>
 				</c:forEach>
 				<c:if test="${page.curBlock < page.totalBlock}">
-					<span class="page" title="${page.lastNum+1}" class="list pageing">[다음]</span>
+					<button title="${page.lastNum+1}" class="page list pageing">＞</button>
 				</c:if>
 			</div>
+			<c:if test="${member.job eq 'singer'}">
+				<div id="write">Write</div>
+			</c:if>
+		</div>
 	</section>
 	<a href="./locationList" id="top"><img
 		src="../resources/upload/acoustic-guitar.png"><br>Top</a>

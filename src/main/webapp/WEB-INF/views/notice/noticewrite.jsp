@@ -93,7 +93,7 @@
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>작성자</th>
-						<td><input type="text" name="title" class="val" placeholder="작성자"></td>
+						<td><input type="text" name="title" class="val" placeholder="작성자" value="${member.id}" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>제목</th>

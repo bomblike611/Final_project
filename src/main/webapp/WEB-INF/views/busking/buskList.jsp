@@ -9,7 +9,7 @@
 <link href="../resources/css/common/paging.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<title>## 노래왕 버스킹 -Busking List페이지입니다</title>
+<title>## 노래왕 버스킹 -Busking Info페이지입니다</title>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 </head>
@@ -73,7 +73,7 @@
 	<%@include file="../temp/header.jsp"%>
 	<section id="main">
 		<div id="loc">
-			<h2>Busking List</h2>
+			<h2>Busking Info</h2>
 			<p>기간에 따라 공연을 골라보실 수 있습니다. 마우스 클릭시 공연 상세페이지로 이동합니다.</p>
 		</div>
 		<form action="./buskList" id="frrm" name="frrm" method="post">
