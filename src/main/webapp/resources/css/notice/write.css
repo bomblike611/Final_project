@@ -10,5 +10,43 @@
 	display: none;
 } 
 .remove{
-	cursor: pointer;
+	cursor: pointer;          
 }
+
+#pop_wrap {
+	background: #f7f7f7;
+}
+.container {
+	max-width: 930px;
+    padding: 60px 30px 45px 30px;
+    width: 100%;
+    margin: 0 auto;
+}
+.container h2 {
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 1.6rem;
+    color: #333;
+}
+.container .titSummary {
+    font-size: 20px;
+}
+.inputGroup {
+    border-top: 1px solid #aaa;
+    width: 100%;
+}
+.inputBox {
+    border-bottom: 1px solid #ddd;
+    padding: 9px 0;
+}
+.inputBox {
+    border-bottom: 1px solid #ddd;
+    padding: 9px 0;
+}
+
+
+
+
+
+
