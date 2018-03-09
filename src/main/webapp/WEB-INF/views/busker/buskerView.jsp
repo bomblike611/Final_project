@@ -15,11 +15,14 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(function(){
-		var title = "${team[0].fname}";
+		var id = "${team[0].fname}";
 		$("body").css("background-image", 'url("/busk/resources/upload/'+title+'")');
 		$("img").click(function(){
+			id = $(this).attr("id");
 			title = $(this).attr("title");
-			$("body").css("background-image", 'url("/busk/resources/upload/'+title+'")');
+			$("body").css("background-image", 'url("/busk/resources/upload/'+id+'")');
+			$.post("./buskerView",{teamName:${team[0].teamName}, num:title}, function(data){
+				$("#member_info").html(data);
 		});
 		$("#donation").click(function(){
 			location.href="/busk/donation/spon_main";
@@ -155,10 +158,10 @@
 				<tr>
 					<%-- <c:forEach > --%>
 					<c:forEach begin="0" end="${team.size()}" var="i" step="2">
-						<td><img src="/busk/resources/upload/${team[i].fname}" title="${team[i].fname}">
+						<td><img src="/busk/resources/upload/${team[i].fname}" id="${team[i].fname}" title="${i}">
 						</td>
 	
-						<td><img src="/busk/resources/upload/${team[i+1].fname}" title="${team[i+1].fname}">
+						<td><img src="/busk/resources/upload/${team[i+1].fname}" id="${team[i+1].fname}" title="${i+1}">
 						</td>
 					</c:forEach>
 					<%-- </c:forEach> --%>
@@ -222,7 +225,10 @@
 			</div>
 			<button id="btn" data-toggle="modal" data-target="#myModal">후원하기</button>
 			<div id="member_info">
-			
+				<p>이름 : ${team[0].name}</p>
+				<p>포지션 : ${team[0].position}</p>
+				<p>SNS : ${team[0].sns}</p>
+				<p>생일 : ${team[0].birth}</p>
 			</div>
 		</div>
 	</section>

@@ -17,8 +17,10 @@ public class SponService {
 	public int spon(SponDTO sponDTO) {
 		return sponDAO.spon(sponDTO);
 	}
-	public int spon(PointDTO pointDTO) {
-		return sponDAO.spon(pointDTO);
+	public int point(PointDTO pointDTO) {
+		System.out.println(pointDTO.getReason());
+		System.out.println(pointDTO.getUse_point());
+		return sponDAO.point(pointDTO);
 	}
 	
 	public List<SponDTO> sponList(SponDTO sponDTO) throws Exception{

@@ -19,7 +19,7 @@ public class SponDAO {
 	public int spon(SponDTO sponDTO) {
 		return sqlSession.insert(NAMESPACE+"spon", sponDTO);
 	}
-	public int spon(PointDTO pointDTO) {
+	public int point(PointDTO pointDTO) {
 		return sqlSession.insert(NAMESPACE+"point", pointDTO);
 	}
 	
