@@ -125,7 +125,7 @@ $(function(){
 </c:forEach>
 				
 <!-- ================================ 가려지는 부분 ================================ -->
-<c:forEach items="${list}" var="dto" begin="2">
+<c:forEach items="${list}" var="dto" begin="3">
  				<div class="imgbox yoilbox2" id="yoilbox2">
 					<div class="yo" id="feb2">
 						<p class="nalja" title="${dto.busk_date}"></p>
