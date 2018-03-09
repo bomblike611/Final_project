@@ -97,7 +97,7 @@ $(function(){
 				</div>
 <!-- ================================ 보이는 부분 ================================ -->
 	
-<c:forEach items="${list}" var="dto" begin="1" end="1">
+<c:forEach items="${list}" var="dto" begin="1" end="2">
 				<div class="imgbox"  id="yoilbox">
 					<div class="yo" id="feb">
 							<p class="nalja" title="${dto.busk_date}"></p>

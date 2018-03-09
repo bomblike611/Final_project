@@ -6,7 +6,7 @@
 <mapper namespace="CalMapper">
 
 	<select id="selectList" parameterType="ListData" resultType="CalDTO">
-	select * from (select rownum R, N.* from (select * from busking
+	select * from (select * from (select rownum R, N.* from (select * from busking
 		<where>
 		<if test="search !=''">
 		teamname LIKE '%'||#{search}||'%'
@@ -20,7 +20,7 @@
   		</if>
   		</where>
 		order by busk_date asc) N )
-		where R between #{startRow} and #{lastRow}
+		where R between #{startRow} and #{lastRow} ) where busk_date >= sysdate order by busk_date asc
 	</select>
 
 <!--<select id="totalCount" parameterType="ListData" resultType="int">
@@ -32,11 +32,11 @@
 		select * from busking where num=#{num}
 	</select>
 	
-	<select id="selectre" parameterType="ListData" resultType="CalDTO">
+	<select id="upcoming" resultType="CalDTO">
 	select * from busking where busk_date >= sysdate order by busk_date asc
 	</select>
 	
-	<select id="dd" resultType="CalDTO">
+	<select id="month" resultType="CalDTO">
 		select * from busking order by busk_date asc
 	</select>
 </mapper>

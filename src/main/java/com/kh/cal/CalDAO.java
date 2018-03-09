@@ -25,11 +25,11 @@ public class CalDAO {
 	public CalDTO selectOne(CalDTO calDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"selectOne", calDTO);
 	}
-	public List<CalDTO> selectre(ListData listData) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"selectre", listData);
+	public List<CalDTO> upcoming() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"upcoming");
 	}
-	public List<CalDTO> dd() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"dd");
+	public List<CalDTO> month() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"month");
 	}
 
 }
