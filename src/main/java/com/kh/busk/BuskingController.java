@@ -1,5 +1,9 @@
 package com.kh.busk;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,6 +44,7 @@ public class BuskingController {
 	@Inject
 	private EntryService entryService;
 
+	
 	@RequestMapping(value="buskView")
 	public void buskView(String id,BuskingDTO buskingDTO,Model model) throws Exception{
 		MemberDTO memberDTO=memberService.memberView(id);
@@ -94,6 +99,22 @@ public class BuskingController {
 		listData.setLastRow(totalCount);
 		List<LocationDTO> loc_ar=locationDAO.locationList(listData);
 		BuskingDTO buskingDTO2=buskingService.selectOne(buskingDTO);
+		String date=buskingDTO2.getBusk_date();
+		String [] ar=date.split(" ");
+		String [] ar2=ar[0].split("-");
+		System.out.println(ar2[0]+" "+ar2[1]+" "+ar2[2]);
+		System.out.println("ssss");
+		Date date2=null;
+		Calendar ca=Calendar.getInstance();
+		String st=null;
+		try {
+			ca.set(Integer.parseInt(ar2[0]),Integer.parseInt(ar2[1])-1,Integer.parseInt(ar2[2]));
+			SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+			st=sf.format(ca.getTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        model.addAttribute("date", st);
 		model.addAttribute("loc", loc_ar);
 		model.addAttribute("view", buskingDTO2);
 	}
@@ -168,6 +189,11 @@ public class BuskingController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-
+	
+	@RequestMapping(value="./audioSave")
+	public void audioSave(MultipartFile file)throws Exception{
+		
+	}
+	
 
 }

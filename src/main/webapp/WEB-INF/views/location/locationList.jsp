@@ -24,11 +24,15 @@
 		$("#adminWrite").click(function() {
 			location.href = "./locationWrite";
 		});
-	
+		
+		$("#searchw").click(function(){
+			document.frm.submit();
+		});
+		
 		$(".btn_now").click(function(){
 			cur=$(this).attr("title");
-			document.frrm.curPage.value=cur;
-			document.frrm.submit();
+			document.frm.curPage.value=cur;
+			document.frm.submit();
 		});
 		
 		var curPage='${page.curPage}';

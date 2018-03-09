@@ -210,9 +210,13 @@
 	function stopRecordingCallback() {
 	    var blob = recorder.getBlob();
 	    audio.src = URL.createObjectURL(blob);
-	    $("#audio").val(audio.src);
 	    audio.play();
 	    recorder.microphone.stop();
+	    var blob = this.getBlob();
+	    var file = new File([blob], ${member.id}+'.wav', {
+	        type: 'audio/wav'
+	    }
+	    $.get()
 	}
 var recorder; // globally accessible
 $('#btn-start-recording').click(function(){

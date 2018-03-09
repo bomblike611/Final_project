@@ -17,7 +17,7 @@
   </delete>
   
   <select id="totalCount" resultType="int" parameterType="ListData">
-  select nvl(count(num),0) from location
+  select nvl(count(num),0) from location 
   <if test="kind == 'loc_name'">
   where loc_name LIKE '%'||#{search}||'%'
   </if>

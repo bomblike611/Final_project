@@ -49,7 +49,7 @@ public class LocationController {
 	@RequestMapping(value="locationList")
 	public ModelAndView locationList(ListData listData) throws Exception{
 		ModelAndView mv=new ModelAndView();
-		listData.setPerPage(6);
+		listData.setPerPage(9);
 		mv=locationService.locationList(listData,mv);
 		mv.setViewName("location/locationList");
 		return mv;

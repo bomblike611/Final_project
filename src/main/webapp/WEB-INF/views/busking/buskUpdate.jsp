@@ -9,9 +9,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript"
 	src="../resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
-<title>## 노래왕 버스킹 -Busking Write페이지입니다</title>
+<title>## 노래왕 버스킹 -Busking Update페이지입니다</title>
 <script type="text/javascript">
 	$(function() {
+		var st_date = new Date().toISOString().substr(0, 10).replace('T', ' ');
+		$("#busk_date").attr("min",st_date);
 		//전역변수
 		var obj = [];
 		//스마트에디터 프레임생성
@@ -145,7 +147,7 @@
 					<tr>
 						<th><span style="color: red;">*</span>팀명</th>
 						<td><input type="text" name="teamname" class="val"
-							placeholder="가수명" value="${view.teamname}"></td>
+							placeholder="가수명" value="${view.teamname}" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>장르</th>
@@ -163,7 +165,7 @@
 					<tr>
 						<th><span style="color: red;">*</span>공연일자</th>
 						<td><input type="date" name="busk_date" class="val"
-							value="${view.busk_date}"></td>
+							value="${date}" id="busk_date"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>참가자수</th>
@@ -172,12 +174,12 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연포스터</th>
-						<td id="file"><c:if test="${not empty fname}">
+						<td id="file"><c:if test="${not empty view.fname}">
 								<p class="p">
 									<img src="../resources/upload/${view.fname}"
 										style="width: 70px; height: 50px">${view.oname}</p>
-								<span class="delete ${view.fname}">X</span>
-							</c:if> <c:if test="${empty fname}">
+								<span class="delete" id="${view.fname}">X</span>
+							</c:if> <c:if test="${empty view.fname}">
 								<div class="filebox bs3-primary preview-image">
 									<input class="upload-name" value="파일선택" disabled="disabled"
 										style="width: 200px;"> <label for="input_file">업로드</label>
