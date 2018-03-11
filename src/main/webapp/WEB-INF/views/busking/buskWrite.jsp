@@ -141,7 +141,8 @@
 			<form action="./buskWrite" name="frm" method="post"
 				enctype="multipart/form-data">
 				<input type="hidden" name="writer" value="${member.id}">
-				<input type="hidden" name="audio" value="" id="audio">
+				<input type="hidden" name="audiofname" value="" id="audiofname">
+				<input type="hidden" name="audiooname" id="audiooname">
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>공연명</th>
@@ -188,7 +189,8 @@
 						<th><span style="color: red;">*</span>노래 녹음</th>
 						<td><button id="btn-start-recording">Start Recording</button>
 							<button id="btn-stop-recording" disabled>Stop Recording</button>
-							<audio controls autoplay ></audio></td>
+							<audio controls autoplay ></audio>
+							</td>
 					</tr>
 					<tr>
 						<th colspan="2"><span style="color: red;">*</span>소개</th>
@@ -209,10 +211,32 @@
 				}
 	function stopRecordingCallback() {
 	    var blob = recorder.getBlob();
+	   /*  $("#audioFile").val(blob); */
 	    audio.src = URL.createObjectURL(blob);
-	    $("#audio").val(audio.src);
+	   /*  $("#audio").val(audio.src); */
 	    audio.play();
 	    recorder.microphone.stop();
+	    var fileName='${member.id}.wav';
+	    var file = new File([blob], fileName, {
+	        type: 'audio/wav'
+	    });
+	    var formdata= new FormData();
+	    formdata.append("audio",file);
+	    $.ajax({
+	    	async : true,
+	    	method : "post",
+	    	url : './audioUpdate',
+	    	processData : false, //true : data의 파일형태가 query String으로 전송. false : non-processed data 
+	    	data : formdata,
+	    	contentType : false, // false : multipart/form-data 형태로 전송되기 위한 옵션값
+	    	success : function(data){
+	    	alert(data.trim());
+	    	$("#audiofname").val(data.trim());
+	    	$("#audiooname").val(fileName);
+	    	alert($("#audiooname").val());
+	    	}
+      });
+
 	}
 var recorder; // globally accessible
 $('#btn-start-recording').click(function(){
@@ -238,32 +262,7 @@ document.getElementById('btn-stop-recording').onclick = function() {
     recorder.stopRecording(stopRecordingCallback);
 };
 
-function SaveToDisk(fileURL, fileName) {
-    // for non-IE
-    if (!window.ActiveXObject) {
-        var save = document.createElement('a');
-        save.href = fileURL;
-        save.download = fileName || 'unknown';
-        save.style = 'display:none;opacity:0;color:transparent;';
-        (document.body || document.documentElement).appendChild(save);
-        if (typeof save.click === 'function') {
-            save.click();
-        } else {
-            save.target = '_blank';
-            var event = document.createEvent('Event');
-            event.initEvent('click', true, true);
-            save.dispatchEvent(event);
-        }
-        (window.URL || window.webkitURL).revokeObjectURL(save.href);
-    }
-    // for IE
-    else if (!!window.ActiveXObject && document.execCommand) {
-        var _window = window.open(fileURL, '_blank');
-        _window.document.close();
-        _window.document.execCommand('SaveAs', true, fileName || fileURL)
-        _window.close();
-    }
-}
+
 </script>
 				<div id="private">
 					<h2>개인정보보호를 위한 이용자 동의사항</h2>

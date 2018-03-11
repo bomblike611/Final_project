@@ -5,15 +5,15 @@
  
  <mapper namespace="PointMapper">
  <insert id="insert" parameterType="PointDTO">
- 	insert into point values (point_seq.nextval,#{id},sysdate,#{reason},#{use_point})
+ insert into point values (point_seq.nextval,#{id},sysdate,#{reason},#{use_point})
  </insert>
  
  <delete id="delete" parameterType="PointDTO">
- 	delete point where num=#{num}
+ delete point where num=#{num}
  </delete>
-
+ 
  <select id="selectList" parameterType="PointDTO" resultType="PointDTO">
  select * from point where id=#{id}
  </select>
-
+ 
  </mapper>

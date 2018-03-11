@@ -23,6 +23,7 @@ import com.kh.location.LocationDTO;
 import com.kh.location.LocationService;
 import com.kh.member.MemberDTO;
 import com.kh.member.MemberService;
+import com.kh.util.FileSaver;
 import com.kh.util.ListData;
 
 @RequestMapping(value="/busking/**")
@@ -71,10 +72,6 @@ public class BuskingController {
 	@RequestMapping(value="buskWrite",method=RequestMethod.POST)
 	public ModelAndView buskWrite(BuskingDTO buskingDTO,HttpSession session,MultipartFile [] file,MultipartFile f) throws Exception{
 		ModelAndView mv=new ModelAndView();
-		if(buskingDTO.getAudio()==null){
-			buskingDTO.setAudio("null");
-		}
-		System.out.println(buskingDTO.getAudio());
 		int result=buskingService.insert(buskingDTO, session, file,f);
 		if(result>0){
 			mv.setViewName("redirect:../busking/buskList");
@@ -168,6 +165,18 @@ public class BuskingController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-
+	
+	@RequestMapping(value="audioUpdate")
+	public ModelAndView audioUpdate(MultipartFile audio,HttpSession session)throws Exception{
+		String filepath=session.getServletContext().getRealPath("resources/upload");
+		FileSaver fs=new FileSaver();
+		
+		String fileName=fs.saver(audio, filepath);
+		
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("result", fileName);
+		mv.setViewName("common/fileResult");
+		return mv;
+	}
 
 }
