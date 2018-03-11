@@ -167,7 +167,6 @@
 			<li onclick="singerJoin()">singer</li>
 		</ul>
 		<div id="list">
-			<div class="success">전체 메세지전송</div>
 			<div class="success" onclick="mailSendArea()">선택 메세지전송</div>
 			<div class="success" onclick="choiceSuccess()">선택 탈퇴</div>
 			<table class="table table-bordered" id="table">
@@ -224,7 +223,7 @@
 				<div class="modal-body">
 					<form action="./mailSender" name="frm" id="tt"
 						enctype="multipart/form-data">
-						<input type="text" name="subject" placeholder="제목을 입력해주세요.">
+						제목 : <input type="text" name="subject" placeholder="제목을 입력해주세요.">
 						<textarea name="body" id="contents"
 							style="width: 80%; height: 600px;"></textarea>
 						<div class="success" id="btn">Mail Send</div>
