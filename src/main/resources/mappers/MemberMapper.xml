@@ -6,7 +6,7 @@
   <mapper namespace="MemberMapper">
   	<insert id="memberJoin" parameterType="MemberDTO">
   		insert into 
-  		member values(#{id}, #{pw}, #{name}, #{age}, #{email}, #{phone}, #{addr}, #{birth}, #{job}, 0, #{fname}, #{oname}, #{position}, #{sns}, 0, #{teamName})
+  		member values(#{id}, #{pw}, #{name}, #{age}, #{email}, #{phone}, #{addr}, #{birth}, #{job}, 0, #{fname}, #{oname}, #{position}, #{sns}, 0, #{teamName},0)
   	</insert>
   	
   	<insert id="APIUpdate" parameterType="MemberDTO">

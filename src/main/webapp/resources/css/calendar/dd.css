@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+#monthH{
+	background-color: #28272c;
+}
+#space{
+	margin-top: 80px;
+}
+#calendar{
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+    max-width: 900px;
+    margin: 0 auto;
+}

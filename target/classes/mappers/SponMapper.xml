@@ -10,7 +10,7 @@
   	</insert>
   	
   	<insert id="point" parameterType="PointDTO">
-  		insert into point values(point_seq.nextval, ${id}, sysdate, #{reason}, #{use_point})
+  		insert into point values(point_seq.nextval, #{id}, sysdate, #{reason}, #{use_point})
   	</insert>
   	
   	 <select id="sponList" parameterType="SponDTO" resultType="SponDTO">

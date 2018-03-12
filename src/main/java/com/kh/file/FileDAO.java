@@ -29,6 +29,7 @@ public class FileDAO {
 	}
 	
 	public int Delete(FileDTO fileDTO) throws Exception{
+		System.out.println(fileDTO.getFname());
 		return sqlSession.delete(NAMESPACE+"delete", fileDTO);
 	}
 	public int Delete1(FileDTO fileDTO) throws Exception{

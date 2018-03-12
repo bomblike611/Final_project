@@ -1,6 +1,5 @@
 package com.kh.busking;
 
-import java.sql.Date;
 
 public class BuskingDTO {
 
@@ -13,12 +12,26 @@ public class BuskingDTO {
 	private String reg_date;
 	private String location;
 	private int entry;
-	private Date busk_date;
+	private String busk_date;
 	private int entry_member;
 	private String fname;
 	private String oname;
+	private String genre;
+	private String audio;
 	
 	
+	public String getAudio() {
+		return audio;
+	}
+	public void setAudio(String audio) {
+		this.audio = audio;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
 	public String getFname() {
 		return fname;
 	}
@@ -91,12 +104,12 @@ public class BuskingDTO {
 	public void setEntry(int entry) {
 		this.entry = entry;
 	}
-	public Date getBusk_date() {
+	public String getBusk_date() {
 		return busk_date;
 	}
-	public void setBusk_date(Date busk_date) {
+	public void setBusk_date(String busk_date) {
 		this.busk_date = busk_date;
 	}
-	
+
 	
 }

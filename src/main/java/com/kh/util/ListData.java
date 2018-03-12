@@ -14,10 +14,9 @@ public class ListData {
 	private Integer totalBlock;
 	private Integer startRow;
 	private Integer lastRow;
+
 	
-	
-	
-	
+
 	public Integer getStartRow() {
 		startRow=(this.getCurPage()-1)*this.getPerPage()+1;
 		return startRow;

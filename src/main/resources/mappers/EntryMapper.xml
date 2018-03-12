@@ -6,4 +6,7 @@
   <insert id="insert" parameterType="EntryDTO">
   insert into entry values(#{busk_num},#{id},sysdate)
   </insert>
+  <select id="selectList" parameterType="EntryDTO" resultType="EntryDTO">
+  select * from entry where id=#{id}
+  </select>
   </mapper>

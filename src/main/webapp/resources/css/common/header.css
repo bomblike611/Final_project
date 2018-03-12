@@ -13,14 +13,13 @@ header{
 	border-bottom: 1px solid gray;
 }
 #main {
-	height: 1000px;
 	padding-top: 80px;
 	z-index: 900;
 }
 #main_nav {
 	width: 30%;
 	height: 100%;
-	margin-left: 50%;
+	margin-left: 40%;
 	display: inline-block;
 }
 #main_nav li {
@@ -51,7 +50,7 @@ header{
 }
 .dropdown-content {
 	width: 100%;
-	height: 150px;
+	height: 100	px;
 	background-color: black;
 	display: none;
 	z-index: 1;
@@ -60,5 +59,62 @@ header{
 }
 .dropdown:hover .dropdown-content {
     display: block;
-    
 }
+#indexvideo{
+	width: 100%;
+	height: 90%;
+}
+#sub_main td{
+	width: 120px;
+	height: 20px;
+	text-align: center;
+}
+#sub_main a {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+#logo {
+	width: 180px;
+	height: 70px;
+	margin-left: 5%;
+	cursor: pointer;
+	position: absolute;
+}
+#action {
+	display: none;
+	margin-left: 70%;
+	width: 45px;
+	height: 45px;
+	margin-top: 17.5px;
+	cursor: pointer;
+}
+#action img {
+	width: 100%;
+	height: 100%;
+}
+#action_nav {
+	width: 200%;
+	background-color: black;
+	display: none;
+	z-index: 1;
+	opacity: 0.5;
+}
+
+#action:hover #action_nav {
+	display: block;
+}
+#action_nav a {
+	color: white;
+}
+#action_nav li{
+	list-style: none;
+}
+@media screen and  ( max-width: 1750px ) {
+        #main_nav {
+        	display: none;
+        }
+        #action {
+        	display: inline-block;
+        }
+      }

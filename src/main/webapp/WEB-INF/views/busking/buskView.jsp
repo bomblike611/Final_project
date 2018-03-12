@@ -110,10 +110,16 @@
 								<td>${team.sns}</td>
 							</tr>
 							<tr>
+								<th><span style="color: red;">*</span> audio</th>
+								<td><audio src="${view.audio}" controls autoplay></audio></td>
+							</tr>
+							<tr>
 								<th><span style="color: red;">*</span> PARTICIPANT</th>
 								<td>${view.entry_member}/${view.entry}</td>
 							</tr>
 						</table>
+						<script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+				<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 					</div>
 					<div id="sulmyung">
 						<div id="nayong">

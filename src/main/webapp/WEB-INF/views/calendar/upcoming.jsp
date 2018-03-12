@@ -10,8 +10,8 @@
 <script type="text/javascript">
 $(function(){
 	
-  	var text;
   	$("#show").click(function(){
+  		var text;
   		$(".yoilbox2").slideToggle("slow");
   		text = $(this).text();
   		$(this).text(text == '닫기' ? '더보기' : "닫기");
@@ -34,12 +34,10 @@ $(function(){
  		case "10" : mon = "OCT"; break; 
  		case "11" : mon = "NOV"; break; 
  		case "12" : mon = "DEC"; break; 
- 		}
-  		
+ 		}		
  		$(this).html(mon); 
  	}); 
  	
-  	
     /* 공연날짜(일) */
       	$(".nalil").each(function(){
  		var nal=$(this).attr("title");
@@ -51,15 +49,6 @@ $(function(){
  		var busktime=$(this).attr("title");
  		$(this).html(busktime.substr(11,5));	
  	});
-
-	/* 유진이코드 */
-		/* $(".nalja").each(function(){
-		var buskdate=$(this).attr("id");
-			if($(this).attr("id")==buskdate){
-			var nal=$(this).attr("title");
-			$(this).html(nal.substring(8,10));			
-			}
-		}); */
 	
 });
 
@@ -136,7 +125,7 @@ $(function(){
 </c:forEach>
 				
 <!-- ================================ 가려지는 부분 ================================ -->
-<c:forEach items="${list}" var="dto" begin="3" end="4">
+<c:forEach items="${list}" var="dto" begin="3">
  				<div class="imgbox yoilbox2" id="yoilbox2">
 					<div class="yo" id="feb2">
 						<p class="nalja" title="${dto.busk_date}"></p>
@@ -163,7 +152,7 @@ $(function(){
 </c:forEach>
 				</form>
 <!-- ================================ 더보기 ================================ -->
-					<button id="show"><span></span> 더보기 </button>
+					<button id="show" onclick="btn"><span></span> 더보기 </button>
 
 	</section>
 </body>

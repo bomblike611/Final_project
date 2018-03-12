@@ -43,7 +43,7 @@ public class SponController {
 		pointDTO.setReason("후원 적립 포인트");
 		pointDTO.setUse_point(Integer.parseInt(sponDTO.getPrice())/100);
 		if(result>0){
-			result=sponService.spon(pointDTO);
+			result=sponService.point(pointDTO);
 		}
 		mv.setViewName("redirect: /busk/");
 		return mv;

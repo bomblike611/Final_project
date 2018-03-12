@@ -12,10 +12,13 @@
 <title>## 노래왕 버스킹 -Busking Write페이지입니다</title>
 <script type="text/javascript">
 	$(function() {
-		$(".loc",this).each(function(){
-			if($(this).prop("selected")){
-				title=$(this).attr("title");
-				}			
+		var st_date = new Date().toISOString().substr(0, 10).replace('T', ' ');
+		$("#busk_date").attr("min",st_date);
+		
+		$(".loc", this).each(function() {
+			if ($(this).prop("selected")) {
+				title = $(this).attr("title");
+			}
 		});
 		$("#entry").val(title);
 		//전역변수
@@ -38,84 +41,94 @@
 		$("#btn").click(function() {
 			//id가 smarteditor인 textarea에 에디터에서 대입
 			obj.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
-			var check=$("#check").prop("checked");
-			
+			var check = $("#check").prop("checked");
+
 			//폼 submit
-			if(check){
-				if($(".val").val()!=""){
+			if (check) {
+				if ($(".val").val() != "") {
 					document.frm.submit();
-				}else{
+				} else {
 					alert("빈 칸을 채워 주세요.");
 				}
-			}else{
+			} else {
 				alert("이용자 동의사항에 동의해주세요.");
 			}
 		});
 
 		$("#check2").click(function() {
 			$("#privateInfo").slideToggle("slow");
-		}); 
-		
-		$("#location").change(function(){
-			var title="";
-			$(".loc",this).each(function(){
-				if($(this).prop("selected")){
-					title=$(this).attr("title");
-					}			
+		});
+
+		$("#location").change(function() {
+			var title = "";
+			$(".loc", this).each(function() {
+				if ($(this).prop("selected")) {
+					title = $(this).attr("title");
+				}
 			});
 			$("#entry").val(title);
 		});
-		
 
 		var fileTarget = $('.filebox .upload-hidden');
 
-	    fileTarget.on('change', function(){
-	        if(window.FileReader){
-	            // 파일명 추출
-	            var filename = $(this)[0].files[0].name;
-	        } 
+		fileTarget.on('change',
+				function() {
+					if (window.FileReader) {
+						// 파일명 추출
+						var filename = $(this)[0].files[0].name;
+					}
 
-	        else {
-	            // Old IE 파일명 추출
-	            var filename = $(this).val().split('/').pop().split('\\').pop();
-	        };
+					else {
+						// Old IE 파일명 추출
+						var filename = $(this).val().split('/').pop().split(
+								'\\').pop();
+					}
+					;
 
-	        $(this).siblings('.upload-name').val(filename);
-	    });
+					$(this).siblings('.upload-name').val(filename);
+				});
 
-	    //preview image 
-	    var imgTarget = $('.preview-image .upload-hidden');
+		//preview image 
+		var imgTarget = $('.preview-image .upload-hidden');
 
-	    imgTarget.on('change', function(){
-	        var parent = $(this).parent();
-	        parent.children('.upload-display').remove();
+		imgTarget
+				.on(
+						'change',
+						function() {
+							var parent = $(this).parent();
+							parent.children('.upload-display').remove();
 
-	        if(window.FileReader){
-	            //image 파일만
-	            if (!$(this)[0].files[0].type.match(/image\//)) return;
-	            
-	            var reader = new FileReader();
-	            reader.onload = function(e){
-	                var src = e.target.result;
-	                parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
-	            }
-	            reader.readAsDataURL($(this)[0].files[0]);
-	        }
+							if (window.FileReader) {
+								//image 파일만
+								if (!$(this)[0].files[0].type.match(/image\//))
+									return;
 
-	        else {
-	            $(this)[0].select();
-	            $(this)[0].blur();
-	            var imgSrc = document.selection.createRange().text;
-	            parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+								var reader = new FileReader();
+								reader.onload = function(e) {
+									var src = e.target.result;
+									parent
+											.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
+								}
+								reader.readAsDataURL($(this)[0].files[0]);
+							}
 
-	            var img = $(this).siblings('.upload-display').find('img');
-	            img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
-	        }
-	    });
-		
+							else {
+								$(this)[0].select();
+								$(this)[0].blur();
+								var imgSrc = document.selection.createRange().text;
+								parent
+										.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+
+								var img = $(this).siblings('.upload-display')
+										.find('img');
+								img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""
+										+ imgSrc + "\")";
+							}
+						});
+
 	});
-	
 </script>
+<script src="//cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
@@ -127,43 +140,55 @@
 			</div>
 			<form action="./buskWrite" name="frm" method="post"
 				enctype="multipart/form-data">
-				<input type="hidden" name="writer" value="테스트">
+				<input type="hidden" name="writer" value="${member.id}">
+				<input type="hidden" name="audio" value="" id="audio">
 				<table>
 					<tr>
 						<th><span style="color: red;">*</span>공연명</th>
-						<td><input type="text" class="val" name="title" placeholder="공연명을 입력해주세요"></td>
+						<td><input type="text" class="val" name="title"
+							placeholder="공연명을 입력해주세요"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>팀명</th>
-						<td><input type="text" class="val" name="teamname" <%-- value="${member.teamname}" --%> placeholder="가수명"></td>
+						<td><input type="text" class="val" name="teamname"
+							value="${team.teamName}" placeholder="가수명"></td>
+					</tr>
+					<tr>
+						<th><span style="color: red;">*</span>장르</th>
+						<td><input type="text" class="oo" name="genre"
+							placeholder="장르를 입력해주세요"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연지역</th>
-						<td>
-						<select name="location" id="location">
-						<c:forEach items="${loc}" var="l">
-						<option value="${l.loc_name}" title="${l.entry}" class="loc" >${l.loc_name}</option>
-						</c:forEach>
-						</select>
-						
-						</td>
+						<td><select name="location" id="location">
+								<c:forEach items="${loc}" var="l">
+									<option value="${l.loc_name}" title="${l.entry}" class="loc">${l.loc_name}</option>
+								</c:forEach>
+						</select></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연일자</th>
-						<td><input type="date" class="val" name="busk_date"></td>
+						<td><input type="date" id="busk_date" class="val" name="busk_date"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>참가자수</th>
-						<td><input type="number" id="entry" name="entry" value="0" readonly="readonly"></td>
+						<td><input type="number" id="entry" name="entry" value="0"
+							readonly="readonly"></td>
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>공연포스터</th>
 						<td><div class="filebox bs3-primary preview-image">
-                            <input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;">
-
-                            <label for="input_file">업로드</label> 
-                          <input type="file" id="input_file" name="f" class="upload-hidden"> 
-                        </div></td>
+								<input class="upload-name" value="파일선택" disabled="disabled"
+									style="width: 200px;"> <label for="input_file">업로드</label>
+								<input type="file" id="input_file" name="f"
+									class="upload-hidden">
+							</div></td>
+					</tr>
+					<tr>
+						<th><span style="color: red;">*</span>노래 녹음</th>
+						<td><button id="btn-start-recording">Start Recording</button>
+							<button id="btn-stop-recording" disabled>Stop Recording</button>
+							<audio controls autoplay ></audio></td>
 					</tr>
 					<tr>
 						<th colspan="2"><span style="color: red;">*</span>소개</th>
@@ -172,6 +197,74 @@
 						<th colspan="2"><textarea name="contents" id="contents"></textarea></th>
 					</tr>
 				</table>
+				<script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+				<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+				<script>
+	var audio = document.querySelector('audio');
+				function captureMicrophone(callback) {
+    				navigator.mediaDevices.getUserMedia({audio: true}).then(callback).catch(function(error) {
+        			alert('Unable to access your microphone.');
+        			console.error(error);
+    			});
+				}
+	function stopRecordingCallback() {
+	    var blob = recorder.getBlob();
+	    audio.src = URL.createObjectURL(blob);
+	    $("#audio").val(audio.src);
+	    audio.play();
+	    recorder.microphone.stop();
+	}
+var recorder; // globally accessible
+$('#btn-start-recording').click(function(){
+	
+    this.disabled = true;
+    captureMicrophone(function(microphone) {
+        setSrcObject(microphone, audio);
+        audio.play();
+        recorder = RecordRTC(microphone, {
+            type: 'audio',
+            recorderType: StereoAudioRecorder,
+            desiredSampRate: 16000
+        });
+        recorder.startRecording();
+        // release microphone on stopRecording
+        recorder.microphone = microphone;
+        document.getElementById('btn-stop-recording').disabled = false;
+});
+});
+
+document.getElementById('btn-stop-recording').onclick = function() {
+    this.disabled = true;
+    recorder.stopRecording(stopRecordingCallback);
+};
+
+function SaveToDisk(fileURL, fileName) {
+    // for non-IE
+    if (!window.ActiveXObject) {
+        var save = document.createElement('a');
+        save.href = fileURL;
+        save.download = fileName || 'unknown';
+        save.style = 'display:none;opacity:0;color:transparent;';
+        (document.body || document.documentElement).appendChild(save);
+        if (typeof save.click === 'function') {
+            save.click();
+        } else {
+            save.target = '_blank';
+            var event = document.createEvent('Event');
+            event.initEvent('click', true, true);
+            save.dispatchEvent(event);
+        }
+        (window.URL || window.webkitURL).revokeObjectURL(save.href);
+    }
+    // for IE
+    else if (!!window.ActiveXObject && document.execCommand) {
+        var _window = window.open(fileURL, '_blank');
+        _window.document.close();
+        _window.document.execCommand('SaveAs', true, fileName || fileURL)
+        _window.close();
+    }
+}
+</script>
 				<div id="private">
 					<h2>개인정보보호를 위한 이용자 동의사항</h2>
 					<p>노래왕버스킹은 개인정보보호법 등 관련 법률에 따라 개인정보 수집 이용 시 정보 주체에게 사전 고지하고 이에
@@ -181,10 +274,10 @@
 							style="float: right;" id="check2">▼ </span>
 					</div>
 					<div id="privateInfo">
-						<p> - 개인정보의 수집 및 이용 목적: 노래왕 버스킹 버스킹 게시물 등록 서비스 이용</p>
-						<p> - 수집하는 개인정보 항목: 이름, 휴대전화, 이메일</p>
-						<p> - 개인정보 보유 및 이용 기간: 동의일로부터 6개월</p>
-						<p> - 귀하는 동의를 거부할 권리가 있으나, 위 사항에 동의하지 않으실 경우 노래왕 버스킹 서비스 이용에
+						<p>- 개인정보의 수집 및 이용 목적: 노래왕 버스킹 버스킹 게시물 등록 서비스 이용</p>
+						<p>- 수집하는 개인정보 항목: 이름, 휴대전화, 이메일</p>
+						<p>- 개인정보 보유 및 이용 기간: 동의일로부터 6개월</p>
+						<p>- 귀하는 동의를 거부할 권리가 있으나, 위 사항에 동의하지 않으실 경우 노래왕 버스킹 서비스 이용에
 							제한을 받을 수 있습니다.</p>
 					</div>
 				</div>

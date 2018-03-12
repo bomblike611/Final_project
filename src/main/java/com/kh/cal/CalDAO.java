@@ -15,12 +15,21 @@ public class CalDAO {
 	@Inject
 	private SqlSession sqlSession;
 	private final String NAMESPACE="CalMapper.";
-	
+
 	public List<CalDTO> selectList(ListData listData) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"selectList", listData);
 	}
-	public int totalCount(ListData listData) throws Exception{
+/*	public int totalCount(ListData listData) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
+	}*/
+	public CalDTO selectOne(CalDTO calDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"selectOne", calDTO);
+	}
+	public List<CalDTO> upcoming() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"upcoming");
+	}
+	public List<CalDTO> month() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"month");
 	}
 
 }

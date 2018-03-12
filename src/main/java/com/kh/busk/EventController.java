@@ -1,5 +1,7 @@
 package com.kh.busk;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -26,6 +28,7 @@ public class EventController {
 	@RequestMapping(value="pointInsert")
 	public ModelAndView pointInsert(PointDTO pointDTO,HttpSession session) throws Exception{
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("member");
+		
 		ModelAndView mv=new ModelAndView();
 		if(memberDTO!=null){
 			pointDTO.setReason("룰렛 포인트 적립");

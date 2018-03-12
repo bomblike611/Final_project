@@ -92,7 +92,9 @@ $(function(){
 							</tr>
 							<tr><td><span style="color:red;">*</span>사진<p id="add">ADD</p><p id="remove">REMOVE</p></td><td id="picture">
 							<c:forEach items="${files}" var="f">
-							<p class="p"><img src="../resources/upload/${f.fname}" style="width: 70px; height: 50px">${f.oname}</p><span class="delete ${f.fname}">X</span>
+							<c:if test="${f.loc_name eq view.loc_name }">
+							<p class="p"><img src="../resources/upload/${f.fname}" style="width: 70px; height: 50px">${f.oname}</p><span class="delete" id="${f.fname}">X</span>
+							</c:if>
 							</c:forEach>
 							</td></tr>
 							<tr>
