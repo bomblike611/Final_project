@@ -71,6 +71,10 @@
  		select id from member where id=#{id}
  	</select>
  	
+ 	<select id="memberEmailCheck" parameterType="String" resultType="MemberDTO">
+ 		select email from member where email=#{email}
+ 	</select>
+ 	
  	<select id="memberID" parameterType="String" resultType="String">
 		select id from member where email = #{email}
  	</select>

@@ -66,6 +66,10 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", id);
 	}
 	
+	public MemberDTO memberEmailCheck(String email) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberEmailCheck", email);
+	}
+	
 	//아이디 찾기
 	public String memberID(String email) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberID", email);
