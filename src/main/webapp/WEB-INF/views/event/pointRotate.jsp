@@ -93,7 +93,6 @@ canvas{
 							if(dd == "로그아웃되었거나 회원정보가 존재하지 않습니다." || "점수 획득 실패!"){
 								
 							}else{								
-						<%@include file="./firework.js"%>
 							}
 							alert(dd.trim());
 						});
