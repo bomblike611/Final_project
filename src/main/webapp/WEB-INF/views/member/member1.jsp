@@ -12,6 +12,9 @@ $(function() {
 	$(".update").click(function() {
 		window.location = '/busk/member/memberMyPage';
 	});
+	$(".admin").click(function(){
+		window.location="/busk/admin/memberList";
+	});
 	
 	$(".add").click(function() {
 		window.location = '/busk/member/memberNoticeList';
@@ -99,7 +102,10 @@ $(function() {
 		</table>
 		</div>
 		<input type="button" value="수정" class="update">  
-		<input type="button" value="비밀번호 변경" class="cancelBtn update2" style="width: 18%;"> 
+		<input type="button" value="비밀번호 변경" class="cancelBtn update2" style="width: 18%;">
+		<c:if test="${member.id eq 'admin'}">
+		<input type="button" value="회원 관리" class="admin update2" style="width: 18%;"> 
+		</c:if>
 	</div>	
 	
 	<div class="mypage1">

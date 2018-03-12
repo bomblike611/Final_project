@@ -138,7 +138,7 @@
 				</div>
 			</div>
 			<!--================================ 보여지는 폼 ================================-->
-			<c:forEach items="${list}" var="dto" begin="0" end="0">
+			<c:forEach items="${list}" var="dto" begin="0">
 						<div id="bigbox">
 							<div id="singer">${dto.writer}</div>
 							<div id="singerle">
@@ -156,7 +156,7 @@
 										<p>${dto.location}</p>
 										<p>${dto.busk_date}</p>
 										</div>
-										<div id="spon"><a href="../busker/buskView?teamName=${dto.teamname}">후원하기</a></div>
+										<div id="spon"><a href="../busker/buskerView?teamname=${dto.teamname}">후원하기</a></div>
 										</div>
 										<c:forEach items="${loc}" var="l">
 										<c:if test="${date.location eq l.loc_name}">
@@ -237,6 +237,6 @@
 			</c:if>
 		</div> --%>
 	</section>
-	
+
 </body>
 </html>

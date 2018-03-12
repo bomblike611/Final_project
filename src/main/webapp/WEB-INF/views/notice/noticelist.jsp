@@ -14,14 +14,23 @@
 <script type="text/javascript">
 	$(function() {
 		
-				
-		$(".page").click(function() {
-			var cur=$(this).attr("title");
+		$(".btn_now").click(function(){
+			cur=$(this).attr("title");
 			document.frm.curPage.value=cur;
 			document.frm.search.value='${page.search}';
 			document.frm.kind.value='${page.kind}';
 			document.frm.submit();
 		});
+		
+		var curPage='${page.curPage}';
+		$(".btn_now").each(function(){
+			if($(this).attr("title")==curPage){
+				$(this).css("background-color","#582D32");
+				$(this).css("color","white");
+			} 
+		});
+				
+		
 	});
 </script>
 <title>리스트</title>

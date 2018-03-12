@@ -64,15 +64,8 @@
 						<td></td>
 						<td></td>
 						<td><a href="/busk/busking/buskList">BUSKING INFO</a></td>
-						<td><a href="/busk/calendar/month">MOUTH</a></td>
+						<td><a href="/busk/calendar/dd">MONTH</a></td>
 						<td><a href="/busk/ranking/rankingView">RANKING</a></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><a href="/busk/calendar/year">YEAR</a></td>
-						<td></td>
 					</tr>
 					<tr>
 						<td></td>
