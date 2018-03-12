@@ -22,12 +22,31 @@
 					id : id
 				},
 				success : function(data) {
-					if ($.trim(data) == "사용가능한 ID 입니다") {
+					if ($.trim(data) == "사용가능한 아이디 입니다") {
 						$("#result").css('color', 'green');
 					} else {
 						$("#result").css('color', 'red');
 					}
 					$("#result").html(data);
+				}
+			});
+		});
+		
+		$("#email").keyup(function() {
+			var email = $(this).val();
+			$.ajax({
+				url : "./memberEmailCheck",
+				type : "GET",
+				data : {
+					email : email
+				},
+				success : function(data) {
+					if ($.trim(data) == "사용가능한 E-mail 입니다") {
+						$("#result2").css('color', 'green');
+					} else {
+						$("#result2").css('color', 'red');
+					}
+					$("#result2").html(data);
 				}
 			});
 		});
@@ -230,7 +249,8 @@
 				<tr class="join_tr">
 					<td class="join_td"><span class="sp">* </span>이메일</td>
 					<td><input type="email" class="Join_input"
-						placeholder="      Enter E-mail" id="email" name="email"></td>
+						placeholder="      Enter E-mail" id="email" name="email"><span
+						id="result2"></span></td>
 				</tr>
 
 				<!-- 핸드폰번호 테이블 -->

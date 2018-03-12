@@ -92,6 +92,10 @@ public class MemberService {
 		return memberDAO.memberIdCheck(id);
 	}
 	
+	public MemberDTO memberEmailCheck(String email) throws Exception{
+		return memberDAO.memberEmailCheck(email);
+	}
+	
 	public List<MemberDTO> memberList(ListData listData) throws Exception{
 		return memberDAO.memberList(listData);
 	}
