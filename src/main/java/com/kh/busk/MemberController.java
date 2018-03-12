@@ -221,9 +221,22 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO = memberService.memberIdCheck(id);
 		if (memberDTO == null) {
-			mv.addObject("result", "사용가능한 ID 입니다");
+			mv.addObject("result", "사용가능한 아이디 입니다");
 		}else{
 			mv.addObject("result", "중복된 아이디입니다.");
+		}
+		mv.setViewName("common/memberResult");
+		return mv;
+	}
+	
+	@RequestMapping(value="memberEmailCheck", method=RequestMethod.GET)
+	public ModelAndView memberEmailCheck(String email) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = memberService.memberEmailCheck(email);
+		if (memberDTO == null) {
+			mv.addObject("result", "사용가능한 E-mail 입니다");
+		}else{
+			mv.addObject("result", "중복된 E-mail입니다.");
 		}
 		mv.setViewName("common/memberResult");
 		return mv;
