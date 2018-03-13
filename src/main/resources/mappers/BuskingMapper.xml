@@ -8,7 +8,7 @@
 <selectKey resultType="int" order="BEFORE" keyProperty="num">
   		select loc_seq.nextval from dual
   	</selectKey>
-insert into busking values(#{num},#{teamname},#{title},#{writer},#{contents},sysdate,#{location},#{entry},#{busk_date},0,#{fname},#{oname},#{genre},#{audio})
+insert into busking values(#{num},#{teamname},#{title},#{writer},#{contents},sysdate,#{location},#{entry},#{busk_date},0,#{fname},#{oname},#{genre},#{audiofname},#{audiooname})
 </insert>
 
 <delete id="Delete" parameterType="BuskingDTO">

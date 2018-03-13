@@ -111,7 +111,7 @@
 							</tr>
 							<tr>
 								<th><span style="color: red;">*</span> audio</th>
-								<td><audio src="${view.audio}" controls autoplay></audio></td>
+								<td><audio src="../resources/upload/${view.audiofname}" controls autoplay></audio></td>
 							</tr>
 							<tr>
 								<th><span style="color: red;">*</span> PARTICIPANT</th>

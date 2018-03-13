@@ -17,14 +17,21 @@ public class BuskingDTO {
 	private String fname;
 	private String oname;
 	private String genre;
-	private String audio;
+	private String audiofname;
+	private String audiooname;
 	
 	
-	public String getAudio() {
-		return audio;
+	public String getAudiofname() {
+		return audiofname;
 	}
-	public void setAudio(String audio) {
-		this.audio = audio;
+	public void setAudiofname(String audiofname) {
+		this.audiofname = audiofname;
+	}
+	public String getAudiooname() {
+		return audiooname;
+	}
+	public void setAudiooname(String audiooname) {
+		this.audiooname = audiooname;
 	}
 	public String getGenre() {
 		return genre;

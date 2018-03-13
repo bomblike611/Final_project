@@ -33,5 +33,8 @@ public class BuskerDAO {
 		System.out.println(listData.getSearch());
 		return sqlSession.selectList(NAMESPACE+"buskerOne", listData);
 	}
+	public MemberDTO memberView(String id) {
+		return sqlSession.selectOne(NAMESPACE+"memberView", id);
+	}
 	
 }

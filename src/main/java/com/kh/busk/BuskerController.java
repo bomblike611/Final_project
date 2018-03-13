@@ -56,14 +56,13 @@ public class BuskerController {
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> buskerList = buskerService.buskerList(teamname);
 		mv.addObject("team", buskerList);
-		
+		System.out.println(buskerList.size());
 		return mv;
 	}
 	@RequestMapping(value="buskerView", method=RequestMethod.POST)
-	public ModelAndView buskerAjax(String teamName, int num){
+	public ModelAndView buskerAjax(String id){
 		ModelAndView mv = new ModelAndView();
-		List<MemberDTO> buskerList = buskerService.buskerList(teamName);
-		MemberDTO memberDTO = buskerList.get(num);
+		MemberDTO memberDTO = buskerService.memberView(id);
 		mv.addObject("dto", memberDTO);
 		mv.setViewName("busker/viewAjax");
 		return mv;

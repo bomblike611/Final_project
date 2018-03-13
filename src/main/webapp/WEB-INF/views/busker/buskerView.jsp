@@ -15,14 +15,15 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(function(){
-		var id = "${team[0].fname}";
+		var title = "${team[0].fname}";
 		$("body").css("background-image", 'url("/busk/resources/upload/'+title+'")');
 		$("img").click(function(){
-			id = $(this).attr("id");
-			title = $(this).attr("title");
-			$("body").css("background-image", 'url("/busk/resources/upload/'+id+'")');
-			$.post("./buskerView",{teamName:${team[0].teamName}, num:title}, function(data){
+			var id = $(this).attr("title");
+			title = $(this).attr("id");
+			$("body").css("background-image", 'url("/busk/resources/upload/'+title+'")');
+			$.post("./buskerView",{id:id}, function(data){
 				$("#member_info").html(data);
+			});
 		});
 		$("#donation").click(function(){
 			location.href="/busk/donation/spon_main";
@@ -155,17 +156,18 @@
 	<section id="main">
 		<div id="busker_main">
 			<table id="busker_member">
-				<tr>
 					<%-- <c:forEach > --%>
 					<c:forEach begin="0" end="${team.size()}" var="i" step="2">
-						<td><img src="/busk/resources/upload/${team[i].fname}" id="${team[i].fname}" title="${i}">
-						</td>
-	
-						<td><img src="/busk/resources/upload/${team[i+1].fname}" id="${team[i+1].fname}" title="${i+1}">
-						</td>
+						<tr>
+							<td><img src="/busk/resources/upload/${team[i].fname}" id="${team[i].fname}" title="${team[i].id}">
+							</td>
+							<c:if test="${not empty team[i+1].fname}">
+								<td><img src="/busk/resources/upload/${team[i+1].fname}" id="${team[i+1].fname}" title="${team[i+1].id}">
+								</td>
+							</c:if>
+						</tr>
 					</c:forEach>
 					<%-- </c:forEach> --%>
-				</tr>
 
 			</table>
 

@@ -26,4 +26,7 @@ public class BuskerService {
 	public List<MemberDTO> buskerOne(ListData listData){
 		return buskerDAO.buskerOne(listData);
 	}
+	public MemberDTO memberView(String id) {
+		return buskerDAO.memberView(id);
+	}
 }
