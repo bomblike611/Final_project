@@ -35,7 +35,7 @@ $(function() {
 			<div class="Join_Thank">
 			</div>
 			<div style="margin-top: 50px">
-			<h3 style="text-align: center;">호갱님의 회원가입을 진심으로 감사드립니다</h3>
+			<h3 style="text-align: center;">고객님의 회원가입을 진심으로 감사드립니다</h3>
 			</div>			
 		
 		<ul class="btnBox2">

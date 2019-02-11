@@ -187,9 +187,9 @@
 					</tr>
 					<tr>
 						<th><span style="color: red;">*</span>노래 녹음</th>
-						<td><button id="btn-start-recording">Start Recording</button>
-							<button id="btn-stop-recording" disabled>Stop Recording</button>
-							<audio controls autoplay ></audio>
+						<td><button id="btn-start-recording">Start</button>
+							<button id="btn-stop-recording" disabled>Stop</button>
+							<audio src="" id="audio" controls autoplay></audio>
 							</td>
 					</tr>
 					<tr>
@@ -230,10 +230,11 @@
 	    	data : formdata,
 	    	contentType : false, // false : multipart/form-data 형태로 전송되기 위한 옵션값
 	    	success : function(data){
-	    	alert(data.trim());
+	    	/* alert(data.trim()); */
+	    	$("#audio").attr("src","../resources/upload/"+data.trim());
 	    	$("#audiofname").val(data.trim());
 	    	$("#audiooname").val(fileName);
-	    	alert($("#audiooname").val());
+	    	/* alert($("#audiooname").val()); */
 	    	}
       });
 

@@ -93,14 +93,14 @@
 						<c:forEach items="${list}" var="dto">
 							<tr>
 								<td>${dto.num}</td>
-								<td>${dto.writer}</td>
+								<td>${dto.title}</td>
 								<td>
 								    <c:catch>
 										<c:forEach begin="1" end="${dto.depth}" var="i">
 											-
 										</c:forEach>
 									</c:catch>
-									<a href="noticeView?num=${dto.num}">${dto.title}</a>
+									<a href="noticeView?num=${dto.num}">${dto.writer}</a>
 								</td>
 								<td>${dto.reg_date}</td>
 								

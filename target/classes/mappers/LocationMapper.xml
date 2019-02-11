@@ -9,7 +9,7 @@
   </insert>
   
   <update id="update" parameterType="LocationDTO">
-  	update location set memo=#{memo},entry=#{entry} where num=#{num}
+  	update location set loc_name=#{loc_name},memo=#{memo},entry=#{entry} where num=#{num}
   </update>
   
   <delete id="delete" parameterType="LocationDTO">
